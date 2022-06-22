@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "Byrle Witheford",
+        "category": "Guest House",
+        "image_id": "http://dummyimage.com/554x638.png/dddddd/000000"
+    },
+    {
+        "id": 2,
+        "name": "Leanna Hamley",
+        "category": "VHS",
+        "image_id": "http://dummyimage.com/512x512.png/5fa2dd/ffffff"
+    },
+    {
+        "id": 3,
+        "name": "Genevieve Slade",
+        "category": "Eco-Lodge",
+        "image_id": "http://dummyimage.com/630x587.png/cc0000/ffffff"
+    },
+    {
+        "id": 4,
+        "name": "Milty Edelmann",
+        "category": "Hotels",
+        "image_id": "http://dummyimage.com/621x586.png/ff4444/ffffff"
+    }
+]

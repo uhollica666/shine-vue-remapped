@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "location_id": "Dagana",
+        "image_id": "http://dummyimage.com/580x553.png/cc0000/ffffff"
+    },
+    {
+        "id": 2,
+        "location_id": "Lhuentse",
+        "image_id": "http://dummyimage.com/600x548.png/cc0000/ffffff"
+    },
+    {
+        "id": 3,
+        "location_id": "Mongar",
+        "image_id": "http://dummyimage.com/554x511.png/5fa2dd/ffffff"
+    },
+    {
+        "id": 4,
+        "location_id": "Pemagatshel",
+        "image_id": "http://dummyimage.com/616x515.png/dddddd/000000"
+    },
+    {
+        "id": 5,
+        "location_id": "Tashiyangtse",
+        "image_id": "http://dummyimage.com/645x549.png/dddddd/000000"
+    },
+    {
+        "id": 6,
+        "location_id": "Trashigang",
+        "image_id": "http://dummyimage.com/587x585.png/cc0000/ffffff"
+    },
+    {
+        "id": 7,
+        "location_id": "Zhemgang",
+        "image_id": "http://dummyimage.com/631x570.png/cc0000/ffffff"
+    }
+]

@@ -1,0 +1,55 @@
+<template>
+    <div class="by-category mt-5 mb-3">
+        <h4 class="heading text-capitalize">
+            Explore {{ $route.name }} by Dzongkhag
+        </h4>
+        <p class="mt-3">{{ catSubtitle }}</p>
+        <div class="row">
+            <div v-for="dzongkhag in dzongkhags" :key="dzongkhag.id"
+                class="col-md-2 col-lg-2 col-xl-2 col-sm-4 col-xs-6 mt-2">
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <img :src="dzongkhag.image_id" alt="" class="card-img-dzo" />
+                        <RouterLink :to="'/dzongkhags/' + dzongkhag.name" class="category-details text-center">
+                            <div class="card-details">
+                                <h6 class="card-title text-truncate">
+                                    {{ dzongkhag.name }}
+                                </h6>
+                            </div>
+                        </RouterLink>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+import { useFetch } from '@vueuse/core';
+export default {
+    name: 'ToursByDzongkhag',
+    async setup() {
+        const catSubtitle = "Eastern Bhutan Destinations Now Open";
+        const apiURL = "http://dev.hemantbhutanrealestate.com/uploads/";
+        const siteURL = "http://dev.hemantbhutanrealestate.com/";
+        const [{ data: dzongkhags }] = await Promise.all([
+            useFetch("http://dev.hemantbhutanrealestate.com/api/bc_locations"),
+        ]);
+        return {
+            dzongkhags,
+            apiURL,
+            catSubtitle,
+            siteURL,
+        };
+    },
+};
+</script>
+
+<style>
+.card-img-dzo {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+</style>
