@@ -8,12 +8,12 @@
       get latest data
     </button>
     <div class="row mb-3">
-      <div v-for="accommodation in spaces" :key="accommodation.id"
+      <div v-for="accommodation in accommodations" :key="accommodation.id"
         class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3">
         <div class="card mt-3">
           <div class="card-body">
             <img :src="apiURL + accommodation.file_path" alt="" class="card-img" />
-            <NuxtLink :to="siteURL + '/accomodation/' + accommodation.slug" class="accommodation-details">
+            <RouterLink :to="siteURL + '/accomodation/' + accommodation.slug" class="accommodation-details">
               <div class="card-details">
                 <h6 class="card-title text-truncate">
                   {{ accommodation.title }}
@@ -32,7 +32,7 @@
                   </h6>
                 </div>
               </div>
-            </NuxtLink>
+            </RouterLink>
           </div>
         </div>
       </div>
@@ -46,9 +46,9 @@
 </template>
 
 <script>
-import { useFetch } from '@vueuse/core';
+import { ref } from 'vue'
 export default {
-  name: 'AccommodationContent',
+  name: "AccommodationContent",
   props: ["accommodations"],
 
   // data() {
@@ -65,23 +65,22 @@ export default {
   // },
 
   async setup() {
+    const accommodations = ref(null);
     const catSubtitle = "Eastern Bhutan Destinations Now Open";
-    const apiURL = "http://dev.hemantbhutanrealestate.com/uploads/";
-    const siteURL = "http://dev.hemantbhutanrealestate.com/";
-    const [{ data: spaces }, refresh, pending] = await Promise.all([
-      useFetch("http://dev.hemantbhutanrealestate.com/api/bc_spaces"),
-    ]);
+    const apiURL = "http://shine.test/uploads/";
+    const siteURL = "http://shine.test/";
+    const spaces = await fetch("http://shine.test/api/bc_spaces");
+    accommodations.value = await spaces.json();
+
     return {
-      spaces,
+      /* eslint-disable */
+      accommodations,
       apiURL,
-      pending,
-      refresh,
       catSubtitle,
-      siteURL
+      siteURL,
     };
   },
 };
-
 </script>
 
 <style scoped>

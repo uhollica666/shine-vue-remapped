@@ -6,37 +6,83 @@
             </div>
             <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-xs-12 infinite-scroll">
                 <PageBanner />
-                <SortByCategory />
-                <ViewByDzongkhag />
-                <AccommodationContent :accommodations="accommodations" />
-                <HotelsContent :hotels="hotels" />
+
+                <Suspense>
+                    <template #default>
+                        <SortByCategory />
+                    </template>
+                    <template #fallback>
+                       <h5 class="text-center my-5"> 🔄️ Fetching Categories...</h5>
+                    </template>
+                </Suspense>
+
+                <Suspense>
+                    <template #default>
+                        <ViewByDzongkhag />
+                    </template>
+                    <template #fallback>
+                       <h5 class="text-center my-5"> 🔄️ Fetching Category...</h5>
+                    </template>
+                </Suspense>
+
+                <Suspense>
+                    <template #default>
+                        <AccommodationContent :accommodations="accommodations" />
+                    </template>
+                    <template #fallback>
+                       <h5 class="text-center my-5"> 🔄️ Fetching Accommodations...</h5>
+                    </template>
+                </Suspense>
+
+                <Suspense>
+                    <template #default>
+                        <HotelsContent :hotels="hotels" />
+                    </template>
+                    <template #fallback>
+                       <h5 class="text-center my-5"> 🔄️ Fetching Hotels...</h5>
+                    </template>
+
+                </Suspense>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-xs-12 mt-5">
-                <PromotionWrapper>
-                    <PromotionSlots title="Top Events">
-                        <PromotionEvents />
-                    </PromotionSlots>
-                    <PromotionSlots title="Trending Tours">
-                        <PromotionTours />
-                    </PromotionSlots>
-                    <PromotionSlots title="Top Selling Products">
-                        <PromotionProducts />
-                    </PromotionSlots>
-                </PromotionWrapper>
+                <Suspense>
+                    <template #default>
+                        <PromotionWrapper>
+                        <PromotionSlots title="Top Events">
+                            <PromotionEvents />
+                        </PromotionSlots>
+                        <PromotionSlots title="Trending Tours">
+                            <PromotionTours />
+                        </PromotionSlots>
+                        <PromotionSlots title="Top Selling Products">
+                            <PromotionProducts />
+                        </PromotionSlots>
+                    </PromotionWrapper>
+                    </template>
+                    <template #fallback>
+                       <h5 class="text-center my-5"> 🔄️ Fetching Promotions...</h5>
+                    </template>
+                </Suspense>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-xs-12 mt-5">
-                <BlogPost />
+                <Suspense>
+                    <template #default>
+                        <BlogPost />
+                    </template>
+                    <template #fallback>
+                       <h5 class="text-center my-5"> 🔄️ Fetching Blog Posts...</h5>
+                    </template>
+                </Suspense>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import ACCOMMODATION_DATA from "@/APIs/Accommodation_DATA.json";
 import SidebarFilter from "@/components/common/SidebarFilter";
 import PageBanner from "@/components/common/PageBanner";
 import SortByCategory from "@/components/common/SortByCategory";
@@ -51,21 +97,16 @@ import PromotionProducts from "@/components/common/PromotionProducts";
 import BlogPost from "@/components/common/BlogPost";
 export default {
     name: "AccommodationPage",
-    data() {
-        return {
-            accommodations: ACCOMMODATION_DATA,
-        };
-    },
 
     methods: {
 
         filterItems(filter) {
             this.resetAccommodations();
             if (filter === "All") {
-                this.accommodations = ACCOMMODATION_DATA;
+                this.accommodations = this.AccommodationContent;
             } else {
-                this.accommodations = ACCOMMODATION_DATA.filter((accommodation) => {
-                    return accommodation.location_id
+                this.accommodations = AccommodationContent.filter((accommodation) => {
+                    return accommodation.name
                         .toLowerCase()
                         .includes(filter.toLowerCase());
                 });
@@ -74,33 +115,33 @@ export default {
         starFilter(starRating) {
             this.resetAccommodations();
             if (starRating === "All") {
-                this.accommodations = ACCOMMODATION_DATA;
+                this.accommodations = AccommodationContent;
             } else if (starRating === 3) {
-                this.accommodations = ACCOMMODATION_DATA.filter((tour) => {
+                this.accommodations = AccommodationContent.filter((tour) => {
                     return tour.star_rate === 3;
                 });
             } else if (starRating === 4) {
-                this.accommodations = ACCOMMODATION_DATA.filter((tour) => {
+                this.accommodations = AccommodationContent.filter((tour) => {
                     return tour.star_rate === 4;
                 });
             } else if (starRating === 5) {
-                this.accommodations = ACCOMMODATION_DATA.filter((tour) => {
+                this.accommodations = AccommodationContent.filter((tour) => {
                     return tour.star_rate === 5;
                 });
             } else {
-                this.accommodations = ACCOMMODATION_DATA.filter((tour) => {
+                this.accommodations = AccommodationContent.filter((tour) => {
                     return tour.star_rate === 2;
                 });
             }
         },
         searchFilter(search) {
             this.resetAccommodations();
-            this.accommodations = ACCOMMODATION_DATA.filter((accommodation) => {
+            this.accommodations = AccommodationContent.filter((accommodation) => {
                 return accommodation.title.toLowerCase().includes(search.toLowerCase());
             });
         },
         resetAccommodations() {
-            this.accommodations = ACCOMMODATION_DATA;
+            this.accommodations = AccommodationContent;
         },
     },
     components: {

@@ -43,7 +43,7 @@ export default {
 
 <style scoped>
 .card-img-blog {
-    height: 250px;
+    aspect-ratio: 16/9;
     width: 100%;
     object-fit: cover;
     border-radius: 5px;

@@ -28,7 +28,7 @@
                                     </li>
                                 </div>
                                 <div v-if="user">
-                                    <div class="dropdown logged-user-menu mx-3">
+                                    <div class="dropdown logged-user-menu mx-5">
                                         <button class="btn dropdown-toggle text-white" type="button"
                                             id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                                             <i class="bi dropdown-icon bi-person"></i> Hi, {{ user.firstName }} {{
@@ -37,25 +37,38 @@
                                         </button>
                                         <ul class="dropdown-menu px-0 mx-0" aria-labelledby="dropdownMenuButton">
                                             <li class="px-1 mx-0">
-                                                <RouterLink to="#" class="dropdown-item text-dark">Action</RouterLink>
-                                            </li>
-                                            <li class="px-1 mx-0">
-                                                <RouterLink to="#" class="dropdown-item text-dark">Another action
+                                                <RouterLink to="#" class="dropdown-item text-dark">
+                                                    <i class="bi bi-speedometer2"></i>Tourism Vendor
                                                 </RouterLink>
                                             </li>
                                             <li class="px-1 mx-0">
-                                                <RouterLink to="#" class="dropdown-item text-dark">Something else here
+                                                <RouterLink to="#" class="dropdown-item text-dark">
+                                                    <i class="bi bi-basket2"></i>Ecommerce Vendor
                                                 </RouterLink>
                                             </li>
                                             <li class="px-1 mx-0">
-                                                <RouterLink to="#" class="dropdown-item text-dark">Action</RouterLink>
-                                            </li>
-                                            <li class="px-1 mx-0">
-                                                <RouterLink to="#" class="dropdown-item text-dark">Another action
+                                                <RouterLink to="#" class="dropdown-item text-dark">
+                                                    <i class="bi bi-person-square"></i>My Profile
                                                 </RouterLink>
                                             </li>
                                             <li class="px-1 mx-0">
-                                                <RouterLink to="#" class="dropdown-item text-dark">Something else here
+                                                <RouterLink to="#" class="dropdown-item text-dark">
+                                                    <i class="bi bi-shield-lock"></i>Change Password
+                                                </RouterLink>
+                                            </li>
+                                            <li class="px-1 mx-0">
+                                                <RouterLink to="#" class="dropdown-item text-dark">
+                                                    <i class="bi bi-toggles"></i>Admin Dashboard
+                                                </RouterLink>
+                                            </li>
+                                            <li class="px-1 mx-0">
+                                                <RouterLink to="#" class="dropdown-item text-dark">
+                                                    <i class="bi bi-clock-history"></i>Booking Hostory
+                                                </RouterLink>
+                                            </li>
+                                            <li class="px-1 mx-0">
+                                                <RouterLink to="#" class="dropdown-item text-dark">
+                                                    <i class="bi bi-cart-check"></i>Order Hostory
                                                 </RouterLink>
                                             </li>
                                             <li>
@@ -79,7 +92,7 @@
                 </div>
             </div>
         </div>
-        <nav class="navbar navbar-expand-lg sticky-top">
+        <nav class="navbar navbar-expand-lg sticky-top sticky-nav">
             <div class="container">
                 <RouterLink class="navbar-brand" to="/">
                     <img src="@/assets/img/logo.png" alt="" width="80" class="img-fluid" />
@@ -114,9 +127,9 @@
 
 <script>
 import LightDarkSwitch from "@/components/LightDarkSwitch";
+import { mapGetters } from "vuex";
 export default {
     name: "NavBar",
-    props: ["user"],
     data() {
         return {
             isDark: false,
@@ -128,13 +141,20 @@ export default {
     methods: {
         handleClick() {
             localStorage.removeItem('token');
+            this.$store.dispatch("user", null);
             this.$router.push("/");
         },
     },
+    computed: {
+        ...mapGetters(["user"]),
+    }
 };
 </script>
 
 <style scoped>
+.sticky-nav{
+    margin-top: 1px;
+}
 .logged-user-menu {
     z-index: 10000;
 }

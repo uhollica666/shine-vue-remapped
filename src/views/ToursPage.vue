@@ -6,14 +6,21 @@
             </div>
             <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-xs-12">
                 <PageBanner />
-                <SortByCategory />
-                <ToursByDzongkhag />
-                <ToursContent :tours="tours" />
+                <Suspense>
+                    <SortByCategory />
+                </Suspense>
+                <Suspense>
+                    <ToursByDzongkhag />
+                </Suspense>
+                <Suspense>
+                    <ToursContent :tours="tours" />
+                </Suspense>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-xs-12 mt-5">
-                <PromotionWrapper>
+                <Suspense>
+                    <PromotionWrapper>
                     <PromotionSlots title="Top Events">
                         <PromotionEvents />
                     </PromotionSlots>
@@ -24,11 +31,14 @@
                         <PromotionProducts />
                     </PromotionSlots>
                 </PromotionWrapper>
+                </Suspense>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-xs-12 mt-5">
-                <BlogPost />
+                <Suspense>
+                    <BlogPost />
+                </Suspense>
             </div>
         </div>
     </div>

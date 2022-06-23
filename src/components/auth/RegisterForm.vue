@@ -27,7 +27,7 @@
         </div>
         <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-            <label class="form-check-label" for="exampleCheck1">By Signing Up, I agree to
+            <label class="form-check-label no-account-register" for="exampleCheck1">By Signing Up, I agree to
                 <RouterLink to="/terms">Terms & Conditions</RouterLink> of Shine.
             </label>
         </div>

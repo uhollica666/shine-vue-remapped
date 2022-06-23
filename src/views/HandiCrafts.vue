@@ -6,12 +6,20 @@
             </div>
             <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-xs-12 infinite-scroll">
                 <PageBanner />
-                <FeaturedHandiCrafts :products="products" />
+                <Suspense>
+                    <FeaturedHandiCrafts :products="products" />
+                </Suspense>
             </div>
         </div>
-        <RecentProducts />
-        <PopularProducts />
-        <BlogPost />
+        <Suspense>
+            <RecentProducts />
+        </Suspense>
+        <Suspense>
+            <PopularProducts />
+        </Suspense>
+        <Suspense>
+            <BlogPost />
+        </Suspense>
     </div>
 </template>
 

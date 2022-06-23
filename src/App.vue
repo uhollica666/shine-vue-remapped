@@ -1,7 +1,7 @@
 <template>
   <div>
-    <NavBar :user='user' />
-    <router-view :user='user' />
+    <NavBar />
+    <router-view />
     <SiteFooter />
   </div>
 </template>
@@ -20,18 +20,13 @@ export default {
     SiteFooter,
   },
 
-  data() {
-    return {
-      user: null,
-    }
-  },
   async created() {
     const response = await axios.get('user', {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
     });
-    this.user = response.data;
+    this.$store.dispatch('user', response.data);
   },
 
 
@@ -39,9 +34,7 @@ export default {
 </script>
 
 <style>
-.card-body {
-  height: 20rem;
-}
+
 
 .carousel {
   position: relative;
@@ -124,11 +117,10 @@ button.limit {
   padding: 0;
 }
 
-.card-img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
+.card-body a{
+  text-decoration: none;
 }
+
 
 .card-details {
   padding: 0.5rem 1rem;
@@ -238,6 +230,8 @@ button.limit {
 .card-details {
   background: #fff;
   border-radius: 5px;
+  text-decoration: none;
+  color: #2c3e50;
 }
 
 .home-sec {
@@ -287,18 +281,10 @@ button.limit {
   padding: 1rem;
 }
 
-.cardo {
-  width: 40%;
-  height: auto;
-  background: #f7941e;
-  border-radius: 5px;
-  margin: 0.5rem;
-  color: #fff;
-}
-
 .card-img {
   width: 100%;
   aspect-ratio: 16/9;
+  object-fit: cover;
   border-radius: 5px;
   margin: 0;
 }
@@ -358,19 +344,6 @@ button.limit {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.26);
 }
 
-.card-body {
-  padding: 0;
-}
-
-.card-img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-}
-
-.card-details {
-  padding: 0.5rem 1rem;
-}
 
 .details {
   display: flex;

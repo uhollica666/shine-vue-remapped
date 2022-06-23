@@ -4,10 +4,10 @@
             <h4 class="text-capitalize">explore our top featured {{ $route.name }}</h4>
             <p class="mt-3">Discover the freshness of Bhutan</p>
         </div>
-        <div class="row mb-3">
+        <div class="row">
             <div v-for="product in computedObject" :key="product.id"
-                class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12 my-3">
-                <div class="card mt-2">
+                class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12">
+                <div class="card mt-5">
                     <div class="card-body">
                         <img :src="product.image_id" alt="" class="card-img" />
                         <div class="card-details">
