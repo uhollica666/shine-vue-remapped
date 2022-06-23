@@ -35,7 +35,7 @@
                 <h6>Browse Dzongkhags</h6>
                 <ul class="home-block Dzongkhag-block">
                   <li v-for="dzongkhag in dzongkhags" :key="dzongkhag">
-                    <RouterLink :to="'/dzongkhags/'+ dzongkhag">{{dzongkhag}}</RouterLink>
+                    <RouterLink :to="{name:'Dzongkhags', params:{location_id: dzongkhag}}">{{dzongkhag}}</RouterLink>
                   </li>                  
                 </ul>
               </div>

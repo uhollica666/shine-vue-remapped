@@ -3,7 +3,7 @@
         <div class="row mt-5">
             <div class="col-md-12">
 
-                <div class="banner-style banner-content-accommodation" v-if="$route.name === 'accommodation'">
+                <div class="banner-style banner-content-accommodation" v-if="$route.name === 'Accommodation'">
                     <div class="banner-text">
                         <h1>
                             <span class="text-uppercase"> {{ $route.name }} </span>
@@ -12,7 +12,7 @@
                     </div>
                 </div>
 
-                <div class="banner-style banner-content-tours" v-else-if="$route.name === 'tours'">
+                <div class="banner-style banner-content-tours" v-else-if="$route.name === 'Tours'">
                     <div class="banner-text">
                         <h1>
                             <span class="text-uppercase"> {{ $route.name }} </span>
@@ -21,7 +21,7 @@
                     </div>
                 </div>
 
-                <div class="banner-style banner-content-agriproducts" v-else-if="$route.name === 'agriproducts'">
+                <div class="banner-style banner-content-agriproducts" v-else-if="$route.name === 'Agriproducts'">
                     <div class="banner-text">
                         <h1>
                             <span class="text-uppercase"> {{ $route.name }} </span>
@@ -30,7 +30,7 @@
                     </div>
                 </div>
 
-                <div class="banner-style banner-content-handicrafts" v-if="$route.name === 'handicrafts'">
+                <div class="banner-style banner-content-handicrafts" v-if="$route.name === 'Handicrafts'">
                     <div class="banner-text">
                         <h1>
                             <span class="text-uppercase"> {{ $route.name }} </span>

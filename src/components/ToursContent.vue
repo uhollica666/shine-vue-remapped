@@ -4,9 +4,6 @@
       <h4>Explore Our Popular Tours</h4>
       <p class="mt-3">Discover the Eastern Bhutan</p>
     </div>
-    <button class="btn showButton my-2" :disabled="pending" @click="refresh">
-      get latest data
-    </button>
     <div class="row mb-3">
       <div v-for="tour in tours" :key="tour.id" class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-2">
         <div class="card mt-2" loading="lazy">

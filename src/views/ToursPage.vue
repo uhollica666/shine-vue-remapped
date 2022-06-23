@@ -6,38 +6,67 @@
             </div>
             <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-xs-12">
                 <PageBanner />
+
                 <Suspense>
-                    <SortByCategory />
+                    <template #default>
+                        <SortByCategory />
+                    </template>
+                    <template #fallback>
+                       <h5 class="text-center my-5"> 🔄️ Fetching Categories...</h5>
+                    </template>
                 </Suspense>
+
                 <Suspense>
-                    <ToursByDzongkhag />
+                    <template #default>
+                        <ToursByDzongkhag />
+                    </template>
+                    <template #fallback>
+                       <h5 class="text-center my-5"> 🔄️ Fetching Locations...</h5>
+                    </template>
                 </Suspense>
+
                 <Suspense>
-                    <ToursContent :tours="tours" />
+                    <template #default>
+                        <ToursContent :tours="tours" />
+                    </template>
+                    <template #fallback>
+                       <h5 class="text-center my-5"> 🔄️ Fetching Tours...</h5>
+                    </template>
+                </Suspense>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-xs-12 mt-5">
+                <Suspense>
+                    <template #default>
+                        <PromotionWrapper>
+                            <PromotionSlots title="Top Events">
+                                <PromotionEvents />
+                            </PromotionSlots>
+                            <PromotionSlots title="Trending Tours">
+                                <PromotionTours />
+                            </PromotionSlots>
+                            <PromotionSlots title="Top Selling Products">
+                                <PromotionProducts />
+                            </PromotionSlots>
+                        </PromotionWrapper>
+                    </template>
+                    <template #fallback>
+                       <h5 class="text-center my-5"> 🔄️ Fetching Promotions...</h5>
+                    </template>
                 </Suspense>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-xs-12 mt-5">
                 <Suspense>
-                    <PromotionWrapper>
-                    <PromotionSlots title="Top Events">
-                        <PromotionEvents />
-                    </PromotionSlots>
-                    <PromotionSlots title="Trending Tours">
-                        <PromotionTours />
-                    </PromotionSlots>
-                    <PromotionSlots title="Top Selling Products">
-                        <PromotionProducts />
-                    </PromotionSlots>
-                </PromotionWrapper>
-                </Suspense>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-xs-12 mt-5">
-                <Suspense>
-                    <BlogPost />
+                    <template #default>
+                        <BlogPost />
+                    </template>
+                    <template #fallback>
+                       <h5 class="text-center my-5"> 🔄️ Fetching Blog Posts...</h5>
+                    </template>
                 </Suspense>
             </div>
         </div>

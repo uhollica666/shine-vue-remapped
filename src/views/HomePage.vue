@@ -19,7 +19,12 @@
         </div>
         <div class="col-md-9 col-xl-9 col-lg-9 col-xs-12 col-sm-12">
           <Suspense>
-            <HomeContent />
+            <template #default>
+              <HomeContent />
+            </template>
+            <template #fallback>
+              <h5 class="text-center my-5"> 🔄️ Fetching Home Content...</h5>
+            </template>
           </Suspense>
         </div>
       </div>

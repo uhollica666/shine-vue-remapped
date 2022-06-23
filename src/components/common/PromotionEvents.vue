@@ -27,14 +27,14 @@
 import { ref } from "vue";
 export default {
   name: "PromotionEvents",
-  computed: {
-    prompEvents() {
-      // eslint-disable-next-line no-undef
-      return prompEvents.filter(
-        (prompEvent) => prompEvent.name === "Adventure Travel"
-      );
-    },
-  },
+  // computed: {
+  //   prompEvents() {
+  //     // eslint-disable-next-line no-undef
+  //     return prompEvents.filter(
+  //       (prompEvent) => prompEvent.name === "Adventure Travel"
+  //     );
+  //   },
+  // },
   async setup() {
     const prompEvents = ref(null);
     const apiURL = "http://shine.test/uploads/";

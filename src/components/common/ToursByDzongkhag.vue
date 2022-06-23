@@ -34,9 +34,7 @@ export default {
     const catSubtitle = "Eastern Bhutan Destinations Now Open";
     const apiURL = "http://shine.test/uploads/";
     const siteURL = "http://shine.test/";
-    const bc_locations = await Promise.all([
-      fetch("http://shine.test/api/bc_locations"),
-    ]);
+    const bc_locations = await fetch("http://shine.test/api/bc_locations");
     dzongkhags.value = await bc_locations.json();
 
     console.log(dzongkhags.value);

@@ -4,9 +4,6 @@
       <h4>Our Popular Accommodations</h4>
       <p>Best places to stay in Bhutan</p>
     </div>
-    <button class="btn showButton my-2" :disabled="pending" @click="refresh">
-      get latest data
-    </button>
     <div class="row mb-3">
       <div v-for="accommodation in accommodations" :key="accommodation.id"
         class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3">

@@ -7,18 +7,38 @@
             <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-xs-12 infinite-scroll">
                 <PageBanner />
                 <Suspense>
-                    <FeaturedProducts :products="products" />
+                    <template #default>
+                        <FeaturedProducts :products="products" />
+                    </template>
+                    <template #fallback>
+                        <h5 class="text-center my-5"> 🔄️ Fetching Products...</h5>
+                    </template>
                 </Suspense>
             </div>
         </div>
         <Suspense>
-            <RecentProducts />
+            <template #default>
+                <RecentProducts />
+            </template>
+            <template #fallback>
+                <h5 class="text-center my-5"> 🔄️ Fetching Products...</h5>
+            </template>
         </Suspense>
         <Suspense>
-            <PopularProducts />
+            <template #default>
+                <PopularProducts />
+            </template>
+            <template #fallback>
+                <h5 class="text-center my-5"> 🔄️ Fetching Products...</h5>
+            </template>
         </Suspense>
         <Suspense>
-            <BlogPost />
+            <template #default>
+                <BlogPost />
+            </template>
+            <template #fallback>
+                <h5 class="text-center my-5"> 🔄️ Fetching Blog Posts...</h5>
+            </template>
         </Suspense>
     </div>
 </template>
