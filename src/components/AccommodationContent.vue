@@ -54,10 +54,6 @@ export default {
   },
 
   async setup() {
-    const modalActive = ref(true);
-    const toggleModal = () => {
-      modalActive.value = !modalActive.value;
-    };
     const accommodations = ref(null);
     const catSubtitle = "Eastern Bhutan Destinations Now Open";
     const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";

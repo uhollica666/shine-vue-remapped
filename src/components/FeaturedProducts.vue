@@ -5,24 +5,20 @@
             <p class="mt-3">Discover the freshness of Bhutan</p>
         </div>
         <div class="row">
-            <div v-for="product in computedObject" :key="product.id"
+            <div v-for="product in products" :key="product.id"
                 class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12">
                 <div class="card mt-5">
                     <div class="card-body">
-                        <img :src="product.image_id" alt="" class="card-img" />
+                        <img :src="product.thumbnail_image" alt="" class="card-img" />
                         <div class="card-details">
                             <h6 class="card-title text-truncate">
-                                {{ product.post_id }}
+                                {{ product.name }}
                             </h6>
                             <p class="text-small text-grey text-truncate my-2">{{ product.post_details }}</p>
                             <div class="product-row my-3">
                                 <h6 class="card-text text-truncate"><i class="bi bi-cash-coin mr-1"></i> Nu. {{
-                                        product.price
+                                        product.stroked_price
                                 }}</h6>
-                                <div class="duration-tours text-truncate">
-                                    <i class="bi bi-bookmark-star"></i>
-                                    {{ product.category_id }}
-                                </div>
                             </div>
                             <div class="preview-buttons d-flex item-center">
                                 <RouterLink to="">
@@ -37,29 +33,32 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex btn-container">
-            <button @click="limit = !limit" class="btn mt-5 showButton" :class="{ limit: !limit }">
-                Show All
-            </button>
-        </div>
     </div>
 </template>
 
 <script>
+import { ref } from "vue";
+
 export default {
     name: "FeaturedProducts",
     props: ["products"],
 
-    data() {
+    async setup() {
+        const products = ref(null);
+        const catSubtitle = "Eastern Bhutan Destinations Now Open";
+        const product = await fetch(
+            "https://booking.hemantbhutanrealestate.com/api/v2/products"
+        );
+        products.value = await product.data.json();
+
         return {
-            limit: 9,
-        }
-    },
-    computed: {
-        computedObject() {
-            return this.limit ? this.products.slice(0, this.limit) : this.products;
-        }
-    },
+            /* eslint-disable */
+            products,
+            catSubtitle,
+            modalActive,
+            toggleModal,
+        };
+    }
 
 };
 </script>

@@ -6,9 +6,6 @@
         <div class="container home-container">
           <div class="product-images">
             <div class="cardo">card1</div>
-            <div class="cardo">card1</div>
-            <div class="cardo">card1</div>
-            <div class="cardo">card1</div>
           </div>
           <RouterLink to="/agriproducts" class="d-flex home-sec">
             <button class="btn btn-home mb-3">View More</button>
@@ -134,17 +131,21 @@ export default {
   async setup() {
     const homeTours = ref(null);
     const homeAccommodations = ref(null);
+    const products = ref(null);
     const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
     const siteURL = "https://dev.hemantbhutanrealestate.com/";
-    const [bc_homeTours, bc_homeAccommodations] = await Promise.all([
+    const [bc_homeTours, bc_homeAccommodations, bc_products] = await Promise.all([
       fetch("https://dev.hemantbhutanrealestate.com/api/bc_tours"),
       fetch("https://dev.hemantbhutanrealestate.com/api/bc_spaces"),
+      fetch("https://booking.hemantbhutanrealestate.com/api/v2/products"),
     ]);
     homeTours.value = await bc_homeTours.json();
     homeAccommodations.value = await bc_homeAccommodations.json();
+    products.data.value = await bc_products.json();
 
     return {
       homeTours,
+      products,
       homeAccommodations,
       siteURL,
       apiURL,

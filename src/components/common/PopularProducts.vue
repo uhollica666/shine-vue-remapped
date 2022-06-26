@@ -2,24 +2,20 @@
     <div>
         <h4 class="text-center p-3 mt-5">Top Popular Products</h4>
         <div class="row flex-row flex-nowrap overflow-auto mb-5">
-            <div class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 mt-3 mx-auto" v-for="product in popularProducts"
+            <div class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 mt-3 mx-auto" v-for="product in products"
                 :key="product.id">
                 <div class="card mt-3 mb-3">
                     <div class="card-body">
-                        <img :src="product.image_id" alt="" class="card-img-blog" />
-                        <RouterLink to="/#AccomodationDetails" class="category-details">
+                        <img :src="product.thumbnail_image" alt="" class="card-img-blog" />
+                        <RouterLink to="/" class="category-details">
                             <div class="card-details">
                                 <h6 class="card-title text-truncate">
-                                    {{ product.post_id }}
+                                    {{ product.name }}
                                 </h6>
-                                <p class="post-details text-truncate">{{ product.post_details }}</p>
-                                <div class="location text-truncate">
-                                    <i class="bi bi-tag"></i> {{ product.category_id }}
-                                </div>
-                                <p class="my-3">
-                                    <i class="bi bi-calendar"></i> Uploaded on
-                                    {{ product.date_added }}
-                                </p>
+                                <h6 class="card-text my-3">
+                                    <i class="bi bi-cash-coin mr-1"></i> Nu.
+                                    {{ product.stroked_price }}
+                                </h6>
                             </div>
                         </RouterLink>
                     </div>
@@ -30,14 +26,25 @@
 </template>
 
 <script>
-import PRODUCTS from "@/APIs/Products_DATA.json";
+import { ref } from "vue";
 export default {
     name: "PopularProducts",
-    data() {
+    async setup() {
+        const products = ref(null);
+        const catSubtitle = "Eastern Bhutan Destinations Now Open";
+        const product = await fetch(
+            "https://booking.hemantbhutanrealestate.com/api/v2/products"
+        );
+        products.value = await product.data.json();
+
         return {
-            popularProducts: PRODUCTS,
+            /* eslint-disable */
+            products,
+            catSubtitle,
+            modalActive,
+            toggleModal,
         };
-    },
+    }
 };
 </script>
 
