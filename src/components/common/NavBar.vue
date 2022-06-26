@@ -92,7 +92,7 @@
                 </div>
             </div>
         </div>
-        <nav class="navbar navbar-expand-lg sticky-top sticky-nav">
+        <nav class="navbar navbar-expand-lg sticky-top">
             <div class="container">
                 <RouterLink class="navbar-brand" to="/">
                     <img src="@/assets/img/logo.png" alt="" width="80" class="img-fluid" />
@@ -152,9 +152,7 @@ export default {
 </script>
 
 <style scoped>
-.sticky-nav{
-    margin-top: 1px;
-}
+
 .logged-user-menu {
     z-index: 10000;
 }

@@ -12,12 +12,13 @@
         <div class="accordion-body">
           <div class="c">
             <div class="sidebar-filters">
-
               <div class="block-1 mb-3">
                 <h6>Handicrafts</h6>
                 <ul class="home-block handicraft-block">
                   <li v-for="handicraft in homeHandicrafts" :key="handicraft">
-                    <RouterLink :to="'/handicrafts/'+ handicraft">{{handicraft}}</RouterLink>
+                    <RouterLink :to="'/handicrafts/' + handicraft">{{
+                        handicraft
+                    }}</RouterLink>
                   </li>
                 </ul>
               </div>
@@ -26,7 +27,9 @@
                 <h6>Agriculture</h6>
                 <ul class="home-block Agriculture-block">
                   <li v-for="product in homeAgriproducts" :key="product">
-                    <RouterLink :to="'/agriproducts/' + product">{{product}}</RouterLink>
+                    <RouterLink :to="'/agriproducts/' + product">{{
+                        product
+                    }}</RouterLink>
                   </li>
                 </ul>
               </div>
@@ -35,8 +38,11 @@
                 <h6>Browse Dzongkhags</h6>
                 <ul class="home-block Dzongkhag-block">
                   <li v-for="dzongkhag in dzongkhags" :key="dzongkhag">
-                    <RouterLink :to="{name:'Dzongkhags', params:{location_id: dzongkhag}}">{{dzongkhag}}</RouterLink>
-                  </li>                  
+                    <RouterLink :to="{
+                      name: 'Dzongkhags',
+                      params: { location_id: dzongkhag },
+                    }">{{ dzongkhag }}</RouterLink>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -45,9 +51,9 @@
       </div>
     </div>
 
-    <div class="accordion-item ">
-      <h2 class="accordion-header ">
-        <button class="accordion-button " type="button" >
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button">
           Popular Attraction
         </button>
       </h2>
@@ -56,14 +62,16 @@
         <div class="accordion-body">
           <div class="c">
             <div class="sidebar-filters">
-
               <div class="block-1 mb-3">
                 <div class="image-block my-2">
-                  <img src="@/assets/img/brokpa.jpg" alt="">
+                  <img src="@/assets/img/brokpa.jpg" alt="" />
                 </div>
                 <ul class="home-block">
                   <li v-for="attraction in popAttractions" :key="attraction">
-                    <RouterLink :to="'/stories/'+ attraction">{{attraction}}</RouterLink>
+                    <RouterLink :to="
+                      'http://dev.hemantbhutanrealestate.com/news/' +
+                      attraction
+                    ">{{ attraction }}</RouterLink>
                   </li>
                 </ul>
               </div>
@@ -76,24 +84,23 @@
 </template>
 
 <script>
-
 const homeHandicrafts = [
-  'Textile',
-  'Cane & Bamboo',
-  'Wood Crafts',
-  'Metal Crafts',
-  'General Souvenir'
-]
+  "Textile",
+  "Cane & Bamboo",
+  "Wood Crafts",
+  "Metal Crafts",
+  "General Souvenir",
+];
 
 const homeAgriproducts = [
-  'Fresh Vegetables',
-  'Food Grains',
-  'Fresh Fruits',
-  'Proccessed Food',
-  'Dairy Products',
-  'Mushrooms',
-  'Edible Wild Plants'
-]
+  "Fresh Vegetables",
+  "Food Grains",
+  "Fresh Fruits",
+  "Proccessed Food",
+  "Dairy Products",
+  "Mushrooms",
+  "Edible Wild Plants",
+];
 
 const dzongkhags = [
   "Dagana",
@@ -105,16 +112,16 @@ const dzongkhags = [
   "Zhemgang",
 ];
 const popAttractions = [
-  'Brokpa of Merak Sakten',
-  'Chorten Kora - Gompa Kora',
-  'Mongar - Birding Capital',
-  'Textile of Khoma',
-  'Cotton Farming, Thongsa',
-  'Royal Manas National Park',
-  'Lhamoizingkha Excursion',
-]
+  "Brokpa of Merak Sakten",
+  "Chorten Kora - Gompa Kora",
+  "Mongar - Birding Capital",
+  "Textile of Khoma",
+  "Cotton Farming, Thongsa",
+  "Royal Manas National Park",
+  "Lhamoizingkha Excursion",
+];
 export default {
-    name: 'HomeSideBar',
+  name: "HomeSideBar",
   data() {
     return {
       homeHandicrafts,
@@ -123,25 +130,27 @@ export default {
       popAttractions,
     };
   },
-}
+};
 </script>
 
 <style scoped>
-.image-block img{
+.image-block img {
   width: 100%;
   border-radius: 5px;
   height: 250px;
   object-fit: cover;
   transition: 300ms;
 }
-.image-block img:hover{
+
+.image-block img:hover {
   filter: brightness(0.5);
 }
 
-.app-sticky-top-2{
+.app-sticky-top-2 {
   top: 100vh;
   margin-top: 20rem;
 }
+
 .app-sticky-top {
   top: 8rem;
 }
@@ -268,14 +277,14 @@ input[type="range"]::-moz-range-thumb {
   -moz-appearance: none;
 }
 
-.home-block li a{
+.home-block li a {
   color: #2c3e50;
   text-decoration: none;
 }
-.home-block li a:hover{
+
+.home-block li a:hover {
   color: #f7941e;
 }
-
 
 @media only screen and (max-width: 992px) {
   .accordion {

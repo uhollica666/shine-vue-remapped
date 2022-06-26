@@ -52,6 +52,11 @@ const routes = [
     name: 'Dzongkhags',
     component: () => import( /* webpackChunkName: "about" */ '../views/DzongkhagsPage')
   },
+  {
+    path: '/property/:slug',
+    name: 'Property',
+    component: () => import( /* webpackChunkName: "about" */ '../views/PropertyPage')
+  },
 ]
 
 const router = createRouter({

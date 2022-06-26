@@ -50,7 +50,7 @@
           </div>
           <div class="footer-link">
             <RouterLink to="/accommodation"
-              ><i class="bi bi-chevron-compact-right"></i>Provacy
+              ><i class="bi bi-chevron-compact-right"></i>Privacy
               Policy</RouterLink
             >
           </div>

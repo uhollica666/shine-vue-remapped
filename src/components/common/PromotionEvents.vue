@@ -1,12 +1,18 @@
 <template>
   <div class="by-category mb-3">
     <div class="row flex-row flex-nowrap overflow-auto">
-      <div class="col-md-3 col-lg-3 col-xl-3 col-sm-3 col-xs-3 mt-2 mb-3 mx-0" v-for="prompEvent in prompEvents"
-        :key="prompEvent.id">
+      <div
+        class="col-md-3 col-lg-3 col-xl-3 col-sm-3 col-xs-3 mt-2 mb-3 mx-0"
+        v-for="prompEvent in prompEvents"
+        :key="prompEvent.id"
+      >
         <div class="card mt-3">
           <div class="card-body">
             <img :src="apiURL + prompEvent.file_path" alt="" class="card-img" />
-            <RouterLink :to="siteURL + '/en/news/' + prompEvent.slug" class="category-details">
+            <RouterLink
+              :to="siteURL + '/en/news/' + prompEvent.slug"
+              class="category-details"
+            >
               <div class="card-details">
                 <h6 class="card-title text-truncate">
                   {{ prompEvent.title }}
@@ -37,9 +43,11 @@ export default {
   // },
   async setup() {
     const prompEvents = ref(null);
-    const apiURL = "http://shine.test/uploads/";
-    const siteURL = "http://shine.test/";
-    const bc_prompEvents = await fetch("http://shine.test/api/articles");
+    const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
+    const siteURL = "https://dev.hemantbhutanrealestate.com/";
+    const bc_prompEvents = await fetch(
+      "https://dev.hemantbhutanrealestate.com/api/articles"
+    );
     prompEvents.value = await bc_prompEvents.json();
     return {
       // eslint-disable-next-line vue/no-dupe-keys

@@ -31,7 +31,7 @@
                                 </label>
                             </div>
 
-                            <div v-if="$route.name === 'accommodation'">
+                            <div v-show="$route.name === 'Accommodation'">
                                 <div class="heading">
                                     <h6 class="mb-3 mt-3">Filter By Rating</h6>
                                 </div>
@@ -44,7 +44,7 @@
                                 </div>
                             </div>
 
-                            <div v-else-if="$route.name === 'handicrafts' || $route.name === 'agriproducts'">
+                            <div v-show="$route.name === 'Handicrafts' || $route.name === 'Agriproducts'">
                                 <div class="heading">
                                     <h6 class="mb-3 mt-3">Filter By Category</h6>
                                 </div>
@@ -57,7 +57,7 @@
                                 </div>
                             </div>
 
-                            <div v-else-if="$route.name === 'tours'">
+                            <div v-show="$route.name === 'Tours'">
                                 <div class="heading">
                                     <h6 class="mt-3">Filter By Price range</h6>
                                 </div>

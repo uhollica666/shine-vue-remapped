@@ -36,16 +36,17 @@
         <h6 class="p-3 home-linear-heading">Tour Packages</h6>
         <div class="home-tour-group">
           <div class="row">
-            <div class="col-md-2 home-objects" v-for="tour in homeTours" :key="tour.id">
+            <div
+              class="col-md-2 home-objects"
+              v-for="tour in homeTours"
+              :key="tour.id"
+            >
               <img class="card-img" :src="apiURL + tour.file_path" />
               <RouterLink :to="'/tours/' + tour.title" class="category-details">
                 <div class="card-details">
-                  <h6 class="
-                      card-title
-                      text-truncate text-capitalize
-                      p-3
-                      text-center
-                    ">
+                  <h6
+                    class="card-title text-truncate text-capitalize p-3 text-center"
+                  >
                     {{ tour.title }}
                   </h6>
                 </div>
@@ -64,16 +65,20 @@
         <h6 class="p-3 home-linear-heading">Accommodation</h6>
         <div class="home-tour-group">
           <div class="row">
-            <div class="col-md-3 home-objects" v-for="accommodation in homeAccommodations" :key="accommodation.id">
+            <div
+              class="col-md-3 home-objects"
+              v-for="accommodation in homeAccommodations"
+              :key="accommodation.id"
+            >
               <img class="card-img" :src="apiURL + accommodation.file_path" />
-              <RouterLink :to="'/tours/' + accommodation.title" class="category-details">
+              <RouterLink
+                :to="'/tours/' + accommodation.title"
+                class="category-details"
+              >
                 <div class="card-details">
-                  <h6 class="
-                      card-title
-                      text-truncate text-capitalize
-                      p-3
-                      text-center
-                    ">
+                  <h6
+                    class="card-title text-truncate text-capitalize p-3 text-center"
+                  >
                     {{ accommodation.title }}
                   </h6>
                 </div>
@@ -129,13 +134,12 @@ export default {
   async setup() {
     const homeTours = ref(null);
     const homeAccommodations = ref(null);
-    const apiURL = "http://shine.test/uploads/";
-    const siteURL = "http://shine.test/";
-    const [bc_homeTours, bc_homeAccommodations] =
-      await Promise.all([
-        fetch("http://shine.test/api/bc_tours"),
-        fetch("http://shine.test/api/bc_spaces"),
-      ]);
+    const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
+    const siteURL = "https://dev.hemantbhutanrealestate.com/";
+    const [bc_homeTours, bc_homeAccommodations] = await Promise.all([
+      fetch("https://dev.hemantbhutanrealestate.com/api/bc_tours"),
+      fetch("https://dev.hemantbhutanrealestate.com/api/bc_spaces"),
+    ]);
     homeTours.value = await bc_homeTours.json();
     homeAccommodations.value = await bc_homeAccommodations.json();
 

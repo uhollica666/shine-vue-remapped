@@ -10,7 +10,7 @@
         <div class="card mt-3">
           <div class="card-body">
             <img :src="apiURL + accommodation.file_path" alt="" class="card-img" />
-            <RouterLink :to="siteURL + '/accomodation/' + accommodation.slug" class="accommodation-details">
+            <RouterLink :to="siteURL + accommodation.title" class="accommodation-details" target="_blank">
               <div class="card-details">
                 <h6 class="card-title text-truncate">
                   {{ accommodation.title }}
@@ -34,21 +34,50 @@
         </div>
       </div>
     </div>
-    <div class="d-flex btn-container">
-      <!-- <button @click="limit = !limit" class="btn mt-5 showButton" :class="{limit : !limit}">
-      Show All
-    </button> -->
-    </div>
+    <PropertyContent :modalActive="modalActive">
+      <div class="modal-content">
+        <h2>This is modal header</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quidem.</p>
+      </div>
+    </PropertyContent>
   </div>
 </template>
 
 <script>
-import { ref } from 'vue'
+import PropertyContent from '@/components/PropertyContent';
+import { ref } from "vue";
 export default {
   name: "AccommodationContent",
   props: ["accommodations"],
+  components: {
+    PropertyContent,
+  },
 
-  // data() {
+  async setup() {
+    const modalActive = ref(true);
+    const toggleModal = () => {
+      modalActive.value = !modalActive.value;
+    };
+    const accommodations = ref(null);
+    const catSubtitle = "Eastern Bhutan Destinations Now Open";
+    const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
+    const siteURL = "https://dev.hemantbhutanrealestate.com/space/";
+    const spaces = await fetch(
+      "https://dev.hemantbhutanrealestate.com/api/bc_spaces"
+    );
+    accommodations.value = await spaces.json();
+
+    return {
+      /* eslint-disable */
+      accommodations,
+      apiURL,
+      catSubtitle,
+      siteURL,
+      modalActive,
+      toggleModal,
+    };
+  }
+    // data() {
   //   return {
   //     limit: 8,
   //   };
@@ -59,24 +88,7 @@ export default {
   //       ? this.accommodations.slice(0, this.limit)
   //       : this.accommodations;
   //   },
-  // },
-
-  async setup() {
-    const accommodations = ref(null);
-    const catSubtitle = "Eastern Bhutan Destinations Now Open";
-    const apiURL = "http://shine.test/uploads/";
-    const siteURL = "http://shine.test/";
-    const spaces = await fetch("http://shine.test/api/bc_spaces");
-    accommodations.value = await spaces.json();
-
-    return {
-      /* eslint-disable */
-      accommodations,
-      apiURL,
-      catSubtitle,
-      siteURL,
-    };
-  },
+  // },,
 };
 </script>
 

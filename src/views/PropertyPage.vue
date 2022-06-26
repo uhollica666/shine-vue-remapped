@@ -5,7 +5,6 @@
         <DzongkhagSideBar />
       </div>
       <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-xs-12">
-        <PageBanner />
 
         <Suspense>
           <template #default>
@@ -18,37 +17,18 @@
         
       </div>
     </div>
-
-    <div class="row">
-      <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-xs-12 mt-5">
-
-        <Suspense>
-          <template #default>
-            <BlogPost />
-          </template>
-          <template #fallback>
-            <h5 class="text-center my-5">🔄️ Fetching details...</h5>
-          </template>
-        </Suspense>
-
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
 import DzongkhagSideBar from '@/components/common/DzongkhagSideBar';
-import PageBanner from '@/components/common/PageBanner';
 import DzongkhagContent from '@/components/DzongkhagContent';
-import BlogPost from '@/components/common/BlogPost';
 
 
 export default {
-  name: "DzongkhagsPage",
+  name: "PropertyPage",
   components: {
     DzongkhagSideBar,
-    PageBanner,
-    BlogPost,
     DzongkhagContent
   },
 };

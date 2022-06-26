@@ -12,7 +12,7 @@
                         <SortByCategory />
                     </template>
                     <template #fallback>
-                       <h5 class="text-center my-5"> 🔄️ Fetching Categories...</h5>
+                        <h5 class="text-center my-5"> 🔄️ Fetching Categories...</h5>
                     </template>
                 </Suspense>
 
@@ -21,7 +21,7 @@
                         <ViewByDzongkhag />
                     </template>
                     <template #fallback>
-                       <h5 class="text-center my-5"> 🔄️ Fetching Category...</h5>
+                        <h5 class="text-center my-5"> 🔄️ Fetching Category...</h5>
                     </template>
                 </Suspense>
 
@@ -30,7 +30,7 @@
                         <AccommodationContent :accommodations="accommodations" />
                     </template>
                     <template #fallback>
-                       <h5 class="text-center my-5"> 🔄️ Fetching Accommodations...</h5>
+                        <h5 class="text-center my-5"> 🔄️ Fetching Accommodations...</h5>
                     </template>
                 </Suspense>
 
@@ -39,7 +39,7 @@
                         <HotelsContent :hotels="hotels" />
                     </template>
                     <template #fallback>
-                       <h5 class="text-center my-5"> 🔄️ Fetching Hotels...</h5>
+                        <h5 class="text-center my-5"> 🔄️ Fetching Hotels...</h5>
                     </template>
 
                 </Suspense>
@@ -50,19 +50,19 @@
                 <Suspense>
                     <template #default>
                         <PromotionWrapper>
-                        <PromotionSlots title="Top Events">
-                            <PromotionEvents />
-                        </PromotionSlots>
-                        <PromotionSlots title="Trending Tours">
-                            <PromotionTours />
-                        </PromotionSlots>
-                        <PromotionSlots title="Top Selling Products">
-                            <PromotionProducts />
-                        </PromotionSlots>
-                    </PromotionWrapper>
+                            <PromotionSlots title="Top Events">
+                                <PromotionEvents />
+                            </PromotionSlots>
+                            <PromotionSlots title="Trending Tours">
+                                <PromotionTours />
+                            </PromotionSlots>
+                            <PromotionSlots title="Top Selling Products">
+                                <PromotionProducts />
+                            </PromotionSlots>
+                        </PromotionWrapper>
                     </template>
                     <template #fallback>
-                       <h5 class="text-center my-5"> 🔄️ Fetching Promotions...</h5>
+                        <h5 class="text-center my-5"> 🔄️ Fetching Promotions...</h5>
                     </template>
                 </Suspense>
             </div>
@@ -74,11 +74,13 @@
                         <BlogPost />
                     </template>
                     <template #fallback>
-                       <h5 class="text-center my-5"> 🔄️ Fetching Blog Posts...</h5>
+                        <h5 class="text-center my-5"> 🔄️ Fetching Blog Posts...</h5>
                     </template>
                 </Suspense>
+
             </div>
         </div>
+
     </div>
 </template>
 
@@ -99,7 +101,6 @@ export default {
     name: "AccommodationPage",
 
     methods: {
-
         filterItems(filter) {
             this.resetAccommodations();
             if (filter === "All") {
@@ -117,20 +118,20 @@ export default {
             if (starRating === "All") {
                 this.accommodations = AccommodationContent;
             } else if (starRating === 3) {
-                this.accommodations = AccommodationContent.filter((tour) => {
-                    return tour.star_rate === 3;
+                this.accommodations = AccommodationContent.filter((accommodation) => {
+                    return accommodation.review_score >= 3;
                 });
             } else if (starRating === 4) {
-                this.accommodations = AccommodationContent.filter((tour) => {
-                    return tour.star_rate === 4;
+                this.accommodations = AccommodationContent.filter((accommodation) => {
+                    return accommodation.review_score >= 4;
                 });
             } else if (starRating === 5) {
-                this.accommodations = AccommodationContent.filter((tour) => {
-                    return tour.star_rate === 5;
+                this.accommodations = AccommodationContent.filter((accommodation) => {
+                    return accommodation.review_score >= 5;
                 });
             } else {
-                this.accommodations = AccommodationContent.filter((tour) => {
-                    return tour.star_rate === 2;
+                this.accommodations = AccommodationContent.filter((accommodation) => {
+                    return accommodation.review_score >= 2;
                 });
             }
         },
@@ -144,6 +145,7 @@ export default {
             this.accommodations = AccommodationContent;
         },
     },
+
     components: {
         SidebarFilter,
         PageBanner,

@@ -5,11 +5,18 @@
       <p class="mt-3">Discover the Eastern Bhutan</p>
     </div>
     <div class="row mb-3">
-      <div v-for="tour in tours" :key="tour.id" class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-2">
+      <div
+        v-for="tour in tours"
+        :key="tour.id"
+        class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-2"
+      >
         <div class="card mt-2" loading="lazy">
           <div class="card-body">
             <img :src="apiURL + tour.file_path" alt="" class="card-img" />
-            <RouterLink :to="siteURL + '/tour/' + tour.slug" class="accommodation-details">
+            <RouterLink
+              :to="siteURL + '/tour/' + tour.slug"
+              class="accommodation-details"
+            >
               <div class="card-details">
                 <h6 class="card-title text-truncate">
                   {{ tour.title }}
@@ -53,11 +60,12 @@ export default {
   async setup() {
     const tours = ref(null);
     const catSubtitle = "Eastern Bhutan Destinations Now Open";
-    const apiURL = "http://shine.test/uploads/";
-    const siteURL = "http://shine.test/";
-    const bc_tours = await fetch("http://shine.test/api/bc_tours");
+    const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
+    const siteURL = "https://dev.hemantbhutanrealestate.com/";
+    const bc_tours = await fetch(
+      "https://dev.hemantbhutanrealestate.com/api/bc_tours"
+    );
     tours.value = await bc_tours.json();
-
 
     return {
       // eslint-disable-next-line vue/no-dupe-keys

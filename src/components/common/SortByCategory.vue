@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="by-category mt-5 mb-3" v-if="$route.name === 'accommodation'">
+    <div class="by-category mt-5 mb-3" v-if="$route.name === 'Accommodation'">
       <h4 class="heading text-capitalize">
         Explore {{ $route.name }} by Category
       </h4>
@@ -23,7 +23,7 @@
         </div>
       </div>
     </div>
-    <div class="by-category mt-5 mb-3" v-if="$route.name === 'tours'">
+    <div class="by-category mt-5 mb-3" v-if="$route.name === 'Tours'">
       <h4 class="heading text-capitalize">
         Explore {{ $route.name }} by Category
       </h4>
@@ -58,9 +58,11 @@ export default {
   async setup() {
     const categoryTours = ref(null);
     const catSubtitle = "Eastern Bhutan Destinations Now Open";
-    const apiURL = "http://shine.test/uploads/";
-    const siteURL = "http://shine.test/";
-    const category = await fetch("http://shine.test/api/bc_tour_category");
+    const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
+    const siteURL = "https://dev.hemantbhutanrealestate.com/";
+    const category = await fetch(
+      "https://dev.hemantbhutanrealestate.com/api/bc_tour_category"
+    );
     categoryTours.value = await category.json();
 
     return {
