@@ -5,7 +5,7 @@
             <p class="mt-3">Discover the Amazing Crafts of Bhutan</p>
         </div>
         <div class="row mb-3">
-            <div v-for="product in computedObject" :key="product.id"
+            <div v-for="product in handiCrafts" :key="product.id"
                 class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12 my-3">
                 <div class="card mt-2">
                     <div class="card-body">
@@ -25,27 +25,23 @@
                                 </div>
                             </div>
                             <div class="preview-buttons d-flex item-center">
-                                <RouterLink to="">
+                                <a :href="ecomURL + '/product/' + product.name" target="_blank">
                                     <button class="btn btn-preview mx-auto my-2">
                                         <i class="bi bi-eye mr-1"></i>
                                         Preview
                                     </button>
-                                </RouterLink>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="d-flex btn-container">
-            <button @click="limit = !limit" class="btn mt-5 showButton" :class="{ limit: !limit }">
-                Show All
-            </button>
-        </div>
     </div>
 </template>
 
 <script>
+import { ref } from "vue";
 export default {
     name: "FeaturedHandiCrafts",
     props: ["products"],
@@ -58,6 +54,20 @@ export default {
     computed: {
         computedObject() {
             return this.limit ? this.products.slice(0, this.limit) : this.products;
+        }
+    },
+
+    async setup() {
+        const handiCrafts = ref(null);
+        const ecomURL = "https://booking.hemantbhutanrealestate.com";
+        const ecom_products = await fetch(
+            "https://booking.hemantbhutanrealestate.com/api/v2/products"
+        );
+        handiCrafts.value = await ecom_products.json();
+
+        return {
+            handiCrafts,
+            ecomURL,
         }
     },
 

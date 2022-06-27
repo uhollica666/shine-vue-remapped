@@ -7,7 +7,7 @@
                 <div class="card mt-3 mb-3">
                     <div class="card-body">
                         <img :src="product.thumbnail_image" alt="" class="card-img-blog" />
-                        <RouterLink to="/" class="category-details">
+                        <a :href="siteURL + '/product/' + product.name" class="category-details" target="_blank">
                             <div class="card-details">
                                 <h6 class="card-title text-truncate">
                                     {{ product.name }}
@@ -17,7 +17,7 @@
                                     {{ product.stroked_price }}
                                 </h6>
                             </div>
-                        </RouterLink>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -32,6 +32,7 @@ export default {
     async setup() {
         const products = ref(null);
         const catSubtitle = "Eastern Bhutan Destinations Now Open";
+        const siteURL = "https://booking.hemantbhutanrealestate.com";
         const product = await fetch(
             "https://booking.hemantbhutanrealestate.com/api/v2/products"
         );
@@ -41,8 +42,7 @@ export default {
             /* eslint-disable */
             products,
             catSubtitle,
-            modalActive,
-            toggleModal,
+            siteURL,
         };
     }
 };

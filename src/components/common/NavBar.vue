@@ -18,6 +18,9 @@
                     <div class="col-md-6 col-sm-6">
                         <div class="contact contact_space">
                             <ul class="top-bar top-bar-right">
+                                <li>
+                                    <a :href="siteUrl+ 'shops/create'" target="_blank"><i class="bi bi-person-bounding-box"></i>Become A Vendor</a>
+                                </li>
                                 <div v-if="!user" class="d-flex mx-3">
                                     <li>
                                         <RouterLink to="/login"><i class="bi bi-box-arrow-in-right"></i>Login
@@ -133,6 +136,7 @@ export default {
     data() {
         return {
             isDark: false,
+            siteUrl: "http://booking.hemantbhutanrealestate.com/",
         };
     },
     components: {

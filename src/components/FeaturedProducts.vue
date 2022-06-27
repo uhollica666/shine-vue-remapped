@@ -21,12 +21,12 @@
                                 }}</h6>
                             </div>
                             <div class="preview-buttons d-flex item-center">
-                                <RouterLink to="">
+                                <a :href="ecomURL + '/product/'+product.name" target="_blank">
                                     <button class="btn btn-preview mx-auto my-2">
                                         <i class="bi bi-eye mr-1"></i>
                                         Preview
                                     </button>
-                                </RouterLink>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -38,13 +38,13 @@
 
 <script>
 import { ref } from "vue";
-
 export default {
     name: "FeaturedProducts",
     props: ["products"],
 
     async setup() {
         const products = ref(null);
+        const ecomURL = "https://booking.hemantbhutanrealestate.com";
         const catSubtitle = "Eastern Bhutan Destinations Now Open";
         const product = await fetch(
             "https://booking.hemantbhutanrealestate.com/api/v2/products"
@@ -55,8 +55,7 @@ export default {
             /* eslint-disable */
             products,
             catSubtitle,
-            modalActive,
-            toggleModal,
+            ecomURL,
         };
     }
 

@@ -5,18 +5,11 @@
       <p>Best Hotels in Bhutan</p>
     </div>
     <div class="row mb-3">
-      <div
-        v-for="hotel in hotels"
-        :key="hotel.id"
-        class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
-      >
+      <div v-for="hotel in hotels" :key="hotel.id" class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3">
         <div class="card mt-3">
           <div class="card-body">
             <img :src="apiURL + hotel.file_path" alt="" class="card-img" />
-            <RouterLink
-              :to="siteURL + '/hotel/' + hotel.slug"
-              class="hotel-details"
-            >
+            <a :href="siteURL + '/hotel/' + hotel.slug" class="hotel-details" target="_blank">
               <div class="card-details">
                 <h6 class="card-title text-truncate">
                   {{ hotel.title }}
@@ -35,17 +28,13 @@
                   </h6>
                 </div>
               </div>
-            </RouterLink>
+            </a>
           </div>
         </div>
       </div>
     </div>
     <div class="d-flex btn-container">
-      <button
-        @click="limit = !limit"
-        class="btn mt-5 showButton"
-        :class="{ limit: !limit }"
-      >
+      <button @click="limit = !limit" class="btn mt-5 showButton" :class="{ limit: !limit }">
         Show All
       </button>
     </div>
@@ -62,7 +51,7 @@ export default {
     const hotels = ref(null);
     const catSubtitle = "Eastern Bhutan Destinations Now Open";
     const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
-    const siteURL = "https://dev.hemantbhutanrealestate.com/";
+    const siteURL = "https://dev.hemantbhutanrealestate.com";
     const bc_hotels = await fetch(
       "https://dev.hemantbhutanrealestate.com/api/bc_hotels"
     );

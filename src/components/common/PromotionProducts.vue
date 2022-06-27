@@ -2,29 +2,21 @@
   <div class="by-category mb-3">
     <div class="row flex-row flex-nowrap overflow-auto">
       <Suspense>
-        <div
-          v-for="prompProduct in prompProducts"
-          :key="prompProduct.id"
-          class="col-md-3 col-lg-3 col-xl-3 col-sm-3 col-xs-3 mt-2 mb-3"
-        >
+        <div v-for="prompProduct in prompProducts" :key="prompProduct.id"
+          class="col-md-3 col-lg-3 col-xl-3 col-sm-3 col-xs-3 mt-2 mb-3">
           <div class="card mt-3">
             <div class="card-body">
-              <img
-                :src="prompProduct.thumbnail_image"
-                alt=""
-                class="card-img"
-              />
-              <RouterLink to="/#AccomodationDetails" class="category-details">
+              <img :src="prompProduct.thumbnail_image" alt="" class="card-img" />
+              <a :href="siteURL + '/product/'+ prompProduct.slug" class="category-details" target="_blank">
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ prompProduct.name }}
                   </h6>
                   <div class="location text-truncate">
-                    <i class="bi bi-cash-coin"></i
-                    >{{ prompProduct.stroked_price }}
+                    <i class="bi bi-cash-coin"></i>{{ prompProduct.stroked_price }}
                   </div>
                 </div>
-              </RouterLink>
+              </a>
             </div>
           </div>
         </div>
@@ -34,17 +26,17 @@
 </template>
 
 <script>
-// import { useFetch } from "@vueuse/core";
+import { ref } from "vue";
 export default {
   name: "PromotionProducts",
   async setup() {
+    const prompProducts = ref(null);
     const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
     const siteURL = "https://dev.hemantbhutanrealestate.com/";
-    // const [{ data: prompProducts }] = await Promise.all([
-    //   useFetch("http://shine-ecomm.test/api/v2/products"),
-    // ]);
+    const bc_prompProducts = await fetch("http://booking.hemantbhutanrealestate.com/api/v2/products");
+    prompProducts.value = await bc_prompProducts.json();
     return {
-      // prompProducts,
+      prompProducts,
       apiURL,
       siteURL,
     };

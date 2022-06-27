@@ -10,7 +10,7 @@
         <div class="card mt-3">
           <div class="card-body">
             <img :src="apiURL + accommodation.file_path" alt="" class="card-img" />
-            <RouterLink :to="siteURL + accommodation.title" class="accommodation-details" target="_blank">
+            <a :href="siteURL + '/space/' + accommodation.slug" class="accommodation-details" target="_blank">
               <div class="card-details">
                 <h6 class="card-title text-truncate">
                   {{ accommodation.title }}
@@ -29,35 +29,25 @@
                   </h6>
                 </div>
               </div>
-            </RouterLink>
+            </a>
           </div>
         </div>
       </div>
     </div>
-    <PropertyContent :modalActive="modalActive">
-      <div class="modal-content">
-        <h2>This is modal header</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quidem.</p>
-      </div>
-    </PropertyContent>
   </div>
 </template>
 
 <script>
-import PropertyContent from '@/components/PropertyContent';
 import { ref } from "vue";
 export default {
   name: "AccommodationContent",
   props: ["accommodations"],
-  components: {
-    PropertyContent,
-  },
 
   async setup() {
     const accommodations = ref(null);
     const catSubtitle = "Eastern Bhutan Destinations Now Open";
     const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
-    const siteURL = "https://dev.hemantbhutanrealestate.com/space/";
+    const siteURL = "https://dev.hemantbhutanrealestate.com";
     const spaces = await fetch(
       "https://dev.hemantbhutanrealestate.com/api/bc_spaces"
     );
@@ -69,11 +59,9 @@ export default {
       apiURL,
       catSubtitle,
       siteURL,
-      modalActive,
-      toggleModal,
     };
   }
-    // data() {
+  // data() {
   //   return {
   //     limit: 8,
   //   };

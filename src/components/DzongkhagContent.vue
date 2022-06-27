@@ -12,7 +12,7 @@
             <div class="card mt-3">
               <div class="card-body">
                 <img :src="apiURL + accommodation.file_path" alt="" class="card-img" />
-                <RouterLink :to="'/accomodation/' + accommodation.title" class="accommodation-details">
+                <a :href="siteURL + '/space/' + accommodation.slug" class="accommodation-details" target="_blank">
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
                       {{ accommodation.title }}
@@ -31,7 +31,7 @@
                       </h6>
                     </div>
                   </div>
-                </RouterLink>
+                </a>
               </div>
             </div>
           </div>
@@ -50,7 +50,7 @@
             <div class="card mt-2" loading="lazy">
               <div class="card-body">
                 <img :src="apiURL + tour.file_path" alt="" class="card-img" />
-                <RouterLink :to="'/tour/' + tour.title" class="accommodation-details">
+                <a :href="siteURL + '/tour/' + tour.slug" class="accommodation-details">
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
                       {{ tour.title }}
@@ -67,13 +67,14 @@
                       {{ tour.date_form_to }}
                     </div>
                   </div>
-                </RouterLink>
+                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
     <div class="my-5">
       <h5 class="text-capitalize my-3">
         A little Insight about {{ $route.params.location_id }}
@@ -84,34 +85,27 @@
           </span></em>
       </div>
     </div>
+
     <div class="dzongkhag-accommodation mt-5">
       <h4 class="text-capitalize">
         top selling agri products from
         {{ $route.params.location_id }} dzongkhag
       </h4>
       <div class="row">
-        <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3" v-for="tour in tours" :key="tour.id">
-          <div class="card mt-2" loading="lazy" v-show="tour.location_id === $route.params.location_id">
+        <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3" v-for="product in agriProducts" :key="product.id">
+          <div class="card mt-2" loading="lazy" v-show="product.location_id === $route.params.location_id">
             <div class="card-body">
-              <img :src="tour.image_id" alt="" class="card-img" />
-              <RouterLink :to="'/tour/' + tour.post_id" class="accommodation-details">
+              <img :src="product.image_id" alt="" class="card-img" />
+              <a :href="ecomURL + '/product/' + product.name" class="accommodation-details" target="_blank">
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
-                    {{ tour.post_id }}
+                    {{ product.post_id }}
                   </h6>
                   <h6 class="card-text my-3">
-                    <i class="bi bi-cash-coin mr-1"></i> Nu. {{ tour.price }} /
-                    night
+                    <i class="bi bi-cash-coin mr-1"></i> Nu. {{ product.price }} / kg
                   </h6>
-                  <div class="location-tours text-truncate mb-2">
-                    <i class="bi bi-geo-alt"></i>{{ tour.location_id }}
-                  </div>
-                  <div class="duration-tours text-truncate">
-                    <i class="bi bi-stopwatch"></i>
-                    {{ tour.duration_time }}
-                  </div>
                 </div>
-              </RouterLink>
+              </a>
             </div>
           </div>
         </div>
@@ -124,28 +118,20 @@
         {{ $route.params.location_id }} dzongkhag
       </h4>
       <div class="row">
-        <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3" v-for="tour in tours" :key="tour.id">
-          <div class="card mt-2" loading="lazy" v-show="tour.location_id === $route.params.location_id">
+        <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3" v-for="product in agriProducts" :key="product.id">
+          <div class="card mt-2" loading="lazy" v-show="product.location_id === $route.params.location_id">
             <div class="card-body">
-              <img :src="tour.image_id" alt="" class="card-img" />
-              <RouterLink :to="'/tour/' + tour.post_id" class="accommodation-details">
+              <img :src="product.image_id" alt="" class="card-img" />
+              <a :href="ecomURL + '/product/' + product.name" class="accommodation-details" target="_blank">
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
-                    {{ tour.post_id }}
+                    {{ product.post_id }}
                   </h6>
                   <h6 class="card-text my-3">
-                    <i class="bi bi-cash-coin mr-1"></i> Nu. {{ tour.price }} /
-                    night
+                    <i class="bi bi-cash-coin mr-1"></i> Nu. {{ product.price }} / pc
                   </h6>
-                  <div class="location-tours text-truncate mb-2">
-                    <i class="bi bi-geo-alt"></i>{{ tour.location_id }}
-                  </div>
-                  <div class="duration-tours text-truncate">
-                    <i class="bi bi-stopwatch"></i>
-                    {{ tour.duration_time }}
-                  </div>
                 </div>
-              </RouterLink>
+              </a>
             </div>
           </div>
         </div>
@@ -164,8 +150,10 @@ export default {
     const accommodations = ref(null);
     const dzongkhagDetails = ref(null);
     const hotels = ref(null);
+    const agriProducts = ref(null);
     const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
-    const siteURL = "http://shine.test";
+    const siteURL = "https://dev.hemantbhutanrealestate.com";
+    const ecomURL = "https://booking.hemantbhutanrealestate.com";
     const bc_tours = await fetch(
       "https://dev.hemantbhutanrealestate.com/api/bc_tours"
     );
@@ -178,18 +166,24 @@ export default {
     const bc_hotels = await fetch(
       "https://dev.hemantbhutanrealestate.com/api/bc_hotels"
     );
+    const ecom_products = await fetch(
+      "https://booking.hemantbhutanrealestate.com/api/v2/products"
+    );
     tours.value = await bc_tours.json();
     accommodations.value = await bc_accommodations.json();
     dzongkhagDetails.value = await bc_dzongkhagDetails.json();
     hotels.value = await bc_hotels.json();
+    agriProducts.value = await ecom_products.json();
 
     return {
       /*eslint-disable*/
       tours,
+      agriProducts,
       accommodations,
       dzongkhagDetails,
       apiURL,
       siteURL,
+      ecomURL,
       hotels,
     };
   },

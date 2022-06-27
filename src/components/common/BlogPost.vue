@@ -13,7 +13,7 @@
           <div class="card-body">
             <img :src="apiURL + story.file_path" alt="" class="card-img-blog img-fluid"
               :data-src="apiURL + story.file_path" />
-            <RouterLink :to="siteURL + '/en/news/' + story.slug" class="category-details">
+            <a :href="siteURL + '/en/news/' + story.slug" class="category-details" target="_blank">
               <div class="card-details">
                 <h6 class="card-title text-truncate">
                   {{ story.title }}
@@ -27,7 +27,7 @@
                   {{ story.created_at }}
                 </p>
               </div>
-            </RouterLink>
+            </a>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
           <div class="card-body">
             <img :src="apiURL + story.file_path" alt="" class="card-img-blog img-fluid"
               :data-src="apiURL + story.file_path" />
-            <RouterLink :to="siteURL + '/en/news/' + story.slug" class="category-details">
+            <a :href="siteURL + '/en/news/' + story.slug" class="category-details" target="_blank">
               <div class="card-details">
                 <h6 class="card-title text-truncate">
                   {{ story.title }}
@@ -60,7 +60,7 @@
                   {{ story.created_at }}
                 </p>
               </div>
-            </RouterLink>
+            </a>
           </div>
         </div>
       </div>
@@ -76,7 +76,7 @@ export default {
   async setup() {
     const stories = ref(null);
     const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
-    const siteURL = "https://dev.hemantbhutanrealestate.com/";
+    const siteURL = "http://dev.hemantbhutanrealestate.com";
     const bc_stories = await fetch(
       "https://dev.hemantbhutanrealestate.com/api/articles"
     );

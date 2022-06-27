@@ -6,9 +6,6 @@
   </div>
 </template>
 
-
-
-
 <script>
 import axios from 'axios';
 import NavBar from '@/components/common/NavBar';
@@ -34,7 +31,6 @@ export default {
 </script>
 
 <style>
-
 
 .carousel {
   position: relative;

@@ -10,14 +10,14 @@
           <div class="card mt-2">
             <div class="card-body">
               <img :src="category.image_id" alt="" class="card-img" />
-              <RouterLink :to="siteURL + '/space?terms%5B%5D=' + category.space_id"
+              <a :href="siteURL + '/space?terms%5B%5D=' + category.space_id"
                 class="category-details text-center">
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ category.category }}
                   </h6>
                 </div>
-              </RouterLink>
+              </a>
             </div>
           </div>
         </div>
@@ -33,13 +33,13 @@
           <div class="card mt-2">
             <div class="card-body">
               <img :src="apiURL + category.file_path" alt="" class="card-img" />
-              <RouterLink :to="siteURL + '/tour?terms%5B%5D=' + category.name" class="category-details text-center">
+              <a :href="siteURL + '/tour?terms%5B%5D=' + category.name" class="category-details text-center">
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ category.name }}
                   </h6>
                 </div>
-              </RouterLink>
+              </a>
             </div>
           </div>
         </div>
