@@ -9,9 +9,13 @@
       >
         <div class="card mt-3 mb-3">
           <div class="card-body">
-            <img :src="product.thumbnail_image" alt="" class="card-img-blog" />
+            <img
+              :src="ecomURL + 'public/' + product.file_name"
+              alt=""
+              class="card-img-blog"
+            />
             <a
-              :href="siteURL + '/product/' + product.name"
+              :href="ecomURL + 'product/' + product.slug"
               class="category-details"
               target="_blank"
             >
@@ -20,14 +24,14 @@
                   {{ product.name }}
                 </h6>
                 <p class="post-details text-truncate">
-                  {{ product.post_details }}
+                  {{ product.meta_description }}
                 </p>
                 <div class="location text-truncate">
-                  <i class="bi bi-tag"></i> {{ product.stroked_price }}
+                  <i class="bi bi-cash-coin"></i> Nu. {{ product.unit_price }} / KG
                 </div>
                 <p class="my-3">
-                  <i class="bi bi-calendar"></i> Uploaded on
-                  {{ product.date_added }}
+                  <i class="bi bi-tag"></i> Category:
+                  {{ product.cat_name }}
                 </p>
               </div>
             </a>
@@ -45,19 +49,19 @@ export default {
   async setup() {
     const products = ref(null);
     const catSubtitle = "Eastern Bhutan Destinations Now Open";
-    const siteURL = "https://booking.hemantbhutanrealestate.com";
+    const siteURL = "https://dev.hemantbhutanrealestate.com";
+    const ecomURL = "https://booking.hemantbhutanrealestate.com/";
     const product = await fetch(
       "https://booking.hemantbhutanrealestate.com/api/v1/get_frontend_products"
     );
-    products.value = await product.data.json();
+    products.value = await product.json();
     console.log(products);
     return {
       /* eslint-disable */
       products,
       catSubtitle,
-      modalActive,
-      toggleModal,
       siteURL,
+      ecomURL,
     };
   },
 };

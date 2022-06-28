@@ -12,27 +12,32 @@
         :key="product.id"
         class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12 my-3"
       >
-        <div class="card mt-2">
+        <div class="card mt-2" v-if="product.cat_name === 'Handicrafts'">
           <div class="card-body">
-            <img :src="product.image_id" alt="" class="card-img" />
+            <img
+              :src="ecomURL + 'public/' + product.file_name"
+              alt=""
+              class="card-img"
+            />
             <div class="card-details">
               <h6 class="card-title text-truncate">
-                {{ product.post_id }}
+                {{ product.name }}
               </h6>
               <p class="text-small text-grey text-truncate my-2">
-                {{ product.post_details }}
+                {{ product.meta_description }}
               </p>
               <div class="product-row my-3">
                 <h6 class="card-text text-truncate">
-                  <i class="bi bi-cash-coin mr-1"></i> Nu. {{ product.price }}
+                  <i class="bi bi-cash-coin mr-1"></i> Nu.
+                  {{ product.unit_price }}
                 </h6>
                 <div class="duration-tours text-truncate">
                   <i class="bi bi-bookmark-star"></i>
-                  {{ product.category_id }}
+                  {{ product.cat_name }}
                 </div>
               </div>
               <div class="preview-buttons d-flex item-center">
-                <a :href="ecomURL + '/product/' + product.name" target="_blank">
+                <a :href="ecomURL + 'product/' + product.slug" target="_blank">
                   <button class="btn btn-preview mx-auto my-2">
                     <i class="bi bi-eye mr-1"></i>
                     Preview
@@ -53,20 +58,9 @@ export default {
   name: "FeaturedHandiCrafts",
   props: ["products"],
 
-  data() {
-    return {
-      limit: 9,
-    };
-  },
-  computed: {
-    computedObject() {
-      return this.limit ? this.products.slice(0, this.limit) : this.products;
-    },
-  },
-
   async setup() {
     const handiCrafts = ref(null);
-    const ecomURL = "https://booking.hemantbhutanrealestate.com";
+    const ecomURL = "https://booking.hemantbhutanrealestate.com/";
     const ecom_products = await fetch(
       "https://booking.hemantbhutanrealestate.com/api/v1/get_frontend_products"
     );

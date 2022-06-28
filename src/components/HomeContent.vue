@@ -4,8 +4,10 @@
       <div class="col-md-6 mb-3">
         <h6 class="text-center py-3 home-heading">Agri Products</h6>
         <div class="container home-container">
-          <div class="product-images">
-            <div class="cardo">card1</div>
+          <div class="product-images row">
+            <div class="cardo col-md-6 mt-2" v-for="product in products" :key="product.id">
+              <img :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img" />
+            </div>
           </div>
           <RouterLink to="/agriproducts" class="d-flex home-sec">
             <button class="btn btn-home mb-3">View More</button>
@@ -15,16 +17,15 @@
       <div class="col-md-6 mb-3">
         <h6 class="text-center py-3 home-heading">Handicraft Products</h6>
         <div class="container home-container">
-          <div class="product-images">
-            <div class="cardo">card1</div>
-            <div class="cardo">card1</div>
-            <div class="cardo">card1</div>
-            <div class="cardo">card1</div>
+          <div class="product-images row">
+            <div class="cardo col-md-6 mt-2" v-for="product in products" :key="product.id">
+              <img :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img" />
+            </div>
           </div>
-          <RouterLink to="/handicrafts" class="d-flex home-sec">
-            <button class="btn btn-home mb-3">View More</button>
-          </RouterLink>
         </div>
+        <RouterLink to="/handicrafts" class="d-flex home-sec">
+          <button class="btn btn-home mb-3">View More</button>
+        </RouterLink>
       </div>
     </div>
 
@@ -33,17 +34,11 @@
         <h6 class="p-3 home-linear-heading">Tour Packages</h6>
         <div class="home-tour-group">
           <div class="row">
-            <div
-              class="col-md-2 home-objects"
-              v-for="tour in homeTours"
-              :key="tour.id"
-            >
+            <div class="col-md-2 home-objects" v-for="tour in homeTours" :key="tour.id">
               <img class="card-img" :src="apiURL + tour.file_path" />
               <RouterLink :to="'/tours/' + tour.title" class="category-details">
                 <div class="card-details">
-                  <h6
-                    class="card-title text-truncate text-capitalize p-3 text-center"
-                  >
+                  <h6 class="card-title text-truncate text-capitalize p-3 text-center">
                     {{ tour.title }}
                   </h6>
                 </div>
@@ -62,20 +57,11 @@
         <h6 class="p-3 home-linear-heading">Accommodation</h6>
         <div class="home-tour-group">
           <div class="row">
-            <div
-              class="col-md-3 home-objects"
-              v-for="accommodation in homeAccommodations"
-              :key="accommodation.id"
-            >
+            <div class="col-md-3 home-objects" v-for="accommodation in homeAccommodations" :key="accommodation.id">
               <img class="card-img" :src="apiURL + accommodation.file_path" />
-              <RouterLink
-                :to="'/tours/' + accommodation.title"
-                class="category-details"
-              >
+              <RouterLink :to="'/tours/' + accommodation.title" class="category-details">
                 <div class="card-details">
-                  <h6
-                    class="card-title text-truncate text-capitalize p-3 text-center"
-                  >
+                  <h6 class="card-title text-truncate text-capitalize p-3 text-center">
                     {{ accommodation.title }}
                   </h6>
                 </div>
@@ -91,12 +77,11 @@
         <div class="col-md-6 mt-3">
           <h6 class="text-center py-3 home-heading">Popular Agri Products</h6>
           <div class="container home-container">
-            <div class="product-images">
-              <div class="cardo">card1</div>
-              <div class="cardo">card1</div>
-              <div class="cardo">card1</div>
-              <div class="cardo">card1</div>
+            <div class="product-images row">
+            <div class="cardo col-md-6 mt-2" v-for="product in products" :key="product.id">
+              <img :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img" />
             </div>
+          </div>
             <RouterLink to="/agriproducts" class="d-flex home-sec">
               <button class="btn btn-home mb-3">View More</button>
             </RouterLink>
@@ -107,12 +92,11 @@
             Popular Handicraft Products
           </h6>
           <div class="container home-container">
-            <div class="product-images">
-              <div class="cardo">card1</div>
-              <div class="cardo">card1</div>
-              <div class="cardo">card1</div>
-              <div class="cardo">card1</div>
+            <div class="product-images row">
+            <div class="cardo col-md-6 mt-2" v-for="product in products" :key="product.id">
+              <img :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img" />
             </div>
+          </div>
             <RouterLink to="/handicrafts" class="d-flex home-sec">
               <button class="btn btn-home mb-3">View More</button>
             </RouterLink>
@@ -134,17 +118,14 @@ export default {
     const products = ref(null);
     const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
     const siteURL = "https://dev.hemantbhutanrealestate.com/";
-    const [bc_homeTours, bc_homeAccommodations, bc_products] =
-      await Promise.all([
-        fetch("https://dev.hemantbhutanrealestate.com/api/bc_tours"),
-        fetch("https://dev.hemantbhutanrealestate.com/api/bc_spaces"),
-        fetch(
-          "https://booking.hemantbhutanrealestate.com/api/v1/get_frontend_products"
-        ),
-      ]);
+    const ecomURL = "https://booking.hemantbhutanrealestate.com/";
+    const bc_homeTours = await fetch("https://dev.hemantbhutanrealestate.com/api/bc_tours");
+    const bc_homeAccommodations = await fetch("https://dev.hemantbhutanrealestate.com/api/bc_spaces");
+    const bc_products = await fetch("https://booking.hemantbhutanrealestate.com/api/v1/get_frontend_products");
+
     homeTours.value = await bc_homeTours.json();
     homeAccommodations.value = await bc_homeAccommodations.json();
-    products.data.value = await bc_products.json();
+    products.value = await bc_products.json();
 
     return {
       homeTours,
@@ -152,6 +133,7 @@ export default {
       homeAccommodations,
       siteURL,
       apiURL,
+      ecomURL,
     };
   },
 };
@@ -211,12 +193,10 @@ export default {
 }
 
 .cardo {
-  width: 40%;
-  height: auto;
-  background: #f7941e;
+  width: 48%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
   border-radius: 5px;
-  margin: 0.5rem;
-  color: #fff;
 }
 
 .card-img {

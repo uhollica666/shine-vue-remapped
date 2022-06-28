@@ -121,25 +121,25 @@
           v-for="product in agriProducts"
           :key="product.id"
         >
-          <div
-            class="card mt-2"
-            loading="lazy"
-            v-show="product.location_id === $route.params.location_id"
-          >
+          <div class="card mt-2" v-if="product.cat_name === 'Agri Products'">
             <div class="card-body">
-              <img :src="product.image_id" alt="" class="card-img" />
+              <img
+                :src="ecomURL + 'public/' + product.file_name"
+                alt=""
+                class="card-img"
+              />
               <a
-                :href="ecomURL + '/product/' + product.name"
+                :href="ecomURL + 'product/' + product.slug"
                 class="accommodation-details"
                 target="_blank"
               >
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
-                    {{ product.post_id }}
+                    {{ product.name }}
                   </h6>
                   <h6 class="card-text my-3">
                     <i class="bi bi-cash-coin mr-1"></i> Nu.
-                    {{ product.price }} / kg
+                    {{ product.unit_price }} / kg
                   </h6>
                 </div>
               </a>
@@ -160,25 +160,25 @@
           v-for="product in agriProducts"
           :key="product.id"
         >
-          <div
-            class="card mt-2"
-            loading="lazy"
-            v-show="product.location_id === $route.params.location_id"
-          >
+          <div class="card mt-2" v-if="product.cat_name === 'Handicrafts'">
             <div class="card-body">
-              <img :src="product.image_id" alt="" class="card-img" />
+              <img
+                :src="ecomURL + 'public/' + product.file_name"
+                alt=""
+                class="card-img"
+              />
               <a
-                :href="ecomURL + '/product/' + product.name"
+                :href="ecomURL + 'product/' + product.slug"
                 class="accommodation-details"
                 target="_blank"
               >
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
-                    {{ product.post_id }}
+                    {{ product.name }}
                   </h6>
                   <h6 class="card-text my-3">
                     <i class="bi bi-cash-coin mr-1"></i> Nu.
-                    {{ product.price }} / pc
+                    {{ product.unit_price }} / pc
                   </h6>
                 </div>
               </a>
@@ -203,7 +203,7 @@ export default {
     const agriProducts = ref(null);
     const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
     const siteURL = "https://dev.hemantbhutanrealestate.com";
-    const ecomURL = "https://booking.hemantbhutanrealestate.com";
+    const ecomURL = "https://booking.hemantbhutanrealestate.com/";
     const bc_tours = await fetch(
       "https://dev.hemantbhutanrealestate.com/api/bc_tours"
     );

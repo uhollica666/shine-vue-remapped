@@ -10,12 +10,12 @@
           <div class="card mt-3">
             <div class="card-body">
               <img
-                :src="prompProduct.thumbnail_image"
+                :src="ecomURL + 'public/' + prompProduct.file_name"
                 alt=""
                 class="card-img"
               />
               <a
-                :href="siteURL + '/product/' + prompProduct.slug"
+                :href="ecomURL + 'product/' + prompProduct.slug"
                 class="category-details"
                 target="_blank"
               >
@@ -24,8 +24,7 @@
                     {{ prompProduct.name }}
                   </h6>
                   <div class="location text-truncate">
-                    <i class="bi bi-cash-coin"></i
-                    >{{ prompProduct.stroked_price }}
+                    <i class="bi bi-cash-coin"></i>{{ prompProduct.unit_price }}
                   </div>
                 </div>
               </a>
@@ -45,6 +44,7 @@ export default {
     const prompProducts = ref(null);
     const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
     const siteURL = "https://dev.hemantbhutanrealestate.com/";
+    const ecomURL = "https://booking.hemantbhutanrealestate.com/";
     const bc_prompProducts = await fetch(
       "https://booking.hemantbhutanrealestate.com/api/v1/get_frontend_products"
     );
@@ -53,6 +53,7 @@ export default {
       prompProducts,
       apiURL,
       siteURL,
+      ecomURL,
     };
   },
 

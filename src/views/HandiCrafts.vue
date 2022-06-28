@@ -33,14 +33,6 @@
                 <h5 class="text-center my-5"> 🔄️ Fetching Products...</h5>
             </template>
         </Suspense>
-        <Suspense>
-            <template #default>
-                <BlogPost />
-            </template>
-            <template #fallback>
-                <h5 class="text-center my-5"> 🔄️ Fetching Blog Posts...</h5>
-            </template>
-        </Suspense>
     </div>
 </template>
 
@@ -50,22 +42,15 @@ import PageBanner from "@/components/common/PageBanner";
 import FeaturedHandiCrafts from "@/components/FeaturedHandiCrafts";
 import RecentProducts from "@/components/common/RecentProducts";
 import PopularProducts from "@/components/common/PopularProducts";
-import BlogPost from "@/components/common/BlogPost";
-import PRODUCTS from '@/APIs/Products_DATA.json';
 export default {
     name: "HandiCrafts",
-    data() {
-        return {
-            products: PRODUCTS,
-        };
-    },
+
     components: {
         SidebarFilter,
         PageBanner,
         FeaturedHandiCrafts,
         RecentProducts,
         PopularProducts,
-        BlogPost,
     },
 }
 </script>
