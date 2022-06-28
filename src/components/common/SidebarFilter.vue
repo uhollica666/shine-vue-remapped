@@ -44,11 +44,24 @@
                                 </div>
                             </div>
 
-                            <div v-show="$route.name === 'Handicrafts' || $route.name === 'Agriproducts'">
+                            <div v-show="$route.name === 'Handicrafts'">
                                 <div class="heading">
                                     <h6 class="mb-3 mt-3">Filter By Category</h6>
                                 </div>
                                 <div class="form-check my-2" v-for="caregory in productCategories" :key="caregory">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault1" @click="() => starFilter(caregory)" />
+                                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
+                                        {{ caregory }}
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div v-show="$route.name === 'Agriproducts'">
+                                <div class="heading">
+                                    <h6 class="mb-3 mt-3">Filter By Category</h6>
+                                </div>
+                                <div class="form-check my-2" v-for="caregory in agriCategory" :key="caregory">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
                                         id="flexRadioDefault1" @click="() => starFilter(caregory)" />
                                     <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
@@ -114,6 +127,17 @@ const productCategories = [
     "General Souvenir",
 ];
 
+const agriCategory = [
+    "All",
+    "Fresh Vegetables",
+    "Food Grains",
+    "Fresh Fruits",
+    "Proccessed Food",
+    "Dairy Products",
+    "Mushrooms",
+    "Edible Wild Plants",
+];
+
 export default {
     name: "SidebarFilter",
     data() {
@@ -121,6 +145,7 @@ export default {
             filters,
             starRatings,
             productCategories,
+            agriCategory
         };
     },
 
