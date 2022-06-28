@@ -7,12 +7,22 @@
       </h4>
       <div class="row">
         <div v-for="accommodation in accommodations" :key="accommodation.id">
-          <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
-            v-if="accommodation.name === $route.params.location_id">
+          <div
+            class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
+            v-if="accommodation.name === $route.params.location_id"
+          >
             <div class="card mt-3">
               <div class="card-body">
-                <img :src="apiURL + accommodation.file_path" alt="" class="card-img" />
-                <a :href="siteURL + '/space/' + accommodation.slug" class="accommodation-details" target="_blank">
+                <img
+                  :src="apiURL + accommodation.file_path"
+                  alt=""
+                  class="card-img"
+                />
+                <a
+                  :href="siteURL + '/space/' + accommodation.slug"
+                  class="accommodation-details"
+                  target="_blank"
+                >
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
                       {{ accommodation.title }}
@@ -45,12 +55,17 @@
       </h4>
       <div class="row">
         <div v-for="tour in tours" :key="tour.id">
-          <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
-            v-if="tour.name === $route.params.location_id">
+          <div
+            class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
+            v-if="tour.name === $route.params.location_id"
+          >
             <div class="card mt-2" loading="lazy">
               <div class="card-body">
                 <img :src="apiURL + tour.file_path" alt="" class="card-img" />
-                <a :href="siteURL + '/tour/' + tour.slug" class="accommodation-details">
+                <a
+                  :href="siteURL + '/tour/' + tour.slug"
+                  class="accommodation-details"
+                >
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
                       {{ tour.title }}
@@ -79,10 +94,19 @@
       <h5 class="text-capitalize my-3">
         A little Insight about {{ $route.params.location_id }}
       </h5>
-      <div v-for="detail in dzongkhagDetails" :key="detail.id" class="quote-about px-5 py-3">
-        <em><span v-html="detail.content" v-if="detail.name === $route.params.location_id"
-            class="about-dzongkhag-details lead py-4 px-2">
-          </span></em>
+      <div
+        v-for="detail in dzongkhagDetails"
+        :key="detail.id"
+        class="quote-about px-5 py-3"
+      >
+        <em
+          ><span
+            v-html="detail.content"
+            v-if="detail.name === $route.params.location_id"
+            class="about-dzongkhag-details lead py-4 px-2"
+          >
+          </span
+        ></em>
       </div>
     </div>
 
@@ -92,17 +116,30 @@
         {{ $route.params.location_id }} dzongkhag
       </h4>
       <div class="row">
-        <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3" v-for="product in agriProducts" :key="product.id">
-          <div class="card mt-2" loading="lazy" v-show="product.location_id === $route.params.location_id">
+        <div
+          class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
+          v-for="product in agriProducts"
+          :key="product.id"
+        >
+          <div
+            class="card mt-2"
+            loading="lazy"
+            v-show="product.location_id === $route.params.location_id"
+          >
             <div class="card-body">
               <img :src="product.image_id" alt="" class="card-img" />
-              <a :href="ecomURL + '/product/' + product.name" class="accommodation-details" target="_blank">
+              <a
+                :href="ecomURL + '/product/' + product.name"
+                class="accommodation-details"
+                target="_blank"
+              >
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ product.post_id }}
                   </h6>
                   <h6 class="card-text my-3">
-                    <i class="bi bi-cash-coin mr-1"></i> Nu. {{ product.price }} / kg
+                    <i class="bi bi-cash-coin mr-1"></i> Nu.
+                    {{ product.price }} / kg
                   </h6>
                 </div>
               </a>
@@ -118,17 +155,30 @@
         {{ $route.params.location_id }} dzongkhag
       </h4>
       <div class="row">
-        <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3" v-for="product in agriProducts" :key="product.id">
-          <div class="card mt-2" loading="lazy" v-show="product.location_id === $route.params.location_id">
+        <div
+          class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
+          v-for="product in agriProducts"
+          :key="product.id"
+        >
+          <div
+            class="card mt-2"
+            loading="lazy"
+            v-show="product.location_id === $route.params.location_id"
+          >
             <div class="card-body">
               <img :src="product.image_id" alt="" class="card-img" />
-              <a :href="ecomURL + '/product/' + product.name" class="accommodation-details" target="_blank">
+              <a
+                :href="ecomURL + '/product/' + product.name"
+                class="accommodation-details"
+                target="_blank"
+              >
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ product.post_id }}
                   </h6>
                   <h6 class="card-text my-3">
-                    <i class="bi bi-cash-coin mr-1"></i> Nu. {{ product.price }} / pc
+                    <i class="bi bi-cash-coin mr-1"></i> Nu.
+                    {{ product.price }} / pc
                   </h6>
                 </div>
               </a>
@@ -167,7 +217,7 @@ export default {
       "https://dev.hemantbhutanrealestate.com/api/bc_hotels"
     );
     const ecom_products = await fetch(
-      "https://booking.hemantbhutanrealestate.com/api/v2/products"
+      "https://booking.hemantbhutanrealestate.com/api/v1/get_frontend_products"
     );
     tours.value = await bc_tours.json();
     accommodations.value = await bc_accommodations.json();

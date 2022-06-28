@@ -46,7 +46,7 @@ export default {
     const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
     const siteURL = "https://dev.hemantbhutanrealestate.com/";
     const bc_prompProducts = await fetch(
-      "https://booking.hemantbhutanrealestate.com/api/v2/products"
+      "https://booking.hemantbhutanrealestate.com/api/v1/get_frontend_products"
     );
     prompProducts.value = await bc_prompProducts.json();
     return {
