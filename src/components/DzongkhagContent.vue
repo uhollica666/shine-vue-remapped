@@ -7,22 +7,12 @@
       </h4>
       <div class="row">
         <div v-for="accommodation in accommodations" :key="accommodation.id">
-          <div
-            class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
-            v-if="accommodation.name === $route.params.location_id"
-          >
+          <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
+            v-if="accommodation.name === $route.params.location_id">
             <div class="card mt-3">
               <div class="card-body">
-                <img
-                  :src="apiURL + accommodation.file_path"
-                  alt=""
-                  class="card-img"
-                />
-                <a
-                  :href="siteURL + '/space/' + accommodation.slug"
-                  class="accommodation-details"
-                  target="_blank"
-                >
+                <img :src="apiURL + accommodation.file_path" alt="" class="card-img" />
+                <a :href="siteURL + '/space/' + accommodation.slug" class="accommodation-details" target="_blank">
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
                       {{ accommodation.title }}
@@ -54,18 +44,12 @@
         Explore Tours under {{ $route.params.location_id }} dzongkhag
       </h4>
       <div class="row">
-        <div v-for="tour in tours" :key="tour.id">
-          <div
-            class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
-            v-if="tour.name === $route.params.location_id"
-          >
-            <div class="card mt-2" loading="lazy">
-              <div class="card-body">
+          <template  v-for="tour in tours"  >
+            <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3" :key="tour.id" v-if="tour.name === $route.params.location_id">
+            <div class="card mt-2" >
+              <div class="card-body" >
                 <img :src="apiURL + tour.file_path" alt="" class="card-img" />
-                <a
-                  :href="siteURL + '/tour/' + tour.slug"
-                  class="accommodation-details"
-                >
+                <a :href="siteURL + '/tour/' + tour.slug" class="accommodation-details">
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
                       {{ tour.title }}
@@ -86,27 +70,18 @@
               </div>
             </div>
           </div>
+          </template>
         </div>
-      </div>
     </div>
 
     <div class="my-5">
       <h5 class="text-capitalize my-3">
         A little Insight about {{ $route.params.location_id }}
       </h5>
-      <div
-        v-for="detail in dzongkhagDetails"
-        :key="detail.id"
-        class="quote-about px-5 py-3"
-      >
-        <em
-          ><span
-            v-html="detail.content"
-            v-if="detail.name === $route.params.location_id"
-            class="about-dzongkhag-details lead py-4 px-2"
-          >
-          </span
-        ></em>
+      <div v-for="detail in dzongkhagDetails" :key="detail.id" class="quote-about px-5 py-3">
+        <em><span v-html="detail.content" v-if="detail.name === $route.params.location_id"
+            class="about-dzongkhag-details lead py-4 px-2">
+          </span></em>
       </div>
     </div>
 
@@ -116,23 +91,12 @@
         {{ $route.params.location_id }} dzongkhag
       </h4>
       <div class="row">
-        <div
-          class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
-          v-for="product in agriProducts"
-          :key="product.id"
-        >
-          <div class="card mt-2" v-if="product.cat_name === 'Agri Products'">
+        <template  v-for="product in agriProducts">
+          <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3" :key="product.id" v-if="product.cat_name === 'Agri Products'">
+          <div class="card mt-2" >
             <div class="card-body">
-              <img
-                :src="ecomURL + 'public/' + product.file_name"
-                alt=""
-                class="card-img"
-              />
-              <a
-                :href="ecomURL + 'product/' + product.slug"
-                class="accommodation-details"
-                target="_blank"
-              >
+              <img :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img" />
+              <a :href="ecomURL + 'product/' + product.slug" class="accommodation-details" target="_blank">
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ product.name }}
@@ -146,6 +110,7 @@
             </div>
           </div>
         </div>
+        </template>
       </div>
     </div>
 
@@ -155,23 +120,13 @@
         {{ $route.params.location_id }} dzongkhag
       </h4>
       <div class="row">
-        <div
-          class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
-          v-for="product in agriProducts"
-          :key="product.id"
-        >
-          <div class="card mt-2" v-if="product.cat_name === 'Handicrafts'">
+        <template  v-for="product in agriProducts">
+          <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
+          :key="product.id"  v-if="product.cat_name === 'Handicrafts'">
+          <div class="card mt-2">
             <div class="card-body">
-              <img
-                :src="ecomURL + 'public/' + product.file_name"
-                alt=""
-                class="card-img"
-              />
-              <a
-                :href="ecomURL + 'product/' + product.slug"
-                class="accommodation-details"
-                target="_blank"
-              >
+              <img :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img" />
+              <a :href="ecomURL + 'product/' + product.slug" class="accommodation-details" target="_blank">
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ product.name }}
@@ -185,6 +140,7 @@
             </div>
           </div>
         </div>
+        </template>
       </div>
     </div>
   </div>

@@ -142,7 +142,7 @@
               <RouterLink to="/">Home</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink to="/agriproducts">Argi Products</RouterLink>
+              <RouterLink to="/agriproducts">Agri Products</RouterLink>
             </li>
             <li class="nav-item">
               <RouterLink to="/handicrafts">Handicrafts</RouterLink>

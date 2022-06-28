@@ -36,18 +36,15 @@
           <div class="row">
             <div class="col-md-2 home-objects" v-for="tour in homeTours" :key="tour.id">
               <img class="card-img" :src="apiURL + tour.file_path" />
-              <RouterLink :to="'/tours/' + tour.title" class="category-details">
+              <a :href="siteURL + 'tour/' + tour.slug" class="category-details" target="_blank">
                 <div class="card-details">
                   <h6 class="card-title text-truncate text-capitalize p-3 text-center">
                     {{ tour.title }}
                   </h6>
                 </div>
-              </RouterLink>
+              </a>
             </div>
           </div>
-          <!-- <RouterLink to="/tours">
-                    <button class="btn btn-home my-3">View All</button>
-                </RouterLink> -->
         </div>
       </div>
     </div>
@@ -59,20 +56,39 @@
           <div class="row">
             <div class="col-md-3 home-objects" v-for="accommodation in homeAccommodations" :key="accommodation.id">
               <img class="card-img" :src="apiURL + accommodation.file_path" />
-              <RouterLink :to="'/tours/' + accommodation.title" class="category-details">
+              <a :href="siteURL + 'space/' + accommodation.slug" class="category-details" target="_blank">
                 <div class="card-details">
                   <h6 class="card-title text-truncate text-capitalize p-3 text-center">
                     {{ accommodation.title }}
                   </h6>
                 </div>
-              </RouterLink>
+              </a>
             </div>
           </div>
-          <!-- <RouterLink to="/accommodation">
-                    <button class="btn btn-home my-2">View All</button>
-                </RouterLink> -->
         </div>
       </div>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-xs-12">
+        <h6 class="p-3 home-linear-heading">Hotels</h6>
+        <div class="home-tour-group">
+          <div class="row">
+            <div class="col-md-3 home-objects" v-for="accommodation in homeHotels" :key="accommodation.id">
+              <img class="card-img" :src="apiURL + accommodation.file_path" />
+              <a :href="siteURL + 'hotel/' + accommodation.slug" class="category-details" target="_blank">
+                <div class="card-details">
+                  <h6 class="card-title text-truncate text-capitalize p-3 text-center">
+                    {{ accommodation.title }}
+                  </h6>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
       <div class="row mt-5">
         <div class="col-md-6 mt-3">
           <h6 class="text-center py-3 home-heading">Popular Agri Products</h6>
@@ -87,6 +103,8 @@
             </RouterLink>
           </div>
         </div>
+
+        
         <div class="col-md-6 mt-3">
           <h6 class="text-center py-3 home-heading">
             Popular Handicraft Products
@@ -114,6 +132,7 @@ export default {
 
   async setup() {
     const homeTours = ref(null);
+    const homeHotels = ref(null);
     const homeAccommodations = ref(null);
     const products = ref(null);
     const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
@@ -121,10 +140,12 @@ export default {
     const ecomURL = "https://booking.hemantbhutanrealestate.com/";
     const bc_homeTours = await fetch("https://dev.hemantbhutanrealestate.com/api/bc_tours");
     const bc_homeAccommodations = await fetch("https://dev.hemantbhutanrealestate.com/api/bc_spaces");
+    const bc_homeHotels = await fetch("https://dev.hemantbhutanrealestate.com/api/bc_hotels");
     const bc_products = await fetch("https://booking.hemantbhutanrealestate.com/api/v1/get_frontend_products");
 
     homeTours.value = await bc_homeTours.json();
     homeAccommodations.value = await bc_homeAccommodations.json();
+    homeHotels.value = await bc_homeHotels.json();
     products.value = await bc_products.json();
 
     return {
@@ -134,6 +155,7 @@ export default {
       siteURL,
       apiURL,
       ecomURL,
+      homeHotels,
     };
   },
 };

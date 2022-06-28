@@ -7,9 +7,10 @@
             <p class="mt-3">Discover the freshness of Bhutan</p>
         </div>
         <div class="row">
-            <div v-for="product in products" :key="product.id" class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12">
+            <template v-for="product in products">
+                <div v-if="product.cat_name === 'Agri Products'" :key="product.id" class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12">
                 <div class="card mt-5">
-                    <div class="card-body" v-if="product.cat_name === 'Agri Products'">
+                    <div class="card-body" >
                         <img :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img" />
                         <div class="card-details">
                             <h6 class="card-title text-truncate">
@@ -40,6 +41,7 @@
                     </div>
                 </div>
             </div>
+            </template>
         </div>
     </div>
 </template>
