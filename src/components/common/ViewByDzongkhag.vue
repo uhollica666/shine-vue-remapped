@@ -33,7 +33,7 @@ export default {
     const dzongkhags = ref(null);
     const catSubtitle = "Eastern Bhutan Destinations Now Open";
     const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
-    const siteURL = "https://dev.hemantbhutanrealestate.com/";
+    const siteURL = "https://dev.hemantbhutanrealestate.com";
     const locations = await fetch(
       "https://dev.hemantbhutanrealestate.com/api/bc_locations"
     );

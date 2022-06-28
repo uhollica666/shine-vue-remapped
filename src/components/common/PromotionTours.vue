@@ -39,7 +39,7 @@ export default {
   async setup() {
     const prompTours = ref(null);
     const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
-    const siteURL = "https://dev.hemantbhutanrealestate.com/";
+    const siteURL = "https://dev.hemantbhutanrealestate.com";
     const bc_prompTours = await fetch(
       "https://dev.hemantbhutanrealestate.com/api/bc_tours"
     );

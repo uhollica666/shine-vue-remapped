@@ -79,7 +79,7 @@ export default {
   methods: {
     async handleSubmit() {
       const response = await axios.post(
-        "http://test.hemantbhutanrealestate.com/api/register",
+        "https://test.hemantbhutanrealestate.com/api/register",
         {
           firstName: this.firstName,
           lastName: this.lastName,

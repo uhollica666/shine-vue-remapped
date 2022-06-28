@@ -2,13 +2,23 @@
   <div class="accordion mt-3 accordion-flush sticky-top app-sticky-top">
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-          aria-expanded="false" aria-controls="collapseOne">
+        <button
+          class="accordion-button"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseOne"
+          aria-expanded="false"
+          aria-controls="collapseOne"
+        >
           <i class="bi bi-sort-down"></i> Filter
         </button>
       </h2>
-      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-        data-bs-parent="#accordionExample">
+      <div
+        id="collapseOne"
+        class="accordion-collapse collapse show"
+        aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample"
+      >
         <div class="accordion-body">
           <div class="c">
             <div class="sidebar-filters">
@@ -17,7 +27,7 @@
                 <ul class="home-block handicraft-block">
                   <li v-for="handicraft in homeHandicrafts" :key="handicraft">
                     <RouterLink :to="'/handicrafts/' + handicraft">{{
-                        handicraft
+                      handicraft
                     }}</RouterLink>
                   </li>
                 </ul>
@@ -28,7 +38,7 @@
                 <ul class="home-block Agriculture-block">
                   <li v-for="product in homeAgriproducts" :key="product">
                     <RouterLink :to="'/agriproducts/' + product">{{
-                        product
+                      product
                     }}</RouterLink>
                   </li>
                 </ul>
@@ -38,10 +48,13 @@
                 <h6>Browse Dzongkhags</h6>
                 <ul class="home-block Dzongkhag-block">
                   <li v-for="dzongkhag in dzongkhags" :key="dzongkhag">
-                    <RouterLink :to="{
-                      name: 'Dzongkhags',
-                      params: { location_id: dzongkhag },
-                    }">{{ dzongkhag }}</RouterLink>
+                    <RouterLink
+                      :to="{
+                        name: 'Dzongkhags',
+                        params: { location_id: dzongkhag },
+                      }"
+                      >{{ dzongkhag }}</RouterLink
+                    >
                   </li>
                 </ul>
               </div>
@@ -57,8 +70,12 @@
           Popular Attraction
         </button>
       </h2>
-      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-        data-bs-parent="#accordionExample">
+      <div
+        id="collapseOne"
+        class="accordion-collapse collapse show"
+        aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample"
+      >
         <div class="accordion-body">
           <div class="c">
             <div class="sidebar-filters">
@@ -68,10 +85,13 @@
                 </div>
                 <ul class="home-block">
                   <li v-for="attraction in popAttractions" :key="attraction">
-                    <RouterLink :to="
-                      'http://dev.hemantbhutanrealestate.com/news/' +
-                      attraction
-                    ">{{ attraction }}</RouterLink>
+                    <RouterLink
+                      :to="
+                        'https://test.hemantbhutanrealestate.com/news/' +
+                        attraction
+                      "
+                      >{{ attraction }}</RouterLink
+                    >
                   </li>
                 </ul>
               </div>

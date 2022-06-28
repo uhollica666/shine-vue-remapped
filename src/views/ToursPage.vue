@@ -100,7 +100,7 @@ export default {
     // };
   },
   // async mounted(){
-  //     const touritems = await fetch('http://test.hemantbhutanrealestate.com/api/tours');
+  //     const touritems = await fetch('https://test.hemantbhutanrealestate.com/api/tours');
   //     const content = await touritems.json();
   // },
 
