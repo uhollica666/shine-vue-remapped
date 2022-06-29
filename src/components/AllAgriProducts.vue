@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="accommodation-element mt-5">
-      <h4 class="text-capitalize">our products in {{ $route.params.name }}</h4>
+      <h4 class="text-capitalize">products in {{ $route.params.name }}</h4>
       <p class="mt-3">Discover the Freshness of Bhutan</p>
     </div>
     <div class="row mb-3">

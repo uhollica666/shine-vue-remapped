@@ -1,21 +1,10 @@
 <template>
   <div>
-    <HomeCarousel
-      :navigation="true"
-      :pagination="true"
-      :startAutoPlay="true"
-      :timeOut="5000"
-      class="carousel"
-      v-slot="{ currentSlide }"
-    >
+    <HomeCarousel :navigation="true" :pagination="true" :startAutoPlay="true" :timeOut="5000" class="carousel"
+      v-slot="{ currentSlide }">
       <HomeCarouselSlide v-for="(slide, index) in CarouselSlides" :key="index">
         <div v-show="currentSlide === index + 1" class="slide-info">
-          <img
-            loading="lazy"
-            :src="`/assets/img/${slide}.jpg`"
-            alt=""
-            class="img-fluid"
-          />
+          <img loading="lazy" :src="`/assets/img/${slide}.jpg`" alt="" class="img-fluid" />
         </div>
       </HomeCarouselSlide>
       <div class="welcome-note text-center">

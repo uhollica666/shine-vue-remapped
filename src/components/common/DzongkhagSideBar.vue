@@ -16,8 +16,8 @@
                             <div class="heading">
                                 <h6 class="mb-3">Explore Other Dzongkhags</h6>
                             </div>
-                            <div class="dzo-list my-2" v-for="dzongkhag in dzongkhags" :key="dzongkhag">
-                                <RouterLink :to="{name:'Dzongkhags', params:{location_id: dzongkhag}}">
+                            <div class="dzo-list" v-for="dzongkhag in dzongkhags" :key="dzongkhag">
+                                <RouterLink :to="{name:'Dzongkhags', params:{location_id: dzongkhag}}" :class="{active: isActive }">
                                     <ul class="lists-dzo">
                                         <li>{{dzongkhag}}</li>
                                     </ul>
@@ -62,12 +62,16 @@ export default {
 </script>
 
 <style scoped>
+a.router-link-exact-active ul li{
+    color: #f7941e !important;
+    font-weight: 600;
+}
 .home-button{
     color: #f7941e;
     text-decoration: none;
 }
 .app-sticky-top {
-    top: 6rem;
+    top: 2rem;
 }
 
 .accordion-button:not(.collapsed)::after {
@@ -81,6 +85,7 @@ export default {
 
 .accordion-item {
     border: none;
+    border-radius: 5px;
 }
 
 .accordion-body {
@@ -107,6 +112,9 @@ export default {
 }
 .lists-dzo{
     text-decoration: none;
+    margin: 0.5rem 0;
+}
+.lists-dzo li{
     color: #2c3e50;
 }
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="accommodation-element mt-5">
+    <div class="accommodation-element mt-5" id="spaces">
       <h4>Our Popular Accommodations</h4>
       <p>Best places to stay in Bhutan</p>
     </div>

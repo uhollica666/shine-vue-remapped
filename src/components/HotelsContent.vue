@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="hotel-element mt-5">
+    <div class="hotel-element mt-5" id="hotels">
       <h4>Our Popular Hotels</h4>
       <p>Best Hotels in Bhutan</p>
     </div>

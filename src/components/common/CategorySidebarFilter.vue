@@ -16,7 +16,7 @@
                                 <h6>Handicrafts</h6>
                                 <ul class="home-block handicraft-block">
                                     <li v-for="handicraft in homeHandicrafts" :key="handicraft">
-                                        <RouterLink :to="'/handicrafts/' + handicraft.name">{{
+                                        <RouterLink :to="'/category-handicrafts/' + handicraft.name" :class="{active: isActive }">{{
                                                 handicraft.name
                                         }}</RouterLink>
                                     </li>
@@ -27,7 +27,7 @@
                                 <h6>Agriculture</h6>
                                 <ul class="home-block Agriculture-block">
                                     <li v-for="product in homeAgriproducts" :key="product">
-                                        <RouterLink :to="'/agriproducts/' + product.name">{{
+                                        <RouterLink :to="'/category-agriproducts/' + product.name" :class="{active: isActive }">{{
                                                 product.name
                                         }}</RouterLink>
                                     </li>
@@ -77,6 +77,10 @@ export default {
 </script>
 
 <style scoped>
+li a.router-link-exact-active{
+    color: #f7941e !important;
+    font-weight: 600;
+}
 .home-button{
     color: #f7941e;
     text-decoration: none;
