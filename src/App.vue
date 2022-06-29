@@ -16,14 +16,15 @@ export default {
     NavBar,
     SiteFooter,
   },
+  data() {
+    return {
+      user: null,
+    };
+  },
 
   async created() {
-    const response = await axios.get('user', {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
-      }
-    });
-    this.$store.dispatch('user', response.data);
+    const response = await axios.get('user');
+    this.user =  response.data;
   },
 
 

@@ -6,54 +6,28 @@
       <div class="row mb-3">
         <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12">
           <label class="form-label" for="firstName">First Name</label>
-          <input
-            type="text"
-            id="firstName"
-            class="form-control input-control"
-            placeholder="first name"
-            required
-            v-model="firstName"
-          />
+          <input type="text" id="firstName" class="form-control input-control" placeholder="first name" required
+            v-model="firstName" />
         </div>
         <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12">
           <label class="form-label" for="lastName">Last Name</label>
-          <input
-            type="text"
-            id="lastName"
-            class="form-control input-control"
-            placeholder="last name"
-            required
-            v-model="lastName"
-          />
+          <input type="text" id="lastName" class="form-control input-control" placeholder="last name" required
+            v-model="lastName" />
         </div>
       </div>
 
       <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input
-        v-model="email"
-        type="email"
-        class="form-control input-control"
-        id="exampleInputEmail1"
-        aria-describedby="emailHelp"
-        required
-        placeholder="email@example.com"
-      />
+      <input v-model="email" type="email" class="form-control input-control" id="exampleInputEmail1"
+        aria-describedby="emailHelp" required placeholder="email@example.com" />
     </div>
     <div class="mb-3">
       <label for="InputPassword" class="form-label">Password</label>
-      <input
-        v-model="password"
-        type="password"
-        class="form-control input-control"
-        id="InputPassword"
-        placeholder="********"
-        required
-      />
+      <input v-model="password" type="password" class="form-control input-control" id="InputPassword"
+        placeholder="********" required />
     </div>
     <div class="mb-3 form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-      <label class="form-check-label no-account-register" for="exampleCheck1"
-        >By Signing Up, I agree to
+      <label class="form-check-label no-account-register" for="exampleCheck1">By Signing Up, I agree to
         <RouterLink to="/terms">Terms & Conditions</RouterLink> of Shine.
       </label>
     </div>
@@ -79,7 +53,7 @@ export default {
   methods: {
     async handleSubmit() {
       const response = await axios.post(
-        "https://test.hemantbhutanrealestate.com/api/register",
+        "register",
         {
           firstName: this.firstName,
           lastName: this.lastName,
