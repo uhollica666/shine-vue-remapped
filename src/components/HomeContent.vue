@@ -60,12 +60,15 @@
         <h6 class="p-3 home-linear-heading">Accommodation</h6>
         <div class="home-tour-group">
           <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-6 home-objects" v-for="accommodation in homeAccommodations"
+            <div class="col-md-3 col-sm-6 col-xs-6 home-objects" v-for="accommodation in computedAccommodation"
               :key="accommodation.id">
               <img class="card-img img-fluid" :src="apiURL + accommodation.file_path" />
               <a :href="siteURL + 'space/' + accommodation.slug" class="category-details" target="_blank">
                 <div class="card-details">
-                  <h6 class="card-title text-truncate text-capitalize py-2">
+                  <h6 class="card-title text-truncate text-capitalize py-2" v-if="!accommodation.title">
+                    - Name Not Available -
+                  </h6>
+                  <h6 class="card-title text-truncate text-capitalize py-2" v-else>
                     {{ accommodation.title }}
                   </h6>
                   <p class="text-truncate"><i class="bi bi-geo"></i>{{ accommodation.name }}</p>
@@ -82,12 +85,15 @@
         <h6 class="p-3 home-linear-heading">Hotels</h6>
         <div class="home-tour-group">
           <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-6 home-objects" v-for="accommodation in homeHotels"
+            <div class="col-md-3 col-sm-6 col-xs-6 home-objects" v-for="accommodation in computedHotels"
               :key="accommodation.id">
               <img class="card-img img-fluid" :src="apiURL + accommodation.file_path" />
               <a :href="siteURL + 'hotel/' + accommodation.slug" class="category-details" target="_blank">
                 <div class="card-details">
-                  <h6 class="card-title text-truncate text-capitalize py-2">
+                  <h6 class="card-title text-truncate text-capitalize py-2" v-if="!accommodation.title">
+                    - Name Not Available -
+                  </h6>
+                  <h6 class="card-title text-truncate text-capitalize py-2" v-else>
                     {{ accommodation.title }}
                   </h6>
                   <p class="text-truncate"><i class="bi bi-geo"></i>{{ accommodation.name }}</p>
@@ -178,7 +184,13 @@ export default {
   computed: {
     computedAgriProducts() {
       return this.limit ? this.products.slice(0, this.limit) : this.products;
-    }
+    },
+    computedAccommodation() {
+      return this.limit ? this.homeAccommodations.slice(0, this.limit) : this.homeAccommodations;
+    },
+    computedHotels() {
+      return this.limit ? this.homeHotels.slice(0, this.limit) : this.homeHotels;
+    },
   },
 };
 </script>

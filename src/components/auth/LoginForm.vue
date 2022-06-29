@@ -17,17 +17,18 @@
         </div>
         <button type="submit" class="btn submit-btn">Login</button>
         <div class="no-account-register mt-3 mb-3">
-            Don't have an account? Register <RouterLink to="/register">Here</RouterLink>.
-            <br />Forgot <RouterLink to="/forgotPassword">Password?</RouterLink>
+            Don't have an account? Register
+            <RouterLink to="/register">Here</RouterLink>. <br />Forgot
+            <RouterLink to="/forgotPassword">Password?</RouterLink>
         </div>
     </form>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
-    name: 'LoginForm',
+    name: "LoginForm",
     data() {
         return {
             email: "",
@@ -36,18 +37,15 @@ export default {
     },
     methods: {
         async handleSubmit() {
-            const response = await axios.get('login', {
+            const response = await axios.post("login", {
                 email: this.email,
                 password: this.password,
             });
-            localStorage.setItem('token', response.data.token)
-            this.$store.dispatch('user', response.data.user);
-            this.$router.push('/');
-
+            localStorage.setItem("token", response.data.token);
+            this.$store.dispatch("user", response.data.user);
+            this.$router.push("/");
         },
-
     },
-
 };
 </script>
 

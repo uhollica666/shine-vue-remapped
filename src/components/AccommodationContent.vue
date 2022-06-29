@@ -12,7 +12,10 @@
             <img :src="apiURL + accommodation.file_path" alt="" class="card-img" />
             <a :href="siteURL + '/space/' + accommodation.slug" class="accommodation-details" target="_blank">
               <div class="card-details">
-                <h6 class="card-title text-truncate">
+                <h6 class="card-title text-truncate" v-if="!accommodation.title">
+                  -Name Not Available-
+                </h6>
+                <h6 class="card-title text-truncate" v-else>
                   {{ accommodation.title }}
                 </h6>
                 <h6 class="card-text my-3">
@@ -23,7 +26,11 @@
                   <div class="location text-truncate">
                     <i class="bi bi-geo-alt"></i>{{ accommodation.name }}
                   </div>
-                  <h6 class="rating">
+                  <h6 class="rating" v-if="!accommodation.review_score">
+                    <i class="bi bi-star-fill start-icon mx-1"></i>
+                    Null
+                  </h6>
+                  <h6 class="rating" v-else>
                     <i class="bi bi-star-fill start-icon mx-1"></i>
                     {{ accommodation.review_score }} / 5
                   </h6>

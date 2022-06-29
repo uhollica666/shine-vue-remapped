@@ -14,14 +14,21 @@
                 <h6 class="card-title text-truncate">
                   {{ tour.title }}
                 </h6>
-                <h6 class="card-text my-3">
+                <h6 class="card-text my-3" v-if="!tour.price">
+                  <i class="bi bi-cash-coin mr-1"></i> Rate Not Available
+                </h6>
+                <h6 class="card-text my-3" v-else>
                   <i class="bi bi-cash-coin mr-1"></i> Nu. {{ tour.price }} /
-                  night
+                  trip
                 </h6>
                 <div class="location-tours text-truncate mb-2">
                   <i class="bi bi-geo-alt"></i>{{ tour.name }}
                 </div>
-                <div class="duration-tours text-truncate">
+                <div class="duration-tours text-truncate" v-if="!tour.date_form_to">
+                  <i class="bi bi-stopwatch"></i>
+                  Duration Not Available
+                </div>
+                <div class="duration-tours text-truncate" v-else>
                   <i class="bi bi-stopwatch"></i>
                   {{ tour.date_form_to }}
                 </div>
