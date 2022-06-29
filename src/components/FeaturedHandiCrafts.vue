@@ -8,7 +8,7 @@
         </div>
         <div class="row mb-3">
             <template v-for="product in handiCrafts">
-                <div v-if="product.cat_name === 'Handicrafts'" :key="product.id"
+                <div v-if="product.parent_name === 'Handicrats'" :key="product.id"
                     class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12 my-3">
                     <div class="card mt-2">
                         <div class="card-body">
@@ -108,5 +108,8 @@ button.limit {
 .preview-buttons {
     display: flex;
     justify-content: space-between;
+}
+.card-img{
+    aspect-ratio: 1 !important ;
 }
 </style>

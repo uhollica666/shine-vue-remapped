@@ -23,20 +23,22 @@
                     <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton"
                       data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="bi bi-person-bounding-box"></i> Become A
-                    Vendor
+                      Vendor
                     </button>
                     <ul class="dropdown-menu px-0 mx-0" aria-labelledby="dropdownMenuButton">
                       <li class="px-1 mx-0 my-3">
-                        <a :href="'https://dev.hemantbhutanrealestate.com/register'" class="dropdown-item text-dark" target="_blank">
+                        <a :href="'https://dev.hemantbhutanrealestate.com/register'" class="dropdown-item text-dark"
+                          target="_blank">
                           <i class="bi bi-speedometer2"></i>Tourism Vendor
                         </a>
                       </li>
                       <li class="px-1 mx-0 my-3">
-                        <a :href="'https://booking.hemantbhutanrealestate.com/' + 'shops/create'" class="dropdown-item text-dark" target="_blank">
+                        <a :href="'https://booking.hemantbhutanrealestate.com/' + 'shops/create'"
+                          class="dropdown-item text-dark" target="_blank">
                           <i class="bi bi-basket2"></i>Ecommerce Vendor
                         </a>
                       </li>
-                      </ul>
+                    </ul>
                   </div>
                 </li>
                 <div v-if="!user" class="d-flex mx-3">
@@ -112,41 +114,13 @@
       </div>
     </div>
     <div class="clear-fix"></div>
-    <nav class="navbar navbar-expand-lg sticky-top">
-      <div class="container">
-        <RouterLink class="navbar-brand" to="/">
-          <img src="@/assets/img/logo.png" alt="" width="80" class="img-fluid" />
-        </RouterLink>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="bi bi-list"></i>
-        </button>
-        <div class="collapse navigations navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav nav-item-list">
-            <li class="nav-item">
-              <RouterLink to="/">Home</RouterLink>
-            </li>
-            <li class="nav-item">
-              <RouterLink to="/agriproducts">Agri Products</RouterLink>
-            </li>
-            <li class="nav-item">
-              <RouterLink to="/handicrafts">Handicrafts</RouterLink>
-            </li>
-            <li class="nav-item">
-              <RouterLink to="/accommodation">Accommodation</RouterLink>
-            </li>
-            <li class="nav-item">
-              <RouterLink to="/tours">Tour Packages</RouterLink>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <StickyNav />
   </div>
 </template>
 
 <script>
 import LightDarkSwitch from "@/components/LightDarkSwitch";
+import StickyNav from "@/components/common/StickyNav";
 import { mapGetters } from "vuex";
 export default {
   name: "NavBar",
@@ -158,6 +132,7 @@ export default {
   },
   components: {
     LightDarkSwitch,
+    StickyNav,
   },
   methods: {
     handleClick() {

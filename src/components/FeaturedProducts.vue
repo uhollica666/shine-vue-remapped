@@ -111,4 +111,7 @@ button.limit {
     display: flex;
     justify-content: space-between;
 }
+.card-img{
+    aspect-ratio: 1 !important ;
+}
 </style>

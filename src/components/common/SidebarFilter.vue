@@ -154,7 +154,7 @@ export default {
 
 <style scoped>
 .app-sticky-top {
-    top: 6rem;
+    top: 3rem;
 }
 
 .accordion-button:not(.collapsed)::after {

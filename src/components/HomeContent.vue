@@ -5,27 +5,32 @@
         <h6 class="text-center py-3 home-heading">Agri Products</h6>
         <div class="container home-container">
           <div class="product-images row">
-            <div class="cardo col-md-6 mt-2" v-for="product in products" :key="product.id">
-              <img :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img" />
-            </div>
+            <template v-for="product in computedAgriProducts">
+              <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Agri Products'" :key="product.id">
+                <img :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img" />
+              </div>
+            </template>
           </div>
           <RouterLink to="/agriproducts" class="d-flex home-sec">
-            <button class="btn btn-home mb-3">View More</button>
+            <button class="btn btn-home mb-3"><i class="bi bi-eye"></i>View All</button>
           </RouterLink>
         </div>
       </div>
+
       <div class="col-md-6 mb-3">
         <h6 class="text-center py-3 home-heading">Handicraft Products</h6>
         <div class="container home-container">
           <div class="product-images row">
-            <div class="cardo col-md-6 mt-2" v-for="product in products" :key="product.id">
-              <img :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img" />
-            </div>
+            <template v-for="product in computedAgriProducts">
+              <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Handicrats'" :key="product.id">
+                <img :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img" />
+              </div>
+            </template>
           </div>
+          <RouterLink to="/handicrafts" class="d-flex home-sec">
+            <button class="btn btn-home mb-3"><i class="bi bi-eye"></i>View All</button>
+          </RouterLink>
         </div>
-        <RouterLink to="/handicrafts" class="d-flex home-sec">
-          <button class="btn btn-home mb-3">View More</button>
-        </RouterLink>
       </div>
     </div>
 
@@ -34,13 +39,14 @@
         <h6 class="p-3 home-linear-heading">Tour Packages</h6>
         <div class="home-tour-group">
           <div class="row">
-            <div class="col-md-2 home-objects" v-for="tour in homeTours" :key="tour.id">
-              <img class="card-img" :src="apiURL + tour.file_path" />
+            <div class="col-md-2 col-sm-6 col-xs-6 home-objects" v-for="tour in homeTours" :key="tour.id">
+              <img class="card-img img-fluid" :src="apiURL + tour.file_path" />
               <a :href="siteURL + 'tour/' + tour.slug" class="category-details" target="_blank">
                 <div class="card-details">
-                  <h6 class="card-title text-truncate text-capitalize p-3 text-center">
+                  <h6 class="card-title text-truncate text-capitalize py-2">
                     {{ tour.title }}
                   </h6>
+                  <p class="text-truncate"><i class="bi bi-geo"></i>{{ tour.name }}</p>
                 </div>
               </a>
             </div>
@@ -54,13 +60,15 @@
         <h6 class="p-3 home-linear-heading">Accommodation</h6>
         <div class="home-tour-group">
           <div class="row">
-            <div class="col-md-3 home-objects" v-for="accommodation in homeAccommodations" :key="accommodation.id">
-              <img class="card-img" :src="apiURL + accommodation.file_path" />
+            <div class="col-md-3 col-sm-6 col-xs-6 home-objects" v-for="accommodation in homeAccommodations"
+              :key="accommodation.id">
+              <img class="card-img img-fluid" :src="apiURL + accommodation.file_path" />
               <a :href="siteURL + 'space/' + accommodation.slug" class="category-details" target="_blank">
                 <div class="card-details">
-                  <h6 class="card-title text-truncate text-capitalize p-3 text-center">
+                  <h6 class="card-title text-truncate text-capitalize py-2">
                     {{ accommodation.title }}
                   </h6>
+                  <p class="text-truncate"><i class="bi bi-geo"></i>{{ accommodation.name }}</p>
                 </div>
               </a>
             </div>
@@ -74,13 +82,15 @@
         <h6 class="p-3 home-linear-heading">Hotels</h6>
         <div class="home-tour-group">
           <div class="row">
-            <div class="col-md-3 home-objects" v-for="accommodation in homeHotels" :key="accommodation.id">
-              <img class="card-img" :src="apiURL + accommodation.file_path" />
+            <div class="col-md-3 col-sm-6 col-xs-6 home-objects" v-for="accommodation in homeHotels"
+              :key="accommodation.id">
+              <img class="card-img img-fluid" :src="apiURL + accommodation.file_path" />
               <a :href="siteURL + 'hotel/' + accommodation.slug" class="category-details" target="_blank">
                 <div class="card-details">
-                  <h6 class="card-title text-truncate text-capitalize p-3 text-center">
+                  <h6 class="card-title text-truncate text-capitalize py-2">
                     {{ accommodation.title }}
                   </h6>
+                  <p class="text-truncate"><i class="bi bi-geo"></i>{{ accommodation.name }}</p>
                 </div>
               </a>
             </div>
@@ -88,35 +98,37 @@
         </div>
       </div>
 
-
       <div class="row mt-5">
         <div class="col-md-6 mt-3">
           <h6 class="text-center py-3 home-heading">Popular Agri Products</h6>
           <div class="container home-container">
             <div class="product-images row">
-            <div class="cardo col-md-6 mt-2" v-for="product in products" :key="product.id">
-              <img :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img" />
+              <template v-for="product in computedAgriProducts">
+                <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Agri Products'" :key="product.id">
+                <img :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img" />
+              </div>
+              </template>
             </div>
-          </div>
             <RouterLink to="/agriproducts" class="d-flex home-sec">
-              <button class="btn btn-home mb-3">View More</button>
+              <button class="btn btn-home mb-3"><i class="bi bi-eye"></i>View All</button>
             </RouterLink>
           </div>
         </div>
 
-        
         <div class="col-md-6 mt-3">
           <h6 class="text-center py-3 home-heading">
             Popular Handicraft Products
           </h6>
           <div class="container home-container">
             <div class="product-images row">
-            <div class="cardo col-md-6 mt-2" v-for="product in products" :key="product.id">
-              <img :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img" />
+              <template v-for="product in computedAgriProducts">
+                <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Handicrats'" :key="product.id">
+                <img :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img" />
+              </div>
+              </template>
             </div>
-          </div>
             <RouterLink to="/handicrafts" class="d-flex home-sec">
-              <button class="btn btn-home mb-3">View More</button>
+              <button class="btn btn-home mb-3"><i class="bi bi-eye"></i>View All</button>
             </RouterLink>
           </div>
         </div>
@@ -157,6 +169,16 @@ export default {
       ecomURL,
       homeHotels,
     };
+  },
+  data() {
+    return {
+      limit: 6
+    }
+  },
+  computed: {
+    computedAgriProducts() {
+      return this.limit ? this.products.slice(0, this.limit) : this.products;
+    }
   },
 };
 </script>
@@ -204,6 +226,7 @@ export default {
 
 .home-container {
   border-radius: 5px;
+  height: 25rem;
 }
 
 .product-images {
