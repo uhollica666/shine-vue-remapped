@@ -1,0 +1,35 @@
+<template>
+  <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12 col-xs-12">
+                <CategorySidebarFilter />
+            </div>
+            <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-xs-12 infinite-scroll">
+                <Suspense>
+                    <template #default>
+                        <AllHandicraftProducts />
+                    </template>
+                    <template #fallback>
+                        <h5 class="text-center my-5"> 🔄️ Fetching Products...</h5>
+                    </template>
+                </Suspense>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+import AllHandicraftProducts from '@/components/AllHandicraftProducts';
+import CategorySidebarFilter from '@/components/common/CategorySidebarFilter';
+export default {
+    name: "AgriProductsPage",
+    components: {
+        AllHandicraftProducts,
+        CategorySidebarFilter,
+    },
+};
+</script>
+
+<style>
+
+</style>

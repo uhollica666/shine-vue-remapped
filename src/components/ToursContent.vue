@@ -9,7 +9,7 @@
         <div class="card mt-2" loading="lazy">
           <div class="card-body">
             <img :src="apiURL + tour.file_path" alt="" class="card-img" />
-            <a :href="siteURL + '/tour/' + tour.slug" class="accommodation-details">
+            <a :href="siteURL + 'tour/' + tour.slug" class="accommodation-details">
               <div class="card-details">
                 <h6 class="card-title text-truncate">
                   {{ tour.title }}

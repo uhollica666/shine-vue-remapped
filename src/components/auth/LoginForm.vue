@@ -37,10 +37,11 @@ export default {
     },
     methods: {
         async handleSubmit() {
-            const response = await axios.post("login", {
+            const response = await axios.get("https://api.github.com/users", {
                 email: this.email,
                 password: this.password,
             });
+            console.log(response);
             localStorage.setItem("token", response.data.token);
             this.$store.dispatch("user", response.data.user);
             this.$router.push("/");

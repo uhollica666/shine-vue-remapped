@@ -16,7 +16,7 @@
                 <h6>Handicrafts</h6>
                 <ul class="home-block handicraft-block">
                   <li v-for="handicraft in homeHandicrafts" :key="handicraft">
-                    <RouterLink :to="'/handicrafts/' + handicraft.link">{{
+                    <RouterLink :to="'/handicrafts/' + handicraft.name">{{
                         handicraft.name
                     }}</RouterLink>
                   </li>
@@ -27,7 +27,7 @@
                 <h6>Agriculture</h6>
                 <ul class="home-block Agriculture-block">
                   <li v-for="product in homeAgriproducts" :key="product">
-                    <RouterLink :to="'/agriproducts/' + product.link">{{
+                    <RouterLink :to="'/agriproducts/' + product.name">{{
                         product.name
                     }}</RouterLink>
                   </li>
