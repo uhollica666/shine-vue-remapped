@@ -57,7 +57,6 @@ export default {
       "https://booking.hemantbhutanrealestate.com/api/v1/get_frontend_products"
     );
     products.value = await product.json();
-    console.log(products);
     return {
       /* eslint-disable */
       products,
