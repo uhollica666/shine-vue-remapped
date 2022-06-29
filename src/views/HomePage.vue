@@ -1,10 +1,21 @@
 <template>
   <div>
-    <HomeCarousel :navigation="true" :pagination="true" :startAutoPlay="true" :timeOut="5000" class="carousel"
-      v-slot="{ currentSlide }">
+    <HomeCarousel
+      :navigation="true"
+      :pagination="true"
+      :startAutoPlay="true"
+      :timeOut="5000"
+      class="carousel"
+      v-slot="{ currentSlide }"
+    >
       <HomeCarouselSlide v-for="(slide, index) in CarouselSlides" :key="index">
         <div v-show="currentSlide === index + 1" class="slide-info">
-          <img :src="(`/assets/img/${slide}.jpg`)" alt="" class="img-fluid" />
+          <img
+            loading="lazy"
+            :src="`/assets/img/${slide}.jpg`"
+            alt=""
+            class="img-fluid"
+          />
         </div>
       </HomeCarouselSlide>
       <div class="welcome-note text-center">
@@ -23,7 +34,7 @@
               <HomeContent />
             </template>
             <template #fallback>
-              <h5 class="text-center my-5"> 🔄️ Fetching Home Content...</h5>
+              <h5 class="text-center my-5">🔄️ Fetching Home Content...</h5>
             </template>
           </Suspense>
         </div>
@@ -33,12 +44,12 @@
 </template>
 
 <script>
-import HomeCarouselSlide from '@/components/HomeCarouselSlide';
-import HomeCarousel from '@/components/HomeCarousel';
-import HomeSidebar from '@/components/HomeSideBar';
-import HomeContent from '@/components/HomeContent';
+import HomeCarouselSlide from "@/components/HomeCarouselSlide";
+import HomeCarousel from "@/components/HomeCarousel";
+import HomeSidebar from "@/components/HomeSideBar";
+import HomeContent from "@/components/HomeContent";
 export default {
-  name: 'HomePage',
+  name: "HomePage",
 
   setup() {
     const CarouselSlides = ["slider1", "slider2", "slider3", "slider4"];

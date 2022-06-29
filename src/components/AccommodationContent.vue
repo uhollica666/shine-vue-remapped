@@ -5,14 +5,29 @@
       <p>Best places to stay in Bhutan</p>
     </div>
     <div class="row mb-3">
-      <div v-for="accommodation in accommodations" :key="accommodation.id"
-        class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3">
+      <div
+        v-for="accommodation in accommodations"
+        :key="accommodation.id"
+        class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
+      >
         <div class="card mt-3">
           <div class="card-body">
-            <img :src="apiURL + accommodation.file_path" alt="" class="card-img" />
-            <a :href="siteURL + '/space/' + accommodation.slug" class="accommodation-details" target="_blank">
+            <img
+              loading="lazy"
+              :src="apiURL + accommodation.file_path"
+              alt=""
+              class="card-img img-fluid"
+            />
+            <a
+              :href="siteURL + '/space/' + accommodation.slug"
+              class="accommodation-details"
+              target="_blank"
+            >
               <div class="card-details">
-                <h6 class="card-title text-truncate" v-if="!accommodation.title">
+                <h6
+                  class="card-title text-truncate"
+                  v-if="!accommodation.title"
+                >
                   -Name Not Available-
                 </h6>
                 <h6 class="card-title text-truncate" v-else>
@@ -67,7 +82,7 @@ export default {
       catSubtitle,
       siteURL,
     };
-  }
+  },
   // data() {
   //   return {
   //     limit: 8,

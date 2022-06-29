@@ -58,13 +58,13 @@ const routes = [
     component: () => import( /* webpackChunkName: "about" */ '../views/PropertyPage')
   },
   {
-    path: '/agriproducts/:name',
-    name: 'Agriproducts',
+    path: '/category-agriproducts/:name',
+    name: 'Category-Agriproducts',
     component: () => import( /* webpackChunkName: "about" */ '../views/AgriProductsPage')
   },
   {
-    path: '/handicrafts/:name',
-    name: 'Handicrafts',
+    path: '/category-handicrafts/:name',
+    name: 'Category-Handicrafts',
     component: () => import( /* webpackChunkName: "about" */ '../views/HandicraftProductsPage')
   },
 ]

@@ -5,6 +5,7 @@
       <div class="row text-md-left text-lg-left">
         <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-1 footer-left-div">
           <img
+            loading="lazy"
             src="@/assets/img/logo.png"
             alt=""
             class="footer-img-logo img-fluid"
@@ -64,8 +65,7 @@
           </div>
           <div class="footer-link">
             <RouterLink to="/"
-              ><i class="bi bi-chevron-compact-right"></i>Contact
-              Us</RouterLink
+              ><i class="bi bi-chevron-compact-right"></i>Contact Us</RouterLink
             >
           </div>
           <div class="footer-link">
@@ -132,13 +132,13 @@
 
 <script>
 export default {
-    name: "SiteFooter",
-    data() {
-        return {
-        currentYear: new Date().getFullYear(),
-        };
-    },
-}
+  name: "SiteFooter",
+  data() {
+    return {
+      currentYear: new Date().getFullYear(),
+    };
+  },
+};
 </script>
 
 <style scoped>

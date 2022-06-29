@@ -7,12 +7,23 @@
       </h4>
       <div class="row">
         <div v-for="accommodation in accommodations" :key="accommodation.id">
-          <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
-            v-if="accommodation.name === $route.params.location_id">
+          <div
+            class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
+            v-if="accommodation.name === $route.params.location_id"
+          >
             <div class="card mt-3">
               <div class="card-body">
-                <img :src="apiURL + accommodation.file_path" alt="" class="card-img" />
-                <a :href="siteURL + '/space/' + accommodation.slug" class="accommodation-details" target="_blank">
+                <img
+                  loading="lazy"
+                  :src="apiURL + accommodation.file_path"
+                  alt=""
+                  class="card-img img-fluid"
+                />
+                <a
+                  :href="siteURL + '/space/' + accommodation.slug"
+                  class="accommodation-details"
+                  target="_blank"
+                >
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
                       {{ accommodation.title }}
@@ -44,12 +55,24 @@
         Explore Tours under {{ $route.params.location_id }} dzongkhag
       </h4>
       <div class="row">
-          <template  v-for="tour in tours"  >
-            <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3" :key="tour.id" v-if="tour.name === $route.params.location_id">
-            <div class="card mt-2" >
-              <div class="card-body" >
-                <img :src="apiURL + tour.file_path" alt="" class="card-img" />
-                <a :href="siteURL + '/tour/' + tour.slug" class="accommodation-details">
+        <template v-for="tour in tours">
+          <div
+            class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
+            :key="tour.id"
+            v-if="tour.name === $route.params.location_id"
+          >
+            <div class="card mt-2">
+              <div class="card-body">
+                <img
+                  loading="lazy"
+                  :src="apiURL + tour.file_path"
+                  alt=""
+                  class="card-img img-fluid"
+                />
+                <a
+                  :href="siteURL + '/tour/' + tour.slug"
+                  class="accommodation-details"
+                >
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
                       {{ tour.title }}
@@ -70,18 +93,27 @@
               </div>
             </div>
           </div>
-          </template>
-        </div>
+        </template>
+      </div>
     </div>
 
     <div class="my-5">
       <h5 class="text-capitalize my-3">
         A little Insight about {{ $route.params.location_id }}
       </h5>
-      <div v-for="detail in dzongkhagDetails" :key="detail.id" class="quote-about px-5 py-3">
-        <em><span v-html="detail.content" v-if="detail.name === $route.params.location_id"
-            class="about-dzongkhag-details lead py-4 px-2">
-          </span></em>
+      <div
+        v-for="detail in dzongkhagDetails"
+        :key="detail.id"
+        class="quote-about px-5 py-3"
+      >
+        <em
+          ><span
+            v-html="detail.content"
+            v-if="detail.name === $route.params.location_id"
+            class="about-dzongkhag-details lead py-4 px-2"
+          >
+          </span
+        ></em>
       </div>
     </div>
 
@@ -91,25 +123,38 @@
         {{ $route.params.location_id }} dzongkhag
       </h4>
       <div class="row">
-        <template  v-for="product in agriProducts">
-          <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3" :key="product.id" v-if="product.cat_name === 'Agri Products'">
-          <div class="card mt-2" >
-            <div class="card-body">
-              <img :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img" />
-              <a :href="ecomURL + 'product/' + product.slug" class="accommodation-details" target="_blank">
-                <div class="card-details">
-                  <h6 class="card-title text-truncate">
-                    {{ product.name }}
-                  </h6>
-                  <h6 class="card-text my-3">
-                    <i class="bi bi-cash-coin mr-1"></i> Nu.
-                    {{ product.unit_price }} / kg
-                  </h6>
-                </div>
-              </a>
+        <template v-for="product in agriProducts">
+          <div
+            class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
+            :key="product.id"
+            v-if="product.cat_name === 'Agri Products'"
+          >
+            <div class="card mt-2">
+              <div class="card-body">
+                <img
+                  loading="lazy"
+                  :src="ecomURL + 'public/' + product.file_name"
+                  alt=""
+                  class="card-img img-fluid"
+                />
+                <a
+                  :href="ecomURL + 'product/' + product.slug"
+                  class="accommodation-details"
+                  target="_blank"
+                >
+                  <div class="card-details">
+                    <h6 class="card-title text-truncate">
+                      {{ product.name }}
+                    </h6>
+                    <h6 class="card-text my-3">
+                      <i class="bi bi-cash-coin mr-1"></i> Nu.
+                      {{ product.unit_price }} / kg
+                    </h6>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
         </template>
       </div>
     </div>
@@ -120,26 +165,38 @@
         {{ $route.params.location_id }} dzongkhag
       </h4>
       <div class="row">
-        <template  v-for="product in agriProducts">
-          <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
-          :key="product.id"  v-if="product.cat_name === 'Handicrafts'">
-          <div class="card mt-2">
-            <div class="card-body">
-              <img :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img" />
-              <a :href="ecomURL + 'product/' + product.slug" class="accommodation-details" target="_blank">
-                <div class="card-details">
-                  <h6 class="card-title text-truncate">
-                    {{ product.name }}
-                  </h6>
-                  <h6 class="card-text my-3">
-                    <i class="bi bi-cash-coin mr-1"></i> Nu.
-                    {{ product.unit_price }} / pc
-                  </h6>
-                </div>
-              </a>
+        <template v-for="product in agriProducts">
+          <div
+            class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
+            :key="product.id"
+            v-if="product.cat_name === 'Handicrafts'"
+          >
+            <div class="card mt-2">
+              <div class="card-body">
+                <img
+                  loading="lazy"
+                  :src="ecomURL + 'public/' + product.file_name"
+                  alt=""
+                  class="card-img img-fluid"
+                />
+                <a
+                  :href="ecomURL + 'product/' + product.slug"
+                  class="accommodation-details"
+                  target="_blank"
+                >
+                  <div class="card-details">
+                    <h6 class="card-title text-truncate">
+                      {{ product.name }}
+                    </h6>
+                    <h6 class="card-text my-3">
+                      <i class="bi bi-cash-coin mr-1"></i> Nu.
+                      {{ product.unit_price }} / pc
+                    </h6>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
         </template>
       </div>
     </div>

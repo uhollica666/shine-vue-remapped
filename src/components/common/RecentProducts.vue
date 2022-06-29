@@ -10,6 +10,7 @@
         <div class="card mt-3 mb-3">
           <div class="card-body">
             <img
+              loading="lazy"
               :src="ecomURL + 'public/' + product.file_name"
               alt=""
               class="card-img-blog"
@@ -27,7 +28,8 @@
                   {{ product.meta_description }}
                 </p>
                 <div class="location text-truncate">
-                  <i class="bi bi-cash-coin"></i> Nu. {{ product.unit_price }} / KG
+                  <i class="bi bi-cash-coin"></i> Nu. {{ product.unit_price }} /
+                  KG
                 </div>
                 <p class="my-3">
                   <i class="bi bi-tag"></i> Category:

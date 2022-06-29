@@ -6,13 +6,24 @@
         <div class="container home-container">
           <div class="product-images row">
             <template v-for="product in computedAgriProducts">
-              <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Agri Products'" :key="product.id">
-                <img :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img" />
+              <div
+                class="cardo col-md-6 mt-2"
+                v-if="product.parent_name === 'Agri Products'"
+                :key="product.id"
+              >
+                <img
+                  loading="lazy"
+                  :src="ecomURL + 'public/' + product.file_name"
+                  alt=""
+                  class="card-img img-fluid"
+                />
               </div>
             </template>
           </div>
           <RouterLink to="/agriproducts" class="d-flex home-sec">
-            <button class="btn btn-home mb-3"><i class="bi bi-eye"></i>View All</button>
+            <button class="btn btn-home mb-3">
+              <i class="bi bi-eye"></i>View All
+            </button>
           </RouterLink>
         </div>
       </div>
@@ -22,13 +33,24 @@
         <div class="container home-container">
           <div class="product-images row">
             <template v-for="product in computedAgriProducts">
-              <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Handicrats'" :key="product.id">
-                <img :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img" />
+              <div
+                class="cardo col-md-6 mt-2"
+                v-if="product.parent_name === 'Handicrats'"
+                :key="product.id"
+              >
+                <img
+                  loading="lazy"
+                  :src="ecomURL + 'public/' + product.file_name"
+                  alt=""
+                  class="card-img img-fluid"
+                />
               </div>
             </template>
           </div>
           <RouterLink to="/handicrafts" class="d-flex home-sec">
-            <button class="btn btn-home mb-3"><i class="bi bi-eye"></i>View All</button>
+            <button class="btn btn-home mb-3">
+              <i class="bi bi-eye"></i>View All
+            </button>
           </RouterLink>
         </div>
       </div>
@@ -39,14 +61,28 @@
         <h6 class="p-3 home-linear-heading">Tour Packages</h6>
         <div class="home-tour-group">
           <div class="row">
-            <div class="col-md-2 col-sm-6 col-xs-6 home-objects" v-for="tour in homeTours" :key="tour.id">
-              <img class="card-img img-fluid" :src="apiURL + tour.file_path" />
-              <a :href="siteURL + 'tour/' + tour.slug" class="category-details" target="_blank">
+            <div
+              class="col-md-2 col-sm-6 col-xs-6 home-objects"
+              v-for="tour in homeTours"
+              :key="tour.id"
+            >
+              <img
+                loading="lazy"
+                class="card-img img-fluid"
+                :src="apiURL + tour.file_path"
+              />
+              <a
+                :href="siteURL + 'tour/' + tour.slug"
+                class="category-details"
+                target="_blank"
+              >
                 <div class="card-details">
                   <h6 class="card-title text-truncate text-capitalize py-2">
                     {{ tour.title }}
                   </h6>
-                  <p class="text-truncate"><i class="bi bi-geo"></i>{{ tour.name }}</p>
+                  <p class="text-truncate">
+                    <i class="bi bi-geo"></i>{{ tour.name }}
+                  </p>
                 </div>
               </a>
             </div>
@@ -60,18 +96,37 @@
         <h6 class="p-3 home-linear-heading">Accommodation</h6>
         <div class="home-tour-group">
           <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-6 home-objects" v-for="accommodation in computedAccommodation"
-              :key="accommodation.id">
-              <img class="card-img img-fluid" :src="apiURL + accommodation.file_path" />
-              <a :href="siteURL + 'space/' + accommodation.slug" class="category-details" target="_blank">
+            <div
+              class="col-md-2 col-sm-6 col-xs-6 home-objects"
+              v-for="accommodation in computedAccommodation"
+              :key="accommodation.id"
+            >
+              <img
+                loading="lazy"
+                class="card-img img-fluid"
+                :src="apiURL + accommodation.file_path"
+              />
+              <a
+                :href="siteURL + 'space/' + accommodation.slug"
+                class="category-details"
+                target="_blank"
+              >
                 <div class="card-details">
-                  <h6 class="card-title text-truncate text-capitalize py-2" v-if="!accommodation.title">
+                  <h6
+                    class="card-title text-truncate text-capitalize py-2"
+                    v-if="!accommodation.title"
+                  >
                     - Name Not Available -
                   </h6>
-                  <h6 class="card-title text-truncate text-capitalize py-2" v-else>
+                  <h6
+                    class="card-title text-truncate text-capitalize py-2"
+                    v-else
+                  >
                     {{ accommodation.title }}
                   </h6>
-                  <p class="text-truncate"><i class="bi bi-geo"></i>{{ accommodation.name }}</p>
+                  <p class="text-truncate">
+                    <i class="bi bi-geo"></i>{{ accommodation.name }}
+                  </p>
                 </div>
               </a>
             </div>
@@ -85,18 +140,37 @@
         <h6 class="p-3 home-linear-heading">Hotels</h6>
         <div class="home-tour-group">
           <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-6 home-objects" v-for="accommodation in computedHotels"
-              :key="accommodation.id">
-              <img class="card-img img-fluid" :src="apiURL + accommodation.file_path" />
-              <a :href="siteURL + 'hotel/' + accommodation.slug" class="category-details" target="_blank">
+            <div
+              class="col-md-3 col-sm-6 col-xs-6 home-objects"
+              v-for="accommodation in computedHotels"
+              :key="accommodation.id"
+            >
+              <img
+                loading="lazy"
+                class="card-img img-fluid"
+                :src="apiURL + accommodation.file_path"
+              />
+              <a
+                :href="siteURL + 'hotel/' + accommodation.slug"
+                class="category-details"
+                target="_blank"
+              >
                 <div class="card-details">
-                  <h6 class="card-title text-truncate text-capitalize py-2" v-if="!accommodation.title">
+                  <h6
+                    class="card-title text-truncate text-capitalize py-2"
+                    v-if="!accommodation.title"
+                  >
                     - Name Not Available -
                   </h6>
-                  <h6 class="card-title text-truncate text-capitalize py-2" v-else>
+                  <h6
+                    class="card-title text-truncate text-capitalize py-2"
+                    v-else
+                  >
                     {{ accommodation.title }}
                   </h6>
-                  <p class="text-truncate"><i class="bi bi-geo"></i>{{ accommodation.name }}</p>
+                  <p class="text-truncate">
+                    <i class="bi bi-geo"></i>{{ accommodation.name }}
+                  </p>
                 </div>
               </a>
             </div>
@@ -110,13 +184,24 @@
           <div class="container home-container">
             <div class="product-images row">
               <template v-for="product in computedAgriProducts">
-                <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Agri Products'" :key="product.id">
-                <img :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img" />
-              </div>
+                <div
+                  class="cardo col-md-6 mt-2"
+                  v-if="product.parent_name === 'Agri Products'"
+                  :key="product.id"
+                >
+                  <img
+                    loading="lazy"
+                    :src="ecomURL + 'public/' + product.file_name"
+                    alt=""
+                    class="card-img img-fluid"
+                  />
+                </div>
               </template>
             </div>
             <RouterLink to="/agriproducts" class="d-flex home-sec">
-              <button class="btn btn-home mb-3"><i class="bi bi-eye"></i>View All</button>
+              <button class="btn btn-home mb-3">
+                <i class="bi bi-eye"></i>View All
+              </button>
             </RouterLink>
           </div>
         </div>
@@ -128,13 +213,24 @@
           <div class="container home-container">
             <div class="product-images row">
               <template v-for="product in computedAgriProducts">
-                <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Handicrats'" :key="product.id">
-                <img :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img" />
-              </div>
+                <div
+                  class="cardo col-md-6 mt-2"
+                  v-if="product.parent_name === 'Handicrats'"
+                  :key="product.id"
+                >
+                  <img
+                    loading="lazy"
+                    :src="ecomURL + 'public/' + product.file_name"
+                    alt=""
+                    class="card-img img-fluid"
+                  />
+                </div>
               </template>
             </div>
             <RouterLink to="/handicrafts" class="d-flex home-sec">
-              <button class="btn btn-home mb-3"><i class="bi bi-eye"></i>View All</button>
+              <button class="btn btn-home mb-3">
+                <i class="bi bi-eye"></i>View All
+              </button>
             </RouterLink>
           </div>
         </div>
@@ -156,10 +252,18 @@ export default {
     const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
     const siteURL = "https://dev.hemantbhutanrealestate.com/";
     const ecomURL = "https://booking.hemantbhutanrealestate.com/";
-    const bc_homeTours = await fetch("https://dev.hemantbhutanrealestate.com/api/bc_tours");
-    const bc_homeAccommodations = await fetch("https://dev.hemantbhutanrealestate.com/api/bc_spaces");
-    const bc_homeHotels = await fetch("https://dev.hemantbhutanrealestate.com/api/bc_hotels");
-    const bc_products = await fetch("https://booking.hemantbhutanrealestate.com/api/v1/get_frontend_products");
+    const bc_homeTours = await fetch(
+      "https://dev.hemantbhutanrealestate.com/api/bc_tours"
+    );
+    const bc_homeAccommodations = await fetch(
+      "https://dev.hemantbhutanrealestate.com/api/bc_spaces"
+    );
+    const bc_homeHotels = await fetch(
+      "https://dev.hemantbhutanrealestate.com/api/bc_hotels"
+    );
+    const bc_products = await fetch(
+      "https://booking.hemantbhutanrealestate.com/api/v1/get_frontend_products"
+    );
 
     homeTours.value = await bc_homeTours.json();
     homeAccommodations.value = await bc_homeAccommodations.json();
@@ -178,18 +282,23 @@ export default {
   },
   data() {
     return {
-      limit: 6
-    }
+      limit: 6,
+      hotelLimit: 8,
+    };
   },
   computed: {
     computedAgriProducts() {
       return this.limit ? this.products.slice(0, this.limit) : this.products;
     },
     computedAccommodation() {
-      return this.limit ? this.homeAccommodations.slice(0, this.limit) : this.homeAccommodations;
+      return this.limit
+        ? this.homeAccommodations.slice(0, this.limit)
+        : this.homeAccommodations;
     },
     computedHotels() {
-      return this.limit ? this.homeHotels.slice(0, this.limit) : this.homeHotels;
+      return this.limit
+        ? this.homeHotels.slice(0, this.limit)
+        : this.homeHotels;
     },
   },
 };
@@ -208,7 +317,7 @@ export default {
 .home-objects {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
   border-radius: 5px;
-  margin: 0 1rem 1rem 1rem;
+  margin: 0.5rem;
   padding: 0;
 }
 

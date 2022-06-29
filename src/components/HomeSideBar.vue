@@ -2,13 +2,23 @@
   <div class="accordion mt-3 accordion-flush sticky-top app-sticky-top">
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-          aria-expanded="false" aria-controls="collapseOne">
+        <button
+          class="accordion-button"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseOne"
+          aria-expanded="false"
+          aria-controls="collapseOne"
+        >
           <i class="bi bi-sort-down"></i> Filter
         </button>
       </h2>
-      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-        data-bs-parent="#accordionExample">
+      <div
+        id="collapseOne"
+        class="accordion-collapse collapse show"
+        aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample"
+      >
         <div class="accordion-body">
           <div class="c">
             <div class="sidebar-filters">
@@ -17,7 +27,7 @@
                 <ul class="home-block handicraft-block">
                   <li v-for="handicraft in homeHandicrafts" :key="handicraft">
                     <RouterLink :to="'/handicrafts/' + handicraft.name">{{
-                        handicraft.name
+                      handicraft.name
                     }}</RouterLink>
                   </li>
                 </ul>
@@ -28,7 +38,7 @@
                 <ul class="home-block Agriculture-block">
                   <li v-for="product in homeAgriproducts" :key="product">
                     <RouterLink :to="'/agriproducts/' + product.name">{{
-                        product.name
+                      product.name
                     }}</RouterLink>
                   </li>
                 </ul>
@@ -38,10 +48,13 @@
                 <h6>Browse Dzongkhags</h6>
                 <ul class="home-block Dzongkhag-block">
                   <li v-for="dzongkhag in dzongkhags" :key="dzongkhag">
-                    <RouterLink :to="{
-                      name: 'Dzongkhags',
-                      params: { location_id: dzongkhag },
-                    }">{{ dzongkhag }}</RouterLink>
+                    <RouterLink
+                      :to="{
+                        name: 'Dzongkhags',
+                        params: { location_id: dzongkhag },
+                      }"
+                      >{{ dzongkhag }}</RouterLink
+                    >
                   </li>
                 </ul>
               </div>
@@ -50,7 +63,6 @@
         </div>
       </div>
     </div>
-
 
     <h2 class="accordion-header">
       <button class="accordion-button bu" id="bumbum">
@@ -63,14 +75,21 @@
           <div class="sidebar-filters">
             <div class="block-1 mb-3">
               <div class="image-block my-2">
-                <img src="@/assets/img/brokpa.jpg" alt="" />
+                <img loading="lazy" src="@/assets/img/brokpa.jpg" alt="" />
               </div>
               <ul class="home-block">
-                <li v-for="attraction in popAttractions" :key="attraction" class="mt-1">
-                  <RouterLink :to="
-                    'https://test.hemantbhutanrealestate.com/news/' +
-                    attraction
-                  ">{{ attraction }}</RouterLink>
+                <li
+                  v-for="attraction in popAttractions"
+                  :key="attraction"
+                  class="mt-1"
+                >
+                  <RouterLink
+                    :to="
+                      'https://test.hemantbhutanrealestate.com/news/' +
+                      attraction
+                    "
+                    >{{ attraction }}</RouterLink
+                  >
                 </li>
               </ul>
             </div>
@@ -83,21 +102,21 @@
 
 <script>
 const homeHandicrafts = [
-  { name: "Textile", link: 'Textile-XDPg6' },
-  { name: "Cane & Bamboo", link: 'Cane--Bamboo-sGe1X' },
-  { name: "Wood Crafts", link: 'Wood-Crafts-oc1MB' },
-  { name: "Metal Crafts", link: 'Metal-Crafts-htfQ2' },
-  { name: "General Souvenir", link: 'General-Souvenir-y7ZYM' },
+  { name: "Textile", link: "Textile-XDPg6" },
+  { name: "Cane & Bamboo", link: "Cane--Bamboo-sGe1X" },
+  { name: "Wood Crafts", link: "Wood-Crafts-oc1MB" },
+  { name: "Metal Crafts", link: "Metal-Crafts-htfQ2" },
+  { name: "General Souvenir", link: "General-Souvenir-y7ZYM" },
 ];
 
 const homeAgriproducts = [
-  { name: "Fresh Vegetables", link: 'Fresh-Vegetables-hKvOE' },
-  { name: "Food Grains", link: 'Food-Grains-azYWe' },
-  { name: "Fresh Fruits", link: 'Fresh-Fruits-KUZ7q' },
-  { name: "Proccessed Food", link: 'Proccessed-Food-J8xL4' },
-  { name: "Dairy Products", link: 'Dairy-Products-bH7lp' },
-  { name: "Mushrooms", link: 'Mushrooms-CQgMe' },
-  { name: "Edible Wild Plants", link: 'Edible-Wild-Plants-wj7Xn' },
+  { name: "Fresh Vegetables", link: "Fresh-Vegetables-hKvOE" },
+  { name: "Food Grains", link: "Food-Grains-azYWe" },
+  { name: "Fresh Fruits", link: "Fresh-Fruits-KUZ7q" },
+  { name: "Proccessed Food", link: "Proccessed-Food-J8xL4" },
+  { name: "Dairy Products", link: "Dairy-Products-bH7lp" },
+  { name: "Mushrooms", link: "Mushrooms-CQgMe" },
+  { name: "Edible Wild Plants", link: "Edible-Wild-Plants-wj7Xn" },
 ];
 
 const dzongkhags = [
@@ -283,7 +302,7 @@ input[type="range"]::-moz-range-thumb {
 .home-block li a:hover {
   color: #f7941e;
 }
-.accordion-button.bu#bumbum::after{
+.accordion-button.bu#bumbum::after {
   display: none;
 }
 @media only screen and (max-width: 992px) {

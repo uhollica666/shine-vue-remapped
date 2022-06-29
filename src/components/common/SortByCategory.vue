@@ -6,12 +6,23 @@
       </h4>
       <p class="mt-3">{{ subTitleCategory }}</p>
       <div class="row">
-        <div v-for="category in categoryAccommodations" :key="category.id" class="col-md-3 col-lg-3 col-xl-3 mt-2">
+        <div
+          v-for="category in categoryAccommodations"
+          :key="category.id"
+          class="col-md-3 col-lg-3 col-xl-3 mt-2"
+        >
           <div class="card mt-2">
             <div class="card-body">
-              <img :src="category.image_id" alt="" class="card-img" />
-              <a :href="siteURL + '/space?terms%5B%5D=' + category.space_id"
-                class="category-details text-center">
+              <img
+                loading="lazy"
+                :src="category.image_id"
+                alt=""
+                class="card-img img-fluid"
+              />
+              <a
+                :href="siteURL + '/space?terms%5B%5D=' + category.space_id"
+                class="category-details text-center"
+              >
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ category.category }}
@@ -29,11 +40,23 @@
       </h4>
       <p class="mt-3">{{ subTitleCategory }}</p>
       <div class="row">
-        <div v-for="category in categoryTours" :key="category.id" class="col-md-3 col-lg-3 col-xl-3 mt-2">
+        <div
+          v-for="category in categoryTours"
+          :key="category.id"
+          class="col-md-3 col-lg-3 col-xl-3 mt-2"
+        >
           <div class="card mt-2">
             <div class="card-body">
-              <img :src="apiURL + category.file_path" alt="" class="card-img" />
-              <a :href="siteURL + '/tour?terms%5B%5D=' + category.name" class="category-details text-center">
+              <img
+                loading="lazy"
+                :src="apiURL + category.file_path"
+                alt=""
+                class="card-img img-fluid"
+              />
+              <a
+                :href="siteURL + '/tour?terms%5B%5D=' + category.name"
+                class="category-details text-center"
+              >
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ category.name }}

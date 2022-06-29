@@ -10,9 +10,10 @@
           <div class="card mt-3">
             <div class="card-body">
               <img
+                loading="lazy"
                 :src="ecomURL + 'public/' + prompProduct.file_name"
                 alt=""
-                class="card-img"
+                class="card-img img-fluid"
               />
               <a
                 :href="ecomURL + 'product/' + prompProduct.slug"
