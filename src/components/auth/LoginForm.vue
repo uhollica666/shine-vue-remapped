@@ -39,6 +39,11 @@ export default {
             const response = await axios.post('login', {
                 email: this.email,
                 password: this.password,
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+                    "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token"
+                },
             });
             localStorage.setItem('token', response.data.token)
             this.$store.dispatch('user', response.data.user);
