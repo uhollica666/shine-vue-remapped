@@ -11,7 +11,7 @@
             <DzongkhagContent />
           </template>
           <template #fallback>
-            <h5 class="text-center my-5"> 🔄️ Fetching Dzongkhag Details...</h5>
+            <Loader />
           </template>
         </Suspense>
         
@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import Loader from '@/components/common/Loader'
 import DzongkhagSideBar from '@/components/common/DzongkhagSideBar';
 import DzongkhagContent from '@/components/DzongkhagContent';
 
@@ -29,7 +30,8 @@ export default {
   name: "PropertyPage",
   components: {
     DzongkhagSideBar,
-    DzongkhagContent
+    DzongkhagContent,
+    Loader,
   },
 };
 </script>

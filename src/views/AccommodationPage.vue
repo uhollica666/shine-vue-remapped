@@ -12,7 +12,7 @@
                         <SortByCategory />
                     </template>
                     <template #fallback>
-                        <h5 class="text-center my-5"> 🔄️ Fetching Categories...</h5>
+                        <Loader />
                     </template>
                 </Suspense>
 
@@ -21,7 +21,7 @@
                         <ViewByDzongkhag />
                     </template>
                     <template #fallback>
-                        <h5 class="text-center my-5"> 🔄️ Fetching Category...</h5>
+                        <Loader />
                     </template>
                 </Suspense>
 
@@ -30,7 +30,7 @@
                         <AccommodationContent :accommodations="accommodations" />
                     </template>
                     <template #fallback>
-                        <h5 class="text-center my-5"> 🔄️ Fetching Accommodations...</h5>
+                        <Loader />
                     </template>
                 </Suspense>
 
@@ -39,7 +39,7 @@
                         <HotelsContent :hotels="hotels" />
                     </template>
                     <template #fallback>
-                        <h5 class="text-center my-5"> 🔄️ Fetching Hotels...</h5>
+                        <Loader />
                     </template>
 
                 </Suspense>
@@ -62,7 +62,7 @@
                         </PromotionWrapper>
                     </template>
                     <template #fallback>
-                        <h5 class="text-center my-5"> 🔄️ Fetching Promotions...</h5>
+                        <Loader />
                     </template>
                 </Suspense>
             </div>
@@ -74,7 +74,7 @@
                         <BlogPost />
                     </template>
                     <template #fallback>
-                        <h5 class="text-center my-5"> 🔄️ Fetching Blog Posts...</h5>
+                        <Loader />
                     </template>
                 </Suspense>
 
@@ -85,6 +85,7 @@
 </template>
 
 <script>
+import Loader from "@/components/common/Loader";
 import SidebarFilter from "@/components/common/SidebarFilter";
 import PageBanner from "@/components/common/PageBanner";
 import SortByCategory from "@/components/common/SortByCategory";
@@ -167,6 +168,7 @@ export default {
     },
 
     components: {
+        Loader,
         SidebarFilter,
         PageBanner,
         SortByCategory,

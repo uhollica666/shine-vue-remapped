@@ -16,7 +16,7 @@
             <SortByCategory />
           </template>
           <template #fallback>
-            <h5 class="text-center my-5">🔄️ Fetching Categories...</h5>
+            <Loader />
           </template>
         </Suspense>
 
@@ -25,7 +25,7 @@
             <ToursByDzongkhag />
           </template>
           <template #fallback>
-            <h5 class="text-center my-5">🔄️ Fetching Locations...</h5>
+            <Loader />
           </template>
         </Suspense>
 
@@ -34,7 +34,7 @@
             <ToursContent :tours="tours" />
           </template>
           <template #fallback>
-            <h5 class="text-center my-5">🔄️ Fetching Tours...</h5>
+            <Loader />
           </template>
         </Suspense>
       </div>
@@ -56,7 +56,7 @@
             </PromotionWrapper>
           </template>
           <template #fallback>
-            <h5 class="text-center my-5">🔄️ Fetching Promotions...</h5>
+            <Loader />
           </template>
         </Suspense>
       </div>
@@ -68,7 +68,7 @@
             <BlogPost />
           </template>
           <template #fallback>
-            <h5 class="text-center my-5">🔄️ Fetching Blog Posts...</h5>
+            <Loader />
           </template>
         </Suspense>
       </div>
@@ -77,6 +77,7 @@
 </template>
 
 <script>
+import Loader from "@/components/common/Loader";
 import SidebarFilter from "@/components/common/SidebarFilter";
 import PageBanner from "@/components/common/PageBanner";
 import SortByCategory from "@/components/common/SortByCategory";
@@ -90,19 +91,13 @@ import PromotionProducts from "@/components/common/PromotionProducts";
 import BlogPost from "@/components/common/BlogPost";
 import TOURS_DATA from "@/APIs/Tours_DATA.json";
 
+
 export default {
   data() {
     return {
       tours: TOURS_DATA,
     };
-    // return {
-    //     tours: []
-    // };
   },
-  // async mounted(){
-  //     const touritems = await fetch('https://test.hemantbhutanrealestate.com/api/tours');
-  //     const content = await touritems.json();
-  // },
 
   methods: {
     filterItems(filter) {
@@ -163,6 +158,7 @@ export default {
     PromotionTours,
     PromotionProducts,
     BlogPost,
+    Loader,
   },
 };
 </script>

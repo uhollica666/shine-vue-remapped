@@ -12,7 +12,7 @@
                         <FeaturedHandiCrafts :products="products" />
                     </template>
                     <template #fallback>
-                        <h5 class="text-center my-5"> 🔄️ Fetching Products...</h5>
+                        <Loader />
                     </template>
                 </Suspense>
             </div>
@@ -22,7 +22,7 @@
                 <RecentProducts />
             </template>
             <template #fallback>
-                <h5 class="text-center my-5"> 🔄️ Fetching Products...</h5>
+                <Loader />
             </template>
         </Suspense>
         <Suspense>
@@ -30,13 +30,14 @@
                 <PopularProducts />
             </template>
             <template #fallback>
-                <h5 class="text-center my-5"> 🔄️ Fetching Products...</h5>
+                <Loader />
             </template>
         </Suspense>
     </div>
 </template>
 
 <script>
+import Loader from "@/components/common/Loader";
 import SidebarFilter from "@/components/common/SidebarFilter";
 import PageBanner from "@/components/common/PageBanner";
 import FeaturedHandiCrafts from "@/components/FeaturedHandiCrafts";
@@ -51,6 +52,7 @@ export default {
         FeaturedHandiCrafts,
         RecentProducts,
         PopularProducts,
+        Loader,
     },
 }
 </script>

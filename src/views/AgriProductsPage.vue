@@ -10,7 +10,7 @@
                         <AllAgriProducts />
                     </template>
                     <template #fallback>
-                        <h5 class="text-center my-5"> 🔄️ Fetching Products...</h5>
+                        <Loader />
                     </template>
                 </Suspense>
             </div>
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import Loader from "@/components/common/Loader";
 import AllAgriProducts from '@/components/AllAgriProducts';
 import CategorySidebarFilter from '@/components/common/CategorySidebarFilter';
 export default {
@@ -26,6 +27,7 @@ export default {
     components: {
         AllAgriProducts,
         CategorySidebarFilter,
+        Loader,
     },
 };
 </script>

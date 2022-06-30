@@ -10,7 +10,7 @@
                         <AllHandicraftProducts />
                     </template>
                     <template #fallback>
-                        <h5 class="text-center my-5"> 🔄️ Fetching Products...</h5>
+                        <Loader />
                     </template>
                 </Suspense>
             </div>
@@ -21,12 +21,14 @@
 <script>
 import AllHandicraftProducts from '@/components/AllHandicraftProducts';
 import CategorySidebarFilter from '@/components/common/CategorySidebarFilter';
+import Loader from '@/components/common/Loader';
 export default {
     name: "AgriProductsPage",
     components: {
-        AllHandicraftProducts,
-        CategorySidebarFilter,
-    },
+    AllHandicraftProducts,
+    CategorySidebarFilter,
+    Loader,
+},
 };
 </script>
 

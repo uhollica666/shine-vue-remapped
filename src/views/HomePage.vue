@@ -23,7 +23,7 @@
               <HomeContent />
             </template>
             <template #fallback>
-              <h5 class="text-center my-5">🔄️ Fetching Home Content...</h5>
+              <HomeLoader />
             </template>
           </Suspense>
         </div>
@@ -37,6 +37,7 @@ import HomeCarouselSlide from "@/components/HomeCarouselSlide";
 import HomeCarousel from "@/components/HomeCarousel";
 import HomeSidebar from "@/components/HomeSideBar";
 import HomeContent from "@/components/HomeContent";
+import HomeLoader from "@/components/common/HomeLoader";
 export default {
   name: "HomePage",
 
@@ -51,6 +52,7 @@ export default {
     HomeCarousel,
     HomeSidebar,
     HomeContent,
+    HomeLoader,
   },
 };
 </script>

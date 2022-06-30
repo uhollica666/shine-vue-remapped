@@ -67,6 +67,11 @@ const routes = [
     name: 'Category-Handicrafts',
     component: () => import( /* webpackChunkName: "about" */ '../views/HandicraftProductsPage')
   },
+  {
+    path: '/loader',
+    name: 'LoaderPage',
+    component: () => import( /* webpackChunkName: "about" */ '../views/LoaderTest')
+  },
 ]
 
 const router = createRouter({

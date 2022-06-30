@@ -12,7 +12,7 @@
             <DzongkhagContent />
           </template>
           <template #fallback>
-            <h5 class="text-center my-5"> 🔄️ Fetching Dzongkhag Details...</h5>
+            <Loader/>
           </template>
         </Suspense>
         
@@ -27,7 +27,7 @@
             <BlogPost />
           </template>
           <template #fallback>
-            <h5 class="text-center my-5">🔄️ Fetching details...</h5>
+            <Loader />
           </template>
         </Suspense>
 
@@ -41,6 +41,7 @@ import DzongkhagSideBar from '@/components/common/DzongkhagSideBar';
 import PageBanner from '@/components/common/PageBanner';
 import DzongkhagContent from '@/components/DzongkhagContent';
 import BlogPost from '@/components/common/BlogPost';
+import Loader from '@/components/common/Loader';
 
 
 export default {
@@ -49,8 +50,9 @@ export default {
     DzongkhagSideBar,
     PageBanner,
     BlogPost,
-    DzongkhagContent
-  },
+    DzongkhagContent,
+    Loader,
+},
 };
 </script>
 
