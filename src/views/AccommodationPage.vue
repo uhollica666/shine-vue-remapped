@@ -100,6 +100,26 @@ import BlogPost from "@/components/common/BlogPost";
 export default {
     name: "AccommodationPage",
 
+    computed: {
+        filteredItems: {
+            get() {
+                return this.accommodations
+            },
+            set(type, str) {
+                const results = this.accommodations.filter((accommodation) => {
+                    if (type === "dzongkhag") {
+                        return accommodation.name.toLowerCase().includes(str.toLowerCase())
+                    } else if (type === "star") {
+                        return accommodation.star.toLowerCase().includes(str.toLowerCase())
+                    } else {
+                        return accommodation.title.toLowerCase().includes(str.toLowerCase())
+                    }
+                })
+                return results
+            }
+        }
+    },
+
     methods: {
         filterItems(filter) {
             this.resetAccommodations();

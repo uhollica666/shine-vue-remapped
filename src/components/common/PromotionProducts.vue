@@ -25,7 +25,7 @@
                     {{ prompProduct.name }}
                   </h6>
                   <div class="location text-truncate">
-                    <i class="bi bi-cash-coin"></i>{{ prompProduct.unit_price }}
+                    <i class="bi bi-cash-coin"></i>Nu. {{ prompProduct.unit_price }}.00
                   </div>
                 </div>
               </a>

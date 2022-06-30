@@ -38,8 +38,11 @@
                                 <div class="form-check my-2" v-for="starRating in starRatings" :key="starRating">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"
                                         id="flexRadioDefault1" @click="() => starFilter(starRating)" />
-                                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
-                                        {{ starRating }} <i class="bi bi-star"></i> Properties
+                                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1" v-if="starRating === 'All'">
+                                        {{ starRating }} Star Properties
+                                    </label>
+                                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1" v-else>
+                                        {{ starRating }} <i class="bi bi-star-fill text-warning"></i> Properties
                                     </label>
                                 </div>
                             </div>
@@ -115,7 +118,7 @@ const filters = [
     "Trashigang",
     "Zhemgang",
 ];
-const starRatings = ["All", 3, 4, 5];
+const starRatings = ["All", 2, 3, 4, 5];
 
 const productCategories = [
     "All",
