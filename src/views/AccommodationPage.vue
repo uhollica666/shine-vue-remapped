@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12 col-xs-12">
-                <SidebarFilter :searchFilter="searchFilter" :filterItems="filterItems" :starFilter="starFilter" />
+                <SidebarFilter :filterItems="filterItems" :filteredAccommodation="filteredAccommodation" />
             </div>
             <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-xs-12 infinite-scroll">
                 <PageBanner />
@@ -98,73 +98,68 @@ import PromotionEvents from "@/components/common/PromotionEvents";
 import PromotionTours from "@/components/common/PromotionTours";
 import PromotionProducts from "@/components/common/PromotionProducts";
 import BlogPost from "@/components/common/BlogPost";
+
 export default {
     name: "AccommodationPage",
 
+    // methods: {
+    //     filterItems(filter) {
+    //         this.resetAccommodations();
+    //         if (filter === "All") {
+    //             this.accommodations = this.AccommodationContent;
+    //         } else {
+    //             this.accommodations = AccommodationContent.filter((accommodation) => {
+    //                 return accommodation.name
+    //                     .toLowerCase()
+    //                     .includes(filter.toLowerCase());
+    //             });
+    //         }
+    //     },
+    //     starFilter(starRating) {
+    //         this.resetAccommodations();
+    //         if (starRating === "All") {
+    //             this.accommodations = AccommodationContent;
+    //         } else if (starRating === 3) {
+    //             this.accommodations = AccommodationContent.filter((accommodation) => {
+    //                 return accommodation.review_score >= 3;
+    //             });
+    //         } else if (starRating === 4) {
+    //             this.accommodations = AccommodationContent.filter((accommodation) => {
+    //                 return accommodation.review_score >= 4;
+    //             });
+    //         } else if (starRating === 5) {
+    //             this.accommodations = AccommodationContent.filter((accommodation) => {
+    //                 return accommodation.review_score >= 5;
+    //             });
+    //         } else {
+    //             this.accommodations = AccommodationContent.filter((accommodation) => {
+    //                 return accommodation.review_score >= 2;
+    //             });
+    //         }
+    //     },
+    //     searchFilter(search) {
+    //         this.resetAccommodations();
+    //         this.accommodations = AccommodationContent.filter((accommodation) => {
+    //             return accommodation.title.toLowerCase().includes(search.toLowerCase());
+    //         });
+    //     },
+    //     resetAccommodations() {
+    //         this.accommodations = AccommodationContent;
+    //     },
+    // },
+
     computed: {
-        filteredItems: {
-            get() {
+        accommodations() {
+          return this.$store.state.accommodations;  
+        },
+        filteredAccommodation:{
+            get() { 
                 return this.accommodations
             },
-            set(type, str) {
-                const results = this.accommodations.filter((accommodation) => {
-                    if (type === "dzongkhag") {
-                        return accommodation.name.toLowerCase().includes(str.toLowerCase())
-                    } else if (type === "star") {
-                        return accommodation.star.toLowerCase().includes(str.toLowerCase())
-                    } else {
-                        return accommodation.title.toLowerCase().includes(str.toLowerCase())
-                    }
-                })
-                return results
+            set(value) {
+                this.accommodations = value;
             }
         }
-    },
-
-    methods: {
-        filterItems(filter) {
-            this.resetAccommodations();
-            if (filter === "All") {
-                this.accommodations = this.AccommodationContent;
-            } else {
-                this.accommodations = AccommodationContent.filter((accommodation) => {
-                    return accommodation.name
-                        .toLowerCase()
-                        .includes(filter.toLowerCase());
-                });
-            }
-        },
-        starFilter(starRating) {
-            this.resetAccommodations();
-            if (starRating === "All") {
-                this.accommodations = AccommodationContent;
-            } else if (starRating === 3) {
-                this.accommodations = AccommodationContent.filter((accommodation) => {
-                    return accommodation.review_score >= 3;
-                });
-            } else if (starRating === 4) {
-                this.accommodations = AccommodationContent.filter((accommodation) => {
-                    return accommodation.review_score >= 4;
-                });
-            } else if (starRating === 5) {
-                this.accommodations = AccommodationContent.filter((accommodation) => {
-                    return accommodation.review_score >= 5;
-                });
-            } else {
-                this.accommodations = AccommodationContent.filter((accommodation) => {
-                    return accommodation.review_score >= 2;
-                });
-            }
-        },
-        searchFilter(search) {
-            this.resetAccommodations();
-            this.accommodations = AccommodationContent.filter((accommodation) => {
-                return accommodation.title.toLowerCase().includes(search.toLowerCase());
-            });
-        },
-        resetAccommodations() {
-            this.accommodations = AccommodationContent;
-        },
     },
 
     components: {

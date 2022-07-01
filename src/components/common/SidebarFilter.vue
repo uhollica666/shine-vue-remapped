@@ -16,8 +16,8 @@
                                 <h6 class="mb-3">Search Anything</h6>
                             </div>
                             <form class="form-inline mb-3" for="search" @submit.prevent="">
-                                <input class="form-control" type="search" placeholder="Search" id="search"
-                                    v-model="search" @keydown="searchFilter(search)" />
+                                <input class="form-control" type="search" placeholder="Search" id="search"/>
+                                    <!-- v-model="search" @keydown="searchFilter(search)" /> -->
                             </form>
 
                             <div class="heading">
@@ -25,7 +25,7 @@
                             </div>
                             <div class="form-check my-2" v-for="filter in filters" :key="filter">
                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                    id="flexRadioDefault1" @click="() => filterItems(filter)" />
+                                    id="flexRadioDefault1" @click="() => filteredAccommodation(filter)" />
                                 <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
                                     {{ filter }}
                                 </label>
@@ -36,8 +36,8 @@
                                     <h6 class="mb-3 mt-3">Filter By Rating</h6>
                                 </div>
                                 <div class="form-check my-2" v-for="starRating in starRatings" :key="starRating">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault1" @click="() => starFilter(starRating)" />
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"/>
+                                        <!-- id="flexRadioDefault1" @click="() => starFilter(starRating)" /> -->
                                     <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1" v-if="starRating === 'All'">
                                         {{ starRating }} Star Properties
                                     </label>
@@ -52,8 +52,8 @@
                                     <h6 class="mb-3 mt-3">Filter By Category</h6>
                                 </div>
                                 <div class="form-check my-2" v-for="caregory in productCategories" :key="caregory">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault1" @click="() => starFilter(caregory)" />
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"/>
+                                        <!-- id="flexRadioDefault1" @click="() => starFilter(caregory)" /> -->
                                     <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
                                         {{ caregory }}
                                     </label>
@@ -65,8 +65,8 @@
                                     <h6 class="mb-3 mt-3">Filter By Category</h6>
                                 </div>
                                 <div class="form-check my-2" v-for="caregory in agriCategory" :key="caregory">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                        id="flexRadioDefault1" @click="() => starFilter(caregory)" />
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"/>
+                                        <!-- id="flexRadioDefault1" @click="() => starFilter(caregory)" /> -->
                                     <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
                                         {{ caregory }}
                                     </label>
@@ -143,8 +143,17 @@ const agriCategory = [
 
 export default {
     name: "SidebarFilter",
+    props: [
+        "filterItems",
+        "filteredAccommodation",
+        // "starFilter",
+        // "searchFilter",
+        // "productCategories",
+        // "agriCategory",
+    ],
     data() {
         return {
+            /*eslint-disable*/
             filters,
             starRatings,
             productCategories,

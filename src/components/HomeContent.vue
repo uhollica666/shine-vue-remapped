@@ -5,7 +5,7 @@
         <h6 class="text-center py-3 home-heading">Agri Products</h6>
         <div class="container home-container">
           <div class="product-images row">
-            <template v-for="product in computedAgriProducts">
+            <template v-for="product in computedProducts">
               <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Agri Products'" :key="product.id">
                 <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
               </div>
@@ -23,7 +23,7 @@
         <h6 class="text-center py-3 home-heading">Handicraft Products</h6>
         <div class="container home-container">
           <div class="product-images row">
-            <template v-for="product in computedAgriProducts">
+            <template v-for="product in computedProducts">
               <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Handicrats'" :key="product.id">
                 <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
               </div>
@@ -138,7 +138,7 @@
         <h6 class="text-center py-3 home-heading">Popular Agri Products</h6>
         <div class="container home-container">
           <div class="product-images row">
-            <template v-for="product in computedAgriProducts">
+            <template v-for="product in computedProducts">
               <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Agri Products'" :key="product.id">
                 <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
               </div>
@@ -158,7 +158,7 @@
         </h6>
         <div class="container home-container">
           <div class="product-images row">
-            <template v-for="product in computedAgriProducts">
+            <template v-for="product in computedProducts">
               <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Handicrats'" :key="product.id">
                 <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
               </div>
@@ -236,7 +236,7 @@ export default {
   },
 
   computed: {
-    computedAgriProducts() {
+    computedProducts() {
       return this.limit ? this.products.slice(0, this.limit) : this.products;
     },
     computedAccommodation() {

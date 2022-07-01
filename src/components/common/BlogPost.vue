@@ -6,25 +6,12 @@
         <p class="text-center">Explore the stories and weekly blog updates</p>
       </div>
       <div class="row flex-row flex-nowrap overflow-auto mb-5">
-        <div
-          class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 mt-3 mx-auto"
-          v-for="story in stories"
-          :key="story.id"
-        >
+        <div class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 mt-3 mx-auto" v-for="story in getBlogPost" :key="story.id">
           <div class="card mt-3 mb-3">
             <div class="card-body">
-              <img
-                loading="lazy"
-                :src="apiURL + story.file_path"
-                alt=""
-                class="card-img-blog img-fluid"
-                :data-src="apiURL + story.file_path"
-              />
-              <a
-                :href="siteURL + '/en/news/' + story.slug"
-                class="category-details"
-                target="_blank"
-              >
+              <img loading="lazy" :src="apiURL + story.file_path" alt="" class="card-img-blog img-fluid"
+                :data-src="apiURL + story.file_path" />
+              <a :href="siteURL + '/en/news/' + story.slug" class="category-details" target="_blank">
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ story.title }}
@@ -52,25 +39,12 @@
         <p class="text-center">Explore the stories and weekly blog updates</p>
       </div>
       <div class="row flex-row flex-nowrap overflow-auto mb-5">
-        <div
-          class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 mt-3 mx-auto"
-          v-for="story in stories"
-          :key="story.id"
-        >
+        <div class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 mt-3 mx-auto" v-for="story in getDzongkhagBlogPost" :key="story.id">
           <div class="card mt-3 mb-3">
             <div class="card-body">
-              <img
-                loading="lazy"
-                :src="apiURL + story.file_path"
-                alt=""
-                class="card-img-blog img-fluid"
-                :data-src="apiURL + story.file_path"
-              />
-              <a
-                :href="siteURL + '/en/news/' + story.slug"
-                class="category-details"
-                target="_blank"
-              >
+              <img loading="lazy" :src="apiURL + story.file_path" alt="" class="card-img-blog img-fluid"
+                :data-src="apiURL + story.file_path" />
+              <a :href="siteURL + '/en/news/' + story.slug" class="category-details" target="_blank">
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ story.title }}
@@ -112,6 +86,24 @@ export default {
       siteURL,
     };
   },
+  methods: {
+    sortBlogPost() {
+      return this.stories.sort((a, b) => (a.id < b.id ? 1 : -1));
+    },
+    sortDzongkhagBlogPost() {
+      return this.stories.filter((story) => {
+        return story.content.toLowerCase().includes(this.$route.params.location_id);
+      });
+    },
+  },
+  computed: {
+    getBlogPost() {
+      return this.sortBlogPost();
+    },
+    getDzongkhagBlogPost() {
+      return this.sortDzongkhagBlogPost();
+    },
+  },
 };
 </script>
 
@@ -121,8 +113,8 @@ i.bi {
 }
 
 .card-img-blog {
-  height: 250px;
   width: 100%;
+  aspect-ratio: 16/10;
   object-fit: cover;
   border-radius: 5px;
 }
