@@ -12,24 +12,23 @@
                 <div class="accordion-body">
                     <div class="c">
                         <div class="sidebar-filters">
-                            
+
                             <div class="heading">
-                                <h6 class="mb-3">Explore Other Dzongkhags</h6>
+                                <h6 class="mb-3">Explore All Agri Products</h6>
                             </div>
-                            <div class="dzo-list" v-for="dzongkhag in dzongkhags" :key="dzongkhag">
-                                <RouterLink :to="{name:'Dzongkhags', params:{location_id: dzongkhag}}" :class="{active: isActive }">
+                            <div class="dzo-list" v-for="category in categories" :key="category">
+                                <RouterLink :to="{ name: 'Search', params: { category: category } }"
+                                    :class="{ active: isActive }">
                                     <ul class="lists-dzo">
-                                        <li>{{dzongkhag}}</li>
+                                        <li>{{ category }}</li>
                                     </ul>
                                 </RouterLink>
                             </div>
                             <div class="back-to-home">
-                                <RouterLink to="/" class="home-button">
-                                    <i class="bi bi-caret-left"></i> Back To Home
+                                <RouterLink to="/agriproducts" class="home-button">
+                                    <i class="bi bi-caret-left"></i> Back To Previous Page
                                 </RouterLink>
                             </div>
-
-                            
                         </div>
                     </div>
                 </div>
@@ -39,37 +38,40 @@
 </template>
 
 <script>
-const dzongkhags = [
-    "Dagana",
-    "Lhuentse",
-    "Mongar",
-    "Pemagatshel",
-    "Tashiyangtse",
-    "Trashigang",
-    "Zhemgang",
+const categories = [
+    "All",
+    "Fresh Vegetables",
+    "Food Grains",
+    "Fresh Fruits",
+    "Proccessed Food",
+    "Dairy Products",
+    "Mushrooms",
+    "Edible Wild Plants",
 ];
 export default {
     name: "CategorySearchBar",
     data() {
         return {
-            dzongkhags,
+            categories,
 
         }
     }
-   
+
 
 };
 </script>
 
 <style scoped>
-a.router-link-exact-active ul li{
+a.router-link-exact-active ul li {
     color: #f7941e !important;
     font-weight: 600;
 }
-.home-button{
+
+.home-button {
     color: #f7941e;
     text-decoration: none;
 }
+
 .app-sticky-top {
     top: 2rem;
 }
@@ -110,11 +112,13 @@ a.router-link-exact-active ul li{
 .accordion-header {
     border-radius: 10px;
 }
-.lists-dzo{
+
+.lists-dzo {
     text-decoration: none;
     margin: 0.5rem 0;
 }
-.lists-dzo li{
+
+.lists-dzo li {
     color: #2c3e50;
 }
 

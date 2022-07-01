@@ -114,6 +114,6 @@ button.limit {
 }
 
 .card-img {
-  aspect-ratio: 1 !important;
+  aspect-ratio: 1;
 }
 </style>

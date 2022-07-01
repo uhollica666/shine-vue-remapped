@@ -73,7 +73,7 @@ const routes = [
     component: () => import( /* webpackChunkName: "about" */ '../views/LoaderTest')
   },
   {
-    path: '/search/:category_id',
+    path: '/search/:category',
     name: 'Search',
     component: () => import( /* webpackChunkName: "about" */ '../views/SearchPage')
   },

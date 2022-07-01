@@ -11,7 +11,7 @@
                         <FeaturedProducts :products="products" />
                     </template>
                     <template #fallback>
-                        <Loader />
+                        <LoaderTwo />
                     </template>
                 </Suspense>
             </div>
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import Loader from "@/components/common/Loader";
+import LoaderTwo from "@/components/common/LoaderTwo";
 import SidebarFilter from "@/components/common/SidebarFilter";
 import PageBanner from "@/components/common/PageBanner";
 import FeaturedProducts from "@/components/FeaturedProducts";
@@ -50,7 +50,7 @@ export default {
         FeaturedProducts,
         RecentProducts,
         PopularProducts,
-        Loader,
+        LoaderTwo,
     },
 }
 </script>

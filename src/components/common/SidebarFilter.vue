@@ -37,7 +37,6 @@
                                 </div>
                                 <div class="form-check my-2" v-for="starRating in starRatings" :key="starRating">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"/>
-                                        <!-- id="flexRadioDefault1" @click="() => starFilter(starRating)" /> -->
                                     <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1" v-if="starRating === 'All'">
                                         {{ starRating }} Star Properties
                                     </label>
@@ -53,7 +52,6 @@
                                 </div>
                                 <div class="form-check my-2" v-for="caregory in productCategories" :key="caregory">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault"/>
-                                        <!-- id="flexRadioDefault1" @click="() => starFilter(caregory)" /> -->
                                     <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
                                         {{ caregory }}
                                     </label>
@@ -65,11 +63,12 @@
                                     <h6 class="mb-3 mt-3">Filter By Category</h6>
                                 </div>
                                 <div class="form-check my-2" v-for="caregory in agriCategory" :key="caregory">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"/>
-                                        <!-- id="flexRadioDefault1" @click="() => starFilter(caregory)" /> -->
-                                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
-                                        {{ caregory }}
-                                    </label>
+                                    <RouterLink :to="'/search/'+ caregory" class="text-dark">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault"/>
+                                        <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
+                                            {{ caregory }}
+                                        </label>
+                                    </RouterLink>
                                 </div>
                             </div>
 
@@ -166,7 +165,7 @@ export default {
 
 <style scoped>
 .app-sticky-top {
-    top: 3rem;
+    top: 2rem;
 }
 
 .accordion-button:not(.collapsed)::after {

@@ -32,7 +32,7 @@
                   <a :href="ecomURL + 'product/' + product.slug" target="_blank">
                     <button class="btn btn-preview mx-auto my-2">
                       <i class="bi bi-eye mr-1"></i>
-                      Buy Now
+                      View Details
                     </button>
                   </a>
                 </div>
@@ -67,7 +67,7 @@ export default {
 
 <style scoped>
 .card-img {
-  aspect-ratio: 1;
+  aspect-ratio: 1 !important;
 }
 
 .btn-preview {

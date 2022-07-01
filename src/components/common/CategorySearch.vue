@@ -1,16 +1,25 @@
 <template>
   <div>
     <div class="accommodation-element mt-5">
-      <h4 class="text-capitalize">Your Searched for {{ $route.params.category_id }}</h4>
-      <p class="mt-3">Discover the Freshness of Bhutan</p>
+      <h4 class="text-capitalize">
+        Your Searched for <u class="fs-4">{{ $route.params.category }}</u>
+      </h4>
     </div>
     <div class="row mb-3">
-      <template v-for="product in AgriProducts">
-        <div v-if="product.cat_name === $route.params.category_id" :key="product.id"
-          class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 my-3">
+      <template v-for="product in filterProducts">
+        <div
+          v-if="product.cat_name === $route.params.category"
+          :key="product.id"
+          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3"
+        >
           <div class="card mt-2">
             <div class="card-body">
-              <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
+              <img
+                loading="lazy"
+                :src="ecomURL + 'public/' + product.file_name"
+                alt=""
+                class="card-img img-fluid"
+              />
               <div class="card-details">
                 <h6 class="card-title text-truncate">
                   {{ product.name }}
@@ -29,10 +38,58 @@
                   </div>
                 </div>
                 <div class="preview-buttons d-flex item-center">
-                  <a :href="ecomURL + 'product/' + product.slug" target="_blank">
+                  <a
+                    :href="ecomURL + 'product/' + product.slug"
+                    target="_blank"
+                  >
                     <button class="btn btn-preview mx-auto my-2">
                       <i class="bi bi-eye mr-1"></i>
-                      Buy Now
+                      View Details
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          v-if="$route.params.category === 'All'"
+          :key="product.id"
+          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3"
+        >
+          <div class="card mt-2">
+            <div class="card-body">
+              <img
+                loading="lazy"
+                :src="ecomURL + 'public/' + product.file_name"
+                alt=""
+                class="card-img img-fluid"
+              />
+              <div class="card-details">
+                <h6 class="card-title text-truncate">
+                  {{ product.name }}
+                </h6>
+                <p class="text-small text-grey my-2 text-truncate">
+                  {{ product.meta_description }}
+                </p>
+                <div class="product-row my-3">
+                  <h6 class="card-text text-truncate">
+                    <i class="bi bi-cash-coin mr-1"></i> Nu.
+                    {{ product.unit_price }} per Unit
+                  </h6>
+                  <div class="duration-tours text-truncate">
+                    <i class="bi bi-tag"></i>
+                    {{ product.cat_name }}
+                  </div>
+                </div>
+                <div class="preview-buttons d-flex item-center">
+                  <a
+                    :href="ecomURL + 'product/' + product.slug"
+                    target="_blank"
+                  >
+                    <button class="btn btn-preview mx-auto my-2">
+                      <i class="bi bi-eye mr-1"></i>
+                      View Details
                     </button>
                   </a>
                 </div>
@@ -61,6 +118,18 @@ export default {
       AgriProducts,
       ecomURL,
     };
+  },
+  methods: {
+    filteredProducts() {
+      return this.AgriProducts.filter(
+        (product) => product.parent_name === "Agri Products"
+      );
+    },
+  },
+  computed: {
+    filterProducts() {
+      return this.filteredProducts();
+    },
   },
 };
 </script>

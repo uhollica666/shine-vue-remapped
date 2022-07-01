@@ -43,7 +43,7 @@
                   >
                     <button class="btn btn-preview mx-auto my-2">
                       <i class="bi bi-eye mr-1"></i>
-                      Buy Now
+                      View Details
                     </button>
                   </a>
                 </div>
