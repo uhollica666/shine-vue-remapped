@@ -10,7 +10,7 @@
         <div class="card mt-3">
           <div class="card-body">
             <img loading="lazy" :src="apiURL + accommodation.file_path" alt="" class="card-img img-fluid" />
-            <a :href="siteURL + '/space/' + accommodation.slug" class="accommodation-details" target="_blank">
+            <RouterLink :to="'/properties/' + accommodation.slug" class="accommodation-details">
               <div class="card-details">
                 <h6 class="card-title text-truncate" v-if="!accommodation.title">
                   -Name Not Available-
@@ -36,7 +36,7 @@
                   </h6>
                 </div>
               </div>
-            </a>
+            </RouterLink>
           </div>
         </div>
       </div>

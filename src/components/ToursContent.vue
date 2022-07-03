@@ -5,23 +5,11 @@
       <p class="mt-3">Discover the Eastern Bhutan</p>
     </div>
     <div class="row mb-3">
-      <div
-        v-for="tour in tours"
-        :key="tour.id"
-        class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-2"
-      >
+      <div v-for="tour in tours" :key="tour.id" class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-2">
         <div class="card mt-2">
           <div class="card-body">
-            <img
-              loading="lazy"
-              :src="apiURL + tour.file_path"
-              alt=""
-              class="card-img img-fluid"
-            />
-            <a
-              :href="siteURL + 'tour/' + tour.slug"
-              class="accommodation-details"
-            >
+            <img loading="lazy" :src="apiURL + tour.file_path" alt="" class="card-img img-fluid" />
+            <RouterLink :to="'/tour/' + tour.slug" class="accommodation-details">
               <div class="card-details">
                 <h6 class="card-title text-truncate">
                   {{ tour.title }}
@@ -36,10 +24,7 @@
                 <div class="location-tours text-truncate mb-2">
                   <i class="bi bi-geo-alt"></i>{{ tour.name }}
                 </div>
-                <div
-                  class="duration-tours text-truncate"
-                  v-if="!tour.date_form_to"
-                >
+                <div class="duration-tours text-truncate" v-if="!tour.date_form_to">
                   <i class="bi bi-stopwatch"></i>
                   Duration Not Available
                 </div>
@@ -48,7 +33,7 @@
                   {{ tour.date_form_to }}
                 </div>
               </div>
-            </a>
+            </RouterLink>
           </div>
         </div>
       </div>

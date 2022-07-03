@@ -10,13 +10,20 @@
           <div class="card mt-2">
             <div class="card-body">
               <img loading="lazy" :src="category.image_id" alt="" class="card-img img-fluid" />
-              <a :href="siteURL + 'space?terms%5B%5D=' + category.space_id" class="category-details text-center">
+              <RouterLink :to="'/properties/' + category.slug" class="category-details text-center" v-if="category.category === 'Hotels'">
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ category.category }}
                   </h6>
                 </div>
-              </a>
+              </RouterLink>
+              <RouterLink :to="'/cat-filter/' + category.slug" class="category-details text-center" v-else>
+                <div class="card-details">
+                  <h6 class="card-title text-truncate">
+                    {{ category.category }}
+                  </h6>
+                </div>
+              </RouterLink>
             </div>
           </div>
         </div>
@@ -32,13 +39,13 @@
           <div class="card mt-2">
             <div class="card-body">
               <img loading="lazy" :src="apiURL + category.file_path" alt="" class="card-img img-fluid" />
-              <a :href="siteURL + '/tour?terms%5B%5D=' + category.name" class="category-details text-center">
+              <RouterLink :to="'/cat-filter/' + category.slug" class="category-details text-center">
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ category.name }}
                   </h6>
                 </div>
-              </a>
+              </RouterLink>
             </div>
           </div>
         </div>

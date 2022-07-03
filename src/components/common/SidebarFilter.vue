@@ -16,8 +16,8 @@
                                 <h6 class="mb-3">Search Anything</h6>
                             </div>
                             <form class="form-inline mb-3" for="search" @submit.prevent="">
-                                <input class="form-control" type="search" placeholder="Search" id="search"/>
-                                    <!-- v-model="search" @keydown="searchFilter(search)" /> -->
+                                <input class="form-control" type="search" placeholder="Search" id="search" />
+                                <!-- v-model="search" @keydown="searchFilter(search)" /> -->
                             </form>
 
                             <div class="heading">
@@ -36,11 +36,13 @@
                                     <h6 class="mb-3 mt-3">Filter By Rating</h6>
                                 </div>
                                 <div class="form-check my-2" v-for="starRating in starRatings" :key="starRating">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"/>
-                                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1" v-if="starRating === 'All'">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" />
+                                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
+                                        v-if="starRating === 'All'">
                                         {{ starRating }} Star Properties
                                     </label>
-                                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1" v-else>
+                                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
+                                        v-else>
                                         {{ starRating }} <i class="bi bi-star-fill text-warning"></i> Properties
                                     </label>
                                 </div>
@@ -51,7 +53,7 @@
                                     <h6 class="mb-3 mt-3">Filter By Category</h6>
                                 </div>
                                 <div class="form-check my-2" v-for="caregory in productCategories" :key="caregory">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault"/>
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" />
                                     <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
                                         {{ caregory }}
                                     </label>
@@ -63,8 +65,8 @@
                                     <h6 class="mb-3 mt-3">Filter By Category</h6>
                                 </div>
                                 <div class="form-check my-2" v-for="caregory in agriCategory" :key="caregory">
-                                    <RouterLink :to="'/search/'+ caregory" class="text-dark">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault"/>
+                                    <RouterLink :to="'/search/' + caregory" class="text-dark">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" />
                                         <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
                                             {{ caregory }}
                                         </label>

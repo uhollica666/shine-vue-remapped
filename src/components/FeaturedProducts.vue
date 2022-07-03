@@ -23,7 +23,7 @@
                 <div class="product-row my-3">
                   <h6 class="card-text text-truncate">
                     <i class="bi bi-cash-coin mr-1"></i> Nu.
-                    {{ product.unit_price }}
+                    {{ product.unit_price }} per KG
                   </h6>
                   <div class="duration-tours text-truncate">
                     <i class="bi bi-bookmark-star"></i>
@@ -31,12 +31,12 @@
                   </div>
                 </div>
                 <div class="preview-buttons d-flex item-center">
-                  <a :href="ecomURL + 'product/' + product.slug" target="_blank">
+                  <RouterLink :to="'/product/' + product.slug">
                     <button class="btn btn-preview mx-auto my-2">
                       <i class="bi bi-eye mr-1"></i>
                       Preview
                     </button>
-                  </a>
+                  </RouterLink>
                 </div>
               </div>
             </div>
@@ -114,6 +114,6 @@ button.limit {
 }
 
 .card-img {
-  aspect-ratio: 1;
+  aspect-ratio: 1 !important;
 }
 </style>

@@ -1,26 +1,26 @@
 [
     {
         "id": 1,
-        "name": "Byrle Witheford",
         "category": "Guest House",
+        "slug": "guest-house",
         "image_id": "assets/img/guesthouse.jpeg"
     },
     {
         "id": 2,
-        "name": "Leanna Hamley",
         "category": "VHS",
+        "slug": "vhs",
         "image_id": "assets/img/vhs.jpeg"
     },
     {
         "id": 3,
-        "name": "Genevieve Slade",
         "category": "Eco-Lodge",
+        "slug": "eco-logde",
         "image_id": "assets/img/eco-lodge.jpeg"
     },
     {
         "id": 4,
-        "name": "Milty Edelmann",
         "category": "Hotels",
+        "slug": "hotels",
         "image_id": "assets/img/hotels.jpeg"
     }
 ]

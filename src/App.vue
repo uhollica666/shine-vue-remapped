@@ -280,10 +280,12 @@ button.limit {
 
 .card-img {
   width: 100%;
-  aspect-ratio: 16/9;
   object-fit: cover;
   border-radius: 5px;
   margin: 0;
+}
+.card-img:hover {
+  backdrop-filter: blur(5px) !important;
 }
 
 .btn-home {

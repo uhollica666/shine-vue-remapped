@@ -53,9 +53,9 @@ const routes = [
     component: () => import( /* webpackChunkName: "about" */ '../views/DzongkhagsPage')
   },
   {
-    path: '/property/:slug',
-    name: 'Property',
-    component: () => import( /* webpackChunkName: "about" */ '../views/PropertyPage')
+    path: '/properties/:slug',
+    name: 'SingleProperty',
+    component: () => import( /* webpackChunkName: "about" */ '../views/SingleProperty')
   },
   {
     path: '/category-agriproducts/:name',
@@ -76,6 +76,26 @@ const routes = [
     path: '/search/:category',
     name: 'Search',
     component: () => import( /* webpackChunkName: "about" */ '../views/SearchPage')
+  },
+  {
+    path: '/tour/:slug',
+    name: 'SingleTour',
+    component: () => import( /* webpackChunkName: "about" */ '../views/SingleTour')
+  },
+  {
+    path: '/product/:slug',
+    name: 'SingleProduct',
+    component: () => import( /* webpackChunkName: "about" */ '../views/SingleProduct')
+  },
+  {
+    path: '/article/:slug',
+    name: 'SingleArticle',
+    component: () => import( /* webpackChunkName: "about" */ '../views/SingleArticle')
+  },
+  {
+    path: '/cat-filter/:slug',
+    name: 'CategoryFilter',
+    component: () => import( /* webpackChunkName: "about" */ '../views/CategoryFilter')
   },
 ]
 

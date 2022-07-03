@@ -37,15 +37,14 @@
                   </div>
                 </div>
                 <div class="preview-buttons d-flex item-center">
-                  <a
-                    :href="ecomURL + 'product/' + product.slug"
-                    target="_blank"
+                  <RouterLink
+                    :href="'/product/' + product.slug"
                   >
                     <button class="btn btn-preview mx-auto my-2">
                       <i class="bi bi-eye mr-1"></i>
                       View Details
                     </button>
-                  </a>
+                  </RouterLink>
                 </div>
               </div>
             </div>

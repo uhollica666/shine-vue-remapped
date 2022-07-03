@@ -8,7 +8,12 @@
 
         <Suspense>
           <template #default>
-            <DzongkhagContent />
+            <div class="container">
+              <h4 class="my-5 text-center">
+                This Is Property Page
+              </h4>
+              <p>and its Route is {{$route.params.slug}}</p>
+            </div>
           </template>
           <template #fallback>
             <Loader />
@@ -23,14 +28,14 @@
 <script>
 import Loader from '@/components/common/Loader'
 import DzongkhagSideBar from '@/components/common/DzongkhagSideBar';
-import DzongkhagContent from '@/components/DzongkhagContent';
+// import DzongkhagContent from '@/components/DzongkhagContent';
 
 
 export default {
-  name: "PropertyPage",
+  name: "SingleProperty",
   components: {
     DzongkhagSideBar,
-    DzongkhagContent,
+    // DzongkhagContent,
     Loader,
   },
 };

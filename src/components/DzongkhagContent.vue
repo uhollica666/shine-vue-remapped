@@ -6,24 +6,13 @@
         {{ $route.params.location_id }} dzongkhag
       </h4>
       <div class="row">
-        <div v-for="accommodation in accommodations" :key="accommodation.id">
-          <div
-            class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
-            v-if="accommodation.name === $route.params.location_id"
-          >
+        <template v-for="accommodation in accommodations">
+          <div class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12 mt-3"
+            v-if="accommodation.name === $route.params.location_id" :key="accommodation.id">
             <div class="card mt-3">
               <div class="card-body">
-                <img
-                  loading="lazy"
-                  :src="apiURL + accommodation.file_path"
-                  alt=""
-                  class="card-img img-fluid"
-                />
-                <a
-                  :href="siteURL + '/space/' + accommodation.slug"
-                  class="accommodation-details"
-                  target="_blank"
-                >
+                <img loading="lazy" :src="apiURL + accommodation.file_path" alt="" class="card-img img-fluid" />
+                <RouterLink :to="'/properties/' + accommodation.slug" class="accommodation-details">
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
                       {{ accommodation.title }}
@@ -36,17 +25,64 @@
                       <div class="location text-truncate">
                         <i class="bi bi-geo-alt"></i>{{ accommodation.name }}
                       </div>
-                      <h6 class="rating">
+                      <h6 class="rating" v-if="!accommodation.review_score">
+                        <i class="bi bi-star-fill start-icon mx-1"></i>
+                        No reviews
+                      </h6>
+                      <h6 class="rating" v-else>
                         <i class="bi bi-star-fill start-icon mx-1"></i>
                         {{ accommodation.review_score }} / 5
                       </h6>
                     </div>
                   </div>
-                </a>
+                </RouterLink>
               </div>
             </div>
           </div>
-        </div>
+        </template>
+      </div>
+    </div>
+
+    <div class="dzongkhag-accommodation mt-5">
+      <h4 class="text-capitalize">
+        Explore Hotels under
+        {{ $route.params.location_id }} dzongkhag
+      </h4>
+      <div class="row">
+        <template v-for="hotel in hotels">
+          <div class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 mt-3" v-if="hotel.name === $route.params.location_id"
+            :key="hotel.id">
+            <div class="card mt-3">
+              <div class="card-body">
+                <img loading="lazy" :src="apiURL + hotel.file_path" alt="" class="card-img img-fluid" />
+                <RouterLink :to="'/properties/' + hotel.slug" class="accommodation-details">
+                  <div class="card-details">
+                    <h6 class="card-title text-truncate">
+                      {{ hotel.title }}
+                    </h6>
+                    <h6 class="card-text my-3">
+                      <i class="bi bi-cash-coin mr-1"></i> Nu.
+                      {{ hotel.price }} / night
+                    </h6>
+                    <div class="details">
+                      <div class="location text-truncate">
+                        <i class="bi bi-geo-alt"></i>{{ hotel.name }}
+                      </div>
+                      <h6 class="rating" v-if="!hotel.review_score">
+                        <i class="bi bi-star-fill start-icon mx-1"></i>
+                        No reviews
+                      </h6>
+                      <h6 class="rating" v-else>
+                        <i class="bi bi-star-fill start-icon mx-1"></i>
+                        {{ hotel.review_score }} / 5
+                      </h6>
+                    </div>
+                  </div>
+                </RouterLink>
+              </div>
+            </div>
+          </div>
+        </template>
       </div>
     </div>
 
@@ -56,23 +92,12 @@
       </h4>
       <div class="row">
         <template v-for="tour in tours">
-          <div
-            class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
-            :key="tour.id"
-            v-if="tour.name === $route.params.location_id"
-          >
+          <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3" :key="tour.id"
+            v-if="tour.name === $route.params.location_id">
             <div class="card mt-2">
               <div class="card-body">
-                <img
-                  loading="lazy"
-                  :src="apiURL + tour.file_path"
-                  alt=""
-                  class="card-img img-fluid"
-                />
-                <a
-                  :href="siteURL + '/tour/' + tour.slug"
-                  class="accommodation-details"
-                >
+                <img loading="lazy" :src="apiURL + tour.file_path" alt="" class="card-img img-fluid" />
+                <RouterLink :to="'/tour/' + tour.slug" class="accommodation-details">
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
                       {{ tour.title }}
@@ -84,12 +109,16 @@
                     <div class="location-tours text-truncate mb-2">
                       <i class="bi bi-geo-alt"></i>{{ tour.name }}
                     </div>
-                    <div class="duration-tours text-truncate">
+                    <div class="duration-tours text-truncate" v-if="!tour.date_form_to">
+                      <i class="bi bi-stopwatch"></i>
+                      duration not available
+                    </div>
+                    <div class="duration-tours text-truncate" v-else>
                       <i class="bi bi-stopwatch"></i>
                       {{ tour.date_form_to }}
                     </div>
                   </div>
-                </a>
+                </RouterLink>
               </div>
             </div>
           </div>
@@ -101,19 +130,10 @@
       <h5 class="text-capitalize my-3">
         A little Insight about {{ $route.params.location_id }}
       </h5>
-      <div
-        v-for="detail in dzongkhagDetails"
-        :key="detail.id"
-        class="quote-about px-5 py-3"
-      >
-        <em
-          ><span
-            v-html="detail.content"
-            v-if="detail.name === $route.params.location_id"
-            class="about-dzongkhag-details lead py-4 px-2"
-          >
-          </span
-        ></em>
+      <div v-for="detail in dzongkhagDetails" :key="detail.id" class="quote-about px-5 py-3">
+        <em><span v-html="detail.content" v-if="detail.name === $route.params.location_id"
+            class="about-dzongkhag-details lead py-4 px-2">
+          </span></em>
       </div>
     </div>
 
@@ -124,24 +144,12 @@
       </h4>
       <div class="row">
         <template v-for="product in agriProducts">
-          <div
-            class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
-            :key="product.id"
-            v-if="product.cat_name === 'Agri Products'"
-          >
+          <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3" :key="product.id"
+            v-if="product.cat_name === 'Agri Products'">
             <div class="card mt-2">
               <div class="card-body">
-                <img
-                  loading="lazy"
-                  :src="ecomURL + 'public/' + product.file_name"
-                  alt=""
-                  class="card-img img-fluid"
-                />
-                <a
-                  :href="ecomURL + 'product/' + product.slug"
-                  class="accommodation-details"
-                  target="_blank"
-                >
+                <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
+                <RouterLink :to="'/product/' + product.slug" class="accommodation-details">
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
                       {{ product.name }}
@@ -151,7 +159,7 @@
                       {{ product.unit_price }} / kg
                     </h6>
                   </div>
-                </a>
+                </RouterLink>
               </div>
             </div>
           </div>
@@ -166,24 +174,12 @@
       </h4>
       <div class="row">
         <template v-for="product in agriProducts">
-          <div
-            class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
-            :key="product.id"
-            v-if="product.cat_name === 'Handicrafts'"
-          >
+          <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3" :key="product.id"
+            v-if="product.cat_name === 'Handicrafts'">
             <div class="card mt-2">
               <div class="card-body">
-                <img
-                  loading="lazy"
-                  :src="ecomURL + 'public/' + product.file_name"
-                  alt=""
-                  class="card-img img-fluid"
-                />
-                <a
-                  :href="ecomURL + 'product/' + product.slug"
-                  class="accommodation-details"
-                  target="_blank"
-                >
+                <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
+                <RouterLink :to="'/product/' + product.slug" class="accommodation-details">
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
                       {{ product.name }}
@@ -193,7 +189,7 @@
                       {{ product.unit_price }} / pc
                     </h6>
                   </div>
-                </a>
+                </RouterLink>
               </div>
             </div>
           </div>

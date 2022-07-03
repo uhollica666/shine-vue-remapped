@@ -45,7 +45,7 @@
           <div class="row">
             <div class="col-md-2 col-sm-6 col-xs-6 home-objects" v-for="tour in computedTours" :key="tour.id">
               <img loading="lazy" class="card-img img-fluid" :src="apiURL + tour.file_path" />
-              <a :href="siteURL + 'tour/' + tour.slug" class="category-details" target="_blank">
+              <RouterLink :to="'/tour/' + tour.slug" class="category-details">
                 <div class="card-details">
                   <h6 class="card-title text-truncate text-capitalize py-2">
                     {{ tour.title }}
@@ -54,7 +54,7 @@
                     <i class="bi bi-geo"></i>{{ tour.name }}
                   </p>
                 </div>
-              </a>
+              </RouterLink>
             </div>
           </div>
         </div>
@@ -75,7 +75,7 @@
             <div class="col-md-3 col-sm-6 col-xs-6 home-objects" v-for="accommodation in computedAccommodation"
               :key="accommodation.id">
               <img loading="lazy" class="card-img img-fluid" :src="apiURL + accommodation.file_path" />
-              <a :href="siteURL + 'space/' + accommodation.slug" class="category-details" target="_blank">
+              <RouterLink :to="'/properties/' + accommodation.slug" class="category-details">
                 <div class="card-details">
                   <h6 class="card-title text-truncate text-capitalize py-2" v-if="!accommodation.title">
                     - Name Not Available -
@@ -87,7 +87,7 @@
                     <i class="bi bi-geo"></i>{{ accommodation.name }}
                   </p>
                 </div>
-              </a>
+              </RouterLink>
             </div>
           </div>
         </div>
@@ -106,10 +106,9 @@
         </h6>
         <div class="home-tour-group">
           <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-6 home-objects" v-for="hotel in computedHotels"
-              :key="hotel.id">
+            <div class="col-md-3 col-sm-6 col-xs-6 home-objects" v-for="hotel in computedHotels" :key="hotel.id">
               <img loading="lazy" class="card-img img-fluid" :src="apiURL + hotel.file_path" />
-              <a :href="siteURL + 'hotel/' + hotel.slug" class="category-details" target="_blank">
+              <RouterLink :to="'/properties/' + hotel.slug" class="category-details">
                 <div class="card-details">
                   <h6 class="card-title text-truncate text-capitalize py-2" v-if="!hotel.title">
                     - Name Not Available -
@@ -121,7 +120,7 @@
                     <i class="bi bi-geo"></i>{{ hotel.name }}
                   </p>
                 </div>
-              </a>
+              </RouterLink>
             </div>
           </div>
         </div>

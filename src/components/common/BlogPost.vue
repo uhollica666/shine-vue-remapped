@@ -11,7 +11,7 @@
             <div class="card-body">
               <img loading="lazy" :src="apiURL + story.file_path" alt="" class="card-img-blog img-fluid"
                 :data-src="apiURL + story.file_path" />
-              <a :href="siteURL + '/en/news/' + story.slug" class="category-details" target="_blank">
+              <RouterLink :to="'/article/' + story.slug" class="category-details">
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ story.title }}
@@ -25,7 +25,7 @@
                     {{ story.created_at }}
                   </p>
                 </div>
-              </a>
+              </RouterLink>
             </div>
           </div>
         </div>
@@ -44,7 +44,7 @@
             <div class="card-body">
               <img loading="lazy" :src="apiURL + story.file_path" alt="" class="card-img-blog img-fluid"
                 :data-src="apiURL + story.file_path" />
-              <a :href="siteURL + '/en/news/' + story.slug" class="category-details" target="_blank">
+              <RouterLink :to="'/article/' + story.slug" class="category-details">
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ story.title }}
@@ -58,7 +58,7 @@
                     {{ story.created_at }}
                   </p>
                 </div>
-              </a>
+              </RouterLink>
             </div>
           </div>
         </div>
@@ -92,7 +92,7 @@ export default {
     },
     sortDzongkhagBlogPost() {
       return this.stories.filter((story) => {
-        return story.content.toLowerCase().includes(this.$route.params.location_id);
+        return story.content.includes(this.$route.params.location_id);
       });
     },
   },

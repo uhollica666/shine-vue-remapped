@@ -2,24 +2,13 @@
   <div class="by-category mb-3">
     <div class="row flex-row flex-nowrap overflow-auto">
       <Suspense>
-        <div
-          v-for="prompProduct in prompProducts"
-          :key="prompProduct.id"
-          class="col-md-3 col-lg-3 col-xl-3 col-sm-3 col-xs-3 mt-2 mb-3"
-        >
+        <div v-for="prompProduct in prompProducts" :key="prompProduct.id"
+          class="col-md-3 col-lg-3 col-xl-3 col-sm-3 col-xs-3 mt-2 mb-3">
           <div class="card mt-3">
             <div class="card-body">
-              <img
-                loading="lazy"
-                :src="ecomURL + 'public/' + prompProduct.file_name"
-                alt=""
-                class="card-img img-fluid"
-              />
-              <a
-                :href="ecomURL + 'product/' + prompProduct.slug"
-                class="category-details"
-                target="_blank"
-              >
+              <img loading="lazy" :src="ecomURL + 'public/' + prompProduct.file_name" alt=""
+                class="card-img img-fluid" />
+              <RouterLink :to="'/product/' + prompProduct.slug" class="category-details" target="_blank">
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ prompProduct.name }}
@@ -28,7 +17,7 @@
                     <i class="bi bi-cash-coin"></i>Nu. {{ prompProduct.unit_price }}.00
                   </div>
                 </div>
-              </a>
+              </RouterLink>
             </div>
           </div>
         </div>

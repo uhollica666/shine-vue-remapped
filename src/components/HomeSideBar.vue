@@ -65,11 +65,10 @@
                 <img loading="lazy" src="@/assets/img/brokpa.jpg" alt="" />
               </div>
               <ul class="home-block">
-                <li v-for="attraction in popAttractions" :key="attraction" class="mt-1">
-                  <RouterLink :to="
-                    'https://test.hemantbhutanrealestate.com/news/' +
-                    attraction
-                  ">{{ attraction }}</RouterLink>
+                <li v-for="attraction in popAttractions" :key="attraction.name" class="mt-1">
+                  <RouterLink :to="'/article/' + attraction.slug">
+                    {{ attraction.name }}
+                  </RouterLink>
                 </li>
               </ul>
             </div>
@@ -109,13 +108,13 @@ const dzongkhags = [
   "Zhemgang",
 ];
 const popAttractions = [
-  "Brokpa of Merak Sakten",
-  "Chorten Kora - Gompa Kora",
-  "Mongar - Birding Capital",
-  "Textile of Khoma",
-  "Cotton Farming, Thongsa",
-  "Royal Manas National Park",
-  "Lhamoizingkha Excursion",
+  {name: "Brokpa of Merak Sakten", slug: "brokpa-of-merak-sakten"},
+  {name: "Chorten Kora - Gompa Kora", slug: "chorten-kora-gompa-kora"},
+  {name: "Mongar - Birding Capital", slug: "mongar-birding-capital"},
+  {name: "Textile of Khoma", slug: "textile-of-khom"},
+  {name: "Cotton Farming, Thongsa", slug: "cotton-farming-thongsa"},
+  {name: "Royal Manas National Park", slug: "royal-manas-national-park"},
+  {name: "Lhamoizingkha Excursion", slug: "lhamoizingkha-excursion"},
 ];
 export default {
   name: "HomeSideBar",
