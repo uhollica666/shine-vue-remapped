@@ -1,28 +1,43 @@
 <template>
     <div class="container-fluid my-5">
-        <div v-for="property in hotels" :key="property.id">
-            <div class="property-card px-5" v-if="property.slug === $route.params.slug">
+        {{$route.params.id}}
+        <div v-for="hotel in hotels" :key="hotel.id">
+            <div class="property-card px-5">
                 <section class="row">
-                    <img :src="siteURL + 'uploads/' + property.file_path" :alt="property.title"
+                    <img :src="siteURL + 'uploads/' + hotel.file_path" :alt="hotel.title"
                         class="img-fluid img-prop col-md-12" loading="lazy" />
                 </section>
                 <section class="row mt-3">
-                    <div class="col-md-12 my-2 prod-descrip">
-                        <b>Hotel Name:</b>
+                    <div class="col-md-6">
+                        <div class="col-md-12 my-2 prod-descrip">
+                            <b>Hotel Name:</b>
+                        </div>
+                        <h5 class="col-md-12 prod-descrip my-2">
+                            {{ hotel.title }}
+                        </h5>
                     </div>
-                    <h5 class="col-md-12 prod-descrip my-2">
-                        {{ property.title }}
-                    </h5>
-                    <div class="row text-center my-2">
-                        <div class="col-md-6" v-if="!property.type">
-                            <i class="bi bi-star-fill text-warning"></i> Average Rating: <em><b class="mx-1">No Ratings
+                    <div class="col-md-6">
+                        <div class="col-md-12 my-2 prod-descrip">
+                            <b>Rate:</b>
+                        </div>
+                        <h5 class="col-md-12 prod-descrip my-2" v-if="!hotel.price">
+                            Price Not Available
+                        </h5>
+                        <h5 class="col-md-12 prod-descrip my-2" v-else>
+                            Nu. {{ hotel.price }} Per Night
+                        </h5>
+                    </div>
+                    <div class="row my-2">
+                        <div class="col-md-6" v-if="!hotel.star_rate">
+                            <i class="bi bi-star-fill text-warning"></i> Star Rating: <em><b class="mx-1">No Star
+                                    Ratings
                                     Yet!</b></em>
                         </div>
                         <div class="col-md-6" v-else>
-                            <i class="bi bi-star-fill text-warning"></i> Average Review:
+                            <i class="bi bi-star-fill text-warning"></i> Star Rating: {{ hotel.star_rate }}
                         </div>
                         <div class="col-md-6">
-                            <i class="bi bi-geo"></i> Location: <b>{{ property.name }}</b>
+                            <i class="bi bi-geo"></i> Location: <b>{{ hotel.name }}</b>
                         </div>
                     </div>
                 </section>
@@ -34,58 +49,44 @@
                     <div class="row text-center">
                         <div class="col-md-3 prod-descrip">
                             <i class="bi bi-telephone text-war"></i>
-                            <p v-if="!property.wakeup">Wake-up Call: ❌
-                                <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to
-                                    respond.</em>
+                            <p v-if="!hotel.wakeup">Wake-up Call: ❌
                             </p>
 
                             <p v-else> Wake-up Call: ✅</p>
                         </div>
                         <div class="col-md-3">
                             <i class="fa fa-car text-war"></i>
-                            <p v-if="!property.car">Car Hire: ❌
-                                <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to
-                                    respond.</em>
+                            <p v-if="!hotel.car">Car Hire: ❌
                             </p>
                             <p v-else>Car Hire: ✅</p>
                         </div>
                         <div class="col-md-3">
                             <i class="bi bi-bicycle text-war"></i>
-                            <p v-if="!property.bicycle">Bicycle: ❌
-                                <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to
-                                    respond.</em>
+                            <p v-if="!hotel.bicycle">Bicycle: ❌
                             </p>
                             <p v-else>Bicycle: ✅</p>
                         </div>
                         <div class="col-md-3">
                             <i class="bi bi-tv text-war"></i>
-                            <p v-if="!property.tv">Flat TV: ❌
-                                <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to
-                                    respond.</em>
+                            <p v-if="!hotel.tv">Flat TV: ❌
                             </p>
                             <p v-else>Flat TV: ✅</p>
                         </div>
                         <div class="col-md-3">
                             <i class="bi bi-arrow-repeat text-war"></i>
-                            <p v-if="!property.laundry">Laundry Service: ❌
-                                <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to
-                                    respond.</em>
+                            <p v-if="!hotel.laundry">Laundry Service: ❌
                             </p>
                             <p v-else>Laundry Service: ✅</p>
                         </div>
                         <div class="col-md-3">
                             <i class="bi bi-router text-war"></i>
-                            <p v-if="!property.wifi">Wi-Fi: ❌
-                                <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to
-                                    respond.</em>
+                            <p v-if="!hotel.wifi">Wi-Fi: ❌
                             </p>
                             <p v-else>Flat TV: ✅</p>
                         </div>
                         <div class="col-md-3">
                             <i class="bi bi-cup-straw text-war"></i>
-                            <p v-if="!property.coffee">Tea/Coffee: ❌
-                                <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to
-                                    respond.</em>
+                            <p v-if="!hotel.coffee">Tea/Coffee: ❌
                             </p>
                             <p v-else>Tea/Coffee: ✅</p>
                         </div>
@@ -97,13 +98,13 @@
                         <p><b>Description:</b></p>
                     </div>
                     <div class="col-md-12 prod-descrip">
-                        <p v-if="!property.content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium
+                        <p v-if="!hotel.content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium
                             numquam, laborum quisquam
                             molestias, blanditiis a officiis inventore veritatis itaque adipisci animi culpa atque rem
                             accusamus!
-                            <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
+                            <br><em style="font-size:10px" class="text-danger">Description Not Available.</em>
                         </p>
-                        <p v-else><span v-html="property.content"></span></p>
+                        <p v-else><span v-html="hotel.content"></span></p>
                     </div>
                 </section>
                 <div class="hr my-4"></div>
@@ -111,33 +112,26 @@
                     <div class="col-md-12 prod-descrip">
                         <p><b>Hotel Services:</b></p>
                     </div>
-                    <div class="row text-center prod-descrip">
-                        <div class="col-md-3" v-if="!property.lobby">Havana Lobby bar: ❌
-                            <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
+                    <div class="row prod-descrip">
+                        <div class="col-md-3" v-if="!hotel.lobby">Havana Lobby bar: ❌
                         </div>
                         <div class="col-md-3" v-else>Havana Lobby bar: ✅</div>
-                        <div class="col-md-3" v-if="!property.restaurant">Fiesta Restaurant: ❌
-                            <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
+                        <div class="col-md-3" v-if="!hotel.restaurant">Fiesta Restaurant: ❌
                         </div>
                         <div class="col-md-3" v-else>Fiesta Restaurant: ✅</div>
-                        <div class="col-md-3" v-if="!property.transport">Hotel transport services: ❌
-                            <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
+                        <div class="col-md-3" v-if="!hotel.transport">Hotel transport services: ❌
                         </div>
                         <div class="col-md-3" v-else>Hotel transport services: ✅</div>
-                        <div class="col-md-3" v-if="!property.luggage">Free luggage deposit: ❌
-                            <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
+                        <div class="col-md-3" v-if="!hotel.luggage">Free luggage deposit: ❌
                         </div>
                         <div class="col-md-3" v-else>Free luggage deposit: ✅</div>
-                        <div class="col-md-3" v-if="!property.laundry">Laundry Services: ❌
-                            <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
+                        <div class="col-md-3" v-if="!hotel.laundry">Laundry Services: ❌
                         </div>
                         <div class="col-md-3" v-else>Laundry Services: ✅</div>
-                        <div class="col-md-3" v-if="!property.pets">Pets welcome: ❌
-                            <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
+                        <div class="col-md-3" v-if="!hotel.pets">Pets welcome: ❌
                         </div>
                         <div class="col-md-3" v-else>Pets welcome: ✅</div>
-                        <div class="col-md-3" v-if="!property.tickets">Tickets: ❌
-                            <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
+                        <div class="col-md-3" v-if="!hotel.tickets">Tickets: ❌
                         </div>
                         <div class="col-md-3" v-else>Tickets: ✅</div>
                     </div>
@@ -150,24 +144,27 @@
                     <div class="row">
                         <div class="col-md-6">
                             <p><b>Check In:</b></p>
-                            <p v-if="!property.check_in"><i class="bi bi-clock"></i>Check-In Time Not Available<br>
-                                <em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em></p>
-                            <p v-else><i class="bi bi-clock"></i>{{ property.check_in }}</p>
+                            <p v-if="!hotel.check_in_time"><i class="bi bi-clock"></i>Check-In Time Not Available
+                            </p>
+                            <p v-else><i class="bi bi-clock"></i>{{ hotel.check_in_time }}</p>
                         </div>
                         <div class="col-md-6">
                             <p><b>Check Out:</b></p>
-                            <p v-if="!property.check_out"><i class="bi bi-clock"></i>12:00 Noon, Standard Check-Out Time
+                            <p v-if="!hotel.check_out_time"><i class="bi bi-clock"></i>12:00 Noon, Standard Check-Out
+                                Time
                             </p>
-                            <p v-else><i class="bi bi-clock"></i>{{ property.check_out }}</p>
+                            <p v-else><i class="bi bi-clock"></i>{{ hotel.check_out_time }} Standard BST</p>
                         </div>
                         <div class="col-md-12">
                             <p><b>Hotel Policies:</b></p>
-                            <p v-if="!property.policies">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab
-                                unde numquam ullam autem laboriosam voluptate labore qui? Sit ex dolorem totam nostrum
-                                aut quam vel.<br>
-                                <em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
+                            <p v-if="!hotel.policies">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero,
+                                beatae? Atque, error eos neque delectus animi fugiat, dignissimos non quasi recusandae
+                                voluptas deserunt sed accusamus inventore amet suscipit, autem enim veniam et molestiae
+                                repellat dolore.<br>
+                                <em style="font-size:10px" class="text-danger">The above is filler text. Policy Not
+                                    Available</em>
                             </p>
-                            <p v-else><i class="bi bi-clock"></i>{{ property.check_out }}</p>
+                            <p v-else><i class="bi bi-clock"></i>{{ hotel.check_out }}</p>
                         </div>
                     </div>
                 </section>
@@ -177,47 +174,46 @@
                         <p><b>What's Nearby:</b></p>
                     </div>
                     <div class="row">
-                        <div class="col-md-4 text-center">
-                            <p><b>Education:</b></p>
-                            <p v-if="!property.education">
-                                <i class="bi bi-mortarboard text-war"></i><br>
-                                No Data Available<br>
-                                <em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
-                            </p>
-                            <p v-else>
-                                <i class="bi bi-clock"></i><br>
-                                {{ property.ecudation }}
-                            </p>
+                        <!-- <div v-for="nearby in hotel.sorrounding" :key="nearby.name"> -->
+                            <div class="col-md-4 text-center" >
+                                <p><b>Education:</b></p>
+                                <p v-if="!hotel.education">
+                                    <i class="bi bi-mortarboard text-war"></i><br>
+                                    No Data Available>
+                                </p>
+                                <p v-else>
+                                    <i class="bi bi-clock"></i><br>
+                                    {{ hotel.ecudation }}
+                                </p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <p><b>Health:</b></p>
+                                <p v-if="!hotel.health">
+                                    <i class="bi bi-hospital text-war"></i><br>
+                                    No Data Available
+                                </p>
+                                <p v-else>
+                                    <i class="bi bi-clock"></i><br>
+                                    {{ hotel.hospital }}
+                                </p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <p><b>Transportation:</b></p>
+                                <p v-if="!hotel.transportation">
+                                    <i class="fa fa-train text-war"></i><br>
+                                    No Data Available
+                                </p>
+                                <p v-else>
+                                    <i class="bi bi-clock"></i><br>
+                                    {{ hotel.transportation }}
+                                </p>
+                            </div>
                         </div>
-                        <div class="col-md-4 text-center">
-                            <p><b>Health:</b></p>
-                            <p v-if="!property.health">
-                                <i class="bi bi-hospital text-war"></i><br>
-                                No Data Available<br>
-                                <em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
-                            </p>
-                            <p v-else>
-                                <i class="bi bi-clock"></i><br>
-                                {{ property.hospital }}
-                            </p>
-                        </div>
-                        <div class="col-md-4 text-center">
-                            <p><b>Transportation:</b></p>
-                            <p v-if="!property.transportation">
-                                <i class="fa fa-train text-war"></i><br>
-                                No Data Available<br>
-                                <em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
-                            </p>
-                            <p v-else>
-                                <i class="bi bi-clock"></i><br>
-                                {{ property.transportation }}
-                            </p>
-                        </div>
-                    </div>
+                    <!-- </div> -->
                 </section>
                 <div class="hr my-4"></div>
                 <section class="row">
-                    <a :href="siteURL + 'hotel/' + property.slug" target="_blank">
+                    <a :href="siteURL + 'hotel/' + hotel.slug" target="_blank">
                         <button class="btn-buy"><i class="bi bi-eye"></i>Proceed to Booking</button>
                     </a>
                     <p class="py-3 notice-change"><em style="font-size: 12px !important;">Note: you will be redirected
@@ -231,21 +227,23 @@
 
 <script>
 import { ref } from 'vue';
+import { useRoute } from 'vue-router';  
 export default {
     name: "HotelDetails",
     async setup() {
+        const route = useRoute();
+        const routeId = route.params.id;
         const hotels = ref(null);
         const siteURL = 'https://dev.hemantbhutanrealestate.com/';
         const bc_hotels = await fetch(
-            "https://dev.hemantbhutanrealestate.com/api/bc_hotels"
+            `https://dev.hemantbhutanrealestate.com/api/single_hotel?id=${routeId}`
         );
-
         hotels.value = await bc_hotels.json();
+        console.log(routeId);
         return {
             hotels,
-            siteURL
-        }
-
+            siteURL,
+        };
     },
 }
 </script>

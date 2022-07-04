@@ -1,5 +1,5 @@
 <template>
-  <div class="accordion mt-3 accordion-flush sticky-top app-sticky-top">
+  <div class="accordion accordion-flush sticky-top app-sticky-top">
     <div class="accordion-item">
       <h2 class="accordion-header">
         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
@@ -176,7 +176,6 @@ export default {
   max-width: 85%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  margin-top: 10px;
 }
 
 .sidebar {

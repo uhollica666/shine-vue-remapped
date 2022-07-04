@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
-    <div class="row mt-3">
-      <div class="col-md-6 mb-3">
+    <div class="row">
+      <div class="col-md-6">
         <h6 class="text-center py-3 home-heading">Agri Products</h6>
         <div class="container home-container">
           <div class="product-images row">
@@ -13,7 +13,7 @@
           </div>
           <RouterLink to="/agriproducts" class="d-flex home-sec">
             <button class="btn btn-home mb-3">
-              <i class="bi bi-eye"></i>View All
+              <i class="bi bi-eye"></i>View All Agri Products
             </button>
           </RouterLink>
         </div>
@@ -23,7 +23,7 @@
         <h6 class="text-center py-3 home-heading">Handicraft Products</h6>
         <div class="container home-container">
           <div class="product-images row">
-            <template v-for="product in computedProducts">
+            <template v-for="product in computedHandicrafts">
               <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Handicrats'" :key="product.id">
                 <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
               </div>
@@ -31,7 +31,7 @@
           </div>
           <RouterLink to="/handicrafts" class="d-flex home-sec">
             <button class="btn btn-home mb-3">
-              <i class="bi bi-eye"></i>View All
+              <i class="bi bi-eye"></i>View All Handicrafts
             </button>
           </RouterLink>
         </div>
@@ -108,7 +108,7 @@
           <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-6 home-objects" v-for="hotel in computedHotels" :key="hotel.id">
               <img loading="lazy" class="card-img img-fluid" :src="apiURL + hotel.file_path" />
-              <RouterLink :to="'/hotel/' + hotel.slug" class="category-details">
+              <RouterLink :to="'/hotel/' + hotel.id +'where?name=' + hotel.slug" class="category-details">
                 <div class="card-details">
                   <h6 class="card-title text-truncate text-capitalize py-2" v-if="!hotel.title">
                     - Name Not Available -
@@ -132,7 +132,7 @@
       </RouterLink>
     </div>
 
-    <div class="row mt-5">
+    <div class="row my-5">
       <div class="col-md-6 mt-3">
         <h6 class="text-center py-3 home-heading">Popular Agri Products</h6>
         <div class="container home-container">
@@ -157,7 +157,7 @@
         </h6>
         <div class="container home-container">
           <div class="product-images row">
-            <template v-for="product in computedProducts">
+            <template v-for="product in computedHandicrafts">
               <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Handicrats'" :key="product.id">
                 <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
               </div>
@@ -215,13 +215,7 @@ export default {
       homeHotels,
     };
   },
-  data() {
-    return {
-      limit: 6,
-      hotelLimit: 8,
-      tourLimit: 8,
-    };
-  },
+  
   methods: {
     sortLatestHotels() {
       return this.homeHotels.sort((a, b) => (a.id < b.id ? 1 : -1));
@@ -232,11 +226,34 @@ export default {
     sortLatestTours() {
       return this.homeTours.sort((a, b) => (a.id < b.id ? 1 : -1));
     },
+    filteredProducts() {
+      return this.products.filter((product) => {
+        return product.parent_name === "Handicrats";
+      });
+    },
+    filteredAgriProds() {
+      return this.products.filter((product) => {
+        return product.parent_name === "Agri Products";
+      });
+    },
+    sortLatestProducts() {
+      return this.filteredProducts().sort((a,b)=>(a.id < b.id ? 1 : -1));
+    },
+  },
+  data() {
+    return {
+      limit: 4,
+      hotelLimit: 8,
+      tourLimit: 8,
+    };
   },
 
   computed: {
     computedProducts() {
-      return this.limit ? this.products.slice(0, this.limit) : this.products;
+      return this.limit ? this.filteredAgriProds().slice(0, this.limit) : this.filteredAgriProds();
+    },
+    computedHandicrafts() {
+      return this.limit ? this.filteredProducts().slice(0, this.limit) : this.filteredProducts();
     },
     computedAccommodation() {
       return this.limit

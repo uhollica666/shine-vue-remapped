@@ -1,6 +1,6 @@
 /* eslint-disable vue/multi-word-component-names */
 <template>
-  <footer class="pt-5 footer-div">
+  <footer class="mt-5 pt-5 footer-div">
     <div class="container text-md-left mb-4">
       <div class="row text-md-left text-lg-left">
         <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-1 footer-left-div">

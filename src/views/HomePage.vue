@@ -17,7 +17,7 @@
         <div class="col-md-3 col-xl-3 col-lg-3 col-xs-12 col-sm-12">
           <HomeSidebar />
         </div>
-        <div class="col-md-9 col-xl-9 col-lg-9 col-xs-12 col-sm-12">
+        <div class="col-md-9 col-xl-9 col-lg-9 col-xs-12 col-sm-12" >
           <Suspense>
             <template #default>
               <HomeContent />

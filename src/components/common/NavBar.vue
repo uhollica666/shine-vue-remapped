@@ -104,9 +104,9 @@
                     </ul>
                   </div>
                 </div>
-                <li>
+                <!-- <li>
                   <LightDarkSwitch class="mx-3" />
-                </li>
+                </li> -->
               </ul>
             </div>
           </div>
@@ -119,7 +119,7 @@
 </template>
 
 <script>
-import LightDarkSwitch from "@/components/LightDarkSwitch";
+// import LightDarkSwitch from "@/components/LightDarkSwitch";
 import StickyNav from "@/components/common/StickyNav";
 import { mapGetters } from "vuex";
 export default {
@@ -131,7 +131,7 @@ export default {
     };
   },
   components: {
-    LightDarkSwitch,
+    // LightDarkSwitch,
     StickyNav,
   },
   methods: {
