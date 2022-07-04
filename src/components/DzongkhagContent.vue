@@ -55,7 +55,7 @@
             <div class="card mt-3">
               <div class="card-body">
                 <img loading="lazy" :src="apiURL + hotel.file_path" alt="" class="card-img img-fluid" />
-                <RouterLink :to="'/properties/' + hotel.slug" class="accommodation-details">
+                <RouterLink :to="'/hotel/' + hotel.id +'where?name=' + hotel.slug" class="accommodation-details">
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
                       {{ hotel.title }}

@@ -9,7 +9,7 @@
         <div class="card mt-3">
           <div class="card-body">
             <img loading="lazy" :src="apiURL + hotel.file_path" alt="" class="card-img img-fluid" />
-            <RouterLink :to="'/hotel/' + hotel.slug" class="hotel-details">
+            <RouterLink :to="'/hotel/' + hotel.id +'where?name=' + hotel.slug" class="hotel-details">
               <div class="card-details">
                 <h6 class="card-title text-truncate" v-if="!hotel.title">
                   - Name Not Available -
