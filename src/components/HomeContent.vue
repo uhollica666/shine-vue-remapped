@@ -108,7 +108,7 @@
           <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-6 home-objects" v-for="hotel in computedHotels" :key="hotel.id">
               <img loading="lazy" class="card-img img-fluid" :src="apiURL + hotel.file_path" />
-              <RouterLink :to="'/properties/' + hotel.slug" class="category-details">
+              <RouterLink :to="'/hotel/' + hotel.slug" class="category-details">
                 <div class="card-details">
                   <h6 class="card-title text-truncate text-capitalize py-2" v-if="!hotel.title">
                     - Name Not Available -

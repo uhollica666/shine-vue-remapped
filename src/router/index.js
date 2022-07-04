@@ -97,6 +97,11 @@ const routes = [
     name: 'CategoryFilter',
     component: () => import( /* webpackChunkName: "about" */ '../views/CategoryFilter')
   },
+  {
+    path: '/hotel/:slug',
+    name: 'SingleHotel',
+    component: () => import( /* webpackChunkName: "about" */ '../views/SingleHotel')
+  },
 ]
 
 const router = createRouter({

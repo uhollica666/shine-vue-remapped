@@ -8,7 +8,7 @@
 
         <Suspense>
           <template #default>
-              <PropertyDetails />
+              <HotelDetails />
           </template>
           <template #fallback>
             <Loader />
@@ -22,17 +22,17 @@
 
 <script>
 import Loader from '@/components/common/Loader'
-import PropertyDetails from '@/components/products/PropertyDetails'
+import HotelDetails from '@/components/products/HotelDetails'
 import DzongkhagSideBar from '@/components/common/DzongkhagSideBar';
 // import DzongkhagContent from '@/components/DzongkhagContent';
 
 
 export default {
-  name: "SingleProperty",
+  name: "SingleHotel",
   components: {
     DzongkhagSideBar,
     Loader,
-    PropertyDetails,
+    HotelDetails,
   },
 };
 </script>

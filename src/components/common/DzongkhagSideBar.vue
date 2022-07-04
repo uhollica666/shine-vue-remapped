@@ -1,5 +1,5 @@
 <template>
-    <div class="accordion mt-5 accordion-flush sticky-top app-sticky-top">
+    <div class="accordion my-5 accordion-flush sticky-top app-sticky-top">
         <div class="accordion-item">
             <h2 class="accordion-header">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
@@ -28,8 +28,6 @@
                                     <i class="bi bi-caret-left"></i> Back To Home
                                 </RouterLink>
                             </div>
-
-                            
                         </div>
                     </div>
                 </div>
