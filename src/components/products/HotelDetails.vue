@@ -1,6 +1,5 @@
 <template>
     <div class="container-fluid my-5">
-        {{$route.params.id}}
         <div v-for="hotel in hotels" :key="hotel.id">
             <div class="property-card px-5">
                 <section class="row">
@@ -46,51 +45,7 @@
                     <div class="col-md-12 my-2 prod-descrip">
                         <b> Facilities:</b>
                     </div>
-                    <div class="row text-center">
-                        <div class="col-md-3 prod-descrip">
-                            <i class="bi bi-telephone text-war"></i>
-                            <p v-if="!hotel.wakeup">Wake-up Call: ❌
-                            </p>
-
-                            <p v-else> Wake-up Call: ✅</p>
-                        </div>
-                        <div class="col-md-3">
-                            <i class="fa fa-car text-war"></i>
-                            <p v-if="!hotel.car">Car Hire: ❌
-                            </p>
-                            <p v-else>Car Hire: ✅</p>
-                        </div>
-                        <div class="col-md-3">
-                            <i class="bi bi-bicycle text-war"></i>
-                            <p v-if="!hotel.bicycle">Bicycle: ❌
-                            </p>
-                            <p v-else>Bicycle: ✅</p>
-                        </div>
-                        <div class="col-md-3">
-                            <i class="bi bi-tv text-war"></i>
-                            <p v-if="!hotel.tv">Flat TV: ❌
-                            </p>
-                            <p v-else>Flat TV: ✅</p>
-                        </div>
-                        <div class="col-md-3">
-                            <i class="bi bi-arrow-repeat text-war"></i>
-                            <p v-if="!hotel.laundry">Laundry Service: ❌
-                            </p>
-                            <p v-else>Laundry Service: ✅</p>
-                        </div>
-                        <div class="col-md-3">
-                            <i class="bi bi-router text-war"></i>
-                            <p v-if="!hotel.wifi">Wi-Fi: ❌
-                            </p>
-                            <p v-else>Flat TV: ✅</p>
-                        </div>
-                        <div class="col-md-3">
-                            <i class="bi bi-cup-straw text-war"></i>
-                            <p v-if="!hotel.coffee">Tea/Coffee: ❌
-                            </p>
-                            <p v-else>Tea/Coffee: ✅</p>
-                        </div>
-                    </div>
+                    <HotelFacilites />
                 </section>
                 <div class="hr my-4"></div>
                 <section class="row">
@@ -173,43 +128,7 @@
                     <div class="col-md-12 prod-descrip">
                         <p><b>What's Nearby:</b></p>
                     </div>
-                    <div class="row">
-                        <!-- <div v-for="nearby in hotel.sorrounding" :key="nearby.name"> -->
-                            <div class="col-md-4 text-center" >
-                                <p><b>Education:</b></p>
-                                <p v-if="!hotel.education">
-                                    <i class="bi bi-mortarboard text-war"></i><br>
-                                    No Data Available>
-                                </p>
-                                <p v-else>
-                                    <i class="bi bi-clock"></i><br>
-                                    {{ hotel.ecudation }}
-                                </p>
-                            </div>
-                            <div class="col-md-4 text-center">
-                                <p><b>Health:</b></p>
-                                <p v-if="!hotel.health">
-                                    <i class="bi bi-hospital text-war"></i><br>
-                                    No Data Available
-                                </p>
-                                <p v-else>
-                                    <i class="bi bi-clock"></i><br>
-                                    {{ hotel.hospital }}
-                                </p>
-                            </div>
-                            <div class="col-md-4 text-center">
-                                <p><b>Transportation:</b></p>
-                                <p v-if="!hotel.transportation">
-                                    <i class="fa fa-train text-war"></i><br>
-                                    No Data Available
-                                </p>
-                                <p v-else>
-                                    <i class="bi bi-clock"></i><br>
-                                    {{ hotel.transportation }}
-                                </p>
-                            </div>
-                        </div>
-                    <!-- </div> -->
+                    <HotelNearby />
                 </section>
                 <div class="hr my-4"></div>
                 <section class="row">
@@ -228,8 +147,14 @@
 <script>
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';  
+import HotelFacilites from '@/components/products/HotelFacilites'
+import HotelNearby from '@/components/products/HotelNearby'
 export default {
     name: "HotelDetails",
+    components: {
+        HotelFacilites,
+        HotelNearby,
+    },
     async setup() {
         const route = useRoute();
         const routeId = route.params.id;
@@ -239,7 +164,6 @@ export default {
             `https://dev.hemantbhutanrealestate.com/api/single_hotel?id=${routeId}`
         );
         hotels.value = await bc_hotels.json();
-        console.log(routeId);
         return {
             hotels,
             siteURL,
@@ -248,7 +172,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .property-card {
     background-color: #fff;
     border-radius: 5px;

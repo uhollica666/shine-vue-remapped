@@ -7,12 +7,7 @@
             <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-xs-12">
                 <Suspense>
                     <template #default>
-                        <div class="container">
-                            <h4 class="my-5 text-center">
-                            This is Category Filter Page
-                        </h4>
-                        <p>and the route is {{ $route.params.slug }}</p>
-                        </div>
+                        <CategoryFilterPage />
                     </template>
                     <template #fallback>
                         <Loader />
@@ -26,11 +21,13 @@
 <script>
 import Loader from '@/components/common/Loader'
 import DzongkhagSideBar from '@/components/common/DzongkhagSideBar';
+import CategoryFilterPage from '@/components/common/CategoryFilterPage';
 export default {
     name: "CategoryFilter",
     components: {
         Loader,
         DzongkhagSideBar,
+        CategoryFilterPage,
     },
 };
 </script>

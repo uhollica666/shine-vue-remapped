@@ -10,14 +10,7 @@
           <div class="card mt-2">
             <div class="card-body">
               <img loading="lazy" :src="category.image_id" alt="" class="card-img img-fluid" />
-              <RouterLink :to="'/hotel/' + category.slug" class="category-details text-center" v-if="category.category === 'Hotels'">
-                <div class="card-details">
-                  <h6 class="card-title text-truncate">
-                    {{ category.category }}
-                  </h6>
-                </div>
-              </RouterLink>
-              <RouterLink :to="'/cat-filter/' + category.slug" class="category-details text-center" v-else>
+              <RouterLink :to="'/cat-filter/' + category.slug" class="category-details text-center">
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ category.category }}

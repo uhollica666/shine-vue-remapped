@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid my-5">
-        <div v-for="article in articles" :key="article.id">
-            <div class="article-card" v-if="article.slug === $route.params.slug">
+        <template v-for="article in articles">
+            <div class="article-card" v-if="article.slug === $route.params.slug" :key="article.id">
                 <div class="row my-3">
                     <div class="col-md-12 d-flex">
                         <img :src="siteURL + 'uploads/' + article.file_path" :alt="article.title"
@@ -12,8 +12,7 @@
                 <section class="row px-5">
                     <h3 class="my-1">{{article.title}}</h3>
                     <p v-if="!article.content" class="article-text">
-                        <span v-html="articleSample"></span><br>
-                        <em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
+                        <span v-html="articleSample"></span>
                     </p>
                     <p v-else>
                         <span v-html="article.content"></span>
@@ -26,7 +25,14 @@
                     </a>
                 </section>
             </div>
-        </div>
+            <div class="article-card" v-else  :key="article">
+                <div class="row my-3">
+                    <div class="col-md-12 text-center">
+                       <h3>Sorry This Article Does Not Exist!</h3>
+                    </div>
+                </div>
+            </div>
+        </template>
     </div>
 </template>
 
@@ -48,7 +54,6 @@ export default {
             "https://dev.hemantbhutanrealestate.com/api/articles"
         );
         articles.value = await bc_articles.json();
-
         return {
             articles,
             siteURL,
