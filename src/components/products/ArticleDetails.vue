@@ -25,7 +25,7 @@
                     </a>
                 </section>
             </div>
-            <div class="article-card" v-else  :key="article">
+            <div class="article-card" v-if="!article.slug"  :key="article">
                 <div class="row my-3">
                     <div class="col-md-12 text-center">
                        <h3>Sorry This Article Does Not Exist!</h3>

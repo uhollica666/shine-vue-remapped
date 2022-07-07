@@ -36,7 +36,7 @@
                                     <h6 class="mb-3 mt-3">Filter By Rating</h6>
                                 </div>
                                 <div class="form-check my-2" v-for="starRating in starRatings" :key="starRating">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" />
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" @click="() => starFilter(starRating)" />
                                     <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
                                         v-if="starRating === 'All'">
                                         {{ starRating }} Star Properties
@@ -147,10 +147,10 @@ export default {
     props: [
         "filterItems",
         "filteredAccommodation",
-        // "starFilter",
-        // "searchFilter",
-        // "productCategories",
-        // "agriCategory",
+        "starFilter",
+        "searchFilter",
+        "productCategories",
+        "agriCategory",
     ],
     data() {
         return {

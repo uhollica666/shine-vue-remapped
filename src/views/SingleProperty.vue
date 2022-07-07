@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12 col-xs-12">
-        <DzongkhagSideBar />
+        <PropertySideBar />
       </div>
       <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-xs-12">
 
@@ -23,14 +23,14 @@
 <script>
 import Loader from '@/components/common/Loader'
 import PropertyDetails from '@/components/products/PropertyDetails'
-import DzongkhagSideBar from '@/components/common/DzongkhagSideBar';
+import PropertySideBar from '@/components/common/PropertySideBar';
 // import DzongkhagContent from '@/components/DzongkhagContent';
 
 
 export default {
   name: "SingleProperty",
   components: {
-    DzongkhagSideBar,
+    PropertySideBar,
     Loader,
     PropertyDetails,
   },

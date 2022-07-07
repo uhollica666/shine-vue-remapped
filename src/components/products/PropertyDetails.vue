@@ -1,18 +1,27 @@
 <template>
     <div class="container-fluid my-5">
         <div v-for="property in properties" :key="property.id">
-            <div class="property-card px-5" v-if="property.slug === $route.params.slug">
+            <div class="property-card px-5">
                 <section class="row">
                     <img :src="siteURL + 'uploads/' + property.file_path" :alt="property.title"
                         class="img-fluid img-prop col-md-12" loading="lazy" />
                 </section>
                 <section class="row mt-3">
-                    <div class="col-md-12 my-2 prod-descrip">
+                    <div class="col-md-6 my-2 prod-descrip">
                         <b>Property:</b>
                     </div>
-                    <h5 class="col-md-12 prod-descrip my-2">
+                    <div class="col-md-6 my-2 prod-descrip">
+                        <b>Price:</b>
+                    </div>
+                    <h5 class="col-md-6 prod-descrip my-3">
                         {{ property.title }}
                     </h5>
+                    <h5 class="col-md-6 prod-descrip my-3">
+                        Nu. {{ property.price }} per Night
+                    </h5>
+                </section>
+                <div class="hr my-4"></div>
+                <section class="row my-3">
                     <div class="row text-center">
                         <div class="col-md-4" v-if="!property.rating">
                             <i class="bi bi-star-fill text-warning"></i> Average Review: <em><b class="mx-1">No Ratings
@@ -21,12 +30,8 @@
                         <div class="col-md-4" v-else>
                             <i class="bi bi-star-fill text-warning"></i> Average Review:
                         </div>
-                        <div class="col-md-4" v-if="!property.type">
-                            <i class="bi bi-tag"></i> Property Type: <em><b class="mx-1">No data</b></em>
-                            <p><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em></p>
-                        </div>
-                        <div class="col-md-4" v-else>
-                            <i class="bi bi-tag"></i> Property Type: <b>VHS</b>
+                        <div class="col-md-4">
+                            <PropertyType />
                         </div>
                         <div class="col-md-4">
                             <i class="bi bi-geo"></i> Location: <b>{{ property.name }}</b>
@@ -41,32 +46,32 @@
                     <div class="row text-center">
                         <div class="col-md-3 prod-descrip">
                             <i class="bi bi-columns text-war"></i>
-                            <p v-if="!property.size">Size: ~? sqft
-                                <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
+                            <p v-if="!property.square">Size: ~? sqft
+
                             </p>
-                            
-                            <p v-else>Size: {{property.size}} sqft</p>
+
+                            <p v-else>Size: {{ property.square }} sqft</p>
                         </div>
                         <div class="col-md-3">
                             <i class="bi bi-door-closed text-war"></i>
-                            <p v-if="!property.people">Max: ~? People
-                                <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
+                            <p v-if="!property.max_guests">Max: ~? People
+
                             </p>
-                            <p v-else>Max: {{property.people}} People</p>
+                            <p v-else>Max: {{ property.max_guests }} People</p>
                         </div>
                         <div class="col-md-3">
                             <i class="fa fa-bath text-war"></i>
                             <p v-if="!property.bathroom">Total: ~? Bathroom(s)
-                                <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
+
                             </p>
-                            <p v-else>Total: {{property.bathroom}} Bathroom(s)</p>
+                            <p v-else>Total: {{ property.bathroom }} Bathroom(s)</p>
                         </div>
                         <div class="col-md-3">
                             <i class="fa fa-bed text-war"></i>
-                            <p v-if="!property.beds">Per Room: ~? Beds
-                                <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
+                            <p v-if="!property.bed">Total: ~? Beds
+
                             </p>
-                            <p v-else>Per Room: {{property.beds}} Beds</p>
+                            <p v-else>Total: {{ property.bed }} Beds</p>
                         </div>
                     </div>
                 </section>
@@ -76,11 +81,12 @@
                         <p><b>Description:</b></p>
                     </div>
                     <div class="col-md-12 prod-descrip">
-                        <p v-if="!property.content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium numquam, laborum quisquam
+                        <p v-if="!property.content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium
+                            numquam, laborum quisquam
                             molestias, blanditiis a officiis inventore veritatis itaque adipisci animi culpa atque rem
                             accusamus!
-                                <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
-                            </p>
+
+                        </p>
                         <p v-else><span v-html="property.content"></span></p>
                     </div>
                 </section>
@@ -89,32 +95,7 @@
                     <div class="col-md-12 prod-descrip">
                         <p><b>Amenities:</b></p>
                     </div>
-                    <div class="row text-center prod-descrip">
-                        <div class="col-md-2" v-if="!property.air_contition">Air Condition: ❌
-                                <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
-                            </div>
-                        <div class="col-md-2" v-else>Air Condition: ✅</div>
-                        <div class="col-md-2" v-if="!property.breakfast">Breakfast: ❌
-                                <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
-                            </div>
-                        <div class="col-md-2" v-else>Breakfast: ✅</div>
-                        <div class="col-md-2" v-if="!property.kitchen">Kitchen: ❌
-                                <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
-                            </div>
-                        <div class="col-md-2" v-else>Kitchen: ✅</div>
-                        <div class="col-md-2" v-if="!property.parking">Parking: ❌
-                                <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
-                            </div>
-                        <div class="col-md-2" v-else>Parking: ✅</div>
-                        <div class="col-md-2" v-if="!property.pool">Pool: ❌
-                                <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
-                            </div>
-                        <div class="col-md-2" v-else>Pool: ✅</div>
-                        <div class="col-md-2" v-if="!property.wifi">Wi-Fi: ❌
-                                <br><em style="font-size:10px" class="text-danger">ERR: 500. Server failed to respond.</em>
-                            </div>
-                        <div class="col-md-2" v-else>Wi-Fi: ✅</div>
-                    </div>
+                            <PropertyAmenitie />
                 </section>
                 <div class="hr my-4"></div>
                 <section class="row">
@@ -132,21 +113,32 @@
 
 <script>
 import { ref } from 'vue';
+import { useRoute } from 'vue-router';
+import PropertyType from '@/components/products/PropertyType'
+import PropertyAmenitie from '@/components/products/PropertyAmenitie'
+
 export default {
     name: "PropertyDetails",
     async setup() {
+        const route = useRoute();
+        const routeId = route.params.id;
         const properties = ref(null);
         const siteURL = 'https://dev.hemantbhutanrealestate.com/';
         const bc_accommodations = await fetch(
-            "https://dev.hemantbhutanrealestate.com/api/bc_spaces"
+            `https://dev.hemantbhutanrealestate.com/api/single_space?id=${routeId}`
         );
 
         properties.value = await bc_accommodations.json();
         return {
             properties,
-            siteURL
+            siteURL,
+            PropertyType,
         }
 
+    },
+    components: {
+        PropertyType,        
+        PropertyAmenitie,
     },
 }
 </script>

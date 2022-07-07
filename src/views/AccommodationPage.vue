@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12 col-xs-12">
-                <SidebarFilter :filterItems="filterItems" :filteredAccommodation="filteredAccommodation" />
+                <SidebarFilter :filterItems="filterItems" :filteredAccommodation="filteredAccommodation" :starRating = "starRating" />
             </div>
             <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-xs-12 infinite-scroll">
                 <PageBanner />
@@ -98,69 +98,65 @@ import PromotionEvents from "@/components/common/PromotionEvents";
 import PromotionTours from "@/components/common/PromotionTours";
 import PromotionProducts from "@/components/common/PromotionProducts";
 import BlogPost from "@/components/common/BlogPost";
+// import { ref } from "vue";
 
 export default {
     name: "AccommodationPage",
 
-    // methods: {
-    //     filterItems(filter) {
-    //         this.resetAccommodations();
-    //         if (filter === "All") {
-    //             this.accommodations = this.AccommodationContent;
-    //         } else {
-    //             this.accommodations = AccommodationContent.filter((accommodation) => {
-    //                 return accommodation.name
-    //                     .toLowerCase()
-    //                     .includes(filter.toLowerCase());
-    //             });
-    //         }
-    //     },
-    //     starFilter(starRating) {
-    //         this.resetAccommodations();
-    //         if (starRating === "All") {
-    //             this.accommodations = AccommodationContent;
-    //         } else if (starRating === 3) {
-    //             this.accommodations = AccommodationContent.filter((accommodation) => {
-    //                 return accommodation.review_score >= 3;
-    //             });
-    //         } else if (starRating === 4) {
-    //             this.accommodations = AccommodationContent.filter((accommodation) => {
-    //                 return accommodation.review_score >= 4;
-    //             });
-    //         } else if (starRating === 5) {
-    //             this.accommodations = AccommodationContent.filter((accommodation) => {
-    //                 return accommodation.review_score >= 5;
-    //             });
-    //         } else {
-    //             this.accommodations = AccommodationContent.filter((accommodation) => {
-    //                 return accommodation.review_score >= 2;
-    //             });
-    //         }
-    //     },
-    //     searchFilter(search) {
-    //         this.resetAccommodations();
-    //         this.accommodations = AccommodationContent.filter((accommodation) => {
-    //             return accommodation.title.toLowerCase().includes(search.toLowerCase());
-    //         });
-    //     },
-    //     resetAccommodations() {
-    //         this.accommodations = AccommodationContent;
-    //     },
+    // async setup() {
+    //     const accommodations = ref(null);
+    //     const hotels = ref(null);
+    //     const bc_accommodations = await fetch('https://dev.hemantbhutanrealestate.com/api/bc_spaces');
+    //     const bc_hotels = await fetch('https://dev.hemantbhutanrealestate.com/api/bc_hotels');
+    //     accommodations.value = await bc_accommodations.json();
+    //     hotels.value = await bc_hotels.json();
+
+    //     return {
+    //         accommodations,
+    //         hotels
+    //     }
     // },
 
-    computed: {
-        accommodations() {
-          return this.$store.state.accommodations;  
-        },
-        filteredAccommodation:{
-            get() { 
-                return this.accommodations
-            },
-            set(value) {
-                this.accommodations = value;
+    methods: {
+        starFilter(starRating) {
+            this.resetAccommodations();
+            if (starRating === 'All') {
+                return this.accommodations;
+            } else {
+                this.accommodations = this.accommodations.filter((accommodation) => {
+                    return accommodation.star_rating >= starRating;
+                });
             }
-        }
+        },
+        filteredAccommodation(filter) {
+            this.resetAccommodations();
+            if (filter === 'All') {
+                return this.accommodations;
+            } else {
+                this.accommodations = this.accommodations.filter((accommodation) => {
+                    return accommodation.name === filter;
+                });
+            }
+        },
+        resetAccommodations() {
+            return this.accommodations;
+        },
+        
     },
+
+    // computed: {
+    //     accommodations() {
+    //       return this.$store.state.accommodations;  
+    //     },
+    //     filteredAccommodation:{
+    //         get() { 
+    //             return this.accommodations
+    //         },
+    //         set(value) {
+    //             this.accommodations = value;
+    //         }
+    //     }
+    // },
 
     components: {
         Loader,
