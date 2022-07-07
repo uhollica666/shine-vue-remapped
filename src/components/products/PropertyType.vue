@@ -1,13 +1,20 @@
 <template>
     <div>
-         <div v-for="accommodation in accommodations.SpaceType" :key="accommodation">
-            <div v-if="accommodation">
-            <i class="bi bi-tag"></i> Property Type: <b>{{accommodation}}</b>
-         </div>
-         <div v-else>
-            <i class="bi bi-tag"></i> Property Type: Not Available
-         </div>
-         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <i class="bi bi-tag"></i> Property Type:
+            </div>
+            <div class="col-md-6">
+                <div v-for="accommodation in accommodations.SpaceType" :key="accommodation">
+                    <div v-if="accommodation" class="text-left">
+                        <b>{{ accommodation }}</b> ✅
+                    </div>
+                    <div v-else>
+                        Not Available ❌
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 

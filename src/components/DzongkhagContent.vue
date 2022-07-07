@@ -12,7 +12,7 @@
             <div class="card mt-3">
               <div class="card-body">
                 <img loading="lazy" :src="apiURL + accommodation.file_path" alt="" class="card-img img-fluid" />
-                <RouterLink :to="'/properties/' + accommodation.slug" class="accommodation-details">
+                <RouterLink :to="'/properties/' + accommodation.id + 'where?name='+ accommodation.slug" class="accommodation-details">
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
                       {{ accommodation.title }}
@@ -55,7 +55,7 @@
             <div class="card mt-3">
               <div class="card-body">
                 <img loading="lazy" :src="apiURL + hotel.file_path" alt="" class="card-img img-fluid" />
-                <RouterLink :to="'/hotel/' + hotel.id +'where?name=' + hotel.slug" class="accommodation-details">
+                <RouterLink :to="'/hotel/' + hotel.id + 'where?name=' + hotel.slug" class="accommodation-details">
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
                       {{ hotel.title }}
@@ -130,11 +130,12 @@
       <h5 class="text-capitalize my-3">
         A little Insight about {{ $route.params.location_id }}
       </h5>
-      <div v-for="detail in dzongkhagDetails" :key="detail.id" class="quote-about px-5 py-3">
-        <em><span v-html="detail.content" v-if="detail.name === $route.params.location_id"
-            class="about-dzongkhag-details lead py-4 px-2">
-          </span></em>
+      <template v-for="detail in dzongkhagDetails">
+        <div v-if="detail.name === $route.params.location_id" :key="detail.id" class="quote-about px-5 py-3">
+          <em><span v-html="detail.content" class="about-dzongkhag-details lead py-4 px-2">
+            </span></em>
       </div>
+      </template>
     </div>
 
     <div class="dzongkhag-accommodation mt-5">
@@ -251,8 +252,9 @@ export default {
 
 <style scoped>
 .quote-about {
-  background-color: #dedede;
+  background-color: #ffffff;
   border-radius: 0.5rem;
+  color: #2c3e50;
 }
 
 span.about-dzongkhag-details h4 {

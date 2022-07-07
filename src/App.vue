@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 import NavBar from '@/components/common/NavBar';
 import SiteFooter from '@/components/common/Footer';
 export default {
@@ -23,7 +23,8 @@ export default {
   },
 
   async created() {
-    const response = await axios.get('user');
+    const fetchId = 'https://test.hemantbhutanrealestate.com/api/user';
+    const response = await fetch(fetchId);
     this.user =  response.data;
   },
 

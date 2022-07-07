@@ -55,6 +55,7 @@ const routes = [
   {
     path: '/properties/:id',
     name: 'SingleProperty',
+    props: true,
     component: () => import( /* webpackChunkName: "about" */ '../views/SingleProperty')
   },
   {
@@ -78,7 +79,7 @@ const routes = [
     component: () => import( /* webpackChunkName: "about" */ '../views/SearchPage')
   },
   {
-    path: '/tour/:slug',
+    path: '/tour/:id',
     name: 'SingleTour',
     component: () => import( /* webpackChunkName: "about" */ '../views/SingleTour')
   },

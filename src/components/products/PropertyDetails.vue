@@ -16,19 +16,27 @@
                     <h5 class="col-md-6 prod-descrip my-3">
                         {{ property.title }}
                     </h5>
-                    <h5 class="col-md-6 prod-descrip my-3">
-                        Nu. {{ property.price }} per Night
-                    </h5>
+                    <div v-if="property.sale_price" class="col-md-6 prod-descrip my-3">
+                        <p><span class="text-danger me-2">Before Discount: </span><s>Nu. {{property.price}} per Night</s></p>
+                        <h5>
+                            <span class="text-success me-2">Discount: </span> Nu. {{ property.sale_price }} per Night
+                        </h5>
+                    </div>
+                    <div v-else class="col-md-6 prod-descrip my-3">
+                        <h5>
+                            Nu. {{ property.price }} per Night
+                        </h5>
+                    </div>
                 </section>
                 <div class="hr my-4"></div>
                 <section class="row my-3">
-                    <div class="row text-center">
+                    <div class="row">
                         <div class="col-md-4" v-if="!property.rating">
-                            <i class="bi bi-star-fill text-warning"></i> Average Review: <em><b class="mx-1">No Ratings
+                            <i class="bi bi-star-fill text-warning"></i> Review: <em><b class="mx-1">No Ratings
                                     Yet!</b></em>
                         </div>
                         <div class="col-md-4" v-else>
-                            <i class="bi bi-star-fill text-warning"></i> Average Review:
+                            <i class="bi bi-star-fill text-warning"></i> Review:
                         </div>
                         <div class="col-md-4">
                             <PropertyType />
@@ -46,7 +54,7 @@
                     <div class="row text-center">
                         <div class="col-md-3 prod-descrip">
                             <i class="bi bi-columns text-war"></i>
-                            <p v-if="!property.square">Size: ~? sqft
+                            <p v-if="!property.square">Size: ~? sqft <br /> Not Available
 
                             </p>
 

@@ -2,13 +2,15 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12 col-xs-12">
-        <DzongkhagSideBar />
+        <Suspense>
+          <HotelSidebar />
+        </Suspense>
       </div>
       <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-xs-12">
 
         <Suspense>
           <template #default>
-              <HotelDetails />
+              <HotelDetails :key="$route.fullPath" />
           </template>
           <template #fallback>
             <Loader />
@@ -23,14 +25,14 @@
 <script>
 import Loader from '@/components/common/Loader'
 import HotelDetails from '@/components/products/HotelDetails'
-import DzongkhagSideBar from '@/components/common/DzongkhagSideBar';
+import HotelSidebar from '@/components/common/HotelSidebar';
 // import DzongkhagContent from '@/components/DzongkhagContent';
 
 
 export default {
   name: "SingleHotel",
   components: {
-    DzongkhagSideBar,
+    HotelSidebar,
     Loader,
     HotelDetails,
   },

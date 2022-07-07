@@ -1,39 +1,29 @@
 <template>
     <div>
-        <div class="row" v-for="hotel in hotels" :key="hotel">
-            <div class="col-md-4 text-center">
-                <p><b>Education:</b></p>
-                <p v-if="!hotel.education">
-                    <i class="bi bi-mortarboard text-war"></i><br />
-                    No Data Available
-                </p>
-                <p v-else>
-                    <i class="bi bi-clock"></i><br />
-                    {{ hotel.ecudation }}
-                </p>
-            </div>
-            <div class="col-md-4 text-center">
-                <p><b>Health:</b></p>
-                <p v-if="!hotel.health">
-                    <i class="bi bi-hospital text-war"></i><br />
-                    No Data Available
-                </p>
-                <p v-else>
-                    <i class="bi bi-clock"></i><br />
-                    {{ hotel.hospital }}
-                </p>
-            </div>
-            <div class="col-md-4 text-center">
-                <p><b>Transportation:</b></p>
-                <p v-if="!hotel.transportation">
-                    <i class="fa fa-train text-war"></i><br />
-                    No Data Available
-                </p>
-                <p v-else>
-                    <i class="bi bi-clock"></i><br />
-                    {{ hotel.transportation }}
-                </p>
-            </div>
+        <div class="row  text-center">
+            <i class="bi bi-mortarboard text-war col-md-4 "></i>
+            <i class="bi bi-hospital text-war col-md-4 "></i>
+            <i class="fa fa-train text-war col-md-4 "></i>
+        </div>
+        <div class="row">
+            <template v-for="nearby in hotelsDetails">
+                <div class="col-md-4 text-center" v-if="nearby.name" :key="nearby">
+                    <h6 class="mt-2 margin-less-p"><b>Name:</b> {{ nearby.name }} </h6>
+                    <p class="margin-less-p"><b>Type: </b> {{ nearby.content }}</p>
+                    <p class="margin-less-p"><b>Distance:</b> {{ nearby.value }} {{ nearby.type }}</p>
+                </div>
+                <template v-else >
+                    <div class="col-md-4 text-center" :key="nearby.name">
+                        <h6 class="mt-2 margin-less-p"> No Landmarks Nearby</h6>
+                    </div>
+                    <div class="col-md-4 text-center" :key="nearby.name">
+                        <h6 class="mt-2 margin-less-p"> No Landmarks Nearby</h6>
+                    </div>
+                    <div class="col-md-4 text-center" :key="nearby.name">
+                        <h6 class="mt-2 margin-less-p"> No Landmarks Nearby</h6>
+                    </div>
+                </template>
+            </template>
         </div>
     </div>
 </template>
@@ -46,20 +36,26 @@ export default {
     async setup() {
         const route = useRoute();
         const routeId = route.params.id;
-        const hotels = ref(null);
+        const hotelsDetails = ref(null);
         const siteURL = 'https://dev.hemantbhutanrealestate.com/';
         const bc_hotels = await fetch(
-            `https://dev.hemantbhutanrealestate.com/api/hotel_room_terms?id=${routeId}`
+            `https://dev.hemantbhutanrealestate.com/api/single_hotel_details?id=${routeId}`
         );
-        hotels.value = await bc_hotels.json();
-        console.log(hotels);
+        hotelsDetails.value = await bc_hotels.json();
         return {
-            hotels,
+            hotelsDetails,
             siteURL,
         };
     },
 }
 </script>
 
-<style>
+<style scoped>
+i.bi, i.fa {
+    margin: 0;
+}
+
+.margin-less-p {
+    margin-bottom: 0;
+}
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid my-5">
         <div v-for="tour in tours" :key="tour.id">
-            <div class="property-card px-5" v-if="tour.slug === $route.params.slug">
+            <div class="property-card px-5">
                 <section class="row">
                     <img :src="siteURL + 'uploads/' + tour.file_path" :alt="tour.title" class="img-fluid img-prop"
                         loading="lazy" />
@@ -16,12 +16,10 @@
                     <div class="row text-center my-2">
                         <div class="col-md-3" v-if="!tour.date_form_to">
                             <i class="bi bi-clock"></i> Tour Duration:
-                            <em><b class="mx-1">No Data</b></em><br /><em style="font-size: 10px"
-                                class="text-danger">ERR: 500. Server failed to respond.</em>
+                            <em><b class="mx-1">No Data</b></em>
                         </div>
                         <div class="col-md-3" v-else>
-                            <i class="bi bi-star-fill"></i> Tour Duration:
-                            {{ tour.date_form_to }}
+                            Duration: <b>{{ tour.date_form_to }}</b>
                         </div>
                         <div class="col-md-3">
                             <i class="bi bi-geo"></i> Tour Origin: <b>{{ tour.name }}</b>
@@ -30,8 +28,7 @@
                             <i class="bi bi-person"></i> Min. Age: <b>18+</b>
                         </div>
                         <div class="col-md-3" v-if="!tour.pick_up">
-                            <i class="bi bi-geo-alt"></i> Pick Up: <b>Not Available</b><br /><em style="font-size: 10px"
-                                class="text-danger">ERR: 500. Server failed to respond.</em>
+                            <i class="bi bi-geo-alt"></i> Pick Up: <b>Not Available</b>
                         </div>
                         <div class="col-md-3" v-else>
                             <i class="bi bi-geo-alt"></i> Pick Up: <b>{{ tour.pick_up }}</b>
@@ -46,7 +43,6 @@
                     <div class="row">
                         <div class="col-md-">
                             <div class="row">
-                                <p>Price Inclides:</p>
                                 <div class="just-shit">
                                     <ul class="unspoken-list row">
                                         <li class="col-md-4" v-if="tour.fees">✅ Air Fees</li>
@@ -87,8 +83,7 @@
                             Lorem ipsum dolor sit amet consectetur adipisicing elit.
                             Laudantium numquam, laborum quisquam molestias, blanditiis a
                             officiis inventore veritatis itaque adipisci animi culpa atque rem
-                            accusamus! <br /><em style="font-size: 10px" class="text-danger">ERR: 500. Server failed to
-                                respond.</em>
+                            accusamus! 
                         </p>
                         <p v-else><span v-html="tour.content"></span></p>
                     </div>
@@ -99,7 +94,7 @@
                         <p><b>Map View:</b></p>
                     </div>
                     <div class="row">
-                        <div v-if="!tour.lang_id">
+                        <div v-if="tour.lang_id">
                             <iframe class="map-yuu"
                                 :src="'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1172.6441476127227!2d' + tour.lang_id + '!3d' + tour.long_id + '!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbt!4v1656893200352!5m2!1sen!2sbt'"
                                 width="1080" height="600" style="border: 0" allowfullscreen="yes" loading="lazy"
@@ -117,7 +112,7 @@
                 <section class="row">
                     <a :href="siteURL + 'tour/' + tour.slug" target="_blank">
                         <button class="btn-buy">
-                            <i class="bi bi-eye"></i>Book Tour
+                            <i class="bi bi-eye"></i>Proceed to Booking
                         </button>
                     </a>
                     <p class="py-3 notice-change">

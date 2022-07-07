@@ -28,12 +28,12 @@
                     </div>
                     <div class="row my-2">
                         <div class="col-md-6" v-if="!hotel.star_rate">
-                            <i class="bi bi-star-fill text-warning"></i> Star Rating: <em><b class="mx-1">No Star
-                                    Ratings
-                                    Yet!</b></em>
+                            <i class="bi bi-star-fill text-warning"></i> Star Rating:
+                            <em><b class="mx-1">No Star Ratings Yet!</b></em>
                         </div>
                         <div class="col-md-6" v-else>
-                            <i class="bi bi-star-fill text-warning"></i> Star Rating: {{ hotel.star_rate }}
+                            <i class="bi bi-star-fill text-warning"></i> Star Rating:
+                            {{ hotel.star_rate }}
                         </div>
                         <div class="col-md-6">
                             <i class="bi bi-geo"></i> Location: <b>{{ hotel.name }}</b>
@@ -53,44 +53,20 @@
                         <p><b>Description:</b></p>
                     </div>
                     <div class="col-md-12 prod-descrip">
-                        <p v-if="!hotel.content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium
-                            numquam, laborum quisquam
-                            molestias, blanditiis a officiis inventore veritatis itaque adipisci animi culpa atque rem
-                            accusamus!
-                            <br><em style="font-size:10px" class="text-danger">Description Not Available.</em>
+                        <p v-if="!hotel.content">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Laudantium numquam, laborum quisquam molestias, blanditiis a
+                            officiis inventore veritatis itaque adipisci animi culpa atque rem
+                            accusamus! <br /><em style="font-size: 10px" class="text-danger">Description Not
+                                Available.</em>
                         </p>
                         <p v-else><span v-html="hotel.content"></span></p>
                     </div>
                 </section>
                 <div class="hr my-4"></div>
-                <section class="row">
-                    <div class="col-md-12 prod-descrip">
-                        <p><b>Hotel Services:</b></p>
-                    </div>
-                    <div class="row prod-descrip">
-                        <div class="col-md-3" v-if="!hotel.lobby">Havana Lobby bar: ❌
-                        </div>
-                        <div class="col-md-3" v-else>Havana Lobby bar: ✅</div>
-                        <div class="col-md-3" v-if="!hotel.restaurant">Fiesta Restaurant: ❌
-                        </div>
-                        <div class="col-md-3" v-else>Fiesta Restaurant: ✅</div>
-                        <div class="col-md-3" v-if="!hotel.transport">Hotel transport services: ❌
-                        </div>
-                        <div class="col-md-3" v-else>Hotel transport services: ✅</div>
-                        <div class="col-md-3" v-if="!hotel.luggage">Free luggage deposit: ❌
-                        </div>
-                        <div class="col-md-3" v-else>Free luggage deposit: ✅</div>
-                        <div class="col-md-3" v-if="!hotel.laundry">Laundry Services: ❌
-                        </div>
-                        <div class="col-md-3" v-else>Laundry Services: ✅</div>
-                        <div class="col-md-3" v-if="!hotel.pets">Pets welcome: ❌
-                        </div>
-                        <div class="col-md-3" v-else>Pets welcome: ✅</div>
-                        <div class="col-md-3" v-if="!hotel.tickets">Tickets: ❌
-                        </div>
-                        <div class="col-md-3" v-else>Tickets: ✅</div>
-                    </div>
-                </section>
+                <Suspense>
+                    <HotelServices />
+                </Suspense>
                 <div class="hr my-4"></div>
                 <section class="row">
                     <div class="col-md-12 prod-descrip">
@@ -99,24 +75,40 @@
                     <div class="row">
                         <div class="col-md-6">
                             <p><b>Check In:</b></p>
-                            <p v-if="!hotel.check_in_time"><i class="bi bi-clock"></i>Check-In Time Not Available
+                            <p v-if="!hotel.check_in_time">
+                                <i class="bi bi-clock"></i>Check-In Time Not Available
                             </p>
                             <p v-else><i class="bi bi-clock"></i>{{ hotel.check_in_time }}</p>
                         </div>
                         <div class="col-md-6">
                             <p><b>Check Out:</b></p>
-                            <p v-if="!hotel.check_out_time"><i class="bi bi-clock"></i>12:00 Noon, Standard Check-Out
-                                Time
+                            <p v-if="!hotel.check_out_time">
+                                <i class="bi bi-clock"></i>12:00 Noon, Standard Check-Out Time
                             </p>
-                            <p v-else><i class="bi bi-clock"></i>{{ hotel.check_out_time }} Standard BST</p>
+                            <p v-else>
+                                <i class="bi bi-clock"></i>{{ hotel.check_out_time }} Standard
+                                BST
+                            </p>
                         </div>
                         <div class="col-md-12">
                             <p><b>Hotel Policies:</b></p>
-                            <p v-if="!hotel.policies">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero,
-                                beatae? Atque, error eos neque delectus animi fugiat, dignissimos non quasi recusandae
-                                voluptas deserunt sed accusamus inventore amet suscipit, autem enim veniam et molestiae
-                                repellat dolore.<br>
-                                <em style="font-size:10px" class="text-danger">The above is filler text. Policy Not
+                            <p v-if="!hotel.policies">
+                                We strive to provide our guests with an exceptionally clean,
+                                safe, and friendly hotel experience. The following Hotel
+                                Policy/House Rules have been established based on industry
+                                standards, management and operational procedures, and our
+                                personal experience of owning and operating the All Seasons Inn
+                                & Suites since 2007. These Hotel Policy/House Rules are
+                                considered a part of our reservation agreement with you. As our
+                                hotel guest, by reading and signing your hotel registration you
+                                are agreeing to abide by all of our Hotel Policy/House Rules,
+                                terms and conditions, and procedures. These Hotel Policy/House
+                                Rules are presented here to help promote our guests' safety and
+                                enjoyment and to ensure that each guest is aware of the
+                                understandings between the All Seasons Inn & Suites and the
+                                guest. Our Hotel Policy/House Rules may change from time to
+                                time, so please check back often...<br />
+                                <em style="font-size: 10px" class="text-danger">The above is filler text. Policy Not
                                     Available</em>
                             </p>
                             <p v-else><i class="bi bi-clock"></i>{{ hotel.check_out }}</p>
@@ -133,11 +125,15 @@
                 <div class="hr my-4"></div>
                 <section class="row">
                     <a :href="siteURL + 'hotel/' + hotel.slug" target="_blank">
-                        <button class="btn-buy"><i class="bi bi-eye"></i>Proceed to Booking</button>
+                        <button class="btn-buy">
+                            <i class="bi bi-eye"></i>Proceed to Booking
+                        </button>
                     </a>
-                    <p class="py-3 notice-change"><em style="font-size: 12px !important;">Note: you will be redirected
-                            to a more
-                            secured server to proceed futher with booking and payments.</em></p>
+                    <p class="py-3 notice-change">
+                        <em style="font-size: 12px !important">Note: you will be redirected to a more secured server to
+                            proceed
+                            futher with booking and payments.</em>
+                    </p>
                 </section>
             </div>
         </div>
@@ -145,21 +141,23 @@
 </template>
 
 <script>
-import { ref } from 'vue';
-import { useRoute } from 'vue-router';  
-import HotelFacilites from '@/components/products/HotelFacilites'
-import HotelNearby from '@/components/products/HotelNearby'
+import { ref } from "vue";
+import { useRoute } from "vue-router";
+import HotelFacilites from "@/components/products/HotelFacilites";
+import HotelServices from "@/components/products/HotelServices";
+import HotelNearby from "@/components/products/HotelNearby";
 export default {
     name: "HotelDetails",
     components: {
         HotelFacilites,
         HotelNearby,
+        HotelServices,
     },
     async setup() {
         const route = useRoute();
         const routeId = route.params.id;
         const hotels = ref(null);
-        const siteURL = 'https://dev.hemantbhutanrealestate.com/';
+        const siteURL = "https://dev.hemantbhutanrealestate.com/";
         const bc_hotels = await fetch(
             `https://dev.hemantbhutanrealestate.com/api/single_hotel?id=${routeId}`
         );
@@ -169,7 +167,7 @@ export default {
             siteURL,
         };
     },
-}
+};
 </script>
 
 <style>

@@ -14,20 +14,26 @@
                         <div class="sidebar-filters">
                             
                             <div class="heading">
-                                <h6 class="mb-3">Explore Accommodations</h6>
+                                <h6 class="mb-3">Other Hotels</h6>
                             </div>
                             <div class="content-filter">
-                                <div class="dzo-list" v-for="space in accommodations" :key="space.id">
-                                <RouterLink :to="{name:'SingleProperty', params:{id: space.id}}" :class="{active: isActive }">
+                                <div class="dzo-list" v-for="hotel in accommodations" :key="hotel.id">
+                                <RouterLink :to="{name:'SingleHotel', params:{id: hotel.id}}" :class="{active: isActive }">
                                     <ul class="lists-dzo">
-                                        <li>{{space.title}}</li>
+                                        <li v-if="hotel.title">{{hotel.title}}</li>
+                                        <li v-else> -Hotel Name NA- </li>
                                     </ul>
                                 </RouterLink>
                             </div>
                             </div>
                             <div class="back-to-home">
-                                <RouterLink to="/" class="home-button" @click="returnPrev()">
-                                    <i class="bi bi-caret-left"></i> Back To Previous Page
+                                <RouterLink to="" class="home-button" @click="returnPrev()">
+                                    <i class="bi bi-caret-left"></i> View Previous Hotel
+                                </RouterLink>
+                            </div>
+                            <div class="back-to-home d-flex">
+                                <RouterLink to="/accommodation" class="home-button">
+                                    <button class="btn acom-btn"><i class="bi bi-caret-left"></i> Go Back</button>
                                 </RouterLink>
                             </div>
                         </div>
@@ -41,13 +47,13 @@
 <script>
 import {ref} from 'vue';
 export default {
-    name: "PropertySideBar",
+    name: "HotelSidebar",
 
     async setup() {
         const accommodations = ref(null);
         const siteURL = 'https://dev.hemantbhutanrealestate.com/';
         const bc_spaces = await fetch(
-            'https://dev.hemantbhutanrealestate.com/api/bc_spaces'
+            'https://dev.hemantbhutanrealestate.com/api/bc_hotels'
         );
         accommodations.value = await bc_spaces.json();
         
@@ -66,6 +72,19 @@ export default {
 </script>
 
 <style scoped>
+.acom-btn{
+    background: #f7941e;
+    border: none;
+    border-radius: 10rem;
+    color: #fff;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    width: 100%;
+}
+.acom-btn:hover{
+    background: #f9741e;
+}
 .content-filter{
     max-height: 40vh;
     overflow: auto;

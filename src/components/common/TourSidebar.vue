@@ -14,20 +14,21 @@
                         <div class="sidebar-filters">
                             
                             <div class="heading">
-                                <h6 class="mb-3">Explore Accommodations</h6>
+                                <h6 class="mb-3">Other Tours</h6>
                             </div>
                             <div class="content-filter">
-                                <div class="dzo-list" v-for="space in accommodations" :key="space.id">
-                                <RouterLink :to="{name:'SingleProperty', params:{id: space.id}}" :class="{active: isActive }">
+                                <div class="dzo-list" v-for="tour in tours" :key="tour.id">
+                                <RouterLink :to="{name:'SingleTour', params:{id: tour.id}}" :class="{active: isActive }">
                                     <ul class="lists-dzo">
-                                        <li>{{space.title}}</li>
+                                        <li v-if="tour.title" class="text-capitalize">{{tour.title}}</li>
+                                        <li v-else> -Hotel Name NA- </li>
                                     </ul>
                                 </RouterLink>
                             </div>
                             </div>
                             <div class="back-to-home">
-                                <RouterLink to="/" class="home-button" @click="returnPrev()">
-                                    <i class="bi bi-caret-left"></i> Back To Previous Page
+                                <RouterLink to="" class="home-button" @click="returnPrev()">
+                                    <i class="bi bi-caret-left"></i> Return to Tours
                                 </RouterLink>
                             </div>
                         </div>
@@ -41,18 +42,18 @@
 <script>
 import {ref} from 'vue';
 export default {
-    name: "PropertySideBar",
+    name: "TourSidebar",
 
     async setup() {
-        const accommodations = ref(null);
+        const tours = ref(null);
         const siteURL = 'https://dev.hemantbhutanrealestate.com/';
-        const bc_spaces = await fetch(
-            'https://dev.hemantbhutanrealestate.com/api/bc_spaces'
+        const bc_tours = await fetch(
+            'https://dev.hemantbhutanrealestate.com/api/bc_tours'
         );
-        accommodations.value = await bc_spaces.json();
+        tours.value = await bc_tours.json();
         
         return {
-            accommodations,
+            tours,
             siteURL,
         };
     },
@@ -103,7 +104,7 @@ a.router-link-exact-active ul li{
 
 .accordion {
     background: #fafafa;
-    max-width: 80%;
+    max-width: 100%;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     margin-top: 10px;

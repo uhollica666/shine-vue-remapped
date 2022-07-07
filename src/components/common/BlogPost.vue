@@ -69,9 +69,12 @@
 
 <script>
 import { ref } from "vue";
+import { useRoute } from 'vue-router';
 export default {
   name: "BlogPost",
   async setup() {
+    const route = useRoute();
+    const routeId = route.params.id;
     const stories = ref(null);
     const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
     const siteURL = "https://dev.hemantbhutanrealestate.com";
@@ -84,6 +87,7 @@ export default {
       stories,
       apiURL,
       siteURL,
+      routeId,
     };
   },
   methods: {
@@ -92,7 +96,7 @@ export default {
     },
     sortDzongkhagBlogPost() {
       return this.stories.filter((story) => {
-        return story.content.includes(this.$route.params.location_id);
+        return story.content.includes(this.routeId);
       });
     },
   },

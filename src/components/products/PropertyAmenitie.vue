@@ -1,6 +1,6 @@
 <template>
     <div class="row text-center prod-descrip">
-        <div class="col-md-2" v-for="amenitie in amenities.Amenities" :key="amenitie">
+        <div class="col-md-3 mb-3" v-for="amenitie in amenities.Amenities" :key="amenitie">
             {{ amenitie }}: ✅
         </div>
     </div>

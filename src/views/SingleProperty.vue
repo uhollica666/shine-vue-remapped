@@ -2,13 +2,15 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12 col-xs-12">
-        <PropertySideBar />
+        <Suspense>
+          <PropertySideBar />
+        </Suspense>
       </div>
       <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-xs-12">
 
         <Suspense>
           <template #default>
-              <PropertyDetails />
+              <PropertyDetails :key="$route.fullPath"/>
           </template>
           <template #fallback>
             <Loader />
@@ -21,8 +23,8 @@
 </template>
 
 <script>
-import Loader from '@/components/common/Loader'
-import PropertyDetails from '@/components/products/PropertyDetails'
+import Loader from '@/components/common/Loader';
+import PropertyDetails from '@/components/products/PropertyDetails';
 import PropertySideBar from '@/components/common/PropertySideBar';
 // import DzongkhagContent from '@/components/DzongkhagContent';
 
@@ -30,9 +32,9 @@ import PropertySideBar from '@/components/common/PropertySideBar';
 export default {
   name: "SingleProperty",
   components: {
-    PropertySideBar,
     Loader,
     PropertyDetails,
+    PropertySideBar,
   },
 };
 </script>
