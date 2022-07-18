@@ -8,11 +8,19 @@
     </div>
     <div class="row">
       <template v-for="product in products">
-        <div v-if="product.parent_name === 'Agri Products'" :key="product.id"
-          class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12">
+        <div
+          v-if="product.parent_name === 'Agri Products'"
+          :key="product.id"
+          class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12"
+        >
           <div class="card mt-5">
             <div class="card-body">
-              <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
+              <img
+                loading="lazy"
+                :src="ecomURL + 'public/' + product.file_name"
+                alt=""
+                class="card-img img-fluid"
+              />
               <div class="card-details">
                 <h6 class="card-title text-truncate">
                   {{ product.name }}
@@ -55,10 +63,10 @@ export default {
 
   async setup() {
     const products = ref(null);
-    const ecomURL = "https://booking.hemantbhutanrealestate.com/";
+    const ecomURL = "https://shop.shinebhutan.com/";
     const catSubtitle = "Eastern Bhutan Destinations Now Open";
     const product = await fetch(
-      "https://booking.hemantbhutanrealestate.com/api/v1/get_frontend_products"
+      "https://shop.shinebhutan.com/api/v1/get_frontend_products"
     );
     products.value = await product.json();
 

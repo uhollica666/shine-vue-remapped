@@ -7,10 +7,14 @@
             <div class="contact contact_space">
               <ul class="top-bar top-bar-left">
                 <li>
-                  <a href="mailto:info@shine.com"><i class="bi bi-send-check"></i>info@shine.com</a>
+                  <a href="mailto:info@shinebhutan.com"
+                    ><i class="bi bi-send-check"></i>info@shinebhutan.com</a
+                  >
                 </li>
                 <li>
-                  <a href="callto:+975 2 338089"><i class="bi bi-phone"></i>+975-2-338089</a>
+                  <a href="callto:+975 2 338089"
+                    ><i class="bi bi-phone"></i>+975-2-338089</a
+                  >
                 </li>
               </ul>
             </div>
@@ -20,21 +24,36 @@
               <ul class="top-bar top-bar-right">
                 <li>
                   <div class="dropdown logged-user-menu mr-5 my-0">
-                    <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton"
-                      data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="bi bi-person-bounding-box"></i> Become A
-                      Vendor
+                    <button
+                      class="btn dropdown-toggle text-white"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <i class="bi bi-person-bounding-box"></i> Become A Vendor
                     </button>
-                    <ul class="dropdown-menu px-0 mx-0" aria-labelledby="dropdownMenuButton">
+                    <ul
+                      class="dropdown-menu px-0 mx-0"
+                      aria-labelledby="dropdownMenuButton"
+                    >
                       <li class="px-1 mx-0 my-3">
-                        <a :href="'https://dev.hemantbhutanrealestate.com/register'" class="dropdown-item text-dark"
-                          target="_blank">
+                        <a
+                          :href="'https://booking.shinebhutan.com/register'"
+                          class="dropdown-item text-dark"
+                          target="_blank"
+                        >
                           <i class="bi bi-speedometer2"></i>Tourism Vendor
                         </a>
                       </li>
                       <li class="px-1 mx-0 my-3">
-                        <a :href="'https://booking.hemantbhutanrealestate.com/' + 'shops/create'"
-                          class="dropdown-item text-dark" target="_blank">
+                        <a
+                          :href="
+                            'https://shop.shinebhutan.com/' + 'shops/create'
+                          "
+                          class="dropdown-item text-dark"
+                          target="_blank"
+                        >
                           <i class="bi bi-basket2"></i>Ecommerce Vendor
                         </a>
                       </li>
@@ -43,21 +62,32 @@
                 </li>
                 <div v-if="!user" class="d-flex mx-3">
                   <li>
-                    <RouterLink to="/login"><i class="bi bi-box-arrow-in-right"></i>Login
+                    <RouterLink to="/login"
+                      ><i class="bi bi-box-arrow-in-right"></i>Login
                     </RouterLink>
                   </li>
                   <li>
-                    <RouterLink to="/register"><i class="bi bi-lock"></i>Register</RouterLink>
+                    <RouterLink to="/register"
+                      ><i class="bi bi-lock"></i>Register</RouterLink
+                    >
                   </li>
                 </div>
                 <div v-if="user">
                   <div class="dropdown logged-user-menu mx-5">
-                    <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton"
-                      data-bs-toggle="dropdown" aria-expanded="false">
+                    <button
+                      class="btn dropdown-toggle text-white"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
                       <i class="bi dropdown-icon bi-person"></i> Hi,
                       {{ user.firstName }} {{ user.lastName }}
                     </button>
-                    <ul class="dropdown-menu px-0 mx-0" aria-labelledby="dropdownMenuButton">
+                    <ul
+                      class="dropdown-menu px-0 mx-0"
+                      aria-labelledby="dropdownMenuButton"
+                    >
                       <li class="px-1 mx-0">
                         <RouterLink to="#" class="dropdown-item text-dark">
                           <i class="bi bi-speedometer2"></i>Tourism Vendor
@@ -97,7 +127,11 @@
                         <hr class="dropdown-divider" />
                       </li>
                       <li class="px-1 mx-0">
-                        <a href="javascript:void(0)" @click="handleClick" class="dropdown-item text-dark">
+                        <a
+                          href="javascript:void(0)"
+                          @click="handleClick"
+                          class="dropdown-item text-dark"
+                        >
                           <i class="bi bi-box-arrow-right"></i>Logout
                         </a>
                       </li>
@@ -127,7 +161,7 @@ export default {
   data() {
     return {
       isDark: false,
-      siteUrl: "https://test.hemantbhutanrealestate.com",
+      siteUrl: "https://users.shinebhutan.com",
     };
   },
   components: {

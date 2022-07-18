@@ -48,9 +48,9 @@ export default {
   async setup() {
     const products = ref(null);
     const catSubtitle = "Eastern Bhutan Destinations Now Open";
-    const ecomURL = "https://booking.hemantbhutanrealestate.com/";
+    const ecomURL = "https://shop.shinebhutan.com/";
     const product = await fetch(
-      "https://booking.hemantbhutanrealestate.com/api/v1/get_frontend_products"
+      "https://shop.shinebhutan.com/api/v1/get_frontend_products"
     );
     products.value = await product.json();
 

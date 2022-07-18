@@ -6,8 +6,17 @@
         <div class="container home-container">
           <div class="product-images row">
             <template v-for="product in computedProducts">
-              <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Agri Products'" :key="product.id">
-                <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
+              <div
+                class="cardo col-md-6 mt-2"
+                v-if="product.parent_name === 'Agri Products'"
+                :key="product.id"
+              >
+                <img
+                  loading="lazy"
+                  :src="ecomURL + 'public/' + product.file_name"
+                  alt=""
+                  class="card-img img-fluid"
+                />
               </div>
             </template>
           </div>
@@ -24,8 +33,17 @@
         <div class="container home-container">
           <div class="product-images row">
             <template v-for="product in computedHandicrafts">
-              <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Handicrats'" :key="product.id">
-                <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
+              <div
+                class="cardo col-md-6 mt-2"
+                v-if="product.parent_name === 'Handicrats'"
+                :key="product.id"
+              >
+                <img
+                  loading="lazy"
+                  :src="ecomURL + 'public/' + product.file_name"
+                  alt=""
+                  class="card-img img-fluid"
+                />
               </div>
             </template>
           </div>
@@ -43,8 +61,16 @@
         <h6 class="p-3 home-linear-heading">Tour Packages</h6>
         <div class="home-tour-group">
           <div class="row">
-            <div class="col-md-2 col-sm-6 col-xs-6 home-objects" v-for="tour in computedTours" :key="tour.id">
-              <img loading="lazy" class="card-img img-fluid" :src="apiURL + tour.file_path" />
+            <div
+              class="col-md-2 col-sm-6 col-xs-6 home-objects"
+              v-for="tour in computedTours"
+              :key="tour.id"
+            >
+              <img
+                loading="lazy"
+                class="card-img img-fluid"
+                :src="apiURL + tour.file_path"
+              />
               <RouterLink :to="'/tour/' + tour.slug" class="category-details">
                 <div class="card-details">
                   <h6 class="card-title text-truncate text-capitalize py-2">
@@ -72,15 +98,36 @@
         <h6 class="p-3 home-linear-heading">Accommodation</h6>
         <div class="home-tour-group">
           <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-6 home-objects" v-for="accommodation in computedAccommodation"
-              :key="accommodation.id">
-              <img loading="lazy" class="card-img img-fluid" :src="apiURL + accommodation.file_path" />
-              <RouterLink :to="'/properties/' + accommodation.id +'where?name=' + accommodation.slug" class="category-details">
+            <div
+              class="col-md-3 col-sm-6 col-xs-6 home-objects"
+              v-for="accommodation in computedAccommodation"
+              :key="accommodation.id"
+            >
+              <img
+                loading="lazy"
+                class="card-img img-fluid"
+                :src="apiURL + accommodation.file_path"
+              />
+              <RouterLink
+                :to="
+                  '/properties/' +
+                  accommodation.id +
+                  'where?name=' +
+                  accommodation.slug
+                "
+                class="category-details"
+              >
                 <div class="card-details">
-                  <h6 class="card-title text-truncate text-capitalize py-2" v-if="!accommodation.title">
+                  <h6
+                    class="card-title text-truncate text-capitalize py-2"
+                    v-if="!accommodation.title"
+                  >
                     - Name Not Available -
                   </h6>
-                  <h6 class="card-title text-truncate text-capitalize py-2" v-else>
+                  <h6
+                    class="card-title text-truncate text-capitalize py-2"
+                    v-else
+                  >
                     {{ accommodation.title }}
                   </h6>
                   <p class="text-truncate">
@@ -102,18 +149,34 @@
 
     <div class="row mt-5">
       <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-xs-12">
-        <h6 class="p-3 home-linear-heading">Hotels
-        </h6>
+        <h6 class="p-3 home-linear-heading">Hotels</h6>
         <div class="home-tour-group">
           <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-6 home-objects" v-for="hotel in computedHotels" :key="hotel.id">
-              <img loading="lazy" class="card-img img-fluid" :src="apiURL + hotel.file_path" />
-              <RouterLink :to="'/hotel/' + hotel.id +'where?name=' + hotel.slug" class="category-details">
+            <div
+              class="col-md-3 col-sm-6 col-xs-6 home-objects"
+              v-for="hotel in computedHotels"
+              :key="hotel.id"
+            >
+              <img
+                loading="lazy"
+                class="card-img img-fluid"
+                :src="apiURL + hotel.file_path"
+              />
+              <RouterLink
+                :to="'/hotel/' + hotel.id + 'where?name=' + hotel.slug"
+                class="category-details"
+              >
                 <div class="card-details">
-                  <h6 class="card-title text-truncate text-capitalize py-2" v-if="!hotel.title">
+                  <h6
+                    class="card-title text-truncate text-capitalize py-2"
+                    v-if="!hotel.title"
+                  >
                     - Name Not Available -
                   </h6>
-                  <h6 class="card-title text-truncate text-capitalize py-2" v-else>
+                  <h6
+                    class="card-title text-truncate text-capitalize py-2"
+                    v-else
+                  >
                     {{ hotel.title }}
                   </h6>
                   <p class="text-truncate">
@@ -138,8 +201,17 @@
         <div class="container home-container">
           <div class="product-images row">
             <template v-for="product in computedProducts">
-              <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Agri Products'" :key="product.id">
-                <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
+              <div
+                class="cardo col-md-6 mt-2"
+                v-if="product.parent_name === 'Agri Products'"
+                :key="product.id"
+              >
+                <img
+                  loading="lazy"
+                  :src="ecomURL + 'public/' + product.file_name"
+                  alt=""
+                  class="card-img img-fluid"
+                />
               </div>
             </template>
           </div>
@@ -158,8 +230,17 @@
         <div class="container home-container">
           <div class="product-images row">
             <template v-for="product in computedHandicrafts">
-              <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Handicrats'" :key="product.id">
-                <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
+              <div
+                class="cardo col-md-6 mt-2"
+                v-if="product.parent_name === 'Handicrats'"
+                :key="product.id"
+              >
+                <img
+                  loading="lazy"
+                  :src="ecomURL + 'public/' + product.file_name"
+                  alt=""
+                  class="card-img img-fluid"
+                />
               </div>
             </template>
           </div>
@@ -184,20 +265,20 @@ export default {
     const homeHotels = ref(null);
     const homeAccommodations = ref(null);
     const products = ref(null);
-    const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
-    const siteURL = "https://dev.hemantbhutanrealestate.com/";
-    const ecomURL = "https://booking.hemantbhutanrealestate.com/";
+    const apiURL = "https://booking.shinebhutan.com/uploads/";
+    const siteURL = "https://booking.shinebhutan.com/";
+    const ecomURL = "https://shop.shinebhutan.com/";
     const bc_homeTours = await fetch(
-      "https://dev.hemantbhutanrealestate.com/api/bc_tours"
+      "https://booking.shinebhutan.com/api/bc_tours"
     );
     const bc_homeAccommodations = await fetch(
-      "https://dev.hemantbhutanrealestate.com/api/bc_spaces"
+      "https://booking.shinebhutan.com/api/bc_spaces"
     );
     const bc_homeHotels = await fetch(
-      "https://dev.hemantbhutanrealestate.com/api/bc_hotels"
+      "https://booking.shinebhutan.com/api/bc_hotels"
     );
     const bc_products = await fetch(
-      "https://booking.hemantbhutanrealestate.com/api/v1/get_frontend_products"
+      "https://shop.shinebhutan.com/api/v1/get_frontend_products"
     );
 
     homeTours.value = await bc_homeTours.json();
@@ -215,7 +296,7 @@ export default {
       homeHotels,
     };
   },
-  
+
   methods: {
     sortLatestHotels() {
       return this.homeHotels.sort((a, b) => (a.id < b.id ? 1 : -1));
@@ -237,7 +318,7 @@ export default {
       });
     },
     sortLatestProducts() {
-      return this.filteredProducts().sort((a,b)=>(a.id < b.id ? 1 : -1));
+      return this.filteredProducts().sort((a, b) => (a.id < b.id ? 1 : -1));
     },
   },
   data() {
@@ -250,10 +331,14 @@ export default {
 
   computed: {
     computedProducts() {
-      return this.limit ? this.filteredAgriProds().slice(0, this.limit) : this.filteredAgriProds();
+      return this.limit
+        ? this.filteredAgriProds().slice(0, this.limit)
+        : this.filteredAgriProds();
     },
     computedHandicrafts() {
-      return this.limit ? this.filteredProducts().slice(0, this.limit) : this.filteredProducts();
+      return this.limit
+        ? this.filteredProducts().slice(0, this.limit)
+        : this.filteredProducts();
     },
     computedAccommodation() {
       return this.limit

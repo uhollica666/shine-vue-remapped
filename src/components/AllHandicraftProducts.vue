@@ -37,9 +37,7 @@
                   </div>
                 </div>
                 <div class="preview-buttons d-flex item-center">
-                  <RouterLink
-                    :href="'/product/' + product.slug"
-                  >
+                  <RouterLink :href="'/product/' + product.slug">
                     <button class="btn btn-preview mx-auto my-2">
                       <i class="bi bi-eye mr-1"></i>
                       View Details
@@ -61,9 +59,9 @@ export default {
   name: "AllHandicraftProducts",
   async setup() {
     const HandicraftProducts = ref(null);
-    const ecomURL = "https://booking.hemantbhutanrealestate.com/";
+    const ecomURL = "https://shop.shinebhutan.com/";
     const ecom_products = await fetch(
-      "https://booking.hemantbhutanrealestate.com/api/v1/get_frontend_products"
+      "https://shop.shinebhutan.com/api/v1/get_frontend_products"
     );
     HandicraftProducts.value = await ecom_products.json();
 

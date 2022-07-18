@@ -6,11 +6,19 @@
     </div>
     <div class="row mb-3">
       <template v-for="product in AgriProducts">
-        <div v-if="product.cat_name === $route.params.name" :key="product.id"
-          class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 my-3">
+        <div
+          v-if="product.cat_name === $route.params.name"
+          :key="product.id"
+          class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 my-3"
+        >
           <div class="card mt-2">
             <div class="card-body">
-              <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
+              <img
+                loading="lazy"
+                :src="ecomURL + 'public/' + product.file_name"
+                alt=""
+                class="card-img img-fluid"
+              />
               <div class="card-details">
                 <h6 class="card-title text-truncate">
                   {{ product.name }}
@@ -51,9 +59,9 @@ export default {
   name: "AllAgriProducts",
   async setup() {
     const AgriProducts = ref(null);
-    const ecomURL = "https://booking.hemantbhutanrealestate.com/";
+    const ecomURL = "https://shop.shinebhutan.com/";
     const ecom_products = await fetch(
-      "https://booking.hemantbhutanrealestate.com/api/v1/get_frontend_products"
+      "https://shop.shinebhutan.com/api/v1/get_frontend_products"
     );
     AgriProducts.value = await ecom_products.json();
 

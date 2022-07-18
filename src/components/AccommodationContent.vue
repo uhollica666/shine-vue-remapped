@@ -5,14 +5,33 @@
       <p>Best places to stay in Bhutan</p>
     </div>
     <div class="row mb-3">
-      <div v-for="accommodation in accommodations" :key="accommodation.id"
-        class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3">
+      <div
+        v-for="accommodation in accommodations"
+        :key="accommodation.id"
+        class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
+      >
         <div class="card mt-3">
           <div class="card-body">
-            <img loading="lazy" :src="apiURL + accommodation.file_path" alt="" class="card-img img-fluid" />
-            <RouterLink :to="'/properties/' + accommodation.id +'where?name=' + accommodation.slug" class="accommodation-details">
+            <img
+              loading="lazy"
+              :src="apiURL + accommodation.file_path"
+              alt=""
+              class="card-img img-fluid"
+            />
+            <RouterLink
+              :to="
+                '/properties/' +
+                accommodation.id +
+                'where?name=' +
+                accommodation.slug
+              "
+              class="accommodation-details"
+            >
               <div class="card-details">
-                <h6 class="card-title text-truncate" v-if="!accommodation.title">
+                <h6
+                  class="card-title text-truncate"
+                  v-if="!accommodation.title"
+                >
                   -Name Not Available-
                 </h6>
                 <h6 class="card-title text-truncate" v-else>
@@ -53,11 +72,9 @@ export default {
   async setup() {
     const accommodations = ref(null);
     const catSubtitle = "Eastern Bhutan Destinations Now Open";
-    const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
-    const siteURL = "https://dev.hemantbhutanrealestate.com";
-    const spaces = await fetch(
-      "https://dev.hemantbhutanrealestate.com/api/bc_spaces"
-    );
+    const apiURL = "https://booking.shinebhutan.com/uploads/";
+    const siteURL = "https://booking.shinebhutan.com";
+    const spaces = await fetch("https://booking.shinebhutan.com/api/bc_spaces");
     accommodations.value = await spaces.json();
 
     return {

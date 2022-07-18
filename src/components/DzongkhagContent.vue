@@ -7,12 +7,28 @@
       </h4>
       <div class="row">
         <template v-for="accommodation in accommodations">
-          <div class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12 mt-3"
-            v-if="accommodation.name === $route.params.location_id" :key="accommodation.id">
+          <div
+            class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12 mt-3"
+            v-if="accommodation.name === $route.params.location_id"
+            :key="accommodation.id"
+          >
             <div class="card mt-3">
               <div class="card-body">
-                <img loading="lazy" :src="apiURL + accommodation.file_path" alt="" class="card-img img-fluid" />
-                <RouterLink :to="'/properties/' + accommodation.id + 'where?name='+ accommodation.slug" class="accommodation-details">
+                <img
+                  loading="lazy"
+                  :src="apiURL + accommodation.file_path"
+                  alt=""
+                  class="card-img img-fluid"
+                />
+                <RouterLink
+                  :to="
+                    '/properties/' +
+                    accommodation.id +
+                    'where?name=' +
+                    accommodation.slug
+                  "
+                  class="accommodation-details"
+                >
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
                       {{ accommodation.title }}
@@ -50,12 +66,23 @@
       </h4>
       <div class="row">
         <template v-for="hotel in hotels">
-          <div class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 mt-3" v-if="hotel.name === $route.params.location_id"
-            :key="hotel.id">
+          <div
+            class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 mt-3"
+            v-if="hotel.name === $route.params.location_id"
+            :key="hotel.id"
+          >
             <div class="card mt-3">
               <div class="card-body">
-                <img loading="lazy" :src="apiURL + hotel.file_path" alt="" class="card-img img-fluid" />
-                <RouterLink :to="'/hotel/' + hotel.id + 'where?name=' + hotel.slug" class="accommodation-details">
+                <img
+                  loading="lazy"
+                  :src="apiURL + hotel.file_path"
+                  alt=""
+                  class="card-img img-fluid"
+                />
+                <RouterLink
+                  :to="'/hotel/' + hotel.id + 'where?name=' + hotel.slug"
+                  class="accommodation-details"
+                >
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
                       {{ hotel.title }}
@@ -92,12 +119,23 @@
       </h4>
       <div class="row">
         <template v-for="tour in tours">
-          <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3" :key="tour.id"
-            v-if="tour.name === $route.params.location_id">
+          <div
+            class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
+            :key="tour.id"
+            v-if="tour.name === $route.params.location_id"
+          >
             <div class="card mt-2">
               <div class="card-body">
-                <img loading="lazy" :src="apiURL + tour.file_path" alt="" class="card-img img-fluid" />
-                <RouterLink :to="'/tour/' + tour.slug" class="accommodation-details">
+                <img
+                  loading="lazy"
+                  :src="apiURL + tour.file_path"
+                  alt=""
+                  class="card-img img-fluid"
+                />
+                <RouterLink
+                  :to="'/tour/' + tour.slug"
+                  class="accommodation-details"
+                >
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
                       {{ tour.title }}
@@ -109,7 +147,10 @@
                     <div class="location-tours text-truncate mb-2">
                       <i class="bi bi-geo-alt"></i>{{ tour.name }}
                     </div>
-                    <div class="duration-tours text-truncate" v-if="!tour.date_form_to">
+                    <div
+                      class="duration-tours text-truncate"
+                      v-if="!tour.date_form_to"
+                    >
                       <i class="bi bi-stopwatch"></i>
                       duration not available
                     </div>
@@ -131,10 +172,19 @@
         A little Insight about {{ $route.params.location_id }}
       </h5>
       <template v-for="detail in dzongkhagDetails">
-        <div v-if="detail.name === $route.params.location_id" :key="detail.id" class="quote-about px-5 py-3">
-          <em><span v-html="detail.content" class="about-dzongkhag-details lead py-4 px-2">
-            </span></em>
-      </div>
+        <div
+          v-if="detail.name === $route.params.location_id"
+          :key="detail.id"
+          class="quote-about px-5 py-3"
+        >
+          <em
+            ><span
+              v-html="detail.content"
+              class="about-dzongkhag-details lead py-4 px-2"
+            >
+            </span
+          ></em>
+        </div>
       </template>
     </div>
 
@@ -145,12 +195,23 @@
       </h4>
       <div class="row">
         <template v-for="product in agriProducts">
-          <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3" :key="product.id"
-            v-if="product.cat_name === 'Agri Products'">
+          <div
+            class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
+            :key="product.id"
+            v-if="product.cat_name === 'Agri Products'"
+          >
             <div class="card mt-2">
               <div class="card-body">
-                <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
-                <RouterLink :to="'/product/' + product.slug" class="accommodation-details">
+                <img
+                  loading="lazy"
+                  :src="ecomURL + 'public/' + product.file_name"
+                  alt=""
+                  class="card-img img-fluid"
+                />
+                <RouterLink
+                  :to="'/product/' + product.slug"
+                  class="accommodation-details"
+                >
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
                       {{ product.name }}
@@ -175,12 +236,23 @@
       </h4>
       <div class="row">
         <template v-for="product in agriProducts">
-          <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3" :key="product.id"
-            v-if="product.cat_name === 'Handicrafts'">
+          <div
+            class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
+            :key="product.id"
+            v-if="product.cat_name === 'Handicrafts'"
+          >
             <div class="card mt-2">
               <div class="card-body">
-                <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
-                <RouterLink :to="'/product/' + product.slug" class="accommodation-details">
+                <img
+                  loading="lazy"
+                  :src="ecomURL + 'public/' + product.file_name"
+                  alt=""
+                  class="card-img img-fluid"
+                />
+                <RouterLink
+                  :to="'/product/' + product.slug"
+                  class="accommodation-details"
+                >
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
                       {{ product.name }}
@@ -211,23 +283,23 @@ export default {
     const dzongkhagDetails = ref(null);
     const hotels = ref(null);
     const agriProducts = ref(null);
-    const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
-    const siteURL = "https://dev.hemantbhutanrealestate.com";
-    const ecomURL = "https://booking.hemantbhutanrealestate.com/";
+    const apiURL = "https://booking.shinebhutan.com/uploads/";
+    const siteURL = "https://booking.shinebhutan.com";
+    const ecomURL = "https://shop.shinebhutan.com/";
     const bc_tours = await fetch(
-      "https://dev.hemantbhutanrealestate.com/api/bc_tours"
+      "https://booking.shinebhutan.com/api/bc_tours"
     );
     const bc_accommodations = await fetch(
-      "https://dev.hemantbhutanrealestate.com/api/bc_spaces"
+      "https://booking.shinebhutan.com/api/bc_spaces"
     );
     const bc_dzongkhagDetails = await fetch(
-      "https://dev.hemantbhutanrealestate.com/api/bc_locations"
+      "https://booking.shinebhutan.com/api/bc_locations"
     );
     const bc_hotels = await fetch(
-      "https://dev.hemantbhutanrealestate.com/api/bc_hotels"
+      "https://booking.shinebhutan.com/api/bc_hotels"
     );
     const ecom_products = await fetch(
-      "https://booking.hemantbhutanrealestate.com/api/v1/get_frontend_products"
+      "https://shop.shinebhutan.com/api/v1/get_frontend_products"
     );
     tours.value = await bc_tours.json();
     accommodations.value = await bc_accommodations.json();

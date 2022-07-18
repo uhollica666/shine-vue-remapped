@@ -6,11 +6,23 @@
       </h4>
       <p class="mt-3">{{ subTitleCategory }}</p>
       <div class="row">
-        <div v-for="category in categoryAccommodations" :key="category.id" class="col-md-3 col-lg-3 col-xl-3 mt-2">
+        <div
+          v-for="category in categoryAccommodations"
+          :key="category.id"
+          class="col-md-3 col-lg-3 col-xl-3 mt-2"
+        >
           <div class="card mt-2">
             <div class="card-body">
-              <img loading="lazy" :src="category.image_id" alt="" class="card-img img-fluid" />
-              <RouterLink :to="'/cat-filter/' + category.slug" class="category-details text-center">
+              <img
+                loading="lazy"
+                :src="category.image_id"
+                alt=""
+                class="card-img img-fluid"
+              />
+              <RouterLink
+                :to="'/cat-filter/' + category.slug"
+                class="category-details text-center"
+              >
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ category.category }}
@@ -28,11 +40,23 @@
       </h4>
       <p class="mt-3">{{ subTitleCategory }}</p>
       <div class="row">
-        <div v-for="category in categoryTours" :key="category.id" class="col-md-3 col-lg-3 col-xl-3 mt-2">
+        <div
+          v-for="category in categoryTours"
+          :key="category.id"
+          class="col-md-3 col-lg-3 col-xl-3 mt-2"
+        >
           <div class="card mt-2">
             <div class="card-body">
-              <img loading="lazy" :src="apiURL + category.file_path" alt="" class="card-img img-fluid" />
-              <RouterLink :to="'/cat-filter/' + category.slug" class="category-details text-center">
+              <img
+                loading="lazy"
+                :src="apiURL + category.file_path"
+                alt=""
+                class="card-img img-fluid"
+              />
+              <RouterLink
+                :to="'/cat-filter/' + category.slug"
+                class="category-details text-center"
+              >
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ category.name }}
@@ -57,10 +81,10 @@ export default {
   async setup() {
     const categoryTours = ref(null);
     const catSubtitle = "Eastern Bhutan Destinations Now Open";
-    const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
-    const siteURL = "https://dev.hemantbhutanrealestate.com/";
+    const apiURL = "https://booking.shinebhutan.com/uploads/";
+    const siteURL = "https://booking.shinebhutan.com/";
     const category = await fetch(
-      "https://dev.hemantbhutanrealestate.com/api/bc_tour_category"
+      "https://booking.shinebhutan.com/api/bc_tour_category"
     );
     categoryTours.value = await category.json();
 

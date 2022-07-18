@@ -1,12 +1,24 @@
 <template>
   <div class="by-category mb-3">
     <div class="row flex-row flex-nowrap overflow-auto">
-      <div v-for="prompTour in prompTours" :key="prompTour.id"
-        class="col-md-3 col-lg-3 col-xl-3 col-sm-3 col-xs-3 mt-2 mb-3">
+      <div
+        v-for="prompTour in prompTours"
+        :key="prompTour.id"
+        class="col-md-3 col-lg-3 col-xl-3 col-sm-3 col-xs-3 mt-2 mb-3"
+      >
         <div class="card mt-3">
           <div class="card-body">
-            <img loading="lazy" :src="apiURL + prompTour.file_path" alt="" class="card-img img-fluid" />
-            <RouterLink :to="'/tour/' + prompTour.slug" class="category-details" target="_blank">
+            <img
+              loading="lazy"
+              :src="apiURL + prompTour.file_path"
+              alt=""
+              class="card-img img-fluid"
+            />
+            <RouterLink
+              :to="'/tour/' + prompTour.slug"
+              class="category-details"
+              target="_blank"
+            >
               <div class="card-details">
                 <h6 class="card-title text-truncate">
                   {{ prompTour.title }}
@@ -38,10 +50,10 @@ export default {
 
   async setup() {
     const prompTours = ref(null);
-    const apiURL = "https://dev.hemantbhutanrealestate.com/uploads/";
-    const siteURL = "https://dev.hemantbhutanrealestate.com";
+    const apiURL = "https://booking.shinebhutan.com/uploads/";
+    const siteURL = "https://booking.shinebhutan.com";
     const bc_prompTours = await fetch(
-      "https://dev.hemantbhutanrealestate.com/api/bc_tours"
+      "https://booking.shinebhutan.com/api/bc_tours"
     );
     prompTours.value = await bc_prompTours.json();
     return {

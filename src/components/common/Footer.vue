@@ -14,7 +14,7 @@
             Above Memorial Chorten<br />
             Chorten Lam, Thimphu 11001 Bhutan <br /><br /><strong
               >Contact</strong
-            >: +975 2 338089<br /><strong>Email</strong>: info@shine.com
+            >: +975 2 338089<br /><strong>Email</strong>: info@shinebhutan.com
           </p>
         </div>
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3 footer-note">

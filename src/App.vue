@@ -8,10 +8,10 @@
 
 <script>
 // import axios from 'axios';
-import NavBar from '@/components/common/NavBar';
-import SiteFooter from '@/components/common/Footer';
+import NavBar from "@/components/common/NavBar";
+import SiteFooter from "@/components/common/Footer";
 export default {
-  name: 'App',
+  name: "App",
   components: {
     NavBar,
     SiteFooter,
@@ -23,17 +23,14 @@ export default {
   },
 
   async created() {
-    const fetchId = 'https://test.hemantbhutanrealestate.com/api/user';
+    const fetchId = "https://users.shinebhutan.com/api/user";
     const response = await fetch(fetchId);
-    this.user =  response.data;
+    this.user = response.data;
   },
-
-
 };
 </script>
 
 <style>
-
 .carousel {
   position: relative;
   max-height: 100vh;
@@ -115,10 +112,9 @@ button.limit {
   padding: 0;
 }
 
-.card-body a{
+.card-body a {
   text-decoration: none;
 }
-
 
 .card-details {
   padding: 0.5rem 1rem;
@@ -343,7 +339,6 @@ button.limit {
 .card:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.26);
 }
-
 
 .details {
   display: flex;
