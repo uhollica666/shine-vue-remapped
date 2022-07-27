@@ -6,17 +6,8 @@
         <div class="container home-container">
           <div class="product-images row">
             <template v-for="product in computedProducts">
-              <div
-                class="cardo col-md-6 mt-2"
-                v-if="product.parent_name === 'Agri Products'"
-                :key="product.id"
-              >
-                <img
-                  loading="lazy"
-                  :src="ecomURL + 'public/' + product.file_name"
-                  alt=""
-                  class="card-img img-fluid"
-                />
+              <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Agri Products'" :key="product.id">
+                <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
               </div>
             </template>
           </div>
@@ -33,17 +24,8 @@
         <div class="container home-container">
           <div class="product-images row">
             <template v-for="product in computedHandicrafts">
-              <div
-                class="cardo col-md-6 mt-2"
-                v-if="product.parent_name === 'Handicrats'"
-                :key="product.id"
-              >
-                <img
-                  loading="lazy"
-                  :src="ecomURL + 'public/' + product.file_name"
-                  alt=""
-                  class="card-img img-fluid"
-                />
+              <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Handicrats'" :key="product.id">
+                <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
               </div>
             </template>
           </div>
@@ -61,17 +43,9 @@
         <h6 class="p-3 home-linear-heading">Tour Packages</h6>
         <div class="home-tour-group">
           <div class="row">
-            <div
-              class="col-md-2 col-sm-6 col-xs-6 home-objects"
-              v-for="tour in computedTours"
-              :key="tour.id"
-            >
-              <img
-                loading="lazy"
-                class="card-img img-fluid"
-                :src="apiURL + tour.file_path"
-              />
+            <div class="col-md-2 col-sm-6 col-xs-6 home-objects" v-for="tour in computedTours" :key="tour.id">
               <RouterLink :to="'/tour/' + tour.slug" class="category-details">
+              <img loading="lazy" class="card-img img-fluid" :src="apiURL + tour.file_path" />
                 <div class="card-details">
                   <h6 class="card-title text-truncate text-capitalize py-2">
                     {{ tour.title }}
@@ -98,36 +72,21 @@
         <h6 class="p-3 home-linear-heading">Accommodation</h6>
         <div class="home-tour-group">
           <div class="row">
-            <div
-              class="col-md-3 col-sm-6 col-xs-6 home-objects"
-              v-for="accommodation in computedAccommodation"
-              :key="accommodation.id"
-            >
-              <img
-                loading="lazy"
-                class="card-img img-fluid"
-                :src="apiURL + accommodation.file_path"
-              />
-              <RouterLink
-                :to="
-                  '/properties/' +
-                  accommodation.id +
-                  'where?name=' +
-                  accommodation.slug
-                "
-                class="category-details"
-              >
+            <div class="col-md-3 col-sm-6 col-xs-6 home-objects" v-for="accommodation in computedAccommodation"
+              :key="accommodation.id">
+              <RouterLink :to="
+                '/properties/' +
+                accommodation.id +
+                'where?name=' +
+                accommodation.slug
+              " class="category-details">
+              <img loading="lazy" class="card-img img-fluid" :src="apiURL + accommodation.file_path" />
+              
                 <div class="card-details">
-                  <h6
-                    class="card-title text-truncate text-capitalize py-2"
-                    v-if="!accommodation.title"
-                  >
+                  <h6 class="card-title text-truncate text-capitalize py-2" v-if="!accommodation.title">
                     - Name Not Available -
                   </h6>
-                  <h6
-                    class="card-title text-truncate text-capitalize py-2"
-                    v-else
-                  >
+                  <h6 class="card-title text-truncate text-capitalize py-2" v-else>
                     {{ accommodation.title }}
                   </h6>
                   <p class="text-truncate">
@@ -152,31 +111,14 @@
         <h6 class="p-3 home-linear-heading">Hotels</h6>
         <div class="home-tour-group">
           <div class="row">
-            <div
-              class="col-md-3 col-sm-6 col-xs-6 home-objects"
-              v-for="hotel in computedHotels"
-              :key="hotel.id"
-            >
-              <img
-                loading="lazy"
-                class="card-img img-fluid"
-                :src="apiURL + hotel.file_path"
-              />
-              <RouterLink
-                :to="'/hotel/' + hotel.id + 'where?name=' + hotel.slug"
-                class="category-details"
-              >
+            <div class="col-md-3 col-sm-6 col-xs-6 home-objects" v-for="hotel in computedHotels" :key="hotel.id">            
+              <RouterLink :to="'/hotel/' + hotel.id + 'where?name=' + hotel.slug" class="category-details">
+              <img loading="lazy" class="card-img img-fluid" :src="apiURL + hotel.file_path" />
                 <div class="card-details">
-                  <h6
-                    class="card-title text-truncate text-capitalize py-2"
-                    v-if="!hotel.title"
-                  >
+                  <h6 class="card-title text-truncate text-capitalize py-2" v-if="!hotel.title">
                     - Name Not Available -
                   </h6>
-                  <h6
-                    class="card-title text-truncate text-capitalize py-2"
-                    v-else
-                  >
+                  <h6 class="card-title text-truncate text-capitalize py-2" v-else>
                     {{ hotel.title }}
                   </h6>
                   <p class="text-truncate">
@@ -201,17 +143,8 @@
         <div class="container home-container">
           <div class="product-images row">
             <template v-for="product in computedProducts">
-              <div
-                class="cardo col-md-6 mt-2"
-                v-if="product.parent_name === 'Agri Products'"
-                :key="product.id"
-              >
-                <img
-                  loading="lazy"
-                  :src="ecomURL + 'public/' + product.file_name"
-                  alt=""
-                  class="card-img img-fluid"
-                />
+              <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Agri Products'" :key="product.id">
+                <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
               </div>
             </template>
           </div>
@@ -230,17 +163,8 @@
         <div class="container home-container">
           <div class="product-images row">
             <template v-for="product in computedHandicrafts">
-              <div
-                class="cardo col-md-6 mt-2"
-                v-if="product.parent_name === 'Handicrats'"
-                :key="product.id"
-              >
-                <img
-                  loading="lazy"
-                  :src="ecomURL + 'public/' + product.file_name"
-                  alt=""
-                  class="card-img img-fluid"
-                />
+              <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Handicrats'" :key="product.id">
+                <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
               </div>
             </template>
           </div>

@@ -1,5 +1,5 @@
 <template>
-    <div class="accordion my-5 accordion-flush sticky-top app-sticky-top">
+    <div class="accordion mt-5 mb-5 accordion-flush sticky-top app-sticky-top">
         <div class="accordion-item">
             <h2 class="accordion-header">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
@@ -12,21 +12,22 @@
                 <div class="accordion-body">
                     <div class="c">
                         <div class="sidebar-filters">
-                            
+
                             <div class="heading">
-                                <h6 class="mb-3">Explore Other Dzongkhags</h6>
+                                <h6 class="mb-3">Explore All Agri Products</h6>
                             </div>
-                            <div class="dzo-list" v-for="dzongkhag in dzongkhags" :key="dzongkhag">
-                                <RouterLink :to="{name:'Dzongkhags', params:{location_id: dzongkhag}}" :class="{active: isActive }">
+                            <div class="dzo-list" v-for="category in categories" :key="category">
+                                <RouterLink :to="{ name: 'SearchHandicraftPage', params: { category: category } }"
+                                    :class="{ active: isActive }">
                                     <ul class="lists-dzo">
-                                        <li>{{dzongkhag}}</li>
+                                        <li>{{ category }}</li>
                                     </ul>
                                 </RouterLink>
                             </div>
                             <div class="back-to-home">
-                                <div @click="backToPreviousPage()" class="return-link">
+                                <RouterLink to="/handicrafts" class="home-button">
                                     <i class="bi bi-caret-left"></i> Back To Previous Page
-                                </div>
+                                </RouterLink>
                             </div>
                         </div>
                     </div>
@@ -37,46 +38,39 @@
 </template>
 
 <script>
-const dzongkhags = [
-    "Dagana",
-    "Lhuentse",
-    "Mongar",
-    "Pemagatshel",
-    "Tashiyangtse",
-    "Trashigang",
-    "Zhemgang",
+const categories = [
+    "All",
+    "Textile",
+    "Cane & Bamboo",
+    "Painting",
+    "Wood Crafts",
+    "Metal Crafts",
+    "General Souvenir",
 ];
-
 export default {
-    name: "DzongkhagSideBar",
+    name: "HandicraftSearchBar",
     data() {
         return {
-            dzongkhags,
+            categories,
 
         }
-    },
-    methods: {
-        //return to previous page
-        backToPreviousPage() {
-            this.$router.go(-1);
-        },
-    },
+    }
+
+
 };
 </script>
 
 <style scoped>
-.return-link{
-    color: #f7941e;
-    cursor: pointer;
-}
-a.router-link-exact-active ul li{
+a.router-link-exact-active ul li {
     color: #f7941e !important;
     font-weight: 600;
 }
-.home-button{
+
+.home-button {
     color: #f7941e;
     text-decoration: none;
 }
+
 .app-sticky-top {
     top: 2rem;
 }
@@ -117,11 +111,13 @@ a.router-link-exact-active ul li{
 .accordion-header {
     border-radius: 10px;
 }
-.lists-dzo{
+
+.lists-dzo {
     text-decoration: none;
     margin: 0.5rem 0;
 }
-.lists-dzo li{
+
+.lists-dzo li {
     color: #2c3e50;
 }
 

@@ -1,8 +1,7 @@
 <template>
-    <div class="container my-5">
-        <h4 class="my-5 mx-auto text-center">🔄️ Fetching Contents...</h4>
+    <div class="container">
         <div class="row mb-5 d-flex justify-content-between">
-            <div class="col-md-5 col-xl-5 col-lg-5 col-sm-5 col-xs-12">
+            <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12">
                 <div class="card ">
                     <div class="row images-card">
                         <div class="card-img2 col-md-6"></div>
@@ -10,9 +9,10 @@
                         <div class="card-img2 col-md-6"></div>
                         <div class="card-img2 col-md-6"></div>
                     </div>
+                    <div class="btn-loader"></div>
                 </div>
             </div>
-            <div class="col-md-5 col-xl-5 col-lg-5 col-sm-5 col-xs-12">
+            <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12 col-xs-12">
                 <div class="card">
                     <div class="row images-card">
                         <div class="card-img2 col-md-6"></div>
@@ -20,6 +20,7 @@
                         <div class="card-img2 col-md-6"></div>
                         <div class="card-img2 col-md-6"></div>
                     </div>
+                    <div class="btn-loader"></div>
                 </div>
             </div>
         </div>
@@ -144,6 +145,14 @@ export default {
 </script>
 
 <style scoped>
+.btn-loader{
+    width: 50%;
+    height: 40px;
+    border-radius: 10rem;
+    background: rgb(195, 195, 195);
+    z-index: 1;
+    margin: 1rem auto;
+}
 .card {
     width: 100%;
     height: 100%;
@@ -163,7 +172,7 @@ export default {
 }
 .card-img2 {
     width: 40%;
-    aspect-ratio: 1;
+    aspect-ratio: 16/10;
     background-color: #d0d0d0;
     margin: 1rem;
     animation: flicker 1.2s infinite;

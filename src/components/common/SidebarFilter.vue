@@ -12,39 +12,47 @@
                 <div class="accordion-body">
                     <div class="c">
                         <div class="sidebar-filters">
-                            <div class="heading">
+                            <!-- <div class="heading">
                                 <h6 class="mb-3">Search Anything</h6>
                             </div>
                             <form class="form-inline mb-3" for="search" @submit.prevent="">
                                 <input class="form-control" type="search" placeholder="Search" id="search" />
-                                <!-- v-model="search" @keydown="searchFilter(search)" /> -->
-                            </form>
+                                v-model="search" @keydown="searchFilter(search)" />
+                            </form> -->
 
                             <div class="heading">
                                 <h6 class="mb-3">Filter By Dzongkhag</h6>
                             </div>
                             <div class="form-check my-2" v-for="filter in filters" :key="filter">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                    id="flexRadioDefault1" @click="() => filteredAccommodation(filter)" />
-                                <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
-                                    {{ filter }}
-                                </label>
+                                <RouterLink :to="'/dzongkhags/' + filter">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault1" @click="() => filteredAccommodation(filter)" />
+                                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
+                                        {{ filter }}
+                                    </label>
+                                </RouterLink>
                             </div>
 
                             <div v-show="$route.name === 'Accommodation'">
                                 <div class="heading">
-                                    <h6 class="mb-3 mt-3">Filter By Rating</h6>
+                                    <h6 class="mb-3 mt-3">Properties By Price Range</h6>
                                 </div>
                                 <div class="form-check my-2" v-for="starRating in starRatings" :key="starRating">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" @click="() => starFilter(starRating)" />
-                                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
-                                        v-if="starRating === 'All'">
-                                        {{ starRating }} Star Properties
-                                    </label>
-                                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
-                                        v-else>
-                                        {{ starRating }} <i class="bi bi-star-fill text-warning"></i> Properties
-                                    </label>
+                                    <RouterLink :to="'/searchaccommodation/' + starRating">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" />
+                                        <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
+                                            v-if="starRating === 'All'">
+                                            {{ starRating }} Properties
+                                        </label>
+                                        <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
+                                            v-else-if="starRating === '15,000 and over'">
+                                            Nu. {{ starRating }}
+                                        </label>
+                                        <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
+                                            v-else>
+                                            Between Nu. {{ starRating }}
+                                        </label>
+                                    </RouterLink>
                                 </div>
                             </div>
 
@@ -53,10 +61,12 @@
                                     <h6 class="mb-3 mt-3">Filter By Category</h6>
                                 </div>
                                 <div class="form-check my-2" v-for="caregory in productCategories" :key="caregory">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" />
-                                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
-                                        {{ caregory }}
-                                    </label>
+                                    <RouterLink :to="'/searchhandicraft/' + caregory" class="text-dark">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" />
+                                        <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
+                                            {{ caregory }}
+                                        </label>
+                                    </RouterLink>
                                 </div>
                             </div>
 
@@ -110,7 +120,6 @@
 
 <script>
 const filters = [
-    "All",
     "Dagana",
     "Lhuentse",
     "Mongar",
@@ -119,7 +128,7 @@ const filters = [
     "Trashigang",
     "Zhemgang",
 ];
-const starRatings = ["All", 2, 3, 4, 5];
+const starRatings = ["All", '1 - 5,000', '5,001 - 10,000', '10,001 - 15,000', "15,000 and over"];
 
 const productCategories = [
     "All",
@@ -166,6 +175,11 @@ export default {
 </script>
 
 <style scoped>
+.form-check a {
+    color: #2c3e50;
+    cursor: pointer;
+}
+
 .app-sticky-top {
     top: 2rem;
 }

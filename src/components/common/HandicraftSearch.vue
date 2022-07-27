@@ -83,24 +83,24 @@
 <script>
 import { ref } from "vue";
 export default {
-  name: "CategorySearch",
+  name: "HandicraftSearch",
   async setup() {
-    const AgriProducts = ref(null);
+    const Handicrafts = ref(null);
     const ecomURL = "https://shop.shinebhutan.com/";
     const ecom_products = await fetch(
       "https://shop.shinebhutan.com/api/v1/get_frontend_products"
     );
-    AgriProducts.value = await ecom_products.json();
+    Handicrafts.value = await ecom_products.json();
 
     return {
-      AgriProducts,
+      Handicrafts,
       ecomURL,
     };
   },
   methods: {
     filteredProducts() {
-      return this.AgriProducts.filter(
-        (product) => product.parent_name === "Agri Products"
+      return this.Handicrafts.filter(
+        (product) => product.parent_name === "Handicrats"
       );
     },
   },

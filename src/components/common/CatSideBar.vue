@@ -14,12 +14,12 @@
                         <div class="sidebar-filters">
                             
                             <div class="heading">
-                                <h6 class="mb-3">Explore Other Dzongkhags</h6>
+                                <h6 class="mb-3">Explore Other Categories</h6>
                             </div>
-                            <div class="dzo-list" v-for="dzongkhag in dzongkhags" :key="dzongkhag">
-                                <RouterLink :to="{name:'Dzongkhags', params:{location_id: dzongkhag}}" :class="{active: isActive }">
+                            <div class="dzo-list" v-for="category in categories" :key="category">
+                                <RouterLink :to="{name:'CategoryFilter', params:{slug: category}}" :class="{active: isActive }">
                                     <ul class="lists-dzo">
-                                        <li>{{dzongkhag}}</li>
+                                        <li class="text-capitalize">{{category}}</li>
                                     </ul>
                                 </RouterLink>
                             </div>
@@ -37,21 +37,18 @@
 </template>
 
 <script>
-const dzongkhags = [
-    "Dagana",
-    "Lhuentse",
-    "Mongar",
-    "Pemagatshel",
-    "Tashiyangtse",
-    "Trashigang",
-    "Zhemgang",
+const categories = [
+    "VHS (Village Home Stay)",
+    "eco lodge",
+    "guest house",
+    "hotels",
 ];
 
 export default {
-    name: "DzongkhagSideBar",
+    name: "CatSideBar",
     data() {
         return {
-            dzongkhags,
+            categories,
 
         }
     },

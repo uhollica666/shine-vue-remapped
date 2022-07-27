@@ -5,23 +5,11 @@
       <p>Best Hotels in Bhutan</p>
     </div>
     <div class="row mb-3">
-      <div
-        v-for="hotel in hotels"
-        :key="hotel.id"
-        class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
-      >
+      <div v-for="hotel in hotels" :key="hotel.id" class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3">
         <div class="card mt-3">
-          <div class="card-body">
-            <img
-              loading="lazy"
-              :src="apiURL + hotel.file_path"
-              alt=""
-              class="card-img img-fluid"
-            />
-            <RouterLink
-              :to="'/hotel/' + hotel.id + 'where?name=' + hotel.slug"
-              class="hotel-details"
-            >
+          <RouterLink :to="'/hotel/' + hotel.id + 'where?name=' + hotel.slug" class="hotel-details">
+            <div class="card-body">
+              <img loading="lazy" :src="apiURL + hotel.file_path" alt="" class="card-img img-fluid" />
               <div class="card-details">
                 <h6 class="card-title text-truncate" v-if="!hotel.title">
                   - Name Not Available -
@@ -47,17 +35,13 @@
                   </h6>
                 </div>
               </div>
-            </RouterLink>
-          </div>
+            </div>
+          </RouterLink>
         </div>
       </div>
     </div>
     <div class="d-flex btn-container">
-      <button
-        @click="limit = !limit"
-        class="btn mt-5 showButton"
-        :class="{ limit: !limit }"
-      >
+      <button @click="limit = !limit" class="btn mt-5 showButton" :class="{ limit: !limit }">
         Show All
       </button>
     </div>

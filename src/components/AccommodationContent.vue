@@ -5,33 +5,15 @@
       <p>Best places to stay in Bhutan</p>
     </div>
     <div class="row mb-3">
-      <div
-        v-for="accommodation in accommodations"
-        :key="accommodation.id"
-        class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3"
-      >
+      <div v-for="accommodation in accommodations" :key="accommodation.id"
+        class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3">
         <div class="card mt-3">
-          <div class="card-body">
-            <img
-              loading="lazy"
-              :src="apiURL + accommodation.file_path"
-              alt=""
-              class="card-img img-fluid"
-            />
-            <RouterLink
-              :to="
-                '/properties/' +
-                accommodation.id +
-                'where?name=' +
-                accommodation.slug
-              "
-              class="accommodation-details"
-            >
+          <RouterLink :to="'/properties/' + accommodation.id + 'where?name=' + accommodation.slug" class="accommodation-details">
+            <div class="card-body">
+              <img loading="lazy" :src="apiURL + accommodation.file_path" alt="" class="card-img img-fluid" />
+
               <div class="card-details">
-                <h6
-                  class="card-title text-truncate"
-                  v-if="!accommodation.title"
-                >
+                <h6 class="card-title text-truncate" v-if="!accommodation.title">
                   -Name Not Available-
                 </h6>
                 <h6 class="card-title text-truncate" v-else>
@@ -55,8 +37,8 @@
                   </h6>
                 </div>
               </div>
-            </RouterLink>
-          </div>
+            </div>
+          </RouterLink>
         </div>
       </div>
     </div>

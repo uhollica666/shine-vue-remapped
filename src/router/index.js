@@ -79,6 +79,16 @@ const routes = [
     component: () => import( /* webpackChunkName: "about" */ '../views/SearchPage')
   },
   {
+    path: '/searchhandicraft/:category',
+    name: 'SearchHandicraftPage',
+    component: () => import( /* webpackChunkName: "about" */ '../views/SearchHandicraftPage')
+  },
+  {
+    path: '/searchaccommodation/:category',
+    name: 'SearchAccommodationPage',
+    component: () => import( /* webpackChunkName: "about" */ '../views/SearchAccommodationPage')
+  },
+  {
     path: '/tour/:id',
     name: 'SingleTour',
     component: () => import( /* webpackChunkName: "about" */ '../views/SingleTour')
