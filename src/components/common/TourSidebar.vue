@@ -41,7 +41,7 @@
                 </div>
               </div>
               <div class="back-to-home">
-                <RouterLink to="" class="home-button" @click="returnPrev()">
+                <RouterLink to="/tours" class="home-button">
                   <i class="bi bi-caret-left"></i> Return to Tours
                 </RouterLink>
               </div>
@@ -70,11 +70,6 @@ export default {
       tours,
       siteURL,
     };
-  },
-  methods: {
-    returnPrev() {
-      window.history.back();
-    },
   },
 };
 </script>

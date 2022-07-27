@@ -5,7 +5,7 @@
         <div class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3" v-if="accommodation" :key="accommodation.id">
           <div class="card mt-2">
             <div class="card">
-              <RouterLink :to="'/properties/' + accommodation.id + 'where?name=' + accommodation.slug"
+              <RouterLink :to="'/hotel/' + accommodation.id + 'where?name=' + accommodation.slug"
                 class="accommodation-details">
                 <div class="card-body">
                   <img loading="lazy" :src="siteURL + accommodation.file_path" alt="" class="card-img-hotel img-fluid" />

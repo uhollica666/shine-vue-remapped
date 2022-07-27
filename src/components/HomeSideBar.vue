@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="accordion accordion-flush sticky-top app-sticky-top">
+    <div class="accordion accordion-flush sticky-top">
       <div class="accordion-item">
         <h2 class="accordion-header">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"

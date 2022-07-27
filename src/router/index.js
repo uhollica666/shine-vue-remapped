@@ -38,6 +38,21 @@ const routes = [
     component: () => import( /* webpackChunkName: "about" */ '../views/RegisterPage')
   },
   {
+    path: '/payment-successful',
+    name: 'PaymentSuccessful',
+    component: () => import( /* webpackChunkName: "about" */ '../views/PaymentSuccessful')
+  },
+  {
+    path: '/payment-cancelled',
+    name: 'PaymentCancelled',
+    component: () => import( /* webpackChunkName: "about" */ '../views/PaymentCancelled')
+  },
+  {
+    path: '/payment-failed',
+    name: 'PaymentFailed',
+    component: () => import( /* webpackChunkName: "about" */ '../views/PaymentFailed')
+  },
+  {
     path: '/forgotPassword',
     name: 'Forgot Password',
     component: () => import( /* webpackChunkName: "about" */ '../views/ForgotPasswordPage')
@@ -87,6 +102,11 @@ const routes = [
     path: '/searchaccommodation/:category',
     name: 'SearchAccommodationPage',
     component: () => import( /* webpackChunkName: "about" */ '../views/SearchAccommodationPage')
+  },
+  {
+    path: '/searchtours/:category',
+    name: 'SearchToursPage',
+    component: () => import( /* webpackChunkName: "about" */ '../views/SearchToursPage')
   },
   {
     path: '/tour/:id',

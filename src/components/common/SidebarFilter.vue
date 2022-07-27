@@ -33,29 +33,6 @@
                                 </RouterLink>
                             </div>
 
-                            <div v-show="$route.name === 'Accommodation'">
-                                <div class="heading">
-                                    <h6 class="mb-3 mt-3">Properties By Price Range</h6>
-                                </div>
-                                <div class="form-check my-2" v-for="starRating in starRatings" :key="starRating">
-                                    <RouterLink :to="'/searchaccommodation/' + starRating">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" />
-                                        <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
-                                            v-if="starRating === 'All'">
-                                            {{ starRating }} Properties
-                                        </label>
-                                        <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
-                                            v-else-if="starRating === '15,000 and over'">
-                                            Nu. {{ starRating }}
-                                        </label>
-                                        <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
-                                            v-else>
-                                            Between Nu. {{ starRating }}
-                                        </label>
-                                    </RouterLink>
-                                </div>
-                            </div>
-
                             <div v-show="$route.name === 'Handicrafts'">
                                 <div class="heading">
                                     <h6 class="mb-3 mt-3">Filter By Category</h6>
@@ -84,29 +61,49 @@
                                 </div>
                             </div>
 
+                            <div v-show="$route.name === 'Accommodation'">
+                                <div class="heading">
+                                    <h6 class="mb-3 mt-3">Properties By Price Range</h6>
+                                </div>
+                                <div class="form-check my-2" v-for="starRating in starRatings" :key="starRating">
+                                    <RouterLink :to="'/searchaccommodation/' + starRating">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" />
+                                        <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
+                                            v-if="starRating === 'All'">
+                                            {{ starRating }} Properties
+                                        </label>
+                                        <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
+                                            v-else-if="starRating === '15,000 and over'">
+                                            Nu. {{ starRating }}
+                                        </label>
+                                        <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
+                                            v-else>
+                                            Between Nu. {{ starRating }}
+                                        </label>
+                                    </RouterLink>
+                                </div>
+                            </div>
+
                             <div v-show="$route.name === 'Tours'">
                                 <div class="heading">
-                                    <h6 class="mt-3">Filter By Price range</h6>
+                                    <h6 class="mt-3">Filter Tours By Price</h6>
                                 </div>
-                                <div class="form-group-range mb-3">
-                                    <div class="input-group">
-                                        <span class="input-group-text-minmax bg-light">Min.</span>
-                                        <input type="number" class="input-min form-control" placeholder="Min"
-                                            aria-label="Min" aria-describedby="basic-addon1" value="25000" />
-                                    </div>
-                                    <div class="separator">-</div>
-                                    <div class="input-group">
-                                        <span class="input-group-text-minmax bg-ligh">Max.</span>
-                                        <input type="text" class="input-max form-control" placeholder="Max"
-                                            aria-label="Max" aria-describedby="basic-addon1" value="75000" />
-                                    </div>
-                                </div>
-                                <div class="slider mb-3 mt-4">
-                                    <div class="progress-slider"></div>
-                                </div>
-                                <div class="range-input">
-                                    <input type="range" class="range-min" min="0" max="100000" value="25000" />
-                                    <input type="range" class="range-max" min="0" max="100000" value="75000" />
+                                <div class="form-check my-2" v-for="price in toursPrice" :key="price">
+                                    <RouterLink :to="'/searchtours/' + price">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" />
+                                        <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
+                                            v-if="price === 'All'">
+                                            {{ price }} Tours
+                                        </label>
+                                        <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
+                                            v-else-if="price === '15,000 and over'">
+                                            Nu. {{ price }}
+                                        </label>
+                                        <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
+                                            v-else>
+                                            Between Nu. {{ price }}
+                                        </label>
+                                    </RouterLink>
                                 </div>
                             </div>
 
@@ -129,6 +126,8 @@ const filters = [
     "Zhemgang",
 ];
 const starRatings = ["All", '1 - 5,000', '5,001 - 10,000', '10,001 - 15,000', "15,000 and over"];
+
+const toursPrice = ["All", '1 - 5,000', '5,001 - 10,000', '10,001 - 15,000', "15,000 and over"];
 
 const productCategories = [
     "All",
@@ -167,7 +166,8 @@ export default {
             filters,
             starRatings,
             productCategories,
-            agriCategory
+            agriCategory,
+            toursPrice,
         };
     },
 

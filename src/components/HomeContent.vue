@@ -72,26 +72,19 @@
         <h6 class="p-3 home-linear-heading">Accommodation</h6>
         <div class="home-tour-group">
           <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-6 home-objects" v-for="accommodation in computedAccommodation"
-              :key="accommodation.id">
-              <RouterLink :to="
-                '/properties/' +
-                accommodation.id +
-                'where?name=' +
-                accommodation.slug
-              " class="category-details">
-              <img loading="lazy" class="card-img img-fluid" :src="apiURL + accommodation.file_path" />
-              
-                <div class="card-details">
-                  <h6 class="card-title text-truncate text-capitalize py-2" v-if="!accommodation.title">
-                    - Name Not Available -
-                  </h6>
-                  <h6 class="card-title text-truncate text-capitalize py-2" v-else>
-                    {{ accommodation.title }}
-                  </h6>
-                  <p class="text-truncate">
-                    <i class="bi bi-geo"></i>{{ accommodation.name }}
-                  </p>
+            <div class="col-md-3 home-objects" v-for="accommodation in computedAccommodation" :key="accommodation.id">
+              <RouterLink :to="'/properties/' + accommodation.id + 'where?name=' + accommodation.slug " class="category-details">
+                <img loading="lazy" class="card-img img-fluid" :src="apiURL + accommodation.file_path" />              
+                  <div class="card-details">
+                    <h6 class="card-title text-truncate text-capitalize py-2" v-if="!accommodation.title">
+                      - Name Not Available -
+                    </h6>
+                    <h6 class="card-title text-truncate text-capitalize py-2" v-else>
+                      {{ accommodation.title }}
+                    </h6>
+                    <p class="text-truncate">
+                      <i class="bi bi-geo"></i>{{ accommodation.name }}
+                    </p>
                 </div>
               </RouterLink>
             </div>

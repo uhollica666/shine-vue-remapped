@@ -1,19 +1,11 @@
 <template>
   <div class="container-fluid my-5">
     <template v-for="article in articles">
-      <div
-        class="article-card"
-        v-if="article.slug === $route.params.slug"
-        :key="article.id"
-      >
+      <div class="article-card" v-if="article.slug === $route.params.slug" :key="article.id">
         <div class="row my-3">
           <div class="col-md-12 d-flex">
-            <img
-              :src="siteURL + 'uploads/' + article.file_path"
-              :alt="article.title"
-              class="img-fluid img-prop col-md-12"
-              loading="lazy"
-            />
+            <img :src="siteURL + 'uploads/' + article.file_path" :alt="article.title"
+              class="img-fluid img-prop col-md-12" loading="lazy" />
           </div>
         </div>
         <div class="hr my-4"></div>
@@ -80,17 +72,20 @@ export default {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   padding: 2rem;
 }
+
 .img-prop {
   width: 100%;
   aspect-ratio: 16/10;
   border-radius: 5px;
   object-fit: cover;
 }
+
 .hr {
   background: #dedede;
   width: 100%;
   height: 1px;
 }
+
 .btn-buy {
   background: #f7941e;
   color: #fff;
@@ -102,6 +97,7 @@ export default {
 .btn-buy:hover {
   background: #f9741e;
 }
+
 .article-text {
   text-align: justify;
 }

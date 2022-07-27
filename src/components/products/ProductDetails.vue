@@ -2,15 +2,11 @@
   <div class="container-fluid my-5">
     <div v-for="product in products" :key="product.id">
       <div class="row product-card" v-if="product.slug === $route.params.slug">
-        <div class="col-md-5 d-flex">
-          <img
-            :src="siteURL + 'public/' + product.file_name"
-            :alt="product.name"
-            class="img-fluid img-prod"
-            loading="lazy"
-          />
+        <div class="col-md-6 d-flex">
+          <img :src="siteURL + 'public/' + product.file_name" :alt="product.name" class="img-fluid img-prod"
+            loading="lazy" />
         </div>
-        <div class="col-md-7 py-5">
+        <div class="col-md-6 py-5">
           <section class="row">
             <div class="col-md-12 prod-descrip">
               <h3 class="text-capitalize">{{ product.name }}</h3>
@@ -32,10 +28,7 @@
             <div class="col-md-12 prod-descrip">
               <p><b>Price:</b></p>
             </div>
-            <div
-              class="col-md-12 prod-descrip"
-              v-if="product.parent_name === 'Handicrats'"
-            >
+            <div class="col-md-12 prod-descrip" v-if="product.parent_name === 'Handicrats'">
               <h4>Nu. {{ product.unit_price }}.00 <span>per Piece</span></h4>
             </div>
             <div class="col-md-12 prod-descrip" v-else>
@@ -61,10 +54,8 @@
               </button>
             </a>
             <p class="py-3 notice-change">
-              <em style="font-size: 12px !important"
-                >Note: you will be redirected to a more secured server to
-                proceed futher with booking and payments</em
-              >
+              <em style="font-size: 12px !important">Note: you will be redirected to a more secured server to
+                proceed futher with booking and payments</em>
             </p>
           </section>
         </div>
@@ -98,6 +89,7 @@ export default {
 .notice-change {
   color: #dbba92;
 }
+
 .product-card {
   padding: 1rem;
   border: 1px solid #dedede;
@@ -106,25 +98,30 @@ export default {
   margin-bottom: 1rem;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
 }
+
 .img-prod {
   width: 100%;
-  aspect-ratio: 1;
+  aspect-ratio: 2/1;
   background-color: #dedede;
   object-fit: cover;
   border-radius: 5px;
   margin: 0;
 }
+
 img.img-prod:hover {
   backdrop-filter: opacity(0.5);
 }
+
 .hr {
   background: #dedede;
   width: 100%;
   height: 1px;
 }
+
 .descrip {
   min-height: 3rem;
 }
+
 .btn-buy {
   background: #f7941e;
   color: #fff;
@@ -132,9 +129,11 @@ img.img-prod:hover {
   padding: 0.5rem 1rem;
   border: none;
 }
+
 .btn-buy:hover {
   background: #f9741e;
 }
+
 .prod-descrip {
   color: #2c3e50;
 }

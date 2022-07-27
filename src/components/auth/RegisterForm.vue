@@ -1,7 +1,7 @@
 <template>
   <form class="auth-form-register" @submit.prevent="handleSubmit">
     <div class="mb-3">
-      <h3 class="auth-header mt-3 mb-4">Join our Shine family!</h3>
+      <h3 class="auth-header mt-3 mb-4">Register with Shine</h3>
 
       <div class="row mb-3">
         <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12">
