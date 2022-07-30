@@ -3,24 +3,24 @@
         "id": 1,
         "name": "Byrle Witheford",
         "category": "Nature Tours",
-        "image_id": "http://dummyimage.com/554x638.png/dddddd/000000"
+        "image_id": "assets/img/city_trips.jpg"
     },
     {
         "id": 2,
         "name": "Leanna Hamley",
         "category": "Culture Tours",
-        "image_id": "http://dummyimage.com/512x512.png/5fa2dd/ffffff"
+        "image_id": "assets/img/city_trips.jpg"
     },
     {
         "id": 3,
         "name": "Genevieve Slade",
         "category": "Agro Tours",
-        "image_id": "http://dummyimage.com/630x587.png/cc0000/ffffff"
+        "image_id": "assets/img/city_trips.jpg"
     },
     {
         "id": 4,
         "name": "Milty Edelmann",
         "category": "Hiking & Trekking",
-        "image_id": "http://dummyimage.com/621x586.png/ff4444/ffffff"
+        "image_id": "assets/img/city_trips.jpg"
     }
 ]

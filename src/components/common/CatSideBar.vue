@@ -12,16 +12,29 @@
                 <div class="accordion-body">
                     <div class="c">
                         <div class="sidebar-filters">
-                            
+
                             <div class="heading">
                                 <h6 class="mb-3">Explore Other Categories</h6>
                             </div>
-                            <div class="dzo-list" v-for="category in categories" :key="category">
-                                <RouterLink :to="{name:'CategoryFilter', params:{slug: category}}" :class="{active: isActive }">
-                                    <ul class="lists-dzo">
-                                        <li class="text-capitalize">{{category}}</li>
-                                    </ul>
-                                </RouterLink>
+                            <div v-if="$route.params.slug === 'vhs' || $route.params.slug === 'eco-lodge' || $route.params.slug === 'guest-house' || $route.params.slug === 'hotels'">
+                                <div class="dzo-list" v-for="category in categories" :key="category">
+                                    <RouterLink :to="{ name: 'CategoryFilter', params: { slug: category.slug } }"
+                                        :class="{ active: isActive }">
+                                        <ul class="lists-dzo">
+                                            <li class="text-capitalize">{{ category.name }}</li>
+                                        </ul>
+                                    </RouterLink>
+                                </div>
+                            </div>
+                            <div v-else>
+                                <div class="dzo-list" v-for="category in tourCat" :key="category.id">
+                                    <RouterLink :to="{ name: 'CategoryFilter', params: { slug: category.slug } }"
+                                        :class="{ active: isActive }">
+                                        <ul class="lists-dzo">
+                                            <li class="text-capitalize">{{ category.name }}</li>
+                                        </ul>
+                                    </RouterLink>
+                                </div>
                             </div>
                             <div class="back-to-home">
                                 <div @click="backToPreviousPage()" class="return-link">
@@ -37,15 +50,27 @@
 </template>
 
 <script>
+import {ref} from 'vue';
 const categories = [
-    "VHS (Village Home Stay)",
-    "eco lodge",
-    "guest house",
-    "hotels",
+    { name: "VHS (Village Home Stay)", slug: "vhs" },
+    { name: "Eco Lodge", slug: "eco-lodge" },
+    { name: "guest house", slug: "guest-house" },
+    { name: "hotels", slug: "hotels" },
 ];
 
 export default {
     name: "CatSideBar",
+
+    async setup() {
+        const tourCat = ref(null);
+        const cat = await fetch(
+            'https://booking.shinebhutan.com/api/bc_tour_category'
+        );
+        tourCat.value = await cat.json();
+        return {
+            tourCat,
+        };
+    },
     data() {
         return {
             categories,
@@ -62,18 +87,21 @@ export default {
 </script>
 
 <style scoped>
-.return-link{
+.return-link {
     color: #f7941e;
     cursor: pointer;
 }
-a.router-link-exact-active ul li{
+
+a.router-link-exact-active ul li {
     color: #f7941e !important;
     font-weight: 600;
 }
-.home-button{
+
+.home-button {
     color: #f7941e;
     text-decoration: none;
 }
+
 .app-sticky-top {
     top: 2rem;
 }
@@ -114,11 +142,13 @@ a.router-link-exact-active ul li{
 .accordion-header {
     border-radius: 10px;
 }
-.lists-dzo{
+
+.lists-dzo {
     text-decoration: none;
     margin: 0.5rem 0;
 }
-.lists-dzo li{
+
+.lists-dzo li {
     color: #2c3e50;
 }
 

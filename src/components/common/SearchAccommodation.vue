@@ -233,7 +233,7 @@
                     class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3">
                     <div class="card mt-2">
                         <div class="card mt-3">
-                            <RouterLink :to="'/properties/' + accommodation.id + 'where?name=' + accommodation.slug"
+                            <RouterLink :to="'/hotel/' + accommodation.id + 'where?name=' + accommodation.slug"
                                 class="accommodation-details">
                                 <div class="card-body">
                                     <img loading="lazy" :src="ecomURL + accommodation.file_path" alt=""
@@ -278,7 +278,7 @@
                     class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3">
                     <div class="card mt-2">
                         <div class="card mt-3">
-                            <RouterLink :to="'/properties/' + accommodation.id + 'where?name=' + accommodation.slug"
+                            <RouterLink :to="'/hotel/' + accommodation.id + 'where?name=' + accommodation.slug"
                                 class="accommodation-details">
                                 <div class="card-body">
                                     <img loading="lazy" :src="ecomURL + accommodation.file_path" alt=""
@@ -323,7 +323,7 @@
                     class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3">
                     <div class="card mt-2">
                         <div class="card mt-3">
-                            <RouterLink :to="'/properties/' + accommodation.id + 'where?name=' + accommodation.slug"
+                            <RouterLink :to="'/hotel/' + accommodation.id + 'where?name=' + accommodation.slug"
                                 class="accommodation-details">
                                 <div class="card-body">
                                     <img loading="lazy" :src="ecomURL + accommodation.file_path" alt=""
@@ -368,7 +368,7 @@
                     class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3">
                     <div class="card mt-2">
                         <div class="card mt-3">
-                            <RouterLink :to="'/properties/' + accommodation.id + 'where?name=' + accommodation.slug"
+                            <RouterLink :to="'/hotel/' + accommodation.id + 'where?name=' + accommodation.slug"
                                 class="accommodation-details">
                                 <div class="card-body">
                                     <img loading="lazy" :src="ecomURL + accommodation.file_path" alt=""
@@ -413,7 +413,7 @@
                     class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3">
                     <div class="card mt-2">
                         <div class="card mt-3">
-                            <RouterLink :to="'/properties/' + accommodation.id + 'where?name=' + accommodation.slug"
+                            <RouterLink :to="'/hotel/' + accommodation.id + 'where?name=' + accommodation.slug"
                                 class="accommodation-details">
                                 <div class="card-body">
                                     <img loading="lazy" :src="ecomURL + accommodation.file_path" alt=""

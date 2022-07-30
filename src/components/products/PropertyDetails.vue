@@ -3,12 +3,8 @@
     <div v-for="property in properties" :key="property.id">
       <div class="property-card px-5">
         <section class="row">
-          <img
-            :src="siteURL + 'uploads/' + property.file_path"
-            :alt="property.title"
-            class="img-fluid img-prop col-md-12"
-            loading="lazy"
-          />
+          <img :src="siteURL + 'uploads/' + property.file_path" :alt="property.title"
+            class="img-fluid img-prop col-md-12" loading="lazy" />
         </section>
         <section class="row mt-3">
           <div class="col-md-6 my-2 prod-descrip">
@@ -22,8 +18,7 @@
           </h5>
           <div v-if="property.sale_price" class="col-md-6 prod-descrip my-3">
             <p>
-              <span class="text-danger me-2">Before Discount: </span
-              ><s>Nu. {{ property.price }} per Night</s>
+              <span class="text-danger me-2">Before Discount: </span><s>Nu. {{ property.price }} per Night</s>
             </p>
             <h5>
               <span class="text-success me-2">Discount: </span> Nu.
@@ -114,10 +109,8 @@
             </button>
           </a>
           <p class="py-3 notice-change">
-            <em style="font-size: 12px !important"
-              >Note: you will be redirected to a more secured server to proceed
-              futher with booking and payments.</em
-            >
+            <em style="font-size: 12px !important">Note: you will be redirected to a more secured server to proceed
+              futher with booking and payments.</em>
           </p>
         </section>
       </div>
