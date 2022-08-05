@@ -9,7 +9,7 @@
             <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-xs-12">
                 <Suspense>
                     <template #default>
-                        <CategoryFilterPage />
+                        <CategoryFilterPage :key="$route.fullPath" />
                     </template>
                     <template #fallback>
                         <Loader />

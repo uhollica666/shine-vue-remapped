@@ -16,7 +16,7 @@
                             <div class="heading">
                                 <h6 class="mb-3">Explore Other Categories</h6>
                             </div>
-                            <div v-if="$route.params.slug === 'vhs' || $route.params.slug === 'eco-lodge' || $route.params.slug === 'guest-house' || $route.params.slug === 'hotels'">
+                            <div v-if="$route.params.slug === 'vhs-village-home-stay' || $route.params.slug === 'eco-lodge' || $route.params.slug === 'guest-house' || $route.params.slug === 'hotels'">
                                 <div class="dzo-list" v-for="category in categories" :key="category">
                                     <RouterLink :to="{ name: 'CategoryFilter', params: { slug: category.slug } }"
                                         :class="{ active: isActive }">
@@ -52,7 +52,7 @@
 <script>
 import {ref} from 'vue';
 const categories = [
-    { name: "VHS (Village Home Stay)", slug: "vhs" },
+    { name: "VHS (Village Home Stay)", slug: "vhs-village-home-stay" },
     { name: "Eco Lodge", slug: "eco-lodge" },
     { name: "guest house", slug: "guest-house" },
     { name: "hotels", slug: "hotels" },
