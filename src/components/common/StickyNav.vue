@@ -1,25 +1,12 @@
 <template>
-  <div>
-    <nav class="navbar navbar-expand-lg sticky-md-top sticky-lg-top">
+  <div class="sticky-top">
+    <nav class="navbar navbar-expand-lg sticky-top">
       <div class="container">
         <RouterLink class="navbar-brand" to="/">
-          <img
-            loading="lazy"
-            src="@/assets/img/logo.png"
-            alt=""
-            width="80"
-            class="img-fluid"
-          />
+          <img loading="lazy" src="@/assets/img/logo.png" alt="" width="100" class="img-fluid" />
         </RouterLink>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <i class="bi bi-list"></i>
         </button>
         <div class="collapse navigations navbar-collapse" id="navbarNav">
@@ -34,7 +21,7 @@
               <RouterLink to="/handicrafts">Handicrafts</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink to="/accommodation">Accommodation</RouterLink>
+              <RouterLink to="/accommodation">Accommodations</RouterLink>
             </li>
             <li class="nav-item">
               <RouterLink to="/tours">Tour Packages</RouterLink>

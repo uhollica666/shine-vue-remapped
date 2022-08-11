@@ -9,7 +9,7 @@ const routes = [
   },
   {
     path: '/accommodation',
-    name: 'Accommodation',
+    name: 'Accommodations',
     component: () => import(/* webpackChunkName: "about" */ '../views/AccommodationPage')
   },
   {
@@ -133,7 +133,13 @@ const routes = [
     name: 'SingleHotel',
     component: () => import( /* webpackChunkName: "about" */ '../views/SingleHotel')
   },
+  {
+    path: '/:catchAll(.*)',
+    name: 'notFound',
+    component: () => import( /* webpackChunkName: "about" */ '../views/NotFound')
+    }
 ]
+
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
@@ -142,7 +148,9 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   document.title = `${ process.env.VUE_APP_TITLE } | ${ to.name }`
-   next()
+  next()  
+  // vue router scrolls to page top on route change
+  window.scrollTo(0, 0)
 })
 
 export default router

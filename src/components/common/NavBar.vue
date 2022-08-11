@@ -22,20 +22,20 @@
                   <div class="dropdown logged-user-menu mr-5 my-0">
                     <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton"
                       data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="bi bi-person-bounding-box"></i> Register with Us
+                      <i class="bi bi-person-bounding-box"></i> Register
                     </button>
                     <ul class="dropdown-menu px-0 mx-0" aria-labelledby="dropdownMenuButton">
                       <li class="px-1 mx-0 my-3">
                         <a :href="'https://booking.shinebhutan.com/register'" class="dropdown-item text-dark"
                           target="_blank">
-                          <i class="bi bi-speedometer2"></i>Tourism Vendor
+                          <i class="bi bi-speedometer2"></i>As Tour Operator
                         </a>
                       </li>
                       <li class="px-1 mx-0 my-3">
                         <a :href="
                           'https://shop.shinebhutan.com/' + 'shops/create'
                         " class="dropdown-item text-dark" target="_blank">
-                          <i class="bi bi-basket2"></i>Ecommerce Vendor
+                          <i class="bi bi-basket2"></i>As Ecommerce Vendor
                         </a>
                       </li>
                     </ul>

@@ -4,101 +4,71 @@
     <div class="container text-md-left mb-4">
       <div class="row text-md-left text-lg-left">
         <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-1 footer-left-div">
-          <img
-            loading="lazy"
-            src="@/assets/img/logo.png"
-            alt=""
-            class="footer-img-logo img-fluid"
-          />
-          <p>
-            Above Memorial Chorten<br />
-            Chorten Lam, Thimphu 11001 Bhutan <br /><br /><strong
-              >Contact</strong
-            >: +975 2 338089<br /><strong>Email</strong>: info@shinebhutan.com
+          <img loading="lazy" src="@/assets/img/logo.png" alt="" class="footer-img-logo img-fluid" />
+          <p><strong>Contact</strong>: +975 2
+            338089<br /><strong>Email</strong>: info@shinebhutan.com<br /><strong>Located:</strong> Above Memorial
+            Chorten<br />
+            Chorten Lam, Thimphu 11001 Bhutan
           </p>
         </div>
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3 footer-note">
-          <h5 class="mb-4 footer-heading">Plan A Trip</h5>
+          <h5 class="mb-4 footer-heading">Services</h5>
           <div class="footer-link">
-            <RouterLink to="/accommodation"
-              ><i class="bi bi-chevron-compact-right"></i>Find a
-              Trip</RouterLink
-            >
+            <RouterLink to="/accommodation"><i class="bi bi-chevron-compact-right"></i>How It Works</RouterLink>
           </div>
           <div class="footer-link">
-            <RouterLink to="/accommodation"
-              ><i class="bi bi-chevron-compact-right"></i>Why Travel With
-              Us?</RouterLink
-            >
+            <a href="https://shine.grat.at" target="_blank"><i class="bi bi-chevron-compact-right"></i>Go To SHINE
+              Website</a>
           </div>
           <div class="footer-link">
-            <RouterLink to="/accommodation"
-              ><i class="bi bi-chevron-compact-right"></i>Our
-              Services</RouterLink
-            >
+            <RouterLink to="/accommodation"><i class="bi bi-chevron-compact-right"></i>Terms of Service</RouterLink>
           </div>
           <div class="footer-link">
-            <RouterLink to="/accommodation"
-              ><i class="bi bi-chevron-compact-right"></i>Special
-              Offer</RouterLink
-            >
+            <RouterLink to="/accommodation"><i class="bi bi-chevron-compact-right"></i>Privacy Policy</RouterLink>
           </div>
           <div class="footer-link">
-            <RouterLink to="/accommodation"
-              ><i class="bi bi-chevron-compact-right"></i>Terms of
-              Service</RouterLink
-            >
+            <RouterLink to="/accommodation"><i class="bi bi-chevron-compact-right"></i>Help Desk</RouterLink>
           </div>
           <div class="footer-link">
-            <RouterLink to="/accommodation"
-              ><i class="bi bi-chevron-compact-right"></i>Privacy
-              Policy</RouterLink
-            >
+            <a href="@/assets/files/"><i class="bi bi-chevron-compact-right"></i>Site Map</a>
           </div>
         </div>
-        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3 footer-note">
+        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3 footer-note">
           <h5 class="mb-4 footer-heading">Support</h5>
           <div class="footer-link">
-            <a href="callto:+97577646508"
-              ><i class="bi bi-chevron-compact-right"></i>+97577646508</a
-            >
+            <a href="callto:+97577646508"><i class="bi bi-chevron-compact-right"></i>+97577646508</a>
           </div>
           <div class="footer-link">
-            <RouterLink to="/"
-              ><i class="bi bi-chevron-compact-right"></i>Contact Us</RouterLink
-            >
+            <RouterLink to="/"><i class="bi bi-chevron-compact-right"></i>Contact Us</RouterLink>
           </div>
           <div class="footer-link">
-            <RouterLink to="/"
-              ><i class="bi bi-chevron-compact-right"></i>FAQs</RouterLink
-            >
+            <RouterLink to="/"><i class="bi bi-chevron-compact-right"></i>FAQs</RouterLink>
           </div>
           <div class="footer-link">
-            <RouterLink to="/accommodation"
-              ><i class="bi bi-chevron-compact-right"></i>Travel
-              Insurance</RouterLink
-            >
+            <RouterLink to="/accommodation"><i class="bi bi-chevron-compact-right"></i>Travel
+              Insurance</RouterLink>
           </div>
           <div class="footer-link">
-            <RouterLink to="/accommodation"
-              ><i class="bi bi-chevron-compact-right"></i>Travel
-              Agent</RouterLink
-            >
+            <RouterLink to="/accommodation"><i class="bi bi-chevron-compact-right"></i>Travel
+              Agent</RouterLink>
           </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-xl-4 mx-auto mt-3 footer-newsletter">
-          <h5 class="mb-4 footer-heading">Join Our Newsletter</h5>
-          <p>
-            Subscribe to our Newsletter and receive monthly, daily and festive
-            updates
-          </p>
-          <form action="" method="post" class="subscribe-form mt-3">
-            <input type="email" name="email" class="mail-in" /><input
-              type="submit"
-              value="Subscribe"
-              class="subscribe-btn"
-            />
-          </form>
+        <div class="col-lg-3 col-md-3 col-xl-3 mx-auto mt-3 footer-newsletter">
+          <h5 class="mb-4 footer-heading">Download our App</h5>
+          <div class="row mb-3">
+            <div class="col-md-9">
+              <a href="https://play.google.com" target="_blank">
+                <img src="@/assets/img/app_btn_google.png" alt="" class="store-btn">
+              </a>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-9">
+              <a href="https://play.google.com" target="_blank">
+                <img src="@/assets/img/app_btn_apple.png" alt="" class="store-btn">
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -109,15 +79,12 @@
             <div class="me-lg-auto text-center text-lg-start">
               <div class="copyright">
                 &copy; Copyright {{ currentYear
-                }}<strong><span> Shine</span></strong
-                >. All Rights Reserved
+                }}<strong><span> Shine</span></strong>. All Rights Reserved
               </div>
             </div>
           </div>
           <div class="col-md-5 col-lg-4">
-            <div
-              class="footer-social-links text-center text-lg-right pt-3 pt-lg-0"
-            >
+            <div class="footer-social-links text-center text-lg-right pt-3 pt-lg-0">
               <a href="#0" class="twitter"><i class="bi bi-twitter"></i></a>
               <a href="#0" class="facebook"><i class="bi bi-facebook"></i></a>
               <a href="#0" class="instagram"><i class="bi bi-instagram"></i></a>
@@ -142,6 +109,10 @@ export default {
 </script>
 
 <style scoped>
+.store-btn {
+  width: 100%;
+}
+
 input.mail-in {
   border-radius: 10rem;
   border: none;
@@ -149,6 +120,7 @@ input.mail-in {
   width: 70%;
   border: 1px solid rgba(0, 0, 0, 0);
 }
+
 input.subscribe-btn {
   background: #f7941e;
   color: #fff;
@@ -158,6 +130,7 @@ input.subscribe-btn {
   width: 25%;
   margin: 0 2.5%;
 }
+
 input.subscribe-btn:hover {
   background: #e8dbcb;
   color: #f7941e;

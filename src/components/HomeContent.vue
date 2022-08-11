@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-6">
-        <h6 class="text-center py-3 home-heading">Agri Products</h6>
+        <h6 class="py-3 home-heading">Agri Products</h6>
         <div class="container home-container">
           <div class="product-images row">
             <template v-for="product in computedProducts">
@@ -20,7 +20,7 @@
       </div>
 
       <div class="col-md-6 mb-3">
-        <h6 class="text-center py-3 home-heading">Handicraft Products</h6>
+        <h6 class="py-3 home-heading">Handicraft Products</h6>
         <div class="container home-container">
           <div class="product-images row">
             <template v-for="product in computedHandicrafts">
@@ -31,7 +31,7 @@
           </div>
           <RouterLink to="/handicrafts" class="d-flex home-sec">
             <button class="btn btn-home mb-3">
-              <i class="bi bi-eye"></i>View All Handicrafts
+              <i class="bi bi-eye"></i>View All Handicraft Products
             </button>
           </RouterLink>
         </div>
@@ -44,8 +44,8 @@
         <div class="home-tour-group">
           <div class="row">
             <div class="col-md-2 col-sm-6 col-xs-6 home-objects" v-for="tour in computedTours" :key="tour.id">
-              <RouterLink :to="'/tour/' + tour.slug" class="category-details">
-              <img loading="lazy" class="card-img img-fluid" :src="apiURL + tour.file_path" />
+              <RouterLink :to="'/tour/' + tour.id + 'where?name=' + tour.slug" class="category-details">
+                <img loading="lazy" class="card-img img-fluid" :src="apiURL + tour.file_path" />
                 <div class="card-details">
                   <h6 class="card-title text-truncate text-capitalize py-2">
                     {{ tour.title }}
@@ -69,22 +69,27 @@
 
     <div class="row mt-5">
       <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-xs-12">
-        <h6 class="p-3 home-linear-heading">Accommodation</h6>
+        <h6 class="p-3 home-linear-heading">Accommodations</h6>
         <div class="home-tour-group">
           <div class="row">
-            <div class="col-md-3 home-objects" v-for="accommodation in computedAccommodation" :key="accommodation.id">
-              <RouterLink :to="'/properties/' + accommodation.id + 'where?name=' + accommodation.slug " class="category-details">
-                <img loading="lazy" class="card-img img-fluid" :src="apiURL + accommodation.file_path" />              
-                  <div class="card-details">
-                    <h6 class="card-title text-truncate text-capitalize py-2" v-if="!accommodation.title">
-                      - Name Not Available -
-                    </h6>
-                    <h6 class="card-title text-truncate text-capitalize py-2" v-else>
-                      {{ accommodation.title }}
-                    </h6>
-                    <p class="text-truncate">
-                      <i class="bi bi-geo"></i>{{ accommodation.name }}
-                    </p>
+            <div class="col-md-2 home-objects" v-for="accommodation in computedAccommodation" :key="accommodation.id">
+              <RouterLink :to="
+                '/properties/' +
+                accommodation.id +
+                'where?name=' +
+                accommodation.slug
+              " class="category-details">
+                <img loading="lazy" class="card-img img-fluid" :src="apiURL + accommodation.file_path" />
+                <div class="card-details">
+                  <h6 class="card-title text-truncate text-capitalize py-2" v-if="!accommodation.title">
+                    - Name Not Available -
+                  </h6>
+                  <h6 class="card-title text-truncate text-capitalize py-2" v-else>
+                    {{ accommodation.title }}
+                  </h6>
+                  <p class="text-truncate">
+                    <i class="bi bi-geo"></i>{{ accommodation.name }}
+                  </p>
                 </div>
               </RouterLink>
             </div>
@@ -104,9 +109,9 @@
         <h6 class="p-3 home-linear-heading">Hotels</h6>
         <div class="home-tour-group">
           <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-6 home-objects" v-for="hotel in computedHotels" :key="hotel.id">            
+            <div class="col-md-2 col-sm-6 col-xs-6 home-objects" v-for="hotel in computedHotels" :key="hotel.id">
               <RouterLink :to="'/hotel/' + hotel.id + 'where?name=' + hotel.slug" class="category-details">
-              <img loading="lazy" class="card-img img-fluid" :src="apiURL + hotel.file_path" />
+                <img loading="lazy" class="card-img img-fluid" :src="apiURL + hotel.file_path" />
                 <div class="card-details">
                   <h6 class="card-title text-truncate text-capitalize py-2" v-if="!hotel.title">
                     - Name Not Available -
@@ -132,7 +137,7 @@
 
     <div class="row my-5">
       <div class="col-md-6 mt-3">
-        <h6 class="text-center py-3 home-heading">Popular Agri Products</h6>
+        <h6 class="py-3 home-heading">Popular Agri Products</h6>
         <div class="container home-container">
           <div class="product-images row">
             <template v-for="product in computedProducts">
@@ -150,7 +155,7 @@
       </div>
 
       <div class="col-md-6 mt-3">
-        <h6 class="text-center py-3 home-heading">
+        <h6 class="py-3 home-heading">
           Popular Handicraft Products
         </h6>
         <div class="container home-container">
@@ -279,6 +284,7 @@ export default {
 <style scoped>
 .btn-preview {
   border: none;
+  padding: 0.3rem 1rem;
 }
 
 .card-details {
@@ -307,6 +313,7 @@ export default {
   background: #f7941e;
   margin: 0;
   border-radius: 5px 5px 0 0;
+  padding: 0.6rem 1rem !important;
 }
 
 /* .home-linear-heading::after{
@@ -319,6 +326,7 @@ export default {
   background: #f7941e;
   margin: 0;
   border-radius: 5px 5px 0 0;
+  padding: 0.6rem 1rem !important;
 }
 
 .home-tour-group {
@@ -331,23 +339,21 @@ export default {
   height: 25rem;
 }
 
-.product-images {
+/* .product-images {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
   padding: 1rem;
-}
+} */
 
 .cardo {
-  width: 48%;
   aspect-ratio: 16/9;
   object-fit: cover;
   border-radius: 5px;
 }
 
 .card-img {
-  width: 100%;
   aspect-ratio: 16/10;
   border-radius: 5px;
   margin: 0;
@@ -359,8 +365,8 @@ export default {
   border: none;
   border-radius: 5px;
   margin: 0 auto;
-  width: 50%;
-  padding: 0.5rem 1rem;
+  width: auto;
+  padding: 0.3rem 1rem;
   font-size: 1rem;
   cursor: pointer;
   border-radius: 10rem;

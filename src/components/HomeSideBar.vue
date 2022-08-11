@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="accordion accordion-flush sticky-top">
+    <div class="accordion accordion-flush">
       <div class="accordion-item">
         <h2 class="accordion-header">
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
@@ -14,7 +14,7 @@
             <div class="c">
               <div class="sidebar-filters">
                 <div class="block-1 mb-3">
-                  <h6>Handicrafts</h6>
+                  <h6>Handicraft Products</h6>
                   <ul class="home-block handicraft-block">
                     <li v-for="handicraft in homeHandicrafts" :key="handicraft">
                       <RouterLink :to="'/category-handicrafts/' + handicraft.name">{{
@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="block-2 my-3">
-                  <h6>Agriculture</h6>
+                  <h6>Agri Products</h6>
                   <ul class="home-block Agriculture-block">
                     <li v-for="product in homeAgriproducts" :key="product">
                       <RouterLink :to="'/category-agriproducts/' + product.name">{{
@@ -49,27 +49,29 @@
               </div>
             </div>
           </div>
-          <h6 class="attraction-header">
-            Popular Attraction
-          </h6>
-          <div class="c">
-            <div class="sidebar-filters">
-              <div class="block-1 mb-3">
-                <div class="image-block my-2">
-                  <img loading="lazy" src="@/assets/img/brokpa.jpg" alt="" />
-                </div>
-                <ul class="home-block pb-3">
-                  <li v-for="attraction in popAttractions" :key="attraction.name" class="mt-1">
-                    <RouterLink :to="'/article/' + attraction.slug">
-                      {{ attraction.name }}
-                    </RouterLink>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
+    </div>
+    <div class="sticky-top mt-5 accordion here-heading">
+      <h6 class="attraction-header">
+      Popular Attractions
+    </h6>
+    <div class="c">
+      <div class="sidebar-filters">
+        <div class="block-1 mb-3">
+          <div class="image-block my-2">
+            <img loading="lazy" src="@/assets/img/brokpa.jpg" alt="" />
+          </div>
+          <ul class="home-block pb-3">
+            <li v-for="attraction in popAttractions" :key="attraction.name" class="mt-1">
+              <RouterLink :to="'/article/' + attraction.slug">
+                {{ attraction.name }}
+              </RouterLink>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 </template>
@@ -129,6 +131,7 @@ export default {
   padding: 1rem;
   background: #f7941e;
   color: #fff;
+  border-radius: 5px 5px 0 0;
 }
 
 .image-block img {
@@ -144,7 +147,7 @@ export default {
 }
 
 .app-sticky-top-2 {
-  top: 100vh;
+  top: 10vh;
   margin-top: 20rem;
 }
 

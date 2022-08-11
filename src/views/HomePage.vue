@@ -9,9 +9,16 @@
       </HomeCarouselSlide>
       <div class="welcome-note text-center">
         <h1>Welcome to Shine!</h1>
-        <p>Your Best Bhutan Experience</p>
+        <h5>Experience Eastern Bhutan Like Never Before.</h5>
       </div>
     </HomeCarousel>
+
+    <div class="container">
+      <div class="row my-5">
+        <AdSlider/>
+      </div>
+    </div>
+
     <div class="container">
       <div class="row my-5">
         <div class="col-md-3 col-xl-3 col-lg-3 col-xs-12 col-sm-12">
@@ -38,11 +45,12 @@ import HomeCarousel from "@/components/HomeCarousel";
 import HomeSidebar from "@/components/HomeSideBar";
 import HomeContent from "@/components/HomeContent";
 import HomeLoader from "@/components/common/HomeLoader";
+import AdSlider from "@/components/AdSlider.vue";
 export default {
   name: "HomePage",
 
   setup() {
-    const CarouselSlides = ["slider1", "slider2", "slider3", "slider4"];
+    const CarouselSlides = ["slider1", "slider2", "slider3", "slider4", "slider5"];
     return {
       CarouselSlides,
     };
@@ -53,7 +61,8 @@ export default {
     HomeSidebar,
     HomeContent,
     HomeLoader,
-  },
+    AdSlider
+},
 };
 </script>
 
@@ -64,7 +73,7 @@ export default {
 
 .carousel {
   position: relative;
-  max-height: 100vh;
+  min-height: 350px;
   height: 60vh;
 }
 
