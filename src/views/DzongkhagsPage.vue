@@ -1,8 +1,14 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12 col-xs-12">
+      <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12 col-xs-12" v-if="$route.name==='Dzongkhags'" >
         <DzongkhagSideBar />
+      </div>
+      <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12 col-xs-12" v-else-if="$route.name==='AccommodationDzongkhags'">
+        <DzongkhagSideBarTwo />
+      </div>
+      <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12 col-xs-12" v-else>
+        <DzongkhagSideBarThree />
       </div>
       <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-xs-12">
         <PageBanner />
@@ -19,9 +25,8 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row" v-if="$route.name !=='AccommodationDzongkhags' && $route.name !=='ToursDzongkhags'">
       <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-xs-12 mt-5">
-
         <Suspense>
           <template #default>
             <BlogPost />
@@ -30,7 +35,6 @@
             <Loader />
           </template>
         </Suspense>
-
       </div>
     </div>
   </div>
@@ -38,6 +42,8 @@
 
 <script>
 import DzongkhagSideBar from '@/components/common/DzongkhagSideBar';
+import DzongkhagSideBarTwo from '@/components/common/DzongkhagSideBarTwo';
+import DzongkhagSideBarThree from '@/components/common/DzongkhagSideBarThree';
 import PageBanner from '@/components/common/PageBanner';
 import DzongkhagContent from '@/components/DzongkhagContent';
 import BlogPost from '@/components/common/BlogPost';
@@ -48,6 +54,8 @@ export default {
   name: "DzongkhagsPage",
   components: {
     DzongkhagSideBar,
+    DzongkhagSideBarTwo,
+    DzongkhagSideBarThree,
     PageBanner,
     BlogPost,
     DzongkhagContent,

@@ -29,13 +29,13 @@
                     {{ filter.name }}
                   </label>
                 </RouterLink>
-                <RouterLink :to="'/agri-dzo-filter/' + filter.slug" v-if="$route.name === 'Accommodation'">
+                <RouterLink :to="'/accommodation-dzongkhags/' + filter.slug" v-if="$route.name === 'Accommodations'">
                   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
                   <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
                     {{ filter.name }}
                   </label>
                 </RouterLink>
-                <RouterLink :to="'/haha-dzo-filter/' + filter.slug" v-if="$route.name === 'Tours'">
+                <RouterLink :to="'/tours-dzongkhags/' + filter.slug" v-if="$route.name === 'Tours'">
                   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
                   <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
                     {{ filter.name }}

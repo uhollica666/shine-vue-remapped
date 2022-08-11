@@ -1,7 +1,12 @@
 <template>
   <div>
-    <div class="dzongkhag-accommodation mt-5">
-      <h5 class="text-capitalize">
+    <div v-if="$route.name==='Dzongkhags' || $route.name === 'AccommodationDzongkhags'">
+      <div class="dzongkhag-accommodation mt-2">
+      <h5 class="text-capitalize" v-if="$route.name==='AccommodationDzongkhags'">
+        Explore accommodatons under
+        {{ $route.params.slug }} dzongkhag
+      </h5>
+      <h5 class="text-capitalize" v-else>
         Explore accommodatons under
         {{ $route.params.location_id }} dzongkhag
       </h5>
@@ -40,12 +45,49 @@
               </RouterLink>
             </div>
           </div>
+          <div class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12 mt-3"
+            v-if="$route.name ==='AccommodationDzongkhags' && $route.params.slug === accommodation.name" :key="accommodation.id">
+            <div class="card mt-3">
+              <RouterLink :to="'/properties/' + accommodation.id + 'where?name=' + accommodation.slug"
+                class="accommodation-details">
+                <div class="card-body">
+                  <img loading="lazy" :src="apiURL + accommodation.file_path" alt="" class="card-img img-fluid" />
+                  <div class="card-details">
+                    <h6 class="card-title text-truncate">
+                      {{ accommodation.title }}
+                    </h6>
+                    <h6 class="card-text my-3">
+                      <i class="bi bi-cash-coin mr-1"></i> Nu.
+                      {{ accommodation.price }} / night
+                    </h6>
+                    <div class="details">
+                      <div class="location text-truncate">
+                        <i class="bi bi-geo-alt"></i>{{ accommodation.name }}
+                      </div>
+                      <h6 class="rating" v-if="!accommodation.review_score">
+                        <i class="bi bi-star-fill start-icon mx-1"></i>
+                        No reviews
+                      </h6>
+                      <h6 class="rating" v-else>
+                        <i class="bi bi-star-fill start-icon mx-1"></i>
+                        {{ accommodation.review_score }} / 5
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+              </RouterLink>
+            </div>
+          </div>
         </template>
       </div>
     </div>
 
     <div class="dzongkhag-accommodation mt-5">
-      <h5 class="text-capitalize">
+      <h5 class="text-capitalize" v-if="$route.name==='AccommodationDzongkhags'">
+        Explore Hotels under
+        {{ $route.params.slug }} dzongkhag
+      </h5>
+      <h5 class="text-capitalize" v-else>
         Explore Hotels under
         {{ $route.params.location_id }} dzongkhag
       </h5>
@@ -83,12 +125,49 @@
               </RouterLink>
             </div>
           </div>
+          <div class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 mt-3" v-if="$route.name ==='AccommodationDzongkhags' && $route.params.slug === hotel.name"
+            :key="hotel.id">
+            <div class="card mt-3">
+              <RouterLink :to="'/hotel/' + hotel.id + 'where?name=' + hotel.slug" class="accommodation-details">
+                <div class="card-body">
+                  <img loading="lazy" :src="apiURL + hotel.file_path" alt="" class="card-img img-fluid" />
+                  <div class="card-details">
+                    <h6 class="card-title text-truncate">
+                      {{ hotel.title }}
+                    </h6>
+                    <h6 class="card-text my-3">
+                      <i class="bi bi-cash-coin mr-1"></i> Nu.
+                      {{ hotel.price }} / night
+                    </h6>
+                    <div class="details">
+                      <div class="location text-truncate">
+                        <i class="bi bi-geo-alt"></i>{{ hotel.name }}
+                      </div>
+                      <h6 class="rating" v-if="!hotel.review_score">
+                        <i class="bi bi-star-fill start-icon mx-1"></i>
+                        No reviews
+                      </h6>
+                      <h6 class="rating" v-else>
+                        <i class="bi bi-star-fill start-icon mx-1"></i>
+                        {{ hotel.review_score }} / 5
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+              </RouterLink>
+            </div>
+          </div>
         </template>
       </div>
     </div>
+    </div>
 
-    <div class="dzongkhag-accommodation mt-5">
-      <h5 class="text-capitalize">
+    <div v-if="$route.name==='Dzongkhags' || $route.name==='ToursDzongkhags'">
+      <div class="dzongkhag-accommodation mt-5">
+      <h5 class="text-capitalize" v-if="$route.name==='ToursDzongkhags'">
+        Explore Tours under {{ $route.params.slug }} dzongkhag
+      </h5>
+      <h5 class="text-capitalize" v-else>
         Explore Tours under {{ $route.params.location_id }} dzongkhag
       </h5>
       <div class="row">
@@ -123,11 +202,41 @@
               </RouterLink>
             </div>
           </div>
+          <div class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12 mt-3" :key="tour.id"
+            v-if="$route.name === 'ToursDzongkhags' && tour.name === $route.params.slug">
+            <div class="card mt-2">
+              <RouterLink :to="'/tour/' + tour.slug" class="accommodation-details">
+                <div class="card-body">
+                  <img loading="lazy" :src="apiURL + tour.file_path" alt="" class="card-img img-fluid" />
+                  <div class="card-details">
+                    <h6 class="card-title text-truncate">
+                      {{ tour.title }}
+                    </h6>
+                    <h6 class="card-text my-3">
+                      <i class="bi bi-cash-coin mr-1"></i> Nu.
+                      {{ tour.price }} / night
+                    </h6>
+                    <div class="location-tours text-truncate mb-2">
+                      <i class="bi bi-geo-alt"></i>{{ tour.name }}
+                    </div>
+                    <div class="duration-tours text-truncate" v-if="!tour.date_form_to">
+                      <i class="bi bi-stopwatch"></i>
+                      duration not available
+                    </div>
+                    <div class="duration-tours text-truncate" v-else>
+                      <i class="bi bi-stopwatch"></i>
+                      {{ tour.date_form_to }}
+                    </div>
+                  </div>
+                </div>
+              </RouterLink>
+            </div>
+          </div>
         </template>
       </div>
     </div>
 
-    <div class="my-5">
+    <div class="my-5" v-if="$route.name === 'Dzongkhags'">
       <h5 class="text-capitalize my-3">
         A little Insight about {{ $route.params.location_id }}
       </h5>
@@ -139,7 +248,7 @@
       </template>
     </div>
 
-    <div class="dzongkhag-accommodation mt-5">
+    <div class="dzongkhag-accommodation mt-5" v-if="$route.name === 'Dzongkhags'">
       <h5 class="text-capitalize">
         top selling agri products from
         {{ $route.params.location_id }} dzongkhag
@@ -178,7 +287,7 @@
       </div>
     </div>
 
-    <div class="dzongkhag-accommodation mt-5">
+    <div class="dzongkhag-accommodation mt-5" v-if="$route.name === 'Dzongkhags'">
       <h5 class="text-capitalize">
         top selling handicraft products from
         {{ $route.params.location_id }} dzongkhag
@@ -208,6 +317,8 @@
         </template>
       </div>
     </div>
+    </div>
+    
   </div>
 </template>
 

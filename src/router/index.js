@@ -68,6 +68,16 @@ const routes = [
     component: () => import( /* webpackChunkName: "about" */ '../views/DzongkhagsPage')
   },
   {
+    path: '/accommodation-dzongkhags/:slug',
+    name: 'AccommodationDzongkhags',
+    component: () => import( /* webpackChunkName: "about" */ '../views/DzongkhagsPage')
+  },
+  {
+    path: '/tours-dzongkhags/:slug',
+    name: 'ToursDzongkhags',
+    component: () => import( /* webpackChunkName: "about" */ '../views/DzongkhagsPage')
+  },
+  {
     path: '/properties/:id',
     name: 'SingleProperty',
     props: true,
