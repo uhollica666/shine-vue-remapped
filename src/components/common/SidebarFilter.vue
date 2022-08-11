@@ -2,55 +2,43 @@
   <div class="accordion mt-5 accordion-flush sticky-top app-sticky-top">
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button
-          class="accordion-button"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseOne"
-          aria-expanded="false"
-          aria-controls="collapseOne"
-        >
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          aria-expanded="false" aria-controls="collapseOne">
           <i class="bi bi-sort-down"></i>Filters
         </button>
       </h2>
-      <div
-        id="collapseOne"
-        class="accordion-collapse collapse show"
-        aria-labelledby="headingOne"
-        data-bs-parent="#accordionExample"
-      >
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample">
         <div class="accordion-body">
           <div class="c">
             <div class="sidebar-filters">
-              <!-- <div class="heading">
-                                <h6 class="mb-3">Search Anything</h6>
-                            </div>
-                            <form class="form-inline mb-3" for="search" @submit.prevent="">
-                                <input class="form-control" type="search" placeholder="Search" id="search" />
-                                v-model="search" @keydown="searchFilter(search)" />
-                            </form> -->
-
               <div class="heading">
                 <h6 class="mb-3">Filter By Dzongkhag</h6>
               </div>
-              <div
-                class="form-check my-2"
-                v-for="filter in filters"
-                :key="filter"
-              >
-                <RouterLink :to="'/dzongkhags/' + filter">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault1"
-                    @click="() => filteredAccommodation(filter)"
-                  />
-                  <label
-                    class="form-check-label dzongkhag-filter-each"
-                    for="flexRadioDefault1"
-                  >
-                    {{ filter }}
+
+              <div class="form-check my-2" v-for="filter in filters" :key="filter.name">
+                <RouterLink :to="'/agri-dzo-filter/' + filter.slug" v-if="$route.name === 'Agriproducts'">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                  <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
+                    {{ filter.name }}
+                  </label>
+                </RouterLink>
+                <RouterLink :to="'/handicraft-dzo-filter/' + filter.slug" v-if="$route.name === 'Handicrafts'">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                  <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
+                    {{ filter.name }}
+                  </label>
+                </RouterLink>
+                <RouterLink :to="'/agri-dzo-filter/' + filter.slug" v-if="$route.name === 'Accommodation'">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                  <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
+                    {{ filter.name }}
+                  </label>
+                </RouterLink>
+                <RouterLink :to="'/haha-dzo-filter/' + filter.slug" v-if="$route.name === 'Tours'">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                  <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
+                    {{ filter.name }}
                   </label>
                 </RouterLink>
               </div>
@@ -59,24 +47,10 @@
                 <div class="heading">
                   <h6 class="mb-3 mt-3">Filter By Category</h6>
                 </div>
-                <div
-                  class="form-check my-2"
-                  v-for="caregory in productCategories"
-                  :key="caregory"
-                >
-                  <RouterLink
-                    :to="'/searchhandicraft/' + caregory"
-                    class="text-dark"
-                  >
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="flexRadioDefault"
-                    />
-                    <label
-                      class="form-check-label dzongkhag-filter-each"
-                      for="flexRadioDefault1"
-                    >
+                <div class="form-check my-2" v-for="caregory in productCategories" :key="caregory">
+                  <RouterLink :to="'/searchhandicraft/' + caregory" class="text-dark">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" />
+                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
                       {{ caregory }}
                     </label>
                   </RouterLink>
@@ -87,21 +61,10 @@
                 <div class="heading">
                   <h6 class="mb-3 mt-3">Filter By Category</h6>
                 </div>
-                <div
-                  class="form-check my-2"
-                  v-for="caregory in agriCategory"
-                  :key="caregory"
-                >
+                <div class="form-check my-2" v-for="caregory in agriCategory" :key="caregory">
                   <RouterLink :to="'/search/' + caregory" class="text-dark">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="flexRadioDefault"
-                    />
-                    <label
-                      class="form-check-label dzongkhag-filter-each"
-                      for="flexRadioDefault1"
-                    >
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" />
+                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
                       {{ caregory }}
                     </label>
                   </RouterLink>
@@ -112,36 +75,18 @@
                 <div class="heading">
                   <h6 class="mb-3 mt-3">Properties By Price Range</h6>
                 </div>
-                <div
-                  class="form-check my-2"
-                  v-for="starRating in starRatings"
-                  :key="starRating"
-                >
+                <div class="form-check my-2" v-for="starRating in starRatings" :key="starRating">
                   <RouterLink :to="'/searchaccommodation/' + starRating">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="flexRadioDefault"
-                    />
-                    <label
-                      class="form-check-label dzongkhag-filter-each"
-                      for="flexRadioDefault1"
-                      v-if="starRating === 'All'"
-                    >
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" />
+                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
+                      v-if="starRating === 'All'">
                       {{ starRating }} Properties
                     </label>
-                    <label
-                      class="form-check-label dzongkhag-filter-each"
-                      for="flexRadioDefault1"
-                      v-else-if="starRating === '15,000 and over'"
-                    >
+                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
+                      v-else-if="starRating === '15,000 and over'">
                       Nu. {{ starRating }}
                     </label>
-                    <label
-                      class="form-check-label dzongkhag-filter-each"
-                      for="flexRadioDefault1"
-                      v-else
-                    >
+                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1" v-else>
                       Between Nu. {{ starRating }}
                     </label>
                   </RouterLink>
@@ -152,36 +97,18 @@
                 <div class="heading">
                   <h6 class="mt-3">Filter Tours By Price</h6>
                 </div>
-                <div
-                  class="form-check my-2"
-                  v-for="price in toursPrice"
-                  :key="price"
-                >
+                <div class="form-check my-2" v-for="price in toursPrice" :key="price">
                   <RouterLink :to="'/searchtours/' + price">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="flexRadioDefault"
-                    />
-                    <label
-                      class="form-check-label dzongkhag-filter-each"
-                      for="flexRadioDefault1"
-                      v-if="price === 'All'"
-                    >
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" />
+                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
+                      v-if="price === 'All'">
                       {{ price }} Tours
                     </label>
-                    <label
-                      class="form-check-label dzongkhag-filter-each"
-                      for="flexRadioDefault1"
-                      v-else-if="price === '15,000 and over'"
-                    >
+                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
+                      v-else-if="price === '15,000 and over'">
                       Nu. {{ price }}
                     </label>
-                    <label
-                      class="form-check-label dzongkhag-filter-each"
-                      for="flexRadioDefault1"
-                      v-else
-                    >
+                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1" v-else>
                       Between Nu. {{ price }}
                     </label>
                   </RouterLink>
@@ -197,13 +124,13 @@
 
 <script>
 const filters = [
-  "Dagana",
-  "Lhuentse",
-  "Mongar",
-  "Pemagatshel",
-  "Tashiyangtse",
-  "Trashigang",
-  "Zhemgang",
+  { name: "Dagana", slug: 'Dagana' },
+  { name: "Lhuentse", slug: 'Lhuentse' },
+  { name: "Mongar", slug: 'Mongar' },
+  { name: "Pemagatshel", slug: 'Pemagatshel' },
+  { name: "Tashiyangtse", slug: 'Tashiyangtse' },
+  { name: "Trashigang", slug: 'Trashigang' },
+  { name: "Zhemgang", slug: 'Zhemgang' },
 ];
 const starRatings = [
   "All",

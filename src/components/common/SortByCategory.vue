@@ -158,7 +158,7 @@ export default {
 
 .card-img {
   width: 100%;
-  height: 150px;
+  aspect-ratio: 16/10;
   object-fit: cover;
 }
 

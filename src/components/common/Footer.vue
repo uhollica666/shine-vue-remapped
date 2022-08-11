@@ -60,7 +60,7 @@
           <div class="row mb-3">
             <div class="col-md-9">
               <p>For Android Users:</p>
-              <a href="https://play.google.com" target="_blank">
+              <a href="https://play.google.com/store/search?q=shine&c=apps" target="_blank">
                 <img src="@/assets/img/app_btn_google.png" alt="" class="store-btn">
               </a>
             </div>
@@ -68,7 +68,7 @@
           <div class="row mb-2">
             <div class="col-md-9">
               <p>For iOS Users:</p>
-              <a href="https://play.google.com" target="_blank">
+              <a href="https://www.apple.com/us/search/shine?src=globalnav" target="_blank">
                 <img src="@/assets/img/app_btn_apple.png" alt="" class="store-btn">
               </a>
             </div>
@@ -89,10 +89,10 @@
           </div>
           <div class="col-md-5 col-lg-4">
             <div class="footer-social-links text-center text-lg-right pt-3 pt-lg-0">
-              <a href="#0" class="twitter"><i class="bi bi-twitter"></i></a>
-              <a href="#0" class="facebook"><i class="bi bi-facebook"></i></a>
-              <a href="#0" class="instagram"><i class="bi bi-instagram"></i></a>
-              <a href="#0" class="linkedin"><i class="bi bi-linkedin"></i></a>
+              <a href="https://twitter.com/shine" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="https://facebook.com/shine_bhutan" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="https://instagram.com/shine_bhutan" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="https://linkedin.com/user/shine" class="linkedin"><i class="bi bi-linkedin"></i></a>
             </div>
           </div>
         </div>

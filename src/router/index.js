@@ -129,6 +129,16 @@ const routes = [
     component: () => import( /* webpackChunkName: "about" */ '../views/CategoryFilter')
   },
   {
+    path: '/agri-dzo-filter/:slug',
+    name: 'AgriDzoFilter',
+    component: () => import( /* webpackChunkName: "about" */ '../views/AgriDzoFilter')
+  },
+  {
+    path: '/handicraft-dzo-filter/:slug',
+    name: 'HandiDzoFilter',
+    component: () => import( /* webpackChunkName: "about" */ '../views/HandiDzoFilter')
+  },
+  {
     path: '/hotel/:id',
     name: 'SingleHotel',
     component: () => import( /* webpackChunkName: "about" */ '../views/SingleHotel')

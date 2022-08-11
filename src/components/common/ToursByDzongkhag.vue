@@ -65,7 +65,7 @@ export default {
 <style>
 .card-img-dzo {
   width: 100%;
-  height: 100px;
+  aspect-ratio: 16/10;
   object-fit: cover;
   border-radius: 5px;
 }
