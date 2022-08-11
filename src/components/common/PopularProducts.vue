@@ -2,24 +2,12 @@
   <div>
     <h4 class="text-center p-3 mt-5">Top Popular Products</h4>
     <div class="row flex-row flex-nowrap overflow-auto mb-5">
-      <div
-        class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 mt-3 mx-auto"
-        v-for="product in products"
-        :key="product.id"
-      >
+      <div class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 mt-3 mx-auto" v-for="product in products"
+        :key="product.id">
         <div class="card mt-3 mb-3">
           <div class="card-body">
-            <img
-              loading="lazy"
-              :src="ecomURL + 'public/' + product.file_name"
-              alt=""
-              class="card-img-blog"
-            />
-            <a
-              :href="ecomURL + 'product/' + product.slug"
-              class="category-details"
-              target="_blank"
-            >
+            <RouterLink :to="'/product/' + product.slug" class="category-details">
+            <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img-blog" />
               <div class="card-details">
                 <h6 class="card-title text-truncate">
                   {{ product.name }}
@@ -33,7 +21,7 @@
                   {{ product.cat_name }}
                 </p>
               </div>
-            </a>
+            </RouterLink>
           </div>
         </div>
       </div>

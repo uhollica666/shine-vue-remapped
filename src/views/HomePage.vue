@@ -1,10 +1,21 @@
 <template>
   <div>
-    <HomeCarousel :navigation="true" :pagination="true" :startAutoPlay="true" :timeOut="5000" class="carousel"
-      v-slot="{ currentSlide }">
+    <HomeCarousel
+      :navigation="true"
+      :pagination="true"
+      :startAutoPlay="true"
+      :timeOut="5000"
+      class="carousel"
+      v-slot="{ currentSlide }"
+    >
       <HomeCarouselSlide v-for="(slide, index) in CarouselSlides" :key="index">
         <div v-show="currentSlide === index + 1" class="slide-info">
-          <img loading="lazy" :src="`/assets/img/${slide}.jpg`" alt="" class="img-fluid" />
+          <img
+            loading="lazy"
+            :src="`/assets/img/${slide}.jpg`"
+            alt=""
+            class="img-fluid"
+          />
         </div>
       </HomeCarouselSlide>
       <div class="welcome-note text-center">
@@ -15,7 +26,7 @@
 
     <div class="container">
       <div class="row my-5">
-        <AdSlider/>
+        <NoticeSlider />
       </div>
     </div>
 
@@ -24,7 +35,7 @@
         <div class="col-md-3 col-xl-3 col-lg-3 col-xs-12 col-sm-12">
           <HomeSidebar />
         </div>
-        <div class="col-md-9 col-xl-9 col-lg-9 col-xs-12 col-sm-12" >
+        <div class="col-md-9 col-xl-9 col-lg-9 col-xs-12 col-sm-12">
           <Suspense>
             <template #default>
               <HomeContent />
@@ -45,12 +56,18 @@ import HomeCarousel from "@/components/HomeCarousel";
 import HomeSidebar from "@/components/HomeSideBar";
 import HomeContent from "@/components/HomeContent";
 import HomeLoader from "@/components/common/HomeLoader";
-import AdSlider from "@/components/AdSlider.vue";
+import NoticeSlider from "@/components/NoticeSlider.vue";
 export default {
   name: "HomePage",
 
   setup() {
-    const CarouselSlides = ["slider1", "slider2", "slider3", "slider4", "slider5"];
+    const CarouselSlides = [
+      "slider1",
+      "slider2",
+      "slider3",
+      "slider4",
+      "slider5",
+    ];
     return {
       CarouselSlides,
     };
@@ -61,8 +78,8 @@ export default {
     HomeSidebar,
     HomeContent,
     HomeLoader,
-    AdSlider
-},
+    NoticeSlider,
+  },
 };
 </script>
 

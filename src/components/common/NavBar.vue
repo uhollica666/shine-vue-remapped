@@ -2,7 +2,7 @@
   <div>
     <div class="header-top">
       <div class="container-fluid">
-        <div class="row clearfix">
+        <div class="row clearfix d-flex" style="max-height: 50px;">
           <div class="col-md-6 col-sm-6">
             <div class="contact contact_space">
               <ul class="top-bar top-bar-left">
@@ -57,7 +57,8 @@
                         </li>
                         <li class="px-1 mx-0 my-3">
                           <a :href="
-                            'https://shop.shinebhutan.com/users/login'" class="dropdown-item text-dark" target="_blank">
+                          'https://shop.shinebhutan.com/users/login'" class="dropdown-item text-dark"
+                            target="_blank">
                             <i class="bi bi-basket2"></i>Ecommerce Dashboard
                           </a>
                         </li>
@@ -241,14 +242,16 @@ nav a.router-link-exact-active {
 }
 
 .top-bar-left {
-  justify-content: flex-start;
-  height: 100%;
+  justify-content: left;
   align-items: center;
+  padding: auto 0;
+
 }
 
 .top-bar-right {
   justify-content: flex-end;
   align-items: center;
+  padding: auto 0;
 }
 
 .navbar-toggler {

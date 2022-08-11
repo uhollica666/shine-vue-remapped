@@ -5,7 +5,9 @@
       <div class="row text-md-left text-lg-left">
         <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-1 footer-left-div">
           <img loading="lazy" src="@/assets/img/logo.png" alt="" class="footer-img-logo img-fluid" />
-          <p><strong>Contact</strong>: +975 2
+          <p>Sustainable Hospitality Industry Inclusive of Native Entrepreneurs<br/><br/>
+          
+          <strong>Contact</strong>: +975 2
             338089<br /><strong>Email</strong>: info@shinebhutan.com<br /><strong>Located:</strong> Above Memorial
             Chorten<br />
             Chorten Lam, Thimphu 11001 Bhutan
@@ -57,6 +59,7 @@
           <h5 class="mb-4 footer-heading">Download our App</h5>
           <div class="row mb-3">
             <div class="col-md-9">
+              <p>For Android Users:</p>
               <a href="https://play.google.com" target="_blank">
                 <img src="@/assets/img/app_btn_google.png" alt="" class="store-btn">
               </a>
@@ -64,6 +67,7 @@
           </div>
           <div class="row mb-2">
             <div class="col-md-9">
+              <p>For iOS Users:</p>
               <a href="https://play.google.com" target="_blank">
                 <img src="@/assets/img/app_btn_apple.png" alt="" class="store-btn">
               </a>

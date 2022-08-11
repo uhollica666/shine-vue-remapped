@@ -1,24 +1,19 @@
 <template>
   <div>
     <div class="dzongkhag-accommodation mt-5">
-      <h4 class="text-capitalize">
+      <h5 class="text-capitalize">
         Explore accommodatons under
         {{ $route.params.location_id }} dzongkhag
-      </h4>
+      </h5>
       <div class="row">
         <template v-for="accommodation in accommodations">
           <div class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12 mt-3"
             v-if="accommodation.name === $route.params.location_id" :key="accommodation.id">
             <div class="card mt-3">
-              <RouterLink :to="
-                '/properties/' +
-                accommodation.id +
-                'where?name=' +
-                accommodation.slug
-              " class="accommodation-details">
+              <RouterLink :to="'/properties/' + accommodation.id + 'where?name=' + accommodation.slug"
+                class="accommodation-details">
                 <div class="card-body">
                   <img loading="lazy" :src="apiURL + accommodation.file_path" alt="" class="card-img img-fluid" />
-
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
                       {{ accommodation.title }}
@@ -50,10 +45,10 @@
     </div>
 
     <div class="dzongkhag-accommodation mt-5">
-      <h4 class="text-capitalize">
+      <h5 class="text-capitalize">
         Explore Hotels under
         {{ $route.params.location_id }} dzongkhag
-      </h4>
+      </h5>
       <div class="row">
         <template v-for="hotel in hotels">
           <div class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 mt-3" v-if="hotel.name === $route.params.location_id"
@@ -93,12 +88,12 @@
     </div>
 
     <div class="dzongkhag-accommodation mt-5">
-      <h4 class="text-capitalize">
+      <h5 class="text-capitalize">
         Explore Tours under {{ $route.params.location_id }} dzongkhag
-      </h4>
+      </h5>
       <div class="row">
         <template v-for="tour in tours">
-          <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3" :key="tour.id"
+          <div class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12 mt-3" :key="tour.id"
             v-if="tour.name === $route.params.location_id">
             <div class="card mt-2">
               <RouterLink :to="'/tour/' + tour.slug" class="accommodation-details">
@@ -145,26 +140,34 @@
     </div>
 
     <div class="dzongkhag-accommodation mt-5">
-      <h4 class="text-capitalize">
+      <h5 class="text-capitalize">
         top selling agri products from
         {{ $route.params.location_id }} dzongkhag
-      </h4>
+      </h5>
       <div class="row">
         <template v-for="product in agriProducts">
-          <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3" :key="product.id"
-            v-if="product.cat_name === 'Agri Products'">
+          <div class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12 mt-3" :key="product.id"
+            v-if="product.parent_name === 'Agri Products' && product.shop_address === $route.params.location_id">
             <div class="card mt-2">
               <RouterLink :to="'/product/' + product.slug" class="accommodation-details">
                 <div class="card-body">
                   <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt=""
                     class="card-img img-fluid" />
-                  <div class="card-details">
-                    <h6 class="card-title text-truncate">
+                  <div class="card-details py-3">
+                    <h5 class="card-title text-truncate">
                       {{ product.name }}
-                    </h6>
-                    <h6 class="card-text my-3">
-                      <i class="bi bi-cash-coin mr-1"></i> Nu.
-                      {{ product.unit_price }} / kg
+                    </h5>
+                    <div class="d-flex shop-detail">
+                        <h6 class="card-text my-3 me-4">
+                          <i class="bi bi-cash-coin mr-1"></i> Nu.
+                          {{ product.unit_price }} / kg
+                        </h6>
+                        <i class="bi bi-shop"></i>
+                        {{product.shop_name}}
+                    </div>
+                    <h6 class="text-gray">
+                      <i class="bi bi-geo"></i>
+                      {{ product.shop_address }}
                     </h6>
                   </div>
                 </div>
@@ -176,14 +179,14 @@
     </div>
 
     <div class="dzongkhag-accommodation mt-5">
-      <h4 class="text-capitalize">
+      <h5 class="text-capitalize">
         top selling handicraft products from
         {{ $route.params.location_id }} dzongkhag
-      </h4>
+      </h5>
       <div class="row">
         <template v-for="product in agriProducts">
           <div class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3" :key="product.id"
-            v-if="product.cat_name === 'Handicrafts'">
+            v-if="product.parent_name === 'Handicrafts' && product.shop_address === 'Zhemgang'">
             <div class="card mt-2">
               <RouterLink :to="'/product/' + product.slug" class="accommodation-details">
                 <div class="card-body">
@@ -259,6 +262,10 @@ export default {
 </script>
 
 <style scoped>
+.shop-detail{
+  display: flex;
+  align-items: center;
+}
 .quote-about {
   background-color: #ffffff;
   border-radius: 0.5rem;
@@ -312,7 +319,7 @@ button.limit {
 
 .card-img {
   width: 100%;
-  aspect-ratio: 16/10;
+  aspect-ratio: 16/10 !important;
   object-fit: cover;
 }
 

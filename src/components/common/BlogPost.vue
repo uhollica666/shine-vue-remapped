@@ -6,24 +6,13 @@
         <p class="text-center">Explore the stories and weekly blog updates</p>
       </div>
       <div class="row flex-row flex-nowrap overflow-auto mb-5">
-        <div
-          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 mt-3 mx-auto"
-          v-for="story in getBlogPost"
-          :key="story.id"
-        >
+        <div class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 mt-3 mx-auto" v-for="story in getBlogPost"
+          :key="story.id">
           <div class="card mt-3 mb-3">
             <div class="card-body">
-              <img
-                loading="lazy"
-                :src="apiURL + story.file_path"
-                alt=""
-                class="card-img-blog img-fluid"
-                :data-src="apiURL + story.file_path"
-              />
-              <RouterLink
-                :to="'/article/' + story.slug"
-                class="category-details"
-              >
+              <img loading="lazy" :src="apiURL + story.file_path" alt="" class="card-img-blog img-fluid"
+                :data-src="apiURL + story.file_path" />
+              <RouterLink :to="'/article/' + story.slug" class="category-details">
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ story.title }}
@@ -51,24 +40,13 @@
         <p class="text-center">Explore the stories and weekly blog updates</p>
       </div>
       <div class="row flex-row flex-nowrap overflow-auto mb-5">
-        <div
-          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 mt-3 mx-auto"
-          v-for="story in getDzongkhagBlogPost"
-          :key="story.id"
-        >
+        <div class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 mt-3 mx-auto" v-for="story in getDzongkhagBlogPost"
+          :key="story.id">
           <div class="card mt-3 mb-3">
             <div class="card-body">
-              <img
-                loading="lazy"
-                :src="apiURL + story.file_path"
-                alt=""
-                class="card-img-blog img-fluid"
-                :data-src="apiURL + story.file_path"
-              />
-              <RouterLink
-                :to="'/article/' + story.slug"
-                class="category-details"
-              >
+              <img loading="lazy" :src="apiURL + story.file_path" alt="" class="card-img-blog img-fluid"
+                :data-src="apiURL + story.file_path" />
+              <RouterLink :to="'/article/' + story.slug" class="category-details">
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ story.title }}

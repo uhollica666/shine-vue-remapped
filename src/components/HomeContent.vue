@@ -2,45 +2,55 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-6">
-        <h6 class="py-3 home-heading">Agri Products</h6>
-        <div class="container home-container">
+        <h5 class="py-3 home-heading">Agri Products</h5>
+        <div class="container my-card">
           <div class="product-images row">
             <template v-for="product in computedProducts">
               <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Agri Products'" :key="product.id">
-                <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
+                <RouterLink :to="'/product/' + product.slug">
+                  <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt=""
+                    class="card-img2 img-fluid" />
+                </RouterLink>
               </div>
             </template>
+            <div class="my-4">
+              <RouterLink to="/agriproducts" class="d-flex home-sec">
+              <button class="btn btn-home mb-3">
+                <i class="bi bi-eye"></i>View All Agri Products
+              </button>
+            </RouterLink>
+            </div>
           </div>
-          <RouterLink to="/agriproducts" class="d-flex home-sec">
-            <button class="btn btn-home mb-3">
-              <i class="bi bi-eye"></i>View All Agri Products
-            </button>
-          </RouterLink>
         </div>
       </div>
 
       <div class="col-md-6 mb-3">
-        <h6 class="py-3 home-heading">Handicraft Products</h6>
-        <div class="container home-container">
+        <h5 class="py-3 home-heading">Handicraft Products</h5>
+        <div class="container my-card">
           <div class="product-images row">
             <template v-for="product in computedHandicrafts">
               <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Handicrats'" :key="product.id">
-                <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
+                <RouterLink :to="'/product/' + product.slug">
+                  <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt=""
+                    class="card-img2 img-fluid" />
+                </RouterLink>
               </div>
             </template>
-          </div>
+            <div class="my-4">              
           <RouterLink to="/handicrafts" class="d-flex home-sec">
             <button class="btn btn-home mb-3">
               <i class="bi bi-eye"></i>View All Handicraft Products
             </button>
           </RouterLink>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="row mt-5">
       <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-xs-12">
-        <h6 class="p-3 home-linear-heading">Tour Packages</h6>
+        <h5 class="p-3 home-linear-heading">Tour Packages</h5>
         <div class="home-tour-group">
           <div class="row">
             <div class="col-md-2 col-sm-6 col-xs-6 home-objects" v-for="tour in computedTours" :key="tour.id">
@@ -69,7 +79,7 @@
 
     <div class="row mt-5">
       <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-xs-12">
-        <h6 class="p-3 home-linear-heading">Accommodations</h6>
+        <h5 class="home-linear-heading">Accommodations</h5>
         <div class="home-tour-group">
           <div class="row">
             <div class="col-md-2 home-objects" v-for="accommodation in computedAccommodation" :key="accommodation.id">
@@ -106,7 +116,7 @@
 
     <div class="row mt-5">
       <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-xs-12">
-        <h6 class="p-3 home-linear-heading">Hotels</h6>
+        <h5 class="p-3 home-linear-heading">Hotels</h5>
         <div class="home-tour-group">
           <div class="row">
             <div class="col-md-2 col-sm-6 col-xs-6 home-objects" v-for="hotel in computedHotels" :key="hotel.id">
@@ -137,12 +147,15 @@
 
     <div class="row my-5">
       <div class="col-md-6 mt-3">
-        <h6 class="py-3 home-heading">Popular Agri Products</h6>
-        <div class="container home-container">
+        <h5 class="py-3 home-heading">Popular Agri Products</h5>
+        <div class="container my-card ">
           <div class="product-images row">
             <template v-for="product in computedProducts">
               <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Agri Products'" :key="product.id">
-                <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
+                <RouterLink :to="'/product/' + product.slug">
+                  <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt=""
+                    class="card-img2 img-fluid" />
+                </RouterLink>
               </div>
             </template>
           </div>
@@ -155,14 +168,17 @@
       </div>
 
       <div class="col-md-6 mt-3">
-        <h6 class="py-3 home-heading">
+        <h5 class="py-3 home-heading">
           Popular Handicraft Products
-        </h6>
-        <div class="container home-container">
+        </h5>
+        <div class="container my-card ">
           <div class="product-images row">
             <template v-for="product in computedHandicrafts">
               <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Handicrats'" :key="product.id">
-                <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
+                <RouterLink :to="'/product/' + product.slug">
+                  <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt=""
+                    class="card-img2 img-fluid" />
+                </RouterLink>
               </div>
             </template>
           </div>
@@ -309,54 +325,54 @@ export default {
 
 .home-linear-heading {
   max-width: 50%;
-  color: #fff;
-  background: #f7941e;
+  color: #333369;
+  background: none;
   margin: 0;
   border-radius: 5px 5px 0 0;
-  padding: 0.6rem 1rem !important;
+  padding: 0.5rem !important;
 }
 
-/* .home-linear-heading::after{
-  content: '🔄️';
-  margin-left: 2rem;
-} */
-
 .home-heading {
-  color: #fff;
-  background: #f7941e;
+  color: #333369;
+  background: none;
   margin: 0;
   border-radius: 5px 5px 0 0;
-  padding: 0.6rem 1rem !important;
+  padding: 0.5rem !important;
 }
 
 .home-tour-group {
   border-radius: 5px;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
 }
 
-.home-container {
+.my-card {
   border-radius: 5px;
-  height: 25rem;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
 }
-
-/* .product-images {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 1rem;
-} */
 
 .cardo {
-  aspect-ratio: 16/9;
+  aspect-ratio: 16/12;
   object-fit: cover;
   border-radius: 5px;
 }
 
 .card-img {
-  aspect-ratio: 16/10;
+  aspect-ratio: 16/12;
   border-radius: 5px;
   margin: 0;
+}
+
+.card-img2 {
+  aspect-ratio: 16/12;
+  border-radius: 5px;
+  margin: 0;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.card-img2:hover {
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
 }
 
 .btn-home {

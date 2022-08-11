@@ -14,10 +14,10 @@
             <RouterLink :to="'/product/' + product.slug">
               <div class="card-body">
                 <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
-                <div class="card-details">
-                  <h6 class="card-title text-truncate">
+                <div class="card-details py-4">
+                  <h5 class="card-title text-truncate">
                     {{ product.name }}
-                  </h6>
+                  </h5>
                   <p class="text-small text-grey text-truncate my-2">
                     {{ product.meta_description }}
                   </p>
@@ -29,6 +29,24 @@
                     <div class="duration-tours text-truncate">
                       <i class="bi bi-bookmark-star"></i>
                       {{ product.cat_name }}
+                    </div>
+                  </div>
+                  <div class="my-3 d-flex">
+                    <div class="duration-tours text-truncate me-3" v-if="!product.shop_address">
+                      <i class="bi bi-geo"></i>
+                      (Thimphu)
+                    </div>
+                    <div class="duration-tours text-truncate  me-3" v-else>
+                      <i class="bi bi-geo"></i>
+                      {{ product.shop_address }}
+                    </div>
+                    <div class="duration-tours text-truncate" v-if="!product.shop_name">
+                      <i class="bi bi-shop"></i>
+                      Shine
+                    </div>
+                    <div class="duration-tours text-truncate" v-else>
+                      <i class="bi bi-shop"></i>
+                      {{ product.shop_name }}
                     </div>
                   </div>
                   <div class="preview-buttons d-flex item-center">

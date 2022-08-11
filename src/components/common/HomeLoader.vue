@@ -80,7 +80,7 @@
             </div>
         </div>
         <div class="row mb-5">
-            <h4 class="my-5 mx-auto text-center">🔄️ Fetching Contents...</h4>
+            <h4 class="my-5 mx-auto text-center">🔄️ Fetching Contents... Please Wait</h4>
             <div class="col-md-3 col-lg-3 col-sm-4 col-xs-6">
                 <div class="card">
                     <div class="card-img"></div>
@@ -165,7 +165,7 @@ export default {
 
 .card-img {
     width: 90%;
-    aspect-ratio: 16/9;
+    aspect-ratio: 16/10;
     background-color: #d0d0d0;
     margin: 1rem auto;
     animation: flicker 1.2s infinite;

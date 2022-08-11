@@ -9,8 +9,7 @@
         />
       </div>
       <div
-        class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-xs-12 infinite-scroll"
-      >
+        class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-xs-12 infinite-scroll">
         <PageBanner />
 
         <Suspense>

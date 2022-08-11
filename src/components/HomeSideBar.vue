@@ -13,16 +13,6 @@
           <div class="accordion-body">
             <div class="c">
               <div class="sidebar-filters">
-                <div class="block-1 mb-3">
-                  <h6>Handicraft Products</h6>
-                  <ul class="home-block handicraft-block">
-                    <li v-for="handicraft in homeHandicrafts" :key="handicraft">
-                      <RouterLink :to="'/category-handicrafts/' + handicraft.name">{{
-                          handicraft.name
-                      }}</RouterLink>
-                    </li>
-                  </ul>
-                </div>
 
                 <div class="block-2 my-3">
                   <h6>Agri Products</h6>
@@ -30,6 +20,17 @@
                     <li v-for="product in homeAgriproducts" :key="product">
                       <RouterLink :to="'/category-agriproducts/' + product.name">{{
                           product.name
+                      }}</RouterLink>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="block-1 mb-3">
+                  <h6>Handicraft Products</h6>
+                  <ul class="home-block handicraft-block">
+                    <li v-for="handicraft in homeHandicrafts" :key="handicraft">
+                      <RouterLink :to="'/category-handicrafts/' + handicraft.name">{{
+                          handicraft.name
                       }}</RouterLink>
                     </li>
                   </ul>
