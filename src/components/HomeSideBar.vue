@@ -78,6 +78,7 @@
 </template>
 
 <script>
+
 const homeHandicrafts = [
   { name: "Textile", link: "Textile-XDPg6" },
   { name: "Cane & Bamboo", link: "Cane--Bamboo-sGe1X" },
@@ -114,6 +115,8 @@ const popAttractions = [
   { name: "Royal Manas National Park", slug: "royal-manas-national-park" },
   { name: "Lhamoizingkha Excursion", slug: "lhamoizingkha-excursion" },
 ];
+
+
 export default {
   name: "HomeSideBar",
   data() {

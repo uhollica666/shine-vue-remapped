@@ -1,8 +1,12 @@
 <template>
     <div class="row">
         <div class="accommodation-element mt-5">
-            <h4 class="text-capitalize">handicraft products from {{ $route.params.slug }}</h4>
-            <p class="mt-3">Discover the Freshness of Bhutan</p>
+            <h4 class="text-capitalize" v-if="$route.params.slug === 'All'">All handicraft Products</h4>
+            <h4 class="text-capitalize" v-else>handicraft products from {{ $route.params.slug }}</h4>
+            <div class="d-flex pd-cnt ">
+                <p class="mt-3">Discover the Freshness of Bhutan</p>
+                <p class="mt-3" >Overall Products: ({{handiProductCount()}})</p>
+            </div>
         </div>
         <div class="row mb-3">
             <template v-for="product in filteredHandiProds()">
@@ -140,11 +144,19 @@ export default {
                 return product.parent_name === "Handicrats";
             });
         },
+        handiProductCount() {
+            return this.filteredHandiProds().length;
+        },
     },
 };
 </script>
 
 <style scoped>
+.pd-cnt{
+    display: flex;
+    justify-content: space-between;
+}
+
 img {
     width: 100%;
     aspect-ratio: 16/12 !important;

@@ -6,7 +6,7 @@
         <div class="container my-card">
           <div class="product-images row">
             <template v-for="product in computedProducts">
-              <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Agri Products'" :key="product.id">
+              <div class="cardo col-md-6 col-sm-5 col-xs-5 mt-2" v-if="product.parent_name === 'Agri Products'" :key="product.id">
                 <a :href="ecomURL + 'product/' + product.slug">
                   <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt=""
                     class="card-img2 img-fluid" />
@@ -119,7 +119,7 @@
           </div>
         </div>
       </div>
-      <RouterLink to="/accommodation#spaces">
+      <RouterLink to="/accommodation">
         <button class="btn btn-preview mx-auto my-2">
           <i class="bi bi-eye mr-1"></i>
           View All Accommodations
@@ -133,7 +133,7 @@
         <h5 class="py-3 home-heading">Popular Agri Products</h5>
         <div class="container my-card ">
           <div class="product-images row">
-            <template v-for="product in computedProducts">
+            <template v-for="product in computedProductsTwo">
               <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Agri Products'" :key="product.id">
                 <a :href="ecomURL + 'product/' + product.slug">
                   <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt=""
@@ -156,7 +156,7 @@
         </h5>
         <div class="container my-card ">
           <div class="product-images row">
-            <template v-for="product in computedHandicrafts">
+            <template v-for="product in computedHandicraftsTwo">
               <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Handicrats'" :key="product.id">
                 <a :href="ecomURL + 'product/' + product.slug">
                   <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt=""
@@ -242,6 +242,12 @@ export default {
     sortLatestProducts() {
       return this.filteredProducts().sort((a, b) => (a.id < b.id ? 1 : -1));
     },
+    sortAgriProducts() {
+      return this.filteredAgriProds().sort((a, b) => (a.id < b.id ? 1 : -1));
+    },
+    sortHandicrafts() {
+      return this.filteredProducts().sort((a, b) => (a.id < b.id ? 1 : -1));
+    }
   },
   data() {
     return {
@@ -254,10 +260,20 @@ export default {
   computed: {
     computedProducts() {
       return this.limit
+        ? this.sortAgriProducts().slice(0, this.limit)
+        : this.sortAgriProducts();
+    },
+    computedProductsTwo() {
+      return this.limit
         ? this.filteredAgriProds().slice(0, this.limit)
         : this.filteredAgriProds();
     },
     computedHandicrafts() {
+      return this.limit
+        ? this.sortHandicrafts().slice(0, this.limit)
+        : this.sortHandicrafts();
+    },
+    computedHandicraftsTwo() {
       return this.limit
         ? this.filteredProducts().slice(0, this.limit)
         : this.filteredProducts();

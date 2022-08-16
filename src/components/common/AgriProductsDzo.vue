@@ -1,8 +1,12 @@
 <template>
     <div class="row">
         <div class="accommodation-element mt-5">
-            <h4 class="text-capitalize">agri products from {{ $route.params.slug }}</h4>
-            <p class="mt-3">Discover the Freshness of Bhutan</p>
+            <h4 class="text-capitalize" v-if="$route.params.slug === 'All'">All Agri Products</h4>
+            <h4 class="text-capitalize" v-else>agri products from {{ $route.params.slug }}</h4>
+            <div class="d-flex pd-cnt ">
+                <p class="mt-3">Discover the Freshness of Bhutan</p>
+                <p class="mt-3" >Overall Products: ({{agriProductCount()}})</p>
+            </div>
         </div>
         <div class="row mb-3">
             <template v-for="product in filteredAgriProds()">
@@ -62,7 +66,7 @@
                 <div v-if="product.shop_address === $route.params.slug" :key="product.id"
                     class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 my-3">
                     <div class="card mt-2">
-                        <RouterLink :to="'/product/' + product.slug">
+                        <a :href="siteURL + 'product/' + product.slug">
                             <div class="card-body">
                                 <img loading="lazy" :src="siteURL + 'public/' + product.file_name" alt=""
                                     class="card-img img-fluid" />
@@ -76,7 +80,7 @@
                                     <div class="product-row my-2">
                                         <h6 class="card-text text-truncate">
                                             <i class="bi bi-cash-coin mr-1"></i> Nu.
-                                            {{ product.unit_price }} per Unit
+                                            {{ product.unit_price }} / PC
                                         </h6>
                                         <div class="duration-tours text-truncate">
                                             <i class="bi bi-tag"></i>
@@ -109,7 +113,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </RouterLink>
+                        </a>
                     </div>
                 </div>
             </template>
@@ -140,11 +144,18 @@ export default {
                 return product.parent_name === "Agri Products";
             });
         },
+        agriProductCount() {
+            return this.filteredAgriProds().length;
+        },
     },
 };
 </script>
 
 <style scoped>
+.pd-cnt{
+    display: flex;
+    justify-content: space-between;
+}
 
 img {
     width: 100%;
