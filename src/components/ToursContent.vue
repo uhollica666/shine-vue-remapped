@@ -5,16 +5,16 @@
       <p class="mt-3">Discover the Eastern Bhutan</p>
     </div>
     <div class="row mb-3">
-      <div v-for="tour in tours" :key="tour.id" class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-2">
+      <div v-for="tour in latestTours()" :key="tour.id" class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12 mt-2">
         <div class="card mt-2">
-          <RouterLink :to="'/tour/' + tour.id + 'where?name=' + tour.slug" class="accommodation-details">
+          <a :href="siteURL + 'tour/' + tour.slug" class="accommodation-details">
             <div class="card-body">
               <img loading="lazy" :src="apiURL + tour.file_path" alt="" class="card-img img-fluid" />
 
-              <div class="card-details">
-                <h6 class="card-title text-truncate">
+              <div class="card-details py-3">
+                <h5 class="card-title text-truncate text-capitalize">
                   {{ tour.title }}
-                </h6>
+                </h5>
                 <h6 class="card-text my-3" v-if="!tour.price">
                   <i class="bi bi-cash-coin mr-1"></i> Rate Not Available
                 </h6>
@@ -35,7 +35,7 @@
                 </div>
               </div>
             </div>
-          </RouterLink>
+          </a>
         </div>
       </div>
     </div>
@@ -46,18 +46,18 @@
 import { ref } from "vue";
 export default {
   name: "ToursContent",
-  props: ["tours"],
+  // props: ["tours"],
 
   data() {
     return {
       limit: 8,
     };
   },
-  computed: {
-    computedObject() {
-      return this.limit ? this.tours.slice(0, this.limit) : this.tours;
-    },
-  },
+  // computed: {
+  //   computedObject() {
+  //     return this.limit ? this.tours.slice(0, this.limit) : this.tours;
+  //   },
+  // },
   async setup() {
     const tours = ref(null);
     const catSubtitle = "Eastern Bhutan Destinations Now Open";
@@ -76,6 +76,13 @@ export default {
       siteURL,
     };
   },
+  methods: {
+    latestTours() {
+      return this.tours.sort((a, b) => {
+        return b.id - a.id;
+      });
+    }
+  }
 };
 </script>
 
@@ -110,7 +117,7 @@ button.limit {
 }
 
 .card:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.26);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .card-body {

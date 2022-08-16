@@ -2,7 +2,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12 col-xs-12">
-                <SidebarFilter :filterItems="filterItems" :searchFilter="searchFilter" :starFilter="starFilter" />
+                <Suspense>
+                    <SidebarFilter :filterItems="filterItems" :searchFilter="searchFilter" :starFilter="starFilter" />
+                </Suspense>
             </div>
             <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-xs-12 infinite-scroll">
                 <PageBanner />

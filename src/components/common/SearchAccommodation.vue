@@ -9,35 +9,16 @@
     <div class="row mb-3">
       <h5 class="my-3">Accommodations</h5>
       <template v-for="accommodation in filterProducts1">
-        <div
-          v-if="$route.params.category === '1 - 5,000'"
-          :key="accommodation.name"
-          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3"
-        >
+        <div v-if="$route.params.category === '1 - 5,000'" :key="accommodation.name"
+          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3">
           <div class="card mt-2">
             <div class="card mt-3">
-              <RouterLink
-                :to="
-                  '/properties/' +
-                  accommodation.id +
-                  'where?name=' +
-                  accommodation.slug
-                "
-                class="accommodation-details"
-              >
+              <a :href=" siteURL + 'space/' + accommodation.slug" class="accommodation-details">
                 <div class="card-body">
-                  <img
-                    loading="lazy"
-                    :src="ecomURL + accommodation.file_path"
-                    alt=""
-                    class="card-img img-fluid"
-                  />
+                  <img loading="lazy" :src="ecomURL + accommodation.file_path" alt="" class="card-img img-fluid" />
 
                   <div class="card-details">
-                    <h6
-                      class="card-title text-truncate"
-                      v-if="!accommodation.title"
-                    >
+                    <h6 class="card-title text-truncate" v-if="!accommodation.title">
                       -Name Not Available-
                     </h6>
                     <h6 class="card-title text-truncate" v-else>
@@ -62,7 +43,7 @@
                     </div>
                   </div>
                 </div>
-              </RouterLink>
+              </a>
             </div>
           </div>
         </div>
@@ -71,35 +52,16 @@
         </div>
       </template>
       <template v-for="accommodation in filterProducts2">
-        <div
-          v-if="$route.params.category === '5,001 - 10,000'"
-          :key="accommodation.name"
-          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3"
-        >
+        <div v-if="$route.params.category === '5,001 - 10,000'" :key="accommodation.name"
+          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3">
           <div class="card mt-2">
             <div class="card mt-3">
-              <RouterLink
-                :to="
-                  '/properties/' +
-                  accommodation.id +
-                  'where?name=' +
-                  accommodation.slug
-                "
-                class="accommodation-details"
-              >
+              <a :href=" siteURL + 'space/' + accommodation.slug" class="accommodation-details">
                 <div class="card-body">
-                  <img
-                    loading="lazy"
-                    :src="ecomURL + accommodation.file_path"
-                    alt=""
-                    class="card-img img-fluid"
-                  />
+                  <img loading="lazy" :src="ecomURL + accommodation.file_path" alt="" class="card-img img-fluid" />
 
                   <div class="card-details">
-                    <h6
-                      class="card-title text-truncate"
-                      v-if="!accommodation.title"
-                    >
+                    <h6 class="card-title text-truncate" v-if="!accommodation.title">
                       -Name Not Available-
                     </h6>
                     <h6 class="card-title text-truncate" v-else>
@@ -124,7 +86,7 @@
                     </div>
                   </div>
                 </div>
-              </RouterLink>
+              </a>
             </div>
           </div>
         </div>
@@ -133,35 +95,16 @@
         </div>
       </template>
       <template v-for="accommodation in filterProducts3">
-        <div
-          v-if="$route.params.category === '10,001 - 15,000'"
-          :key="accommodation.name"
-          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3"
-        >
+        <div v-if="$route.params.category === '10,001 - 15,000'" :key="accommodation.name"
+          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3">
           <div class="card mt-2">
             <div class="card mt-3">
-              <RouterLink
-                :to="
-                  '/properties/' +
-                  accommodation.id +
-                  'where?name=' +
-                  accommodation.slug
-                "
-                class="accommodation-details"
-              >
+              <a :href=" siteURL + 'space/' + accommodation.slug" class="accommodation-details">
                 <div class="card-body">
-                  <img
-                    loading="lazy"
-                    :src="ecomURL + accommodation.file_path"
-                    alt=""
-                    class="card-img img-fluid"
-                  />
+                  <img loading="lazy" :src="ecomURL + accommodation.file_path" alt="" class="card-img img-fluid" />
 
                   <div class="card-details">
-                    <h6
-                      class="card-title text-truncate"
-                      v-if="!accommodation.title"
-                    >
+                    <h6 class="card-title text-truncate" v-if="!accommodation.title">
                       -Name Not Available-
                     </h6>
                     <h6 class="card-title text-truncate" v-else>
@@ -186,7 +129,7 @@
                     </div>
                   </div>
                 </div>
-              </RouterLink>
+              </a>
             </div>
           </div>
         </div>
@@ -195,35 +138,16 @@
         </div>
       </template>
       <template v-for="accommodation in filterProducts4">
-        <div
-          v-if="$route.params.category === '15,000 and over'"
-          :key="accommodation.name"
-          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3"
-        >
+        <div v-if="$route.params.category === '15,000 and over'" :key="accommodation.name"
+          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3">
           <div class="card mt-2">
             <div class="card mt-3">
-              <RouterLink
-                :to="
-                  '/properties/' +
-                  accommodation.id +
-                  'where?name=' +
-                  accommodation.slug
-                "
-                class="accommodation-details"
-              >
+              <a :href=" siteURL + 'space/' + accommodation.slug" class="accommodation-details">
                 <div class="card-body">
-                  <img
-                    loading="lazy"
-                    :src="ecomURL + accommodation.file_path"
-                    alt=""
-                    class="card-img img-fluid"
-                  />
+                  <img loading="lazy" :src="ecomURL + accommodation.file_path" alt="" class="card-img img-fluid" />
 
                   <div class="card-details">
-                    <h6
-                      class="card-title text-truncate"
-                      v-if="!accommodation.title"
-                    >
+                    <h6 class="card-title text-truncate" v-if="!accommodation.title">
                       -Name Not Available-
                     </h6>
                     <h6 class="card-title text-truncate" v-else>
@@ -248,7 +172,7 @@
                     </div>
                   </div>
                 </div>
-              </RouterLink>
+              </a>
             </div>
           </div>
         </div>
@@ -257,34 +181,15 @@
         </div>
       </template>
       <template v-for="accommodation in filterProducts">
-        <div
-          v-if="$route.params.category === 'All'"
-          :key="accommodation.id"
-          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3"
-        >
+        <div v-if="$route.params.category === 'All'" :key="accommodation.id"
+          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3">
           <div class="card mt-3">
-            <RouterLink
-              :to="
-                '/properties/' +
-                accommodation.id +
-                'where?name=' +
-                accommodation.slug
-              "
-              class="accommodation-details"
-            >
+            <a :href=" siteURL + 'space/' + accommodation.slug" class="accommodation-details">
               <div class="card-body">
-                <img
-                  loading="lazy"
-                  :src="ecomURL + accommodation.file_path"
-                  alt=""
-                  class="card-img img-fluid"
-                />
+                <img loading="lazy" :src="ecomURL + accommodation.file_path" alt="" class="card-img img-fluid" />
 
                 <div class="card-details">
-                  <h6
-                    class="card-title text-truncate"
-                    v-if="!accommodation.title"
-                  >
+                  <h6 class="card-title text-truncate" v-if="!accommodation.title">
                     -Name Not Available-
                   </h6>
                   <h6 class="card-title text-truncate" v-else>
@@ -309,41 +214,22 @@
                   </div>
                 </div>
               </div>
-            </RouterLink>
+            </a>
           </div>
         </div>
       </template>
       <h5 class="my-3">Hotels</h5>
       <template v-for="accommodation in filterProductsA">
-        <div
-          v-if="$route.params.category === 'All'"
-          :key="accommodation.name"
-          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3"
-        >
+        <div v-if="$route.params.category === 'All'" :key="accommodation.name"
+          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3">
           <div class="card mt-2">
             <div class="card mt-3">
-              <RouterLink
-                :to="
-                  '/hotel/' +
-                  accommodation.id +
-                  'where?name=' +
-                  accommodation.slug
-                "
-                class="accommodation-details"
-              >
+              <a :href="siteURL + 'hotel/' + accommodation.slug" class="accommodation-details">
                 <div class="card-body">
-                  <img
-                    loading="lazy"
-                    :src="ecomURL + accommodation.file_path"
-                    alt=""
-                    class="card-img img-fluid"
-                  />
+                  <img loading="lazy" :src="ecomURL + accommodation.file_path" alt="" class="card-img img-fluid" />
 
                   <div class="card-details">
-                    <h6
-                      class="card-title text-truncate"
-                      v-if="!accommodation.title"
-                    >
+                    <h6 class="card-title text-truncate" v-if="!accommodation.title">
                       -Name Not Available-
                     </h6>
                     <h6 class="card-title text-truncate" v-else>
@@ -368,7 +254,7 @@
                     </div>
                   </div>
                 </div>
-              </RouterLink>
+              </a>
             </div>
           </div>
         </div>
@@ -377,35 +263,16 @@
         </div>
       </template>
       <template v-for="accommodation in filterProductsB">
-        <div
-          v-if="$route.params.category === '1 - 5,000'"
-          :key="accommodation.name"
-          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3"
-        >
+        <div v-if="$route.params.category === '1 - 5,000'" :key="accommodation.name"
+          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3">
           <div class="card mt-2">
             <div class="card mt-3">
-              <RouterLink
-                :to="
-                  '/hotel/' +
-                  accommodation.id +
-                  'where?name=' +
-                  accommodation.slug
-                "
-                class="accommodation-details"
-              >
+              <a :href="siteURL + 'hotel/' + accommodation.slug" class="accommodation-details">
                 <div class="card-body">
-                  <img
-                    loading="lazy"
-                    :src="ecomURL + accommodation.file_path"
-                    alt=""
-                    class="card-img img-fluid"
-                  />
+                  <img loading="lazy" :src="ecomURL + accommodation.file_path" alt="" class="card-img img-fluid" />
 
                   <div class="card-details">
-                    <h6
-                      class="card-title text-truncate"
-                      v-if="!accommodation.title"
-                    >
+                    <h6 class="card-title text-truncate" v-if="!accommodation.title">
                       -Name Not Available-
                     </h6>
                     <h6 class="card-title text-truncate" v-else>
@@ -430,7 +297,7 @@
                     </div>
                   </div>
                 </div>
-              </RouterLink>
+              </a>
             </div>
           </div>
         </div>
@@ -439,35 +306,16 @@
         </div>
       </template>
       <template v-for="accommodation in filterProductsC">
-        <div
-          v-if="$route.params.category === '5,001 - 10,000'"
-          :key="accommodation.name"
-          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3"
-        >
+        <div v-if="$route.params.category === '5,001 - 10,000'" :key="accommodation.name"
+          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3">
           <div class="card mt-2">
             <div class="card mt-3">
-              <RouterLink
-                :to="
-                  '/hotel/' +
-                  accommodation.id +
-                  'where?name=' +
-                  accommodation.slug
-                "
-                class="accommodation-details"
-              >
+              <a :href="siteURL + 'hotel/' + accommodation.slug" class="accommodation-details">
                 <div class="card-body">
-                  <img
-                    loading="lazy"
-                    :src="ecomURL + accommodation.file_path"
-                    alt=""
-                    class="card-img img-fluid"
-                  />
+                  <img loading="lazy" :src="ecomURL + accommodation.file_path" alt="" class="card-img img-fluid" />
 
                   <div class="card-details">
-                    <h6
-                      class="card-title text-truncate"
-                      v-if="!accommodation.title"
-                    >
+                    <h6 class="card-title text-truncate" v-if="!accommodation.title">
                       -Name Not Available-
                     </h6>
                     <h6 class="card-title text-truncate" v-else>
@@ -492,7 +340,7 @@
                     </div>
                   </div>
                 </div>
-              </RouterLink>
+              </a>
             </div>
           </div>
         </div>
@@ -501,35 +349,16 @@
         </div>
       </template>
       <template v-for="accommodation in filterProductsD">
-        <div
-          v-if="$route.params.category === '10,001 - 15,000'"
-          :key="accommodation.name"
-          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3"
-        >
+        <div v-if="$route.params.category === '10,001 - 15,000'" :key="accommodation.name"
+          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3">
           <div class="card mt-2">
             <div class="card mt-3">
-              <RouterLink
-                :to="
-                  '/hotel/' +
-                  accommodation.id +
-                  'where?name=' +
-                  accommodation.slug
-                "
-                class="accommodation-details"
-              >
+              <a :href="siteURL + 'hotel/' + accommodation.slug" class="accommodation-details">
                 <div class="card-body">
-                  <img
-                    loading="lazy"
-                    :src="ecomURL + accommodation.file_path"
-                    alt=""
-                    class="card-img img-fluid"
-                  />
+                  <img loading="lazy" :src="ecomURL + accommodation.file_path" alt="" class="card-img img-fluid" />
 
                   <div class="card-details">
-                    <h6
-                      class="card-title text-truncate"
-                      v-if="!accommodation.title"
-                    >
+                    <h6 class="card-title text-truncate" v-if="!accommodation.title">
                       -Name Not Available-
                     </h6>
                     <h6 class="card-title text-truncate" v-else>
@@ -554,7 +383,7 @@
                     </div>
                   </div>
                 </div>
-              </RouterLink>
+              </a>
             </div>
           </div>
         </div>
@@ -563,35 +392,16 @@
         </div>
       </template>
       <template v-for="accommodation in filterProductsD">
-        <div
-          v-if="$route.params.category === '15,000 and over'"
-          :key="accommodation.name"
-          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3"
-        >
+        <div v-if="$route.params.category === '15,000 and over'" :key="accommodation.name"
+          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3">
           <div class="card mt-2">
             <div class="card mt-3">
-              <RouterLink
-                :to="
-                  '/hotel/' +
-                  accommodation.id +
-                  'where?name=' +
-                  accommodation.slug
-                "
-                class="accommodation-details"
-              >
+              <a :href="siteURL + 'hotel/' + accommodation.slug" class="accommodation-details">
                 <div class="card-body">
-                  <img
-                    loading="lazy"
-                    :src="ecomURL + accommodation.file_path"
-                    alt=""
-                    class="card-img img-fluid"
-                  />
+                  <img loading="lazy" :src="ecomURL + accommodation.file_path" alt="" class="card-img img-fluid" />
 
                   <div class="card-details">
-                    <h6
-                      class="card-title text-truncate"
-                      v-if="!accommodation.title"
-                    >
+                    <h6 class="card-title text-truncate" v-if="!accommodation.title">
                       -Name Not Available-
                     </h6>
                     <h6 class="card-title text-truncate" v-else>
@@ -616,7 +426,7 @@
                     </div>
                   </div>
                 </div>
-              </RouterLink>
+              </a>
             </div>
           </div>
           <div v-if="!accommodation" :key="accommodation.price">
@@ -636,6 +446,7 @@ export default {
     const Accommodations = ref(null);
     const Hotels = ref(null);
     const ecomURL = "https://booking.shinebhutan.com/uploads/";
+    const siteURL = "https://booking.shinebhutan.com/";
     const ecom_products = await fetch(
       "https://booking.shinebhutan.com/api/bc_spaces"
     );
@@ -649,6 +460,7 @@ export default {
       Accommodations,
       Hotels,
       ecomURL,
+      siteURL,
     };
   },
   methods: {
@@ -745,7 +557,7 @@ export default {
 
 .btn-preview:hover {
   background: #f9741e;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .btn-container {

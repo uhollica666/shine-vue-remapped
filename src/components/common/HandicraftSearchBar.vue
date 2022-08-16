@@ -16,11 +16,19 @@
                             <div class="heading">
                                 <h6 class="mb-3">Explore All Agri Products</h6>
                             </div>
-                            <div class="dzo-list" v-for="category in categories" :key="category">
-                                <RouterLink :to="{ name: 'SearchHandicraftPage', params: { category: category } }"
+                            <div class="dzo-list">
+                                <RouterLink :to="{ name: 'SearchHandicraftPage', params: { category: 'All' } }"
                                     :class="{ active: isActive }">
                                     <ul class="lists-dzo">
-                                        <li>{{ category }}</li>
+                                        <li>All</li>
+                                    </ul>
+                                </RouterLink>
+                            </div>
+                            <div class="dzo-list" v-for="category in latestCategory()" :key="category.id">
+                                <RouterLink :to="{ name: 'SearchHandicraftPage', params: { category: category.name } }"
+                                    :class="{ active: isActive }">
+                                    <ul class="lists-dzo">
+                                        <li>{{ category.name }}</li>
                                     </ul>
                                 </RouterLink>
                             </div>
@@ -38,21 +46,22 @@
 </template>
 
 <script>
-const categories = [
-    "All",
-    "Textile",
-    "Cane & Bamboo",
-    "Painting",
-    "Wood Crafts",
-    "Metal Crafts",
-    "General Souvenir",
-];
+import { ref } from "vue";
 export default {
     name: "HandicraftSearchBar",
-    data() {
+    async setup() {
+        const categories = ref(null);
+        const fetchCategory = await fetch('https://shop.shinebhutan.com/api/v1/get_frontend_categories?id=5');
+        categories.value = await fetchCategory.json();
         return {
             categories,
-
+        }
+    },
+    methods: {
+        latestCategory() {
+            return this.categories.sort((a, b) => {
+                return b.id - a.id;
+            });
         }
     }
 

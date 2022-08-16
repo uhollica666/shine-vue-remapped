@@ -2,15 +2,19 @@
   <div>
     <div class="header-top">
       <div class="container-fluid">
-        <div class="row clearfix d-flex" style="max-height: 50px;">
+        <div class="row clearfix d-flex" style="max-height: 50px">
           <div class="col-md-6 col-sm-6">
             <div class="contact contact_space">
               <ul class="top-bar top-bar-left">
                 <li>
-                  <a href="mailto:info@shinebhutan.com"><i class="bi bi-send-check"></i>info@shinebhutan.com</a>
+                  <a href="mailto:info@shinebhutan.com"
+                    ><i class="bi bi-send-check"></i>info@shinebhutan.com</a
+                  >
                 </li>
                 <li>
-                  <a href="callto:+975 2 338089"><i class="bi bi-phone"></i>+975-2-338089</a>
+                  <a href="callto:+975 2 338089"
+                    ><i class="bi bi-phone"></i>+975-2-338089</a
+                  >
                 </li>
               </ul>
             </div>
@@ -20,21 +24,34 @@
               <ul class="top-bar top-bar-right">
                 <li>
                   <div class="dropdown logged-user-menu mr-5 my-0">
-                    <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton"
-                      data-bs-toggle="dropdown" aria-expanded="false">
+                    <button
+                      class="btn dropdown-toggle text-white"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
                       <i class="bi bi-person-bounding-box"></i> Register
                     </button>
-                    <ul class="dropdown-menu px-0 mx-0" aria-labelledby="dropdownMenuButton">
+                    <ul
+                      class="dropdown-menu px-0 mx-0"
+                      aria-labelledby="dropdownMenuButton"
+                    >
                       <li class="px-1 mx-0 my-3">
-                        <a :href="'https://booking.shinebhutan.com/register'" class="dropdown-item text-dark"
-                          target="_blank">
+                        <a
+                          :href="'https://booking.shinebhutan.com/register'"
+                          class="dropdown-item text-dark"
+                        >
                           <i class="bi bi-speedometer2"></i>As Tour Operator
                         </a>
                       </li>
                       <li class="px-1 mx-0 my-3">
-                        <a :href="
-                          'https://shop.shinebhutan.com/' + 'shops/create'
-                        " class="dropdown-item text-dark" target="_blank">
+                        <a
+                          :href="
+                            'https://shop.shinebhutan.com/' + 'shops/create'
+                          "
+                          class="dropdown-item text-dark"
+                        >
                           <i class="bi bi-basket2"></i>As Ecommerce Vendor
                         </a>
                       </li>
@@ -44,21 +61,32 @@
                 <div class="d-flex mx-3">
                   <li>
                     <div class="dropdown logged-user-menu mr-5 my-0">
-                      <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton"
-                        data-bs-toggle="dropdown" aria-expanded="false">
+                      <button
+                        class="btn dropdown-toggle text-white"
+                        type="button"
+                        id="dropdownMenuButton"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
                         <i class="bi bi-lock"></i> Login
                       </button>
-                      <ul class="dropdown-menu px-0 mx-0" aria-labelledby="dropdownMenuButton">
+                      <ul
+                        class="dropdown-menu px-0 mx-0"
+                        aria-labelledby="dropdownMenuButton"
+                      >
                         <li class="px-1 mx-0 my-3">
-                          <a :href="'https://booking.shinebhutan.com/login'" class="dropdown-item text-dark"
-                            target="_blank">
+                          <a
+                            :href="'https://booking.shinebhutan.com/login'"
+                            class="dropdown-item text-dark"
+                          >
                             <i class="bi bi-speedometer2"></i>Tourism Dashboard
                           </a>
                         </li>
                         <li class="px-1 mx-0 my-3">
-                          <a :href="
-                          'https://shop.shinebhutan.com/users/login'" class="dropdown-item text-dark"
-                            target="_blank">
+                          <a
+                            :href="'https://shop.shinebhutan.com/users/login'"
+                            class="dropdown-item text-dark"
+                          >
                             <i class="bi bi-basket2"></i>Ecommerce Dashboard
                           </a>
                         </li>
@@ -245,7 +273,6 @@ nav a.router-link-exact-active {
   justify-content: left;
   align-items: center;
   padding: auto 0;
-
 }
 
 .top-bar-right {

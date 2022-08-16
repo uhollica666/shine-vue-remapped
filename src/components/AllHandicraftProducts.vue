@@ -9,7 +9,7 @@
         <div v-if="product.cat_name === $route.params.name" :key="product.id"
           class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 my-3">
           <div class="card mt-2">
-            <RouterLink :to="'/product/' + product.slug">
+            <a :href="ecomURL + 'product/' + product.slug">
             <div class="card-body">
               <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
               <div class="card-details py-4">
@@ -55,7 +55,7 @@
                 </div>
               </div>
             </div>
-          </RouterLink>
+          </a>
           </div>
         </div>
       </template>

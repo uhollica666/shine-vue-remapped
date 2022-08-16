@@ -114,7 +114,7 @@
         </section>
         <div class="hr my-4"></div>
         <section class="row">
-          <a :href="siteURL + 'tour/' + tour.slug" target="_blank">
+          <a :href="siteURL + 'tour/' + tour.slug">
             <button class="btn-buy">
               <i class="bi bi-eye"></i>Proceed to Booking
             </button>

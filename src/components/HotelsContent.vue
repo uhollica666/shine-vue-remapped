@@ -5,18 +5,18 @@
       <p>Best Hotels in Bhutan</p>
     </div>
     <div class="row mb-3">
-      <div v-for="hotel in hotels" :key="hotel.id" class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3">
+      <div v-for="hotel in latestHotels()" :key="hotel.id" class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12 mt-3">
         <div class="card mt-3">
-          <RouterLink :to="'/hotel/' + hotel.id + 'where?name=' + hotel.slug" class="hotel-details">
+          <a :href="siteURL + '/hotel/' + hotel.slug" class="hotel-details">
             <div class="card-body">
               <img loading="lazy" :src="apiURL + hotel.file_path" alt="" class="card-img img-fluid" />
-              <div class="card-details">
-                <h6 class="card-title text-truncate" v-if="!hotel.title">
+              <div class="card-details py-3">
+                <h5 class="card-title text-truncate" v-if="!hotel.title">
                   - Name Not Available -
-                </h6>
-                <h6 class="card-title text-truncate" v-else>
+                </h5>
+                <h5 class="card-title text-truncate" v-else>
                   {{ hotel.title }}
-                </h6>
+                </h5>
                 <h6 class="card-text my-3">
                   <i class="bi bi-cash-coin mr-1"></i> Nu. {{ hotel.price }} /
                   night
@@ -36,7 +36,7 @@
                 </div>
               </div>
             </div>
-          </RouterLink>
+          </a>
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@
 import { ref } from "vue";
 export default {
   name: "HotelsContent",
-  props: ["hotels"],
+  // props: ["hotels"],
 
   async setup() {
     const hotels = ref(null);
@@ -72,6 +72,13 @@ export default {
       hotels,
     };
   },
+  methods: {
+    latestHotels() {
+      return this.hotels.sort((a, b) => {
+        return b.id - a.id;
+      });
+    }
+  }
 };
 </script>
 
@@ -110,7 +117,7 @@ button.limit {
 }
 
 .card:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.26);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .card-body {

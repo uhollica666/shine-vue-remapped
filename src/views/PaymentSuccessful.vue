@@ -12,6 +12,22 @@
 <script>
 export default {
     name: "PaymentSuccessful",
+
+    //forwards header response to api endpoint
+    methods: {
+        async postResponse() {
+            this.$http.post('https://shop.shinebhutan.com/public/payment_response.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify,
+            });
+        }
+    },
+    beforeMount() {
+        this.postResponse();
+    },
 };
 </script>
 

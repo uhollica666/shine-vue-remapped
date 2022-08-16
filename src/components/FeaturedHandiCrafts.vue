@@ -11,7 +11,7 @@
         <div v-if="product.parent_name === 'Handicrats'" :key="product.id"
           class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12 my-3">
           <div class="card mt-2">
-            <RouterLink :to="'/product/' + product.slug">
+            <a :href="ecomURL + 'product/' + product.slug">
               <div class="card-body">
                 <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
                 <div class="card-details my-3">
@@ -57,7 +57,7 @@
                   </div>
                 </div>
               </div>
-            </RouterLink>
+            </a>
           </div>
         </div>
       </template>
@@ -83,6 +83,13 @@ export default {
       handiCrafts,
       ecomURL,
     };
+  },
+  methods: {
+    sortProductsLatest() {
+      return this.handiCrafts.sort((a, b) => {
+        return b.id - a.id;
+      });
+    },
   },
 };
 </script>

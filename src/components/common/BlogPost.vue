@@ -97,7 +97,7 @@ export default {
       return this.stories.sort((a, b) => (a.id < b.id ? 1 : -1));
     },
     sortDzongkhagBlogPost() {
-      return this.stories.filter((story) => story.title.includes(this.routeId));
+      return this.stories.filter((story) => story.title.toLowerCase().includes(this.routeId));
     },
   },
   computed: {

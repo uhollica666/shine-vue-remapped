@@ -6,7 +6,7 @@
         :key="product.id">
         <div class="card mt-3 mb-3">
           <div class="card-body">
-            <RouterLink :to="'/product/' + product.slug" class="category-details">
+            <a :href="ecomURL + 'product/' + product.slug" class="category-details">
             <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img-blog" />
               <div class="card-details">
                 <h6 class="card-title text-truncate">
@@ -21,7 +21,7 @@
                   {{ product.cat_name }}
                 </p>
               </div>
-            </RouterLink>
+            </a>
           </div>
         </div>
       </div>

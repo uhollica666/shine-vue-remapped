@@ -11,29 +11,13 @@
     </div>
     <div class="row mb-3">
       <template v-for="accommodation in filterProducts1">
-        <div
-          v-if="$route.params.category === '1 - 5,000'"
-          :key="accommodation.name"
-          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3"
-        >
+        <div v-if="$route.params.category === '1 - 5,000'" :key="accommodation.name"
+          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3">
           <div class="card mt-2">
             <div class="card mt-3">
-              <RouterLink
-                :to="
-                  '/tour/' +
-                  accommodation.id +
-                  'where?name=' +
-                  accommodation.slug
-                "
-                class="accommodation-details"
-              >
+              <a :href="siteURL + 'tour/' + accommodation.slug" class="accommodation-details">
                 <div class="card-body">
-                  <img
-                    loading="lazy"
-                    :src="ecomURL + accommodation.file_path"
-                    alt=""
-                    class="card-img img-fluid"
-                  />
+                  <img loading="lazy" :src="ecomURL + accommodation.file_path" alt="" class="card-img img-fluid" />
 
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
@@ -49,10 +33,7 @@
                     <div class="location-tours text-truncate mb-2">
                       <i class="bi bi-geo-alt"></i>{{ accommodation.name }}
                     </div>
-                    <div
-                      class="duration-tours text-truncate"
-                      v-if="!accommodation.date_form_to"
-                    >
+                    <div class="duration-tours text-truncate" v-if="!accommodation.date_form_to">
                       <i class="bi bi-stopwatch"></i>
                       Duration Not Available
                     </div>
@@ -62,7 +43,7 @@
                     </div>
                   </div>
                 </div>
-              </RouterLink>
+              </a>
             </div>
           </div>
         </div>
@@ -71,29 +52,13 @@
         </div>
       </template>
       <template v-for="accommodation in filterProducts2">
-        <div
-          v-if="$route.params.category === '5,001 - 10,000'"
-          :key="accommodation.name"
-          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3"
-        >
+        <div v-if="$route.params.category === '5,001 - 10,000'" :key="accommodation.name"
+          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3">
           <div class="card mt-2">
             <div class="card mt-3">
-              <RouterLink
-                :to="
-                  '/tour/' +
-                  accommodation.id +
-                  'where?name=' +
-                  accommodation.slug
-                "
-                class="accommodation-details"
-              >
+              <a :href="siteURL + 'tour/' + accommodation.slug" class="accommodation-details">
                 <div class="card-body">
-                  <img
-                    loading="lazy"
-                    :src="ecomURL + accommodation.file_path"
-                    alt=""
-                    class="card-img img-fluid"
-                  />
+                  <img loading="lazy" :src="ecomURL + accommodation.file_path" alt="" class="card-img img-fluid" />
 
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
@@ -109,10 +74,7 @@
                     <div class="location-tours text-truncate mb-2">
                       <i class="bi bi-geo-alt"></i>{{ accommodation.name }}
                     </div>
-                    <div
-                      class="duration-tours text-truncate"
-                      v-if="!accommodation.date_form_to"
-                    >
+                    <div class="duration-tours text-truncate" v-if="!accommodation.date_form_to">
                       <i class="bi bi-stopwatch"></i>
                       Duration Not Available
                     </div>
@@ -122,7 +84,7 @@
                     </div>
                   </div>
                 </div>
-              </RouterLink>
+              </a>
             </div>
           </div>
         </div>
@@ -131,29 +93,13 @@
         </div>
       </template>
       <template v-for="accommodation in filterProducts3">
-        <div
-          v-if="$route.params.category === '10,001 - 15,000'"
-          :key="accommodation.name"
-          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3"
-        >
+        <div v-if="$route.params.category === '10,001 - 15,000'" :key="accommodation.name"
+          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3">
           <div class="card mt-2">
             <div class="card mt-3">
-              <RouterLink
-                :to="
-                  '/tour/' +
-                  accommodation.id +
-                  'where?name=' +
-                  accommodation.slug
-                "
-                class="accommodation-details"
-              >
+              <a :href="siteURL + 'tour/' + accommodation.slug" class="accommodation-details">
                 <div class="card-body">
-                  <img
-                    loading="lazy"
-                    :src="ecomURL + accommodation.file_path"
-                    alt=""
-                    class="card-img img-fluid"
-                  />
+                  <img loading="lazy" :src="ecomURL + accommodation.file_path" alt="" class="card-img img-fluid" />
 
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
@@ -169,10 +115,7 @@
                     <div class="location-tours text-truncate mb-2">
                       <i class="bi bi-geo-alt"></i>{{ accommodation.name }}
                     </div>
-                    <div
-                      class="duration-tours text-truncate"
-                      v-if="!accommodation.date_form_to"
-                    >
+                    <div class="duration-tours text-truncate" v-if="!accommodation.date_form_to">
                       <i class="bi bi-stopwatch"></i>
                       Duration Not Available
                     </div>
@@ -182,7 +125,7 @@
                     </div>
                   </div>
                 </div>
-              </RouterLink>
+              </a>
             </div>
           </div>
         </div>
@@ -191,29 +134,13 @@
         </div>
       </template>
       <template v-for="accommodation in filterProducts4">
-        <div
-          v-if="$route.params.category === '15,000 and over'"
-          :key="accommodation.name"
-          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3"
-        >
+        <div v-if="$route.params.category === '15,000 and over'" :key="accommodation.name"
+          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3">
           <div class="card mt-2">
             <div class="card mt-3">
-              <RouterLink
-                :to="
-                  '/tour/' +
-                  accommodation.id +
-                  'where?name=' +
-                  accommodation.slug
-                "
-                class="accommodation-details"
-              >
+              <a :href="siteURL + 'tour/' + accommodation.slug" class="accommodation-details">
                 <div class="card-body">
-                  <img
-                    loading="lazy"
-                    :src="ecomURL + accommodation.file_path"
-                    alt=""
-                    class="card-img img-fluid"
-                  />
+                  <img loading="lazy" :src="ecomURL + accommodation.file_path" alt="" class="card-img img-fluid" />
 
                   <div class="card-details">
                     <h6 class="card-title text-truncate">
@@ -229,10 +156,7 @@
                     <div class="location-tours text-truncate mb-2">
                       <i class="bi bi-geo-alt"></i>{{ accommodation.name }}
                     </div>
-                    <div
-                      class="duration-tours text-truncate"
-                      v-if="!accommodation.date_form_to"
-                    >
+                    <div class="duration-tours text-truncate" v-if="!accommodation.date_form_to">
                       <i class="bi bi-stopwatch"></i>
                       Duration Not Available
                     </div>
@@ -242,7 +166,7 @@
                     </div>
                   </div>
                 </div>
-              </RouterLink>
+              </a>
             </div>
           </div>
         </div>
@@ -251,25 +175,12 @@
         </div>
       </template>
       <template v-for="accommodation in filterProducts">
-        <div
-          v-if="$route.params.category === 'All'"
-          :key="accommodation.id"
-          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3"
-        >
+        <div v-if="$route.params.category === 'All'" :key="accommodation.id"
+          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3">
           <div class="card mt-3">
-            <RouterLink
-              :to="
-                '/tour/' + accommodation.id + 'where?name=' + accommodation.slug
-              "
-              class="accommodation-details"
-            >
+            <a :href="siteURL + 'tour/' + accommodation.slug" class="accommodation-details">
               <div class="card-body">
-                <img
-                  loading="lazy"
-                  :src="ecomURL + accommodation.file_path"
-                  alt=""
-                  class="card-img img-fluid"
-                />
+                <img loading="lazy" :src="ecomURL + accommodation.file_path" alt="" class="card-img img-fluid" />
 
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
@@ -285,10 +196,7 @@
                   <div class="location-tours text-truncate mb-2">
                     <i class="bi bi-geo-alt"></i>{{ accommodation.name }}
                   </div>
-                  <div
-                    class="duration-tours text-truncate"
-                    v-if="!accommodation.date_form_to"
-                  >
+                  <div class="duration-tours text-truncate" v-if="!accommodation.date_form_to">
                     <i class="bi bi-stopwatch"></i>
                     Duration Not Available
                   </div>
@@ -298,7 +206,7 @@
                   </div>
                 </div>
               </div>
-            </RouterLink>
+            </a>
           </div>
         </div>
       </template>
@@ -313,6 +221,7 @@ export default {
   async setup() {
     const Accommodations = ref(null);
     const ecomURL = "https://booking.shinebhutan.com/uploads/";
+    const siteURL = "https://booking.shinebhutan.com/";
     const ecom_products = await fetch(
       "https://booking.shinebhutan.com/api/bc_tours"
     );
@@ -321,6 +230,7 @@ export default {
     return {
       Accommodations,
       ecomURL,
+      siteURL
     };
   },
   methods: {

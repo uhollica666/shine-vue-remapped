@@ -5,20 +5,20 @@
       <p>Best places to stay in Bhutan</p>
     </div>
     <div class="row mb-3">
-      <div v-for="accommodation in accommodations" :key="accommodation.id"
-        class="col-md-4 col-lg-3 col-xl-3 col-sm-6 col-xs-12 mt-3">
+      <div v-for="accommodation in latestAccommodations()" :key="accommodation.id"
+        class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12 mt-3">
         <div class="card mt-3">
           <RouterLink :to="'/properties/' + accommodation.id + 'where?name=' + accommodation.slug" class="accommodation-details">
             <div class="card-body">
               <img loading="lazy" :src="apiURL + accommodation.file_path" alt="" class="card-img img-fluid" />
 
-              <div class="card-details">
-                <h6 class="card-title text-truncate" v-if="!accommodation.title">
+              <div class="card-details py-3">
+                <h5 class="card-title text-truncate" v-if="!accommodation.title">
                   -Name Not Available-
-                </h6>
-                <h6 class="card-title text-truncate" v-else>
+                </h5>
+                <h5 class="card-title text-truncate" v-else>
                   {{ accommodation.title }}
-                </h6>
+                </h5>
                 <h6 class="card-text my-3">
                   <i class="bi bi-cash-coin mr-1"></i> Nu.
                   {{ accommodation.price }} / night
@@ -67,6 +67,13 @@ export default {
       siteURL,
     };
   },
+  methods: {
+    latestAccommodations() {
+      return this.accommodations.sort((a, b) => {
+        return b.id - a.id;
+      });
+    }
+  }
   // data() {
   //   return {
   //     limit: 8,
@@ -121,7 +128,7 @@ button.limit {
 }
 
 .card:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.26);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .card-body {

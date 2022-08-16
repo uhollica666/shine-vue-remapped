@@ -55,24 +55,24 @@
     </div>
     <div class="sticky-top mt-5 accordion here-heading">
       <h6 class="attraction-header">
-      Popular Attractions
-    </h6>
-    <div class="c">
-      <div class="sidebar-filters">
-        <div class="block-1 mb-3">
-          <div class="image-block my-2">
-            <img loading="lazy" src="@/assets/img/brokpa.jpg" alt="" />
+        Popular Attractions
+      </h6>
+      <div class="c">
+        <div class="sidebar-filters">
+          <div class="block-1 mb-3">
+            <div class="image-block my-2">
+              <img loading="lazy" src="@/assets/img/brokpa.jpg" alt="" />
+            </div>
+            <ul class="home-block pb-3">
+              <li v-for="attraction in popAttractions" :key="attraction.name" class="mt-1">
+                <RouterLink :to="'/article/' + attraction.slug">
+                  {{ attraction.name }}
+                </RouterLink>
+              </li>
+            </ul>
           </div>
-          <ul class="home-block pb-3">
-            <li v-for="attraction in popAttractions" :key="attraction.name" class="mt-1">
-              <RouterLink :to="'/article/' + attraction.slug">
-                {{ attraction.name }}
-              </RouterLink>
-            </li>
-          </ul>
         </div>
       </div>
-    </div>
     </div>
   </div>
 </template>

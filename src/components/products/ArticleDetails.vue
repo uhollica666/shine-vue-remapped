@@ -1,11 +1,19 @@
 <template>
   <div class="container-fluid my-5">
     <template v-for="article in articles">
-      <div class="article-card" v-if="article.slug === $route.params.slug" :key="article.id">
+      <div
+        class="article-card"
+        v-if="article.slug === $route.params.slug"
+        :key="article.id"
+      >
         <div class="row my-3">
           <div class="col-md-12 d-flex">
-            <img :src="siteURL + 'uploads/' + article.file_path" :alt="article.title"
-              class="img-fluid img-prop col-md-12" loading="lazy" />
+            <img
+              :src="siteURL + 'uploads/' + article.file_path"
+              :alt="article.title"
+              class="img-fluid img-prop col-md-12"
+              loading="lazy"
+            />
           </div>
         </div>
         <div class="hr my-4"></div>
@@ -20,7 +28,7 @@
         </section>
         <div class="hr my-4"></div>
         <section class="row">
-          <a :href="siteURL + 'news/' + article.slug" target="_blank">
+          <a :href="siteURL + 'news/' + article.slug">
             <button class="btn-buy">
               <i class="bi bi-eye"></i>Write a Comment
             </button>

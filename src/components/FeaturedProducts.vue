@@ -7,11 +7,11 @@
       <p class="mt-3">Discover the freshness of Bhutan</p>
     </div>
     <div class="row">
-      <template v-for="product in products">
+      <template v-for="product in sortProductsLatest()">
         <div v-if="product.parent_name === 'Agri Products'" :key="product.id"
           class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12">
           <div class="card mt-5">
-            <RouterLink :to="'/product/' + product.slug">
+            <a :href="ecomURL + 'product/' + product.slug">
               <div class="card-body">
                 <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
                 <div class="card-details py-4">
@@ -57,7 +57,7 @@
                   </div>
                 </div>
               </div>
-            </RouterLink>
+            </a>
           </div>
         </div>
       </template>
@@ -86,6 +86,13 @@ export default {
       catSubtitle,
       ecomURL,
     };
+  },
+  methods: {
+    sortProductsLatest() {
+      return this.products.sort((a, b) => {
+        return b.id - a.id;
+      });
+    },
   },
 };
 </script>

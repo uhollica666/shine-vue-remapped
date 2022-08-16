@@ -3,8 +3,12 @@
     <div v-for="hotel in hotels" :key="hotel.id">
       <div class="property-card px-5">
         <section class="row">
-          <img :src="siteURL + 'uploads/' + hotel.file_path" :alt="hotel.title" class="img-fluid img-prop col-md-12"
-            loading="lazy" />
+          <img
+            :src="siteURL + 'uploads/' + hotel.file_path"
+            :alt="hotel.title"
+            class="img-fluid img-prop col-md-12"
+            loading="lazy"
+          />
         </section>
         <section class="row mt-3">
           <div class="col-md-6">
@@ -57,7 +61,9 @@
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Laudantium numquam, laborum quisquam molestias, blanditiis a
               officiis inventore veritatis itaque adipisci animi culpa atque rem
-              accusamus! <br /><em style="font-size: 10px" class="text-danger">Description Not Available.</em>
+              accusamus! <br /><em style="font-size: 10px" class="text-danger"
+                >Description Not Available.</em
+              >
             </p>
             <p v-else><span v-html="hotel.content"></span></p>
           </div>
@@ -107,7 +113,9 @@
                 understandings between the All Seasons Inn & Suites and the
                 guest. Our Hotel Policy/House Rules may change from time to
                 time, so please check back often...<br />
-                <em style="font-size: 10px" class="text-danger">The above is filler text. Policy Not Available</em>
+                <em style="font-size: 10px" class="text-danger"
+                  >The above is filler text. Policy Not Available</em
+                >
               </p>
               <p v-else><i class="bi bi-clock"></i>{{ hotel.check_out }}</p>
             </div>
@@ -122,14 +130,16 @@
         </section>
         <div class="hr my-4"></div>
         <section class="row">
-          <a :href="siteURL + 'hotel/' + hotel.slug" target="_blank">
+          <a :href="siteURL + 'hotel/' + hotel.slug">
             <button class="btn-buy">
               <i class="bi bi-eye"></i>Proceed to Booking
             </button>
           </a>
           <p class="py-3 notice-change">
-            <em style="font-size: 12px !important">Note: you will be redirected to a more secured server to proceed
-              futher with booking and payments.</em>
+            <em style="font-size: 12px !important"
+              >Note: you will be redirected to a more secured server to proceed
+              futher with booking and payments.</em
+            >
           </p>
         </section>
       </div>

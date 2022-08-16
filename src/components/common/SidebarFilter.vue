@@ -47,11 +47,11 @@
                 <div class="heading">
                   <h6 class="mb-3 mt-3">Filter By Category</h6>
                 </div>
-                <div class="form-check my-2" v-for="caregory in productCategories" :key="caregory">
-                  <RouterLink :to="'/searchhandicraft/' + caregory" class="text-dark">
+                <div class="form-check my-2" v-for="caregory in latestCategoryHandi()" :key="caregory">
+                  <RouterLink :to="'/searchhandicraft/' + caregory.name" class="text-dark">
                     <input class="form-check-input" type="radio" name="flexRadioDefault" />
                     <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
-                      {{ caregory }}
+                      {{ caregory.name }}
                     </label>
                   </RouterLink>
                 </div>
@@ -61,11 +61,11 @@
                 <div class="heading">
                   <h6 class="mb-3 mt-3">Filter By Category</h6>
                 </div>
-                <div class="form-check my-2" v-for="caregory in agriCategory" :key="caregory">
-                  <RouterLink :to="'/search/' + caregory" class="text-dark">
+                <div class="form-check my-2" v-for="caregory in latestCategory()" :key="caregory">
+                  <RouterLink :to="'/search/' + caregory.name" class="text-dark">
                     <input class="form-check-input" type="radio" name="flexRadioDefault" />
                     <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
-                      {{ caregory }}
+                      {{ caregory.name }}
                     </label>
                   </RouterLink>
                 </div>
@@ -148,26 +148,7 @@ const toursPrice = [
   "15,000 and over",
 ];
 
-const productCategories = [
-  "All",
-  "Textile",
-  "Cane & Bamboo",
-  "Painting",
-  "Wood Craft",
-  "Metal Craft",
-  "General Souvenir",
-];
-
-const agriCategory = [
-  "All",
-  "Fresh Vegetables",
-  "Food Grains",
-  "Fresh Fruits",
-  "Proccessed Food",
-  "Dairy Products",
-  "Mushrooms",
-  "Edible Wild Plants",
-];
+import { ref } from "vue";
 
 export default {
   name: "SidebarFilter",
@@ -179,13 +160,37 @@ export default {
     "productCategories",
     "agriCategory",
   ],
+  async setup() {
+    const agriCategory = ref(null)
+    const productCategories = ref(null)
+    const agri = await fetch('https://shop.shinebhutan.com/api/v1/get_frontend_categories?id=4');
+    const handi = await fetch('https://shop.shinebhutan.com/api/v1/get_frontend_categories?id=5');
+    agriCategory.value = await agri.json();
+    productCategories.value = await handi.json();
+    return {
+      /* eslint-disable */
+      agriCategory,
+      productCategories
+    };
+
+  },
+  methods: {
+    latestCategory() {
+      return this.agriCategory.sort((a, b) => {
+        return b.id - a.id;
+      });
+    },
+    latestCategoryHandi() {
+      return this.productCategories.sort((a, b) => {
+        return b.id - a.id;
+      });
+    },
+  },
   data() {
     return {
       /*eslint-disable*/
       filters,
       starRatings,
-      productCategories,
-      agriCategory,
       toursPrice,
     };
   },
