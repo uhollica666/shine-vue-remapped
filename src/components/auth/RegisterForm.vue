@@ -32,14 +32,28 @@
       </label>
     </div>
     <button type="submit" class="btn submit-btn mt-3">Register</button>
-    <div class="no-account-register mt-3 mb-3">
+    <div class="no-account-register my-3">
       Already have an account? Login <RouterLink to="/login">Here</RouterLink>.
     </div>
+  
+    <hr class="my-4" />
+
+    <div class="mt-3 reg mx-auto auth-header-two">
+      <h5 class="mb-3">Own a Handicraft or a Tourism Business? Sell With Us</h5>
+      <div class="flex-column text-start">
+        <p class="no-account-register">
+        Click <a :href="'https://booking.shinebhutan.com/register'">Here</a> to register for your Tourism.
+      </p>
+      <p class="no-account-register">
+        And click <a :href="'https://shop.shinebhutan.com/' + 'shops/create'">Here</a> to register for your Handicraft store.
+      </p>
+      </div>
+    </div>
+    
   </form>
 </template>
 
 <script>
-import axios from "axios";
 export default {
   name: "RegisterForm",
   data() {
@@ -52,13 +66,22 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      const response = await axios.post(
-        "register",
+      const response = await fetch(
+        'https://users.shinebhutan.com/api/register',
         {
+          method: "POST",
           firstName: this.firstName,
           lastName: this.lastName,
           email: this.email,
           password: this.password,
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem('token'),
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods":
+            "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+            "Access-Control-Allow-Headers":
+            "Origin, Content-Type, X-Auth-Token",
+          },
         }
       );
       console.log(response);
@@ -82,6 +105,9 @@ export default {
 
 .auth-header {
   text-align: center;
+  color: #333369;
+}
+.auth-header-two {
   color: #333369;
 }
 

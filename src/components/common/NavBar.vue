@@ -2,19 +2,15 @@
   <div>
     <div class="header-top">
       <div class="container-fluid">
-        <div class="row clearfix d-flex" style="max-height: 50px">
+        <div class="row clearfix" style="max-height: 50px">
           <div class="col-md-6 col-sm-6">
             <div class="contact contact_space">
               <ul class="top-bar top-bar-left">
                 <li>
-                  <a href="mailto:info@shinebhutan.com"
-                    ><i class="bi bi-send-check"></i>info@shinebhutan.com</a
-                  >
+                  <a href="mailto:info@shinebhutan.com"><i class="bi bi-send-check"></i>info@shinebhutan.com</a>
                 </li>
                 <li>
-                  <a href="callto:+975 2 338089"
-                    ><i class="bi bi-phone"></i>+975-2-338089</a
-                  >
+                  <a href="callto:+975 2 338089"><i class="bi bi-phone"></i>+975-2-338089</a>
                 </li>
               </ul>
             </div>
@@ -22,36 +18,22 @@
           <div class="col-md-6 col-sm-6">
             <div class="contact contact_space">
               <ul class="top-bar top-bar-right">
-                <li>
-                  <div class="dropdown logged-user-menu mr-5 my-0">
-                    <button
-                      class="btn dropdown-toggle text-white"
-                      type="button"
-                      id="dropdownMenuButton"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
+                <!--<li>
+                   <div class="dropdown logged-user-menu mr-5 my-0">
+                    <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton"
+                      data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="bi bi-person-bounding-box"></i> Register
                     </button>
-                    <ul
-                      class="dropdown-menu px-0 mx-0"
-                      aria-labelledby="dropdownMenuButton"
-                    >
+                    <ul class="dropdown-menu px-0 mx-0" aria-labelledby="dropdownMenuButton">
                       <li class="px-1 mx-0 my-3">
-                        <a
-                          :href="'https://booking.shinebhutan.com/register'"
-                          class="dropdown-item text-dark"
-                        >
+                        <a :href="'https://booking.shinebhutan.com/register'" class="dropdown-item text-dark">
                           <i class="bi bi-speedometer2"></i>As Tour Operator
                         </a>
                       </li>
                       <li class="px-1 mx-0 my-3">
-                        <a
-                          :href="
-                            'https://shop.shinebhutan.com/' + 'shops/create'
-                          "
-                          class="dropdown-item text-dark"
-                        >
+                        <a :href="
+                          'https://shop.shinebhutan.com/' + 'shops/create'
+                        " class="dropdown-item text-dark">
                           <i class="bi bi-basket2"></i>As Ecommerce Vendor
                         </a>
                       </li>
@@ -61,43 +43,29 @@
                 <div class="d-flex mx-3">
                   <li>
                     <div class="dropdown logged-user-menu mr-5 my-0">
-                      <button
-                        class="btn dropdown-toggle text-white"
-                        type="button"
-                        id="dropdownMenuButton"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
+                      <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-lock"></i> Login
                       </button>
-                      <ul
-                        class="dropdown-menu px-0 mx-0"
-                        aria-labelledby="dropdownMenuButton"
-                      >
+                      <ul class="dropdown-menu px-0 mx-0" aria-labelledby="dropdownMenuButton">
                         <li class="px-1 mx-0 my-3">
-                          <a
-                            :href="'https://booking.shinebhutan.com/login'"
-                            class="dropdown-item text-dark"
-                          >
+                          <a :href="'https://booking.shinebhutan.com/login'" class="dropdown-item text-dark">
                             <i class="bi bi-speedometer2"></i>Tourism Dashboard
                           </a>
                         </li>
                         <li class="px-1 mx-0 my-3">
-                          <a
-                            :href="'https://shop.shinebhutan.com/users/login'"
-                            class="dropdown-item text-dark"
-                          >
+                          <a :href="'https://shop.shinebhutan.com/users/login'" class="dropdown-item text-dark">
                             <i class="bi bi-basket2"></i>Ecommerce Dashboard
                           </a>
                         </li>
                       </ul>
                     </div>
                   </li>
-                  <!-- <li>
+                   <li>
                     <RouterLink to="/register"><i class="bi bi-lock"></i>Register</RouterLink>
-                  </li> -->
-                </div>
-                <!-- <div v-if="user">
+                  </li>
+                </div> -->
+                <div v-if="user">
                   <div class="dropdown logged-user-menu mx-5">
                     <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton"
                       data-bs-toggle="dropdown" aria-expanded="false">
@@ -150,10 +118,15 @@
                       </li>
                     </ul>
                   </div>
-                </div> -->
-                <!-- <li>
-                  <LightDarkSwitch class="mx-3" />
-                </li> -->
+                </div>
+                <div v-else class="d-flex">
+                  <li>
+                    <RouterLink to="/register"><i class="bi bi-lock"></i>Register</RouterLink>
+                  </li>
+                  <li>
+                    <RouterLink to="/login"><i class="bi bi-person-bounding-box"></i>Login</RouterLink>
+                  </li>
+                </div>
               </ul>
             </div>
           </div>
@@ -294,7 +267,7 @@ nav a.router-link-exact-active {
     flex-direction: column;
   }
 
-  .top-bar-left {
+  .top-bar-left {    
     text-align: left;
     justify-content: center;
     align-content: center;

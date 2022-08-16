@@ -8,12 +8,20 @@
     </div>
     <div class="row mb-3">
       <template v-for="product in handiCrafts">
-        <div v-if="product.parent_name === 'Handicrats'" :key="product.id"
-          class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12 my-3">
+        <div
+          v-if="product.parent_name === 'Handicrats'"
+          :key="product.id"
+          class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12 my-3"
+        >
           <div class="card mt-2">
             <a :href="ecomURL + 'product/' + product.slug">
               <div class="card-body">
-                <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
+                <img
+                  loading="lazy"
+                  :src="ecomURL + 'public/' + product.file_name"
+                  alt=""
+                  class="card-img img-fluid"
+                />
                 <div class="card-details my-3">
                   <h5 class="card-title text-truncate">
                     {{ product.name }}
@@ -24,7 +32,7 @@
                   <div class="product-row my-3">
                     <h6 class="card-text text-truncate">
                       <i class="bi bi-cash-coin mr-1"></i> Nu.
-                      {{ product.unit_price }} per Unit
+                      {{ product.unit_price }} / PC
                     </h6>
                     <div class="duration-tours text-truncate">
                       <i class="bi bi-bookmark-star"></i>
@@ -32,15 +40,21 @@
                     </div>
                   </div>
                   <div class="my-3 d-flex">
-                    <div class="duration-tours text-truncate me-3" v-if="!product.shop_address">
+                    <div
+                      class="duration-tours text-truncate me-3"
+                      v-if="!product.shop_address"
+                    >
                       <i class="bi bi-geo"></i>
                       (Thimphu)
                     </div>
-                    <div class="duration-tours text-truncate  me-3" v-else>
+                    <div class="duration-tours text-truncate me-3" v-else>
                       <i class="bi bi-geo"></i>
                       {{ product.shop_address }}
                     </div>
-                    <div class="duration-tours text-truncate" v-if="!product.shop_name">
+                    <div
+                      class="duration-tours text-truncate"
+                      v-if="!product.shop_name"
+                    >
                       <i class="bi bi-shop"></i>
                       Shine
                     </div>
@@ -50,7 +64,7 @@
                     </div>
                   </div>
                   <div class="preview-buttons d-flex item-center">
-                    <button class="btn btn-preview  my-2">
+                    <button class="btn btn-preview my-2">
                       <i class="bi bi-eye mr-1"></i>
                       Preview
                     </button>

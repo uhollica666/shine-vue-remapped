@@ -6,39 +6,53 @@
     </div>
     <div class="row mb-3">
       <template v-for="product in HandicraftProducts">
-        <div v-if="product.cat_name === $route.params.name" :key="product.id"
-          class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 my-3">
+        <div
+          v-if="product.cat_name === $route.params.name"
+          :key="product.id"
+          class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 my-3"
+        >
           <div class="card mt-2">
             <a :href="ecomURL + 'product/' + product.slug">
-            <div class="card-body">
-              <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
-              <div class="card-details py-4">
-                <h5 class="card-title text-truncate">
-                  {{ product.name }}
-                </h5>
-                <p class="text-small text-grey my-2 text-truncate">
-                  {{ product.meta_description }}
-                </p>
-                <div class="product-row my-3">
-                  <h6 class="card-text text-truncate">
-                    <i class="bi bi-cash-coin mr-1"></i> Nu.
-                    {{ product.unit_price }} per Unit
-                  </h6>
-                  <div class="duration-tours text-truncate">
-                    <i class="bi bi-tag"></i>
-                    {{ product.cat_name }}
+              <div class="card-body">
+                <img
+                  loading="lazy"
+                  :src="ecomURL + 'public/' + product.file_name"
+                  alt=""
+                  class="card-img img-fluid"
+                />
+                <div class="card-details py-4">
+                  <h5 class="card-title text-truncate">
+                    {{ product.name }}
+                  </h5>
+                  <p class="text-small text-grey my-2 text-truncate">
+                    {{ product.meta_description }}
+                  </p>
+                  <div class="product-row my-3">
+                    <h6 class="card-text text-truncate">
+                      <i class="bi bi-cash-coin mr-1"></i> Nu.
+                      {{ product.unit_price }} / PC
+                    </h6>
+                    <div class="duration-tours text-truncate">
+                      <i class="bi bi-tag"></i>
+                      {{ product.cat_name }}
+                    </div>
                   </div>
-                </div>
-                <div class="my-3 d-flex">
-                    <div class="duration-tours text-truncate me-3" v-if="!product.shop_address">
+                  <div class="my-3 d-flex">
+                    <div
+                      class="duration-tours text-truncate me-3"
+                      v-if="!product.shop_address"
+                    >
                       <i class="bi bi-geo"></i>
                       (Thimphu)
                     </div>
-                    <div class="duration-tours text-truncate  me-3" v-else>
+                    <div class="duration-tours text-truncate me-3" v-else>
                       <i class="bi bi-geo"></i>
                       {{ product.shop_address }}
                     </div>
-                    <div class="duration-tours text-truncate" v-if="!product.shop_name">
+                    <div
+                      class="duration-tours text-truncate"
+                      v-if="!product.shop_name"
+                    >
                       <i class="bi bi-shop"></i>
                       Shine
                     </div>
@@ -47,15 +61,15 @@
                       {{ product.shop_name }}
                     </div>
                   </div>
-                <div class="preview-buttons d-flex item-center">
+                  <div class="preview-buttons d-flex item-center">
                     <button class="btn btn-preview mx-auto my-2">
                       <i class="bi bi-eye mr-1"></i>
                       View Details
                     </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </a>
+            </a>
           </div>
         </div>
       </template>

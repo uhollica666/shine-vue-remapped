@@ -3,26 +3,13 @@
     <div class="mb-3">
       <h3 class="auth-header mt-3 mb-3">Login to Shine!</h3>
       <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input
-        type="email"
-        class="form-control input-control"
-        id="exampleInputEmail1"
-        aria-describedby="emailHelp"
-        placeholder="email@example.com"
-        v-model="email"
-        required
-      />
+      <input type="email" class="form-control input-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        placeholder="email@example.com" v-model="email" required />
     </div>
     <div class="mb-3">
       <label for="InputPassword" class="form-label">Password</label>
-      <input
-        type="password"
-        class="form-control input-control"
-        id="InputPassword"
-        placeholder="********"
-        v-model="password"
-        required
-      />
+      <input type="password" class="form-control input-control" id="InputPassword" placeholder="********"
+        v-model="password" required />
     </div>
     <div class="mb-3 form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1" />
@@ -34,12 +21,25 @@
       <RouterLink to="/register">Here</RouterLink>. <br />Forgot
       <RouterLink to="/forgotPassword">Password?</RouterLink>
     </div>
+  
+    <hr class="my-4" />
+
+    <div class="mt-3 reg mx-auto auth-header-two">
+      <h5 class="mb-3">Login to your Business Dassboard</h5>
+      <div class="flex-column text-start">
+        <p class="no-account-register">
+        Login <a :href="'https://booking.shinebhutan.com/login'">Here</a> for your Tourism.
+      </p>
+      <p class="no-account-register">
+        Or login <a :href="'https://shop.shinebhutan.com/users/login'">Here</a> for your Handicraft store.
+      </p>
+      </div>
+    </div>
+
   </form>
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   name: "LoginForm",
   data() {
@@ -50,17 +50,18 @@ export default {
   },
   methods: {
     async handleSubmit() {
-      const response = await axios.post(
-        "login",
+      const response = await fetch('https://users.shinebhutan.com/api/login', 
         {
+          method: "POST",
           email: this.email,
           password: this.password,
           headers: {
+            Authorization: "Bearer " + localStorage.getItem('token'),
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Methods":
-              "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+            "GET, POST, PATCH, PUT, DELETE, OPTIONS",
             "Access-Control-Allow-Headers":
-              "Origin, Content-Type, X-Auth-Token",
+            "Origin, Content-Type, X-Auth-Token",
           },
         }
       );
@@ -86,6 +87,9 @@ export default {
 
 .auth-header {
   text-align: center;
+  color: #333369;
+}
+.auth-header-two {
   color: #333369;
 }
 

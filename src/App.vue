@@ -22,11 +22,11 @@ export default {
     };
   },
 
-  // async created() {
-  //   const fetchId = "https://users.shinebhutan.com/api/user";
-  //   const response = await axios.get(fetchId);
-  //   this.user = response.data;
-  // },
+  async created() {
+    const fetchId = "https://users.shinebhutan.com/api/user";
+    const response = await fetch(fetchId);
+    this.user = response.data;
+  },
 };
 </script>
 

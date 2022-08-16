@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-6">
-        <h5 class="py-3 home-heading">Agri Products</h5>
+        <h5 class="py-3 home-heading">Browse Agri Products</h5>
         <div class="container my-card">
           <div class="product-images row">
             <template v-for="product in computedProducts">
@@ -25,7 +25,7 @@
       </div>
 
       <div class="col-md-6 mb-3">
-        <h5 class="py-3 home-heading">Handicraft Products</h5>
+        <h5 class="py-3 home-heading">Browse Handicraft Products</h5>
         <div class="container my-card">
           <div class="product-images row">
             <template v-for="product in computedHandicrafts">
@@ -51,6 +51,7 @@
     <div class="row mt-5">
       <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-xs-12">
         <h5 class="p-3 home-linear-heading">Tour Packages</h5>
+        <p class="home-linear-heading text-dark">Hike into the wilderness of Bhutan, the last Shangri-La</p>
         <div class="home-tour-group">
           <div class="row">
             <div class="col-md-3 col-sm-6 col-xs-6 home-objects" v-for="tour in computedTours" :key="tour.id">
@@ -80,6 +81,7 @@
     <div class="row mt-5">
       <div class="col-md-12 col-lg-12 col-xl-12 col-sm-12 col-xs-12">
         <h5 class="home-linear-heading">Accommodations</h5>
+        <p class="home-linear-heading text-dark">Explore the best in class Accommodations in Eastern Bhutan</p>
         <div class="home-tour-group">
           <div class="row">
             <div class="col-md-3 home-objects" v-for="accommodation in computedAccommodation" :key="accommodation.id">
@@ -365,7 +367,7 @@ export default {
 }
 
 .card-img2 {
-  aspect-ratio: 16/12;
+  aspect-ratio: 1;
   border-radius: 5px;
   margin: 0;
   object-fit: cover;
