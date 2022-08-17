@@ -65,12 +65,11 @@
                     <RouterLink to="/register"><i class="bi bi-lock"></i>Register</RouterLink>
                   </li>
                 </div> -->
-                <div v-if="user">
+                <div v-if="isLoggedIn">
                   <div class="dropdown logged-user-menu mx-5">
                     <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton"
                       data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="bi dropdown-icon bi-person"></i> Hi,
-                      {{ user.firstName }} {{ user.lastName }}
+                      <i class="bi dropdown-icon bi-person"></i> Welcome User
                     </button>
                     <ul class="dropdown-menu px-0 mx-0" aria-labelledby="dropdownMenuButton">
                       <li class="px-1 mx-0">
@@ -112,7 +111,7 @@
                         <hr class="dropdown-divider" />
                       </li>
                       <li class="px-1 mx-0">
-                        <a href="javascript:void(0)" @click="handleClick" class="dropdown-item text-dark">
+                        <a href="javascript:void(0)" @click="handleSignOut" class="dropdown-item text-dark">
                           <i class="bi bi-box-arrow-right"></i>Logout
                         </a>
                       </li>
@@ -139,33 +138,43 @@
 </template>
 
 <script>
-// import LightDarkSwitch from "@/components/LightDarkSwitch";
 import StickyNav from "@/components/common/StickyNav";
-import { mapGetters } from "vuex";
 export default {
   name: "NavBar",
-  data() {
-    return {
-      isDark: false,
-      siteUrl: "https://users.shinebhutan.com",
-    };
-  },
   components: {
-    // LightDarkSwitch,
     StickyNav,
-  },
-  methods: {
-    handleClick() {
-      localStorage.removeItem("token");
-      this.$store.dispatch("user", null);
-      this.$router.push("/");
-    },
-  },
-  computed: {
-    ...mapGetters(["user"]),
   },
 };
 </script>
+
+<script setup>
+import { onMounted, ref } from "vue";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { useRouter } from "vue-router";
+const router = useRouter();
+
+const isLoggedIn = ref(false);
+
+let auth;
+onMounted(() => {
+  auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      isLoggedIn.value = true;
+    } else {
+      isLoggedIn.value = false;
+    }
+  });
+});
+
+const handleSignOut = () => {
+  signOut(auth).then(() => {
+    router.push("/");
+  });
+}
+
+</script>
+
 
 <style scoped>
 .logged-user-menu {

@@ -1,5 +1,5 @@
 <template>
-  <form class="auth-form-register" @submit.prevent="handleSubmit">
+  <form class="auth-form-register" @submit.prevent>
     <div class="mb-3">
       <h3 class="auth-header mt-3 mb-4">Register with Shine</h3>
 
@@ -27,71 +27,84 @@
     </div>
     <div class="mb-3 form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-      <label class="form-check-label no-account-register" for="exampleCheck1">By Signing Up, I agree to
+      <label class="form-check-label no-account-register" for="exampleCheck1" required>By Signing Up, I agree to
         <RouterLink to="/terms">Terms & Conditions</RouterLink> of Shine.
       </label>
     </div>
-    <button type="submit" class="btn submit-btn mt-3">Register</button>
+    <div class="d-flex flexi-btn">
+      <button class="btn submit-btn" @click="signIn"><i class="bi bi-lock"></i>Register</button>
+      <button class="btn ggle-btn" @click="googleSignIn"><i class="bi bi-google"></i>Continue With Google</button>
+    </div>
     <div class="no-account-register my-3">
       Already have an account? Login <RouterLink to="/login">Here</RouterLink>.
     </div>
-  
+
     <hr class="my-4" />
 
     <div class="mt-3 reg mx-auto auth-header-two">
       <h5 class="mb-3">Own a Handicraft or a Tourism Business? Sell With Us</h5>
       <div class="flex-column text-start">
         <p class="no-account-register">
-        Click <a :href="'https://booking.shinebhutan.com/register'">Here</a> to register for your Tourism.
-      </p>
-      <p class="no-account-register">
-        And click <a :href="'https://shop.shinebhutan.com/' + 'shops/create'">Here</a> to register for your Handicraft store.
-      </p>
+          Click <a :href="'https://booking.shinebhutan.com/register'">Here</a> to register for your Tourism.
+        </p>
+        <p class="no-account-register">
+          And click <a :href="'https://shop.shinebhutan.com/' + 'shops/create'">Here</a> to register for your Handicraft
+          store.
+        </p>
       </div>
     </div>
-    
+
   </form>
 </template>
 
-<script>
-export default {
-  name: "RegisterForm",
-  data() {
-    return {
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-    };
-  },
-  methods: {
-    async handleSubmit() {
-      const response = await fetch(
-        'https://users.shinebhutan.com/api/register',
-        {
-          method: "POST",
-          firstName: this.firstName,
-          lastName: this.lastName,
-          email: this.email,
-          password: this.password,
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem('token'),
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods":
-            "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-            "Access-Control-Allow-Headers":
-            "Origin, Content-Type, X-Auth-Token",
-          },
-        }
-      );
-      console.log(response);
-      this.$router.push("/login");
-    },
-  },
+<script setup>
+import { ref } from 'vue';
+import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { useRouter } from 'vue-router';
+const firstName = ref('');
+const lastName = ref('');
+const email = ref('');
+const password = ref('');
+const router = useRouter();
+// const authURL = 'https://users.shinebhutan.com/api';
+
+const signIn = () => {
+
+  const auth = getAuth()
+  createUserWithEmailAndPassword(auth, email.value, password.value)
+    .then((data) => {
+      alert('Successfully Registered with:' + data.user.email);
+
+      console.log(auth.currentUser)
+      
+      router.push('/login');
+    })
+    .catch((error) => {
+      console.log(error.code);
+    alert(error.message);
+  });
 };
+
+const googleSignIn = async () => {
+  const provider = new GoogleAuthProvider();
+  signInWithPopup(getAuth(), provider)
+    .then((result) => {
+      alert('Hello:'+ result.user);
+      router.push('/');
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+};
+
 </script>
 
 <style scoped>
+.flexi-btn{
+  display: flex;
+  justify-content: space-between;
+}
+
 .auth-form-register {
   width: 550px;
   max-width: 550px;
@@ -107,6 +120,7 @@ export default {
   text-align: center;
   color: #333369;
 }
+
 .auth-header-two {
   color: #333369;
 }
@@ -139,10 +153,21 @@ export default {
   border-radius: 10rem;
   width: 50%;
 }
+.ggle-btn {
+  background: #4c8bf5;
+  color: #fff;
+  border-radius: 10rem;
+  width: 45%;
+}
 
 .submit-btn:hover {
   background: #f0dfca;
   color: #f7941e;
   border: 1px solid #f7941e;
+}
+.ggle-btn:hover {
+  background: #c2d8fe;
+  color: #0f48aa;
+  border: 1px solid #0f48aa;
 }
 </style>

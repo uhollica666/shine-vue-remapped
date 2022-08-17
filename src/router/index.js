@@ -1,5 +1,6 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomePage from '../views/HomePage.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import HomePage from '../views/HomePage.vue';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 const routes = [
   {
@@ -166,7 +167,20 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach((to, from, next) => {
+const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const removeListener = onAuthStateChanged(
+      getAuth(),
+      (user) => {
+        removeListener();
+        resolve(user);
+      },
+      reject
+    );
+  });
+};
+
+router.beforeEach(async(to, from, next) => {
   document.title = `${ process.env.VUE_APP_TITLE } | ${ to.name }`
   next()  
   // vue router scrolls to page top on route change
