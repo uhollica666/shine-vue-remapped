@@ -6,7 +6,7 @@
     <p class="mt-3">{{ catSubtitle }}</p>
     <div class="row">
       <div v-for="dzongkhag in dzongkhags" :key="dzongkhag.id"
-        class="col-md-2 col-lg-2 col-xl-2 col-sm-4 col-xs-6 mt-2">
+        class="col-md-2 col-lg-2 col-xl-2 col-sm-4 col-xs-6 cat-cards mt-2">
         <div class="card mt-2">
           <div class="card-body">
             <img loading="lazy" :src="apiURL + dzongkhag.file_path" alt="" class="card-img-dzo" />
@@ -55,5 +55,11 @@ export default {
   aspect-ratio: 16/10;
   object-fit: cover;
   border-radius: 5px;
+}
+@media screen and (max-width: 768px) {
+   .cat-cards {
+    width: 50%;
+  }
+  
 }
 </style>

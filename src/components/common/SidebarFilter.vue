@@ -2,13 +2,126 @@
   <div class="accordion mt-5 accordion-flush sticky-top app-sticky-top">
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-          aria-expanded="false" aria-controls="collapseOne">
-          <i class="bi bi-sort-down"></i>Filters
-        </button>
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+            aria-expanded="false" aria-controls="collapseOne" v-if="isMobile">
+            <i class="bi bi-sort-down"></i> Filter
+          </button>
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+            aria-expanded="true" aria-controls="collapseOne" v-else>
+            <i class="bi bi-sort-down"></i> Filter
+          </button>
       </h2>
-      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-        data-bs-parent="#accordionExample">
+      <div v-if="isMobile" id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <div class="c">
+            <div class="sidebar-filters">
+              <div class="heading">
+                <h6 class="mb-3">Filter By Dzongkhag</h6>
+              </div>
+
+              <div class="form-check my-2" v-for="filter in filters" :key="filter.name">
+                <RouterLink :to="'/agri-dzo-filter/' + filter.slug" v-if="$route.name === 'Agriproducts'">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                  <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
+                    {{ filter.name }}
+                  </label>
+                </RouterLink>
+                <RouterLink :to="'/handicraft-dzo-filter/' + filter.slug" v-if="$route.name === 'Handicrafts'">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                  <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
+                    {{ filter.name }}
+                  </label>
+                </RouterLink>
+                <RouterLink :to="'/accommodation-dzongkhags/' + filter.slug" v-if="$route.name === 'Accommodations'">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                  <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
+                    {{ filter.name }}
+                  </label>
+                </RouterLink>
+                <RouterLink :to="'/tours-dzongkhags/' + filter.slug" v-if="$route.name === 'Tours'">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                  <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
+                    {{ filter.name }}
+                  </label>
+                </RouterLink>
+              </div>
+
+              <div v-show="$route.name === 'Handicrafts'">
+                <div class="heading">
+                  <h6 class="mb-3 mt-3">Filter By Category</h6>
+                </div>
+                <div class="form-check my-2" v-for="caregory in latestCategoryHandi()" :key="caregory">
+                  <RouterLink :to="'/searchhandicraft/' + caregory.name" class="text-dark">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" />
+                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
+                      {{ caregory.name }}
+                    </label>
+                  </RouterLink>
+                </div>
+              </div>
+
+              <div v-show="$route.name === 'Agriproducts'">
+                <div class="heading">
+                  <h6 class="mb-3 mt-3">Filter By Category</h6>
+                </div>
+                <div class="form-check my-2" v-for="caregory in latestCategory()" :key="caregory">
+                  <RouterLink :to="'/search/' + caregory.name" class="text-dark">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" />
+                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1">
+                      {{ caregory.name }}
+                    </label>
+                  </RouterLink>
+                </div>
+              </div>
+
+              <div v-show="$route.name === 'Accommodations'">
+                <div class="heading">
+                  <h6 class="mb-3 mt-3">Properties By Price Range</h6>
+                </div>
+                <div class="form-check my-2" v-for="starRating in starRatings" :key="starRating">
+                  <RouterLink :to="'/searchaccommodation/' + starRating">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" />
+                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
+                      v-if="starRating === 'All'">
+                      {{ starRating }} Properties
+                    </label>
+                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
+                      v-else-if="starRating === '15,000 and over'">
+                      Nu. {{ starRating }}
+                    </label>
+                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1" v-else>
+                      Between Nu. {{ starRating }}
+                    </label>
+                  </RouterLink>
+                </div>
+              </div>
+
+              <div v-show="$route.name === 'Tours'">
+                <div class="heading">
+                  <h6 class="mt-3">Filter Tours By Price</h6>
+                </div>
+                <div class="form-check my-2" v-for="price in toursPrice" :key="price">
+                  <RouterLink :to="'/searchtours/' + price">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" />
+                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
+                      v-if="price === 'All'">
+                      {{ price }} Tours
+                    </label>
+                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
+                      v-else-if="price === '15,000 and over'">
+                      Nu. {{ price }}
+                    </label>
+                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1" v-else>
+                      Between Nu. {{ price }}
+                    </label>
+                  </RouterLink>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-else id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
         <div class="accordion-body">
           <div class="c">
             <div class="sidebar-filters">
@@ -193,6 +306,14 @@ export default {
       starRatings,
       toursPrice,
     };
+  },
+  mounted() {
+    const isMobile = ref(null);
+    if (window.innerWidth < 768) {
+      return isMobile.value = true;
+    } else {
+      return isMobile.value = false;
+    }
   },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="blog-slider">
     <div v-if="$route.name === 'Accommodations' || $route.name === 'Tours'">
       <div class="blog-post-topic">
         <h4 class="text-center p-3">Recent Articles</h4>
@@ -121,5 +121,10 @@ i.bi {
   aspect-ratio: 16/10;
   object-fit: cover;
   border-radius: 5px;
+}
+@media screen and (max-width: 768px) {
+  .blog-slider {
+    display: none;
+  }
 }
 </style>

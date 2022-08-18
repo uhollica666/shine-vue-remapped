@@ -1,15 +1,60 @@
 <template>
   <div>
-    <div class="accordion accordion-flush">
+    <div class="accordion accordion-flush mobile-accordion">
       <div class="accordion-item">
         <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+            aria-expanded="false" aria-controls="collapseOne" v-if="isMobile">
+            <i class="bi bi-sort-down"></i> Filter
+          </button>
           <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-            aria-expanded="false" aria-controls="collapseOne">
+            aria-expanded="true" aria-controls="collapseOne" v-else>
             <i class="bi bi-sort-down"></i> Filter
           </button>
         </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-          data-bs-parent="#accordionExample">
+        <div v-if="isMobile" id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <div class="c">
+              <div class="sidebar-filters">
+
+                <div class="block-2 my-3">
+                  <h6>Agri Products</h6>
+                  <ul class="home-block Agriculture-block">
+                    <li v-for="product in homeAgriproducts" :key="product">
+                      <RouterLink :to="'/category-agriproducts/' + product.name">{{
+                          product.name
+                      }}</RouterLink>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="block-1 mb-3">
+                  <h6>Handicraft Products</h6>
+                  <ul class="home-block handicraft-block">
+                    <li v-for="handicraft in homeHandicrafts" :key="handicraft">
+                      <RouterLink :to="'/category-handicrafts/' + handicraft.name">{{
+                          handicraft.name
+                      }}</RouterLink>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="block-2 my-3">
+                  <h6>Browse Dzongkhags</h6>
+                  <ul class="home-block Dzongkhag-block">
+                    <li v-for="dzongkhag in dzongkhags" :key="dzongkhag">
+                      <RouterLink :to="{
+                        name: 'Dzongkhags',
+                        params: { location_id: dzongkhag },
+                      }">{{ dzongkhag }}</RouterLink>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div v-else id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
           <div class="accordion-body">
             <div class="c">
               <div class="sidebar-filters">
@@ -115,18 +160,27 @@ const popAttractions = [
   { name: "Royal Manas National Park", slug: "royal-manas-national-park" },
   { name: "Lhamoizingkha Excursion", slug: "lhamoizingkha-excursion" },
 ];
-
-
+import { ref } from 'vue';
 export default {
   name: "HomeSideBar",
+  beforeMount() {    
+    const isMobile = ref(null);
+    if (window.innerWidth < 768) {
+      isMobile.value = true;
+    } else {
+      isMobile.value = false;
+    }
+  },
   data() {
     return {
       homeHandicrafts,
       homeAgriproducts,
       dzongkhags,
       popAttractions,
+      isMobile : this.isMobile,
     };
   },
+  
 };
 </script>
 
@@ -297,11 +351,15 @@ input[type="range"]::-moz-range-thumb {
   .accordion {
     max-width: 100%;
   }
+  .mobile-accordion{
+    margin-bottom: 3rem;
+  }
 }
 
-@media only screen and (max-width: 768px) {
-  .accordion {
-    max-width: 100%;
+@media screen and (max-width: 576px) {
+  .here-heading {
+    display: none;
   }
+  
 }
 </style>

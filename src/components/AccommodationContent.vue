@@ -6,7 +6,7 @@
     </div>
     <div class="row mb-3">
       <div v-for="accommodation in latestAccommodations()" :key="accommodation.id"
-        class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12 mt-3">
+        class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12 card-mobile mt-3">
         <div class="card mt-3">
           <RouterLink :to="'/properties/' + accommodation.id + 'where?name=' + accommodation.slug" class="accommodation-details">
             <div class="card-body">

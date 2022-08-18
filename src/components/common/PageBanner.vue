@@ -202,4 +202,11 @@ export default {
   background: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
   width: 100%;
 }
+
+@media screen and (max-width: 768px) {
+  .banner {
+    display: none;
+  }
+  
+}
 </style>

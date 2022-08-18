@@ -7,33 +7,32 @@
           <img loading="lazy" src="@/assets/img/logo.png" alt="" class="footer-img-logo img-fluid" />
           <p>
             Sustainable Hospitality Industry Inclusive of Native
-            Entrepreneurs<br /><br />
-
-            <strong>Contact</strong>: +975 2 338089<br /><strong>Email</strong>:
-            info@shinebhutan.com<br /><strong>Located:</strong> Above Memorial
-            Chorten<br />
+            Entrepreneurs<br />
+            <strong>Contact</strong>: +975 2 338089<br />
+            <strong>Email</strong>: info@shinebhutan.com<br />
+            <strong>Located:</strong> Above Memorial Chorten<br />
             Chorten Lam, Thimphu 11001 Bhutan
           </p>
         </div>
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3 footer-note">
           <h5 class="mb-4 footer-heading">Services</h5>
           <div class="footer-link">
-            <RouterLink to="/accommodation"><i class="bi bi-chevron-compact-right"></i>How It
+            <RouterLink to="/terms"><i class="bi bi-chevron-compact-right"></i>How It
               Works</RouterLink>
           </div>
           <div class="footer-link">
             <a href="https://shine.grat.at"><i class="bi bi-chevron-compact-right"></i>Go To SHINE Website</a>
           </div>
           <div class="footer-link">
-            <RouterLink to="/accommodation"><i class="bi bi-chevron-compact-right"></i>Terms of
+            <RouterLink to="/terms"><i class="bi bi-chevron-compact-right"></i>Terms of
               Service</RouterLink>
           </div>
           <div class="footer-link">
-            <RouterLink to="/accommodation"><i class="bi bi-chevron-compact-right"></i>Privacy
+            <RouterLink to="/terms"><i class="bi bi-chevron-compact-right"></i>Privacy
               Policy</RouterLink>
           </div>
           <div class="footer-link">
-            <RouterLink to="/accommodation"><i class="bi bi-chevron-compact-right"></i>Help Desk</RouterLink>
+            <RouterLink to="/terms"><i class="bi bi-chevron-compact-right"></i>Help Desk</RouterLink>
           </div>
           <div class="footer-link">
             <a href="@/assets/files/"><i class="bi bi-chevron-compact-right"></i>Site Map</a>
@@ -51,28 +50,28 @@
             <RouterLink to="/"><i class="bi bi-chevron-compact-right"></i>FAQs</RouterLink>
           </div>
           <div class="footer-link">
-            <RouterLink to="/accommodation"><i class="bi bi-chevron-compact-right"></i>Travel
+            <RouterLink to="/terms"><i class="bi bi-chevron-compact-right"></i>Travel
               Insurance</RouterLink>
           </div>
           <div class="footer-link">
-            <RouterLink to="/accommodation"><i class="bi bi-chevron-compact-right"></i>Travel
+            <RouterLink to="/terms"><i class="bi bi-chevron-compact-right"></i>Travel
               Agent</RouterLink>
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-xl-3 mx-auto mt-3 footer-newsletter">
           <h5 class="mb-4 footer-heading">Download our App</h5>
-          <div class="row mb-3">
-            <div class="col-md-9 col-sm-4 col-xs-6">
+          <div class="flex-column">
+            <div class="d-flex store-link">
               <p>For Android Users:</p>
               <a href="https://play.google.com/store/search?q=shine&c=apps">
                 <img src="@/assets/img/app_btn_google.png" alt="" class="store-btn" />
               </a>
             </div>
-            <div class="col-md-9 col-sm-4 col-xs-6">
+            <div class="d-flex store-link">
               <p>For iOS Users:</p>
-              <a href="https://www.apple.com/us/search/shine?src=globalnav">
-                <img src="@/assets/img/app_btn_apple.png" alt="" class="store-btn" />
-              </a>
+            <a href="https://www.apple.com/us/search/shine?src=globalnav">
+              <img src="@/assets/img/app_btn_apple.png" alt="" class="store-btn" />
+            </a>
             </div>
           </div>
         </div>
@@ -115,8 +114,14 @@ export default {
 </script>
 
 <style scoped>
+.store-link{
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.5rem auto;
+}
 .store-btn {
-  width: 100%;
+  /* width: 60%; */
+  max-width: 200px;
 }
 
 input.mail-in {
@@ -165,6 +170,7 @@ input.subscribe-btn:hover {
 .footer-link a {
   color: #2c3e50;
   text-decoration: none;
+  line-height: 2.5rem;
 }
 
 .footer-link a i {

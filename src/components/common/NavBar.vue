@@ -69,10 +69,10 @@
                   <div class="dropdown logged-user-menu mx-5">
                     <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton"
                       data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="bi dropdown-icon bi-person"></i> Welcome User
+                      <i class="bi dropdown-icon bi-person"></i>Hi, Welcome {{user}}
                     </button>
                     <ul class="dropdown-menu px-0 mx-0" aria-labelledby="dropdownMenuButton">
-                      <li class="px-1 mx-0">
+                      <!-- <li class="px-1 mx-0">
                         <RouterLink to="#" class="dropdown-item text-dark">
                           <i class="bi bi-speedometer2"></i>Tourism Vendor
                         </RouterLink>
@@ -81,31 +81,31 @@
                         <RouterLink to="#" class="dropdown-item text-dark">
                           <i class="bi bi-basket2"></i>Ecommerce Vendor
                         </RouterLink>
-                      </li>
+                      </li> -->
                       <li class="px-1 mx-0">
-                        <RouterLink to="#" class="dropdown-item text-dark">
+                        <RouterLink to="/profile" class="dropdown-item text-dark">
                           <i class="bi bi-person-square"></i>My Profile
                         </RouterLink>
                       </li>
                       <li class="px-1 mx-0">
-                        <RouterLink to="#" class="dropdown-item text-dark">
-                          <i class="bi bi-shield-lock"></i>Change Password
-                        </RouterLink>
+                        <a :href="'https://booking.shinebhutan.com/login'" class="dropdown-item text-dark">
+                          <i class="bi bi-shield-lock"></i>Login to Tourism Dashboard
+                        </a>
                       </li>
                       <li class="px-1 mx-0">
-                        <RouterLink to="#" class="dropdown-item text-dark">
-                          <i class="bi bi-toggles"></i>Admin Dashboard
-                        </RouterLink>
+                        <a :href="'https://shop.shinebhutan.com/users/login'" class="dropdown-item text-dark">
+                          <i class="bi bi-toggles"></i>Login to Shop Dashboard
+                        </a>
+                      </li>                      
+                      <li class="px-1 mx-0">
+                        <a :href="'https://booking.shinebhutan.com/register'" class="dropdown-item text-dark">
+                          <i class="bi bi-clock-history"></i>Register your Tourism Business
+                        </a>
                       </li>
                       <li class="px-1 mx-0">
-                        <RouterLink to="#" class="dropdown-item text-dark">
-                          <i class="bi bi-clock-history"></i>Booking Hostory
-                        </RouterLink>
-                      </li>
-                      <li class="px-1 mx-0">
-                        <RouterLink to="#" class="dropdown-item text-dark">
-                          <i class="bi bi-cart-check"></i>Order Hostory
-                        </RouterLink>
+                        <a :href="'https://shop.shinebhutan.com/' + 'shops/create'" class="dropdown-item text-dark">
+                          <i class="bi bi-cart-check"></i>Register your Shop
+                        </a>
                       </li>
                       <li>
                         <hr class="dropdown-divider" />
@@ -167,8 +167,9 @@ onMounted(() => {
   });
 });
 
-const handleSignOut = () => {
-  signOut(auth).then(() => {
+const handleSignOut = async () => {
+   await signOut(auth).then( () => {
+     alert('Signed out successfully');
     router.push("/");
   });
 }

@@ -1,10 +1,11 @@
 <template>
-  <form class="auth-form" @submit.prevent>
+  <div class="login-bg py-5">
+    <form class="auth-form" @submit.prevent>
     <div class="mb-3">
-      <h3 class="auth-header mt-3 mb-3">Login to Shine!</h3>
+      <h3 class="auth-header mt-3 mb-3">Login</h3>
 
-    <h6 class="my-3 py-3 text-center text-danger ger-500" v-if="errMsg">{{errMsg}}</h6>
-    <h6 class="my-3 py-3 text-center text-success suc-ger-500" v-if="successMsg">{{successMsg}}</h6>
+      <h6 class="my-3 py-3 text-center text-danger ger-500" v-if="errMsg">{{ errMsg }}</h6>
+      <h6 class="my-3 py-3 text-center text-success suc-ger-500" v-if="successMsg">{{ successMsg }}</h6>
 
       <label for="exampleInputEmail1" class="form-label">Email address</label>
       <input type="email" class="form-control input-control" id="exampleInputEmail1" aria-describedby="emailHelp"
@@ -45,6 +46,7 @@
     </div>
 
   </form>
+  </div>
 </template>
 
 <script setup>
@@ -62,34 +64,34 @@ const router = useRouter();
 const signIn = async () => {
   signInWithEmailAndPassword(getAuth(), email.value, password.value)
     .then((data) => {
-      alert('Success. Welcome, '+ data.user.email);
+      alert('Success. Welcome, ' + data.user.email);
       successMsg.value = 'Successfully Signed In!';
-      router.push('/');
+      router.push('/profile');
     })
-  .catch((error) => {
-    switch (error.code) {
-      case 'auth/user-not-found':
-        errMsg.value = 'User does not exist';
-        break;
-      case 'auth/wrong-password':
-        errMsg.value = 'Password is incorrect';
-        break;
-      case 'auth/inavlid-email':
-        errMsg.value = 'Email is not registered';
-        break;
-      default:
-        errMsg.value = error.message;
-        break;
-    }
-  });
+    .catch((error) => {
+      switch (error.code) {
+        case 'auth/user-not-found':
+          errMsg.value = 'User does not exist';
+          break;
+        case 'auth/wrong-password':
+          errMsg.value = 'Password is incorrect';
+          break;
+        case 'auth/inavlid-email':
+          errMsg.value = 'Email is not registered';
+          break;
+        default:
+          errMsg.value = error.message;
+          break;
+      }
+    });
 };
 
 const googleSignIn = async () => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(getAuth(), provider)
     .then((result) => {
-      alert('Hello:'+ result.user);
-      router.push('/');
+      alert('Hello:' + result.user);
+      router.push('/profile');
     })
     .catch((error) => {
       alert(error.message);
@@ -99,26 +101,36 @@ const googleSignIn = async () => {
 </script>
 
 <style scoped>
-.ger-500{
-  background: rgba(255, 0, 0,0.18);
+.ger-500 {
+  background: rgba(255, 0, 0, 0.18);
   border-radius: 5px;
 }
-.suc-ger-500{
-  background: rgba(0, 128, 0,0.18);
+
+.suc-ger-500 {
+  background: rgba(0, 128, 0, 0.18);
   border-radius: 5px;
 }
-.flexi-btn{
+
+.flexi-btn {
   display: flex;
   justify-content: space-between;
 }
+.login-bg{
+  background: url(https://images.unsplash.com/photo-1596516112161-e98045590f64?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80) no-repeat center center fixed;
+  /* background:linear-gradient(to bottom right,rgba(247, 148, 30,0.2) 0%,rgba(51, 51, 105,0.2) 100%); */
+  background-size: cover;
+  opacity: 0.9;
+  height: 100vh;
+  /* position: relative; */
+}
+
 .auth-form {
-  width: 450px;
-  max-width: 450px;
-  margin: 2rem auto;
+  width: 35vw;
+  margin: auto;
   padding: 2rem;
   text-align: left;
   border-radius: 10px;
-  background: #fff;
+  background: rgba(255, 255, 255,0.9);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -159,6 +171,7 @@ const googleSignIn = async () => {
   border-radius: 10rem;
   width: 45%;
 }
+
 .ggle-btn {
   background: #4c8bf5;
   color: #fff;
@@ -171,9 +184,16 @@ const googleSignIn = async () => {
   color: #f7941e;
   border: 1px solid #f7941e;
 }
+
 .ggle-btn:hover {
   background: #c2d8fe;
   color: #0f48aa;
   border: 1px solid #0f48aa;
+}
+
+@media screen and (max-width: 768px) {
+  .auth-form {
+    width: 95vw;
+  }  
 }
 </style>

@@ -29,5 +29,4 @@ export default {
     height: 5px;
     width: 5px;
 }
-
 </style>

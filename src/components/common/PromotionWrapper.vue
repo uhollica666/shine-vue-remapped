@@ -1,5 +1,5 @@
 <template>
-    <div class="mb-3">
+    <div class="mb-3 pro-area">
         <h4 class="text-center p-3">Promotion</h4>
         <p class="text-center">Explore our top Events, Best selling products and more</p>
         <div class="tabs">
@@ -63,5 +63,11 @@ export default {
 .tab__headers li.selected {
     background: #f7941e;
     color: #f7e8e8;
+}
+
+@media screen and (max-width: 768px) {
+    .pro-area{
+        display: none;
+    }
 }
 </style>

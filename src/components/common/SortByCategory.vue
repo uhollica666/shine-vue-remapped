@@ -6,7 +6,7 @@
       </h4>
       <p class="mt-3">{{ subTitleCategory }}</p>
       <div class="row">
-        <div v-for="category in categoryAccommodations" :key="category.id" class="col-md-3 col-lg-3 col-xl-3 mt-2">
+        <div v-for="category in categoryAccommodations" :key="category.id" class="col-md-3 col-lg-3 col-xl-3 cat-cards mt-2">
           <div class="card mt-2">
             <RouterLink :to="'/cat-filter/' + category.slug" class="category-details text-center">
               <div class="card-body">
@@ -28,7 +28,7 @@
       </h4>
       <p class="mt-3">{{ subTitleCategory }}</p>
       <div class="row">
-        <div v-for="category in categoryTours" :key="category.id" class="col-md-3 col-lg-3 col-xl-3 mt-2">
+        <div v-for="category in categoryTours" :key="category.id" class="col-md-3 col-lg-3 col-xl-3 cat-cards mt-2">
           <div class="card mt-2">
             <RouterLink :to="'/cat-filter/' + category.slug" class="category-details text-center">
               <div class="card-body">
@@ -123,5 +123,11 @@ export default {
 
 .category-details:hover {
   color: #f7941e;
+}
+@media screen and (max-width: 768px) {
+  .cat-cards {
+    width: 50%;
+  }
+  
 }
 </style>

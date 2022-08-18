@@ -2,11 +2,11 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-6">
-        <h5 class="py-3 home-heading">Browse Agri Products</h5>
+        <h5 class="mt-3 home-heading">Browse Agri Products</h5>
         <div class="container my-card">
           <div class="product-images row">
             <template v-for="product in computedProducts">
-              <div class="cardo col-md-6 col-sm-5 col-xs-5 mt-2" v-if="product.parent_name === 'Agri Products'" :key="product.id">
+              <div class="cardo col-md-6 mt-2 home-img" v-if="product.parent_name === 'Agri Products'" :key="product.id">
                 <a :href="ecomURL + 'product/' + product.slug">
                   <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt=""
                     class="card-img2 img-fluid" />
@@ -25,11 +25,11 @@
       </div>
 
       <div class="col-md-6 mb-3">
-        <h5 class="py-3 home-heading">Browse Handicraft Products</h5>
+        <h5 class="mt-3 home-heading">Browse Handicraft Products</h5>
         <div class="container my-card">
           <div class="product-images row">
             <template v-for="product in computedHandicrafts">
-              <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Handicrats'" :key="product.id">
+              <div class="cardo col-md-6 mt-2 home-img" v-if="product.parent_name === 'Handicrats'" :key="product.id">
                 <a :href="ecomURL + 'product/' + product.slug">
                   <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt=""
                     class="card-img2 img-fluid" />
@@ -136,7 +136,7 @@
         <div class="container my-card ">
           <div class="product-images row">
             <template v-for="product in computedProductsTwo">
-              <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Agri Products'" :key="product.id">
+              <div class="cardo col-md-6 mt-2 home-img" v-if="product.parent_name === 'Agri Products'" :key="product.id">
                 <a :href="ecomURL + 'product/' + product.slug">
                   <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt=""
                     class="card-img2 img-fluid" />
@@ -159,7 +159,7 @@
         <div class="container my-card ">
           <div class="product-images row">
             <template v-for="product in computedHandicraftsTwo">
-              <div class="cardo col-md-6 mt-2" v-if="product.parent_name === 'Handicrats'" :key="product.id">
+              <div class="cardo col-md-6 mt-2 home-img" v-if="product.parent_name === 'Handicrats'" :key="product.id">
                 <a :href="ecomURL + 'product/' + product.slug">
                   <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt=""
                     class="card-img2 img-fluid" />
@@ -394,5 +394,17 @@ export default {
 .btn-home:hover {
   background: #f9741e;
   color: #333369;
+}
+
+@media screen and (max-width: 768px) {
+  .home-img {
+    max-width: 50%;
+  }
+  .home-objects{
+    max-width: 45% !important;
+  }
+  .home-linear-heading{
+    max-width: 100%;
+  }
 }
 </style>

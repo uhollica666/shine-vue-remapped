@@ -1,60 +1,65 @@
 <template>
-  <form class="auth-form-register" @submit.prevent>
-    <div class="mb-3">
-      <h3 class="auth-header mt-3 mb-4">Register with Shine</h3>
+  <div class="login-bg py-5">
+    <form class="auth-form-register" @submit.prevent>
+      <div class="mb-3">
+        <h3 class="auth-header mt-3 mb-4">Register</h3>
 
-      <div class="row mb-3">
-        <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12">
-          <label class="form-label" for="firstName">First Name</label>
-          <input type="text" id="firstName" class="form-control input-control" placeholder="first name" required
-            v-model="firstName" />
+        <div class="row mb-3">
+          <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12">
+            <label class="form-label" for="firstName">First Name</label>
+            <input type="text" id="firstName" class="form-control input-control" placeholder="first name" required
+              v-model="firstName" />
+          </div>
+          <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12">
+            <label class="form-label" for="lastName">Last Name</label>
+            <input type="text" id="lastName" class="form-control input-control" placeholder="last name" required
+              v-model="lastName" />
+          </div>
         </div>
-        <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12">
-          <label class="form-label" for="lastName">Last Name</label>
-          <input type="text" id="lastName" class="form-control input-control" placeholder="last name" required
-            v-model="lastName" />
+
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input v-model="email" type="email" class="form-control input-control" id="exampleInputEmail1"
+          aria-describedby="emailHelp" required placeholder="email@example.com" />
+      </div>
+      <div class="mb-3">
+        <label for="InputPassword" class="form-label">Password</label>
+        <input v-model="password" type="password" class="form-control input-control" id="InputPassword"
+          placeholder="********" required />
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+        <label class="form-check-label no-account-register" for="exampleCheck1" required>By Signing Up, I agree to
+          <RouterLink to="/terms">Terms & Conditions</RouterLink> of Shine.
+        </label>
+      </div>
+
+      <div class="flex-md-column flex-sm-row flex-xs-row flexi-btn">
+        <button class="btn submit-btn" @click="signIn"><i class="bi bi-lock"></i>Register</button>
+        <button class="btn ggle-btn" @click="googleSignIn"><i class="bi bi-google"></i>Continue With Google</button>
+      </div>
+
+      <div class="no-account-register my-3">
+        Already have an account? Login <RouterLink to="/login">Here</RouterLink>.
+      </div>
+
+      <hr class="my-4" />
+
+      <div class="mt-3 reg mx-auto auth-header-two">
+        <h5 class="mb-3">Own a Handicraft or a Tourism Business? Sell With Us</h5>
+        <div class="flex-md-column flex-sm-row flex-xs-row text-start">
+          <p class="no-account-register">
+            Click <a :href="'https://booking.shinebhutan.com/register'">Here</a> to register for your Tourism.
+          </p>
+          <p class="no-account-register">
+            And click <a :href="'https://shop.shinebhutan.com/' + 'shops/create'">Here</a> to register for your
+            Handicraft
+            store.
+          </p>
         </div>
       </div>
 
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input v-model="email" type="email" class="form-control input-control" id="exampleInputEmail1"
-        aria-describedby="emailHelp" required placeholder="email@example.com" />
-    </div>
-    <div class="mb-3">
-      <label for="InputPassword" class="form-label">Password</label>
-      <input v-model="password" type="password" class="form-control input-control" id="InputPassword"
-        placeholder="********" required />
-    </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-      <label class="form-check-label no-account-register" for="exampleCheck1" required>By Signing Up, I agree to
-        <RouterLink to="/terms">Terms & Conditions</RouterLink> of Shine.
-      </label>
-    </div>
-    <div class="d-flex flexi-btn">
-      <button class="btn submit-btn" @click="signIn"><i class="bi bi-lock"></i>Register</button>
-      <button class="btn ggle-btn" @click="googleSignIn"><i class="bi bi-google"></i>Continue With Google</button>
-    </div>
-    <div class="no-account-register my-3">
-      Already have an account? Login <RouterLink to="/login">Here</RouterLink>.
-    </div>
-
-    <hr class="my-4" />
-
-    <div class="mt-3 reg mx-auto auth-header-two">
-      <h5 class="mb-3">Own a Handicraft or a Tourism Business? Sell With Us</h5>
-      <div class="flex-column text-start">
-        <p class="no-account-register">
-          Click <a :href="'https://booking.shinebhutan.com/register'">Here</a> to register for your Tourism.
-        </p>
-        <p class="no-account-register">
-          And click <a :href="'https://shop.shinebhutan.com/' + 'shops/create'">Here</a> to register for your Handicraft
-          store.
-        </p>
-      </div>
-    </div>
-
-  </form>
+    </form>
+  </div>
 </template>
 
 <script setup>
@@ -76,21 +81,21 @@ const signIn = () => {
       alert('Successfully Registered with:' + data.user.email);
 
       console.log(auth.currentUser)
-      
+
       router.push('/login');
     })
     .catch((error) => {
       console.log(error.code);
-    alert(error.message);
-  });
+      alert(error.message);
+    });
 };
 
 const googleSignIn = async () => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(getAuth(), provider)
     .then((result) => {
-      alert('Hello:'+ result.user);
-      router.push('/');
+      alert('Hello:' + result.user);
+      router.push('/profile');
     })
     .catch((error) => {
       alert(error.message);
@@ -100,19 +105,27 @@ const googleSignIn = async () => {
 </script>
 
 <style scoped>
-.flexi-btn{
+.flexi-btn {
   display: flex;
   justify-content: space-between;
 }
 
+.login-bg {
+  background: url(https://images.unsplash.com/photo-1637552588842-6eb9ddef76e9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) no-repeat center center fixed;
+  /* background:linear-gradient(to bottom right,rgba(247, 148, 30,0.2) 0%,rgba(51, 51, 105,0.2) 100%); */
+  background-size: cover;
+  opacity: 0.9;
+  min-height: 100vh;
+  /* position: relative; */
+}
+
 .auth-form-register {
-  width: 550px;
-  max-width: 550px;
-  margin: 2rem auto;
+  width: 35vw;
+  margin: auto;
   padding: 2.5rem;
   text-align: left;
   border-radius: 10px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -151,8 +164,9 @@ const googleSignIn = async () => {
   background: #f7941e;
   color: #fff;
   border-radius: 10rem;
-  width: 50%;
+  width: 45%;
 }
+
 .ggle-btn {
   background: #4c8bf5;
   color: #fff;
@@ -165,9 +179,18 @@ const googleSignIn = async () => {
   color: #f7941e;
   border: 1px solid #f7941e;
 }
+
 .ggle-btn:hover {
   background: #c2d8fe;
   color: #0f48aa;
   border: 1px solid #0f48aa;
 }
+
+@media screen and (max-width: 768px) {
+  .auth-form-register {
+    width: 95vw;
+  }
+  
+}
+
 </style>
