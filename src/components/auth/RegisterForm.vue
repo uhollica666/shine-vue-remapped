@@ -32,8 +32,7 @@
           <RouterLink to="/terms">Terms & Conditions</RouterLink> of Shine.
         </label>
       </div>
-
-      <div class="flex-md-column flex-sm-row flex-xs-row flexi-btn">
+      <div class="d-flex flex-row flexi-btn">
         <button class="btn submit-btn" @click="signIn"><i class="bi bi-lock"></i>Register</button>
         <button class="btn ggle-btn" @click="googleSignIn"><i class="bi bi-google"></i>Continue With Google</button>
       </div>
