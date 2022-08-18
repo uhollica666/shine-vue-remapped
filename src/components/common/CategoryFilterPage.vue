@@ -5,12 +5,7 @@
         <div class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 my-3" v-if="accommodation" :key="accommodation.id">
           <div class="card mt-2">
             <div class="card">
-              <RouterLink :to="
-                '/hotel/' +
-                accommodation.id +
-                'where?name=' +
-                accommodation.slug
-              " class="accommodation-details">
+              <a :href=" bookingURL + '/hotel/' + accommodation.slug" class="accommodation-details">
                 <div class="card-body">
                   <img loading="lazy" :src="siteURL + accommodation.file_path" alt=""
                     class="card-img-hotel img-fluid" />
@@ -49,7 +44,7 @@
                     </div>
                   </div>
                 </div>
-              </RouterLink>
+              </a>
             </div>
           </div>
         </div>
@@ -63,12 +58,13 @@
     $route.params.slug === 'eco-lodge'
   ">
     <div class="row my-4 ">
-      <div class="hahahaha text-capitalize+">These are all the Available Accommodations under <span class="text-danger">{{$route.params.slug}}</span> </div>
+      <div class="hahahaha text-capitalize+">These are all the Available Accommodations under <span
+          class="text-danger">{{ $route.params.slug }}</span> </div>
       <template v-for="space in spaceFiltered">
         <div class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 my-3" v-if="space" :key="space.id">
           <div class="card mt-2">
             <div class="card">
-              <RouterLink :to="'/properties/' + space.id + 'where?name=' + space.slug" class="accommodation-details">
+              <a :href="bookingURL + '/space/' + space.slug" class="accommodation-details">
                 <div class="card-body">
                   <img loading="lazy" :src="siteURL + space.file_path" alt="" class="card-img-hotel img-fluid" />
                   <div class="card-details text-capitalize">
@@ -113,7 +109,7 @@
                     </div>
                   </div>
                 </div>
-              </RouterLink>
+              </a>
             </div>
           </div>
         </div>
@@ -127,12 +123,7 @@
         <div class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 my-3" v-if="tour" :key="tour.id">
           <div class="card mt-2">
             <div class="card">
-              <RouterLink :to="
-                '/tour/' +
-                tour.id +
-                'where?name=' +
-                tour.slug
-              " class="accommodation-details">
+              <a :href=" bookingURL + '/tour/' + tour.slug" class="accommodation-details">
                 <div class="card-body">
                   <img loading="lazy" :src="siteURL + tour.file_path" alt="" class="card-img-hotel img-fluid" />
                   <div class="card-details">
@@ -162,12 +153,12 @@
                       {{ tour.price }} /Trip
                     </h6>
                     <div class="text-turncate mb-3" v-if="tour.date_form_to">
-                        <i class="bi bi-clock-history"></i>Duration: {{tour.date_form_to}}
+                      <i class="bi bi-clock-history"></i>Duration: {{ tour.date_form_to }}
                     </div>
                     <div class="text-turncate mb-3" v-else>
-                        <i class="bi bi-clock-history"></i>Duration: <span class="text-danger">Not Available</span>
+                      <i class="bi bi-clock-history"></i>Duration: <span class="text-danger">Not Available</span>
                     </div>
-                    <div class="details">                      
+                    <div class="details">
                       <div class="location text-truncate">
                         <i class="bi bi-geo-alt"></i>{{ tour.name }}
                       </div>
@@ -182,7 +173,7 @@
                     </div>
                   </div>
                 </div>
-              </RouterLink>
+              </a>
             </div>
           </div>
         </div>
@@ -226,11 +217,14 @@ export default {
       tourFiltered.value = await tourCategory.json();
     }
 
+    const bookingURL = "https://booking.shinebhutan.com";
+
     return {
       hotelFitered,
       spaceFiltered,
       tourFiltered,
       siteURL,
+      bookingURL,
     };
   },
 };
@@ -241,11 +235,13 @@ export default {
 .hahahaha * {
   font-size: 1.8rem !important;
 }
-img{
+
+img {
   width: 100%;
   aspect-ratio: 16/12 !important;
   object-fit: cover;
 }
+
 .spacer {
   opacity: 0;
 }

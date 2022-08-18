@@ -9,8 +9,8 @@
         class="col-md-2 col-lg-2 col-xl-2 col-sm-4 col-xs-6 cat-cards mt-2">
         <div class="card mt-2">
           <div class="card-body">
+            <a :href="siteURL + '/tour?location_id=' + dzongkhag.id" class="category-details text-center">
             <img loading="lazy" :src="apiURL + dzongkhag.file_path" alt="" class="card-img-dzo" />
-            <a :href="siteURL + '/tour/' + dzongkhag.slug" class="category-details text-center">
               <div class="card-details">
                 <h6 class="card-title text-truncate">
                   {{ dzongkhag.name }}
