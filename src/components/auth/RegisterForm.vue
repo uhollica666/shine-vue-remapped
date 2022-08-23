@@ -1,22 +1,17 @@
 <template>
   <div class="login-bg py-5">
-    <form class="auth-form-register" @submit.prevent>
+    <form class="auth-form-register" @submit.prevent="handleSubmit">
       <div class="mb-3">
         <h3 class="auth-header mt-3 mb-4">Register</h3>
+      </div>
 
-        <div class="row mb-3">
-          <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12">
-            <label class="form-label" for="firstName">First Name</label>
-            <input type="text" id="firstName" class="form-control input-control" placeholder="first name" required
-              v-model="firstName" />
-          </div>
-          <div class="col-md-6 col-lg-6 col-xl-6 col-sm-12">
-            <label class="form-label" for="lastName">Last Name</label>
-            <input type="text" id="lastName" class="form-control input-control" placeholder="last name" required
-              v-model="lastName" />
-          </div>
-        </div>
+      <div class="mb-3">
+        <label class="form-label" for="firstName">Full Name</label>
+        <input type="text" id="firstName" class="form-control input-control" placeholder="Full Name" required
+          v-model="name" />
+      </div>
 
+      <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
         <input v-model="email" type="email" class="form-control input-control" id="exampleInputEmail1"
           aria-describedby="emailHelp" required placeholder="email@example.com" />
@@ -26,6 +21,11 @@
         <input v-model="password" type="password" class="form-control input-control" id="InputPassword"
           placeholder="********" required />
       </div>
+      <div class="mb-3">
+        <label for="InputPassword" class="form-label">Confirm Password</label>
+        <input v-model="password_confirmation" type="password" class="form-control input-control" id="InputPassword"
+          placeholder="********" required />
+      </div>
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1" />
         <label class="form-check-label no-account-register" for="exampleCheck1" required>By Signing Up, I agree to
@@ -33,74 +33,70 @@
         </label>
       </div>
       <div class="d-flex flex-row flexi-btn">
-        <button class="btn submit-btn" @click="signIn"><i class="bi bi-lock"></i>Register</button>
-        <button class="btn ggle-btn" @click="googleSignIn"><i class="bi bi-google"></i>Continue With Google</button>
+        <button class="btn submit-btn">
+          <i class="bi bi-lock"></i>Register
+        </button>
+        <!-- <button class="btn ggle-btn">
+          <i class="bi bi-google"></i>Continue With Google
+        </button> -->
       </div>
 
       <div class="no-account-register my-3">
-        Already have an account? Login <RouterLink to="/login">Here</RouterLink>.
+        Already have an account? Login
+        <RouterLink to="/login">Here</RouterLink>.
       </div>
 
       <hr class="my-4" />
 
       <div class="mt-3 reg mx-auto auth-header-two">
-        <h5 class="mb-3">Own a Handicraft or a Tourism Business? Sell With Us</h5>
+        <h5 class="mb-3">
+          Own a Handicraft or a Tourism Business? Sell With Us
+        </h5>
         <div class="flex-md-column flex-sm-row flex-xs-row text-start">
           <p class="no-account-register">
-            Click <a :href="'https://booking.shinebhutan.com/register'">Here</a> to register for your Tourism.
+            Click
+            <a :href="'https://booking.shinebhutan.com/register'">Here</a> to
+            register for your Tourism.
           </p>
           <p class="no-account-register">
-            And click <a :href="'https://shop.shinebhutan.com/' + 'shops/create'">Here</a> to register for your
-            Handicraft
-            store.
+            And click
+            <a :href="'https://shop.shinebhutan.com/' + 'shops/create'">Here</a>
+            to register for your Handicraft store.
           </p>
         </div>
       </div>
-
     </form>
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { useRouter } from 'vue-router';
-const firstName = ref('');
-const lastName = ref('');
-const email = ref('');
-const password = ref('');
-const router = useRouter();
-// const authURL = 'https://users.shinebhutan.com/api';
-
-const signIn = () => {
-
-  const auth = getAuth()
-  createUserWithEmailAndPassword(auth, email.value, password.value)
-    .then((data) => {
-      alert('Successfully Registered with:' + data.user.email);
-
-      console.log(auth.currentUser)
-
-      router.push('/login');
-    })
-    .catch((error) => {
-      console.log(error.code);
-      alert(error.message);
-    });
+<script>
+// import { axios } from "axios";
+export default {
+  data() {
+    return {
+      name: "",
+      email: "",
+      password: "",
+      password_confirmation: "",
+    };
+  },
+  methods: {
+    async handleSubmit() {
+      const response = await fetch(
+        "https://shop.shinebhutan.com/api/v1/apiregister",
+        {
+          method: 'POST',
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          password_confirmation: this.password_confirmation,
+        }
+      );
+      console.log(response);
+      this.$router.push("/login");
+    },
+  },
 };
-
-const googleSignIn = async () => {
-  const provider = new GoogleAuthProvider();
-  signInWithPopup(getAuth(), provider)
-    .then((result) => {
-      alert('Hello:' + result.user);
-      router.push('/profile');
-    })
-    .catch((error) => {
-      alert(error.message);
-    });
-};
-
 </script>
 
 <style scoped>
@@ -189,7 +185,5 @@ const googleSignIn = async () => {
   .auth-form-register {
     width: 95vw;
   }
-  
 }
-
 </style>

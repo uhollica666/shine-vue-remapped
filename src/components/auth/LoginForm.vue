@@ -1,103 +1,93 @@
 <template>
   <div class="login-bg py-5">
-    <form class="auth-form" @submit.prevent>
-    <div class="mb-3">
-      <h3 class="auth-header mt-3 mb-3">Login</h3>
+    <form class="auth-form" @submit.prevent="handleLogin">
+      <div class="mb-3">
+        <h3 class="auth-header mt-3 mb-3">Login</h3>
 
-      <h6 class="my-3 py-3 text-center text-danger ger-500" v-if="errMsg">{{ errMsg }}</h6>
-      <h6 class="my-3 py-3 text-center text-success suc-ger-500" v-if="successMsg">{{ successMsg }}</h6>
+        <h6 class="my-3 py-3 text-center text-danger ger-500" v-if="errMsg">
+          {{ errMsg }}
+        </h6>
+        <h6 class="my-3 py-3 text-center text-success suc-ger-500" v-if="successMsg">
+          {{ successMsg }}
+        </h6>
 
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input type="email" class="form-control input-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-        placeholder="email@example.com" v-model="email" required />
-    </div>
-    <div class="mb-3">
-      <label for="InputPassword" class="form-label">Password</label>
-      <input type="password" class="form-control input-control" id="InputPassword" placeholder="********"
-        v-model="password" required />
-    </div>
-    <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-      <label class="form-check-label" for="exampleCheck1">Remember Me</label>
-    </div>
-
-    <div class="d-flex flexi-btn">
-      <button class="btn submit-btn" @click="signIn"><i class="bi bi-lock"></i>Sign In</button>
-      <button class="btn ggle-btn" @click="googleSignIn"><i class="bi bi-google"></i>Sign In With Google</button>
-    </div>
-    <div class="no-account-register mt-3 mb-3">
-      Don't have an account? Register
-      <RouterLink to="/register">Here</RouterLink>. <br />Forgot
-      <RouterLink to="/forgotPassword">Password?</RouterLink>
-    </div>
-
-    <hr class="my-4" />
-
-    <div class="mt-3 reg mx-auto auth-header-two">
-      <h5 class="mb-3">Login to your Business Dassboard</h5>
-      <div class="flex-column text-start">
-        <p class="no-account-register">
-          Login <a :href="'https://booking.shinebhutan.com/login'">Here</a> for your Tourism.
-        </p>
-        <p class="no-account-register">
-          Or login <a :href="'https://shop.shinebhutan.com/users/login'">Here</a> for your Handicraft store.
-        </p>
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control input-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          placeholder="email@example.com" v-model="email" required />
       </div>
-    </div>
+      <div class="mb-3">
+        <label for="InputPassword" class="form-label">Password</label>
+        <input type="password" class="form-control input-control" id="InputPassword" placeholder="********"
+          v-model="password" required />
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+        <label class="form-check-label" for="exampleCheck1">Remember Me</label>
+      </div>
 
-  </form>
+      <div class="d-flex flexi-btn">
+        <button class="btn submit-btn">
+          <i class="bi bi-lock"></i>Sign In
+        </button>
+        <!-- <button class="btn ggle-btn">
+          <i class="bi bi-google"></i>Sign In With Google
+        </button> -->
+      </div>
+      <div class="no-account-register mt-3 mb-3">
+        Don't have an account? Register
+        <RouterLink to="/register">Here</RouterLink>. <br />Forgot
+        <RouterLink to="/forgotPassword">Password?</RouterLink>
+      </div>
+
+      <hr class="my-4" />
+
+      <div class="mt-3 reg mx-auto auth-header-two">
+        <h5 class="mb-3">Login to your Business Dassboard</h5>
+        <div class="flex-column text-start">
+          <p class="no-account-register">
+            Login
+            <a :href="'https://booking.shinebhutan.com/login'">Here</a> for your
+            Tourism.
+          </p>
+          <p class="no-account-register">
+            Or login
+            <a :href="'https://shop.shinebhutan.com/users/login'">Here</a> for
+            your Handicraft store.
+          </p>
+        </div>
+      </div>
+    </form>
   </div>
 </template>
 
-<script setup>
-import { ref } from 'vue';
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+<script>
+export default {
+  name: "LoginForm",
 
-import { useRouter } from 'vue-router';
-const email = ref('');
-const password = ref('');
-const errMsg = ref(); //Error Message
-const successMsg = ref(); //Success Message
-const router = useRouter();
-// const authURL = 'https://users.shinebhutan.com/api';
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
 
-const signIn = async () => {
-  signInWithEmailAndPassword(getAuth(), email.value, password.value)
-    .then((data) => {
-      alert('Success. Welcome, ' + data.user.email);
-      successMsg.value = 'Successfully Signed In!';
-      router.push('/profile');
-    })
-    .catch((error) => {
-      switch (error.code) {
-        case 'auth/user-not-found':
-          errMsg.value = 'User does not exist';
-          break;
-        case 'auth/wrong-password':
-          errMsg.value = 'Password is incorrect';
-          break;
-        case 'auth/inavlid-email':
-          errMsg.value = 'Email is not registered';
-          break;
-        default:
-          errMsg.value = error.message;
-          break;
-      }
-    });
+  methods: {
+    async handleLogin() {
+      const response = await fetch(
+        `https://shop.shinebhutan.com/api/v1/apilogin`,
+        {
+          method: "POST",
+          body: {
+            email: this.email,
+            password: this.password,
+          },
+        }
+      );
+      console.warn(response);
+      this.$router.push("/profile");
+    },
+  },
 };
-
-const googleSignIn = async () => {
-  const provider = new GoogleAuthProvider();
-  signInWithPopup(getAuth(), provider)
-    .then((result) => {
-      alert('Hello:' + result.user);
-      router.push('/profile');
-    })
-    .catch((error) => {
-      alert(error.message);
-    });
-};
-
 </script>
 
 <style scoped>
@@ -115,7 +105,8 @@ const googleSignIn = async () => {
   display: flex;
   justify-content: space-between;
 }
-.login-bg{
+
+.login-bg {
   background: url(https://images.unsplash.com/photo-1596516112161-e98045590f64?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80) no-repeat center center fixed;
   /* background:linear-gradient(to bottom right,rgba(247, 148, 30,0.2) 0%,rgba(51, 51, 105,0.2) 100%); */
   background-size: cover;
@@ -130,7 +121,7 @@ const googleSignIn = async () => {
   padding: 2rem;
   text-align: left;
   border-radius: 10px;
-  background: rgba(255, 255, 255,0.9);
+  background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -194,6 +185,6 @@ const googleSignIn = async () => {
 @media screen and (max-width: 768px) {
   .auth-form {
     width: 95vw;
-  }  
+  }
 }
 </style>

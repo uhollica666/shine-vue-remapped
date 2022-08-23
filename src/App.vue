@@ -23,8 +23,6 @@ export default {
 };
 </script>
 
-
-
 <style>
 .carousel {
   position: relative;
