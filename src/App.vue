@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavBar />
+    <NavBar/>
     <router-view />
     <SiteFooter />
   </div>
@@ -9,16 +9,20 @@
 <script>
 import NavBar from "@/components/common/NavBar";
 import SiteFooter from "@/components/common/Footer";
+const apiURL = "https://shop.shinebhutan.com/api/v1/";
 export default {
   name: "App",
   components: {
     NavBar,
     SiteFooter,
   },
-  data() {
-    return {
-      user: null,
-    };
+  async created() {
+    const response = await fetch(apiURL + "apiuser", {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    });
+    this.$store.dispatch('user', response.data);
   },
 };
 </script>

@@ -65,23 +65,13 @@
                     <RouterLink to="/register"><i class="bi bi-lock"></i>Register</RouterLink>
                   </li>
                 </div> -->
-                <div v-if="isLoggedIn">
+                <div v-if="user">
                   <div class="dropdown logged-user-menu mx-5">
                     <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton"
                       data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="bi dropdown-icon bi-person"></i>Hi, Welcome {{user}}
+                      <i class="bi dropdown-icon bi-person"></i>Hi, Welcome {{user.name}}
                     </button>
                     <ul class="dropdown-menu px-0 mx-0" aria-labelledby="dropdownMenuButton">
-                      <!-- <li class="px-1 mx-0">
-                        <RouterLink to="#" class="dropdown-item text-dark">
-                          <i class="bi bi-speedometer2"></i>Tourism Vendor
-                        </RouterLink>
-                      </li>
-                      <li class="px-1 mx-0">
-                        <RouterLink to="#" class="dropdown-item text-dark">
-                          <i class="bi bi-basket2"></i>Ecommerce Vendor
-                        </RouterLink>
-                      </li> -->
                       <li class="px-1 mx-0">
                         <RouterLink to="/profile" class="dropdown-item text-dark">
                           <i class="bi bi-person-square"></i>My Profile
@@ -139,40 +129,24 @@
 
 <script>
 import StickyNav from "@/components/common/StickyNav";
+import { mapGetters } from "vuex";
 export default {
   name: "NavBar",
   components: {
     StickyNav,
   },
-};
-</script>
-
-<script setup>
-import { onMounted, ref } from "vue";
-import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { useRouter } from "vue-router";
-const router = useRouter();
-
-const isLoggedIn = ref(false);
-
-let auth;
-onMounted(() => {
-  auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      isLoggedIn.value = true;
-    } else {
-      isLoggedIn.value = false;
+  methods: {
+    handleSignOut() {
+      localStorage.removeItem('token');
+      this.$store.dispatch('user', null);
+      alert('Successfully signed out');
+      this.$router.push('/');
     }
-  });
-});
-
-const handleSignOut = async () => {
-   await signOut(auth).then( () => {
-     alert('Signed out successfully');
-    router.push("/");
-  });
-}
+  },
+  computed: {
+    ...mapGetters(['user'])
+  },
+};
 
 </script>
 

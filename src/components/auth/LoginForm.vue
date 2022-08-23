@@ -83,8 +83,9 @@ export default {
           },
         }
       );
-      console.warn(response);
-      this.$router.push("/profile");
+      localStorage.setItem('token', response.data.token)
+      this.$store.dispatch('user', response.data.user)
+      this.$router.push("/");
     },
   },
 };
