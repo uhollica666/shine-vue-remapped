@@ -7,10 +7,14 @@
             <div class="contact contact_space">
               <ul class="top-bar top-bar-left">
                 <li>
-                  <a href="mailto:info@shinebhutan.com"><i class="bi bi-send-check"></i>info@shinebhutan.com</a>
+                  <a href="mailto:info@shinebhutan.com"
+                    ><i class="bi bi-send-check"></i>info@shinebhutan.com</a
+                  >
                 </li>
                 <li>
-                  <a href="callto:+975 2 338089"><i class="bi bi-phone"></i>+975-2-338089</a>
+                  <a href="callto:+975 2 338089"
+                    ><i class="bi bi-phone"></i>+975-2-338089</a
+                  >
                 </li>
               </ul>
             </div>
@@ -67,33 +71,61 @@
                 </div> -->
                 <div v-if="user">
                   <div class="dropdown logged-user-menu mx-5">
-                    <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton"
-                      data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="bi dropdown-icon bi-person"></i>Hi, Welcome {{user.name}}
+                    <button
+                      class="btn dropdown-toggle text-white"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <i class="bi dropdown-icon bi-person"></i>Hi, Welcome
+                      {{ user.name }}
                     </button>
-                    <ul class="dropdown-menu px-0 mx-0" aria-labelledby="dropdownMenuButton">
+                    <ul
+                      class="dropdown-menu px-0 mx-0"
+                      aria-labelledby="dropdownMenuButton"
+                    >
                       <li class="px-1 mx-0">
-                        <RouterLink to="/profile" class="dropdown-item text-dark">
+                        <RouterLink
+                          to="/profile"
+                          class="dropdown-item text-dark"
+                        >
                           <i class="bi bi-person-square"></i>My Profile
                         </RouterLink>
                       </li>
                       <li class="px-1 mx-0">
-                        <a :href="'https://booking.shinebhutan.com/login'" class="dropdown-item text-dark">
-                          <i class="bi bi-shield-lock"></i>Login to Tourism Dashboard
+                        <a
+                          :href="'https://booking.shinebhutan.com/login'"
+                          class="dropdown-item text-dark"
+                        >
+                          <i class="bi bi-shield-lock"></i>Login to Tourism
+                          Dashboard
                         </a>
                       </li>
                       <li class="px-1 mx-0">
-                        <a :href="'https://shop.shinebhutan.com/users/login'" class="dropdown-item text-dark">
+                        <a
+                          :href="'https://shop.shinebhutan.com/users/login'"
+                          class="dropdown-item text-dark"
+                        >
                           <i class="bi bi-toggles"></i>Login to Shop Dashboard
                         </a>
-                      </li>                      
+                      </li>
                       <li class="px-1 mx-0">
-                        <a :href="'https://booking.shinebhutan.com/register'" class="dropdown-item text-dark">
-                          <i class="bi bi-clock-history"></i>Register your Tourism Business
+                        <a
+                          :href="'https://booking.shinebhutan.com/register'"
+                          class="dropdown-item text-dark"
+                        >
+                          <i class="bi bi-clock-history"></i>Register your
+                          Tourism Business
                         </a>
                       </li>
                       <li class="px-1 mx-0">
-                        <a :href="'https://shop.shinebhutan.com/' + 'shops/create'" class="dropdown-item text-dark">
+                        <a
+                          :href="
+                            'https://shop.shinebhutan.com/' + 'shops/create'
+                          "
+                          class="dropdown-item text-dark"
+                        >
                           <i class="bi bi-cart-check"></i>Register your Shop
                         </a>
                       </li>
@@ -101,7 +133,11 @@
                         <hr class="dropdown-divider" />
                       </li>
                       <li class="px-1 mx-0">
-                        <a href="javascript:void(0)" @click="handleSignOut" class="dropdown-item text-dark">
+                        <a
+                          href="javascript:void(0)"
+                          @click="handleSignOut"
+                          class="dropdown-item text-dark"
+                        >
                           <i class="bi bi-box-arrow-right"></i>Logout
                         </a>
                       </li>
@@ -110,10 +146,15 @@
                 </div>
                 <div v-else class="d-flex">
                   <li>
-                    <RouterLink to="/register"><i class="bi bi-lock"></i>Register</RouterLink>
+                    <RouterLink to="/register"
+                      ><i class="bi bi-lock"></i>Register</RouterLink
+                    >
                   </li>
                   <li>
-                    <RouterLink to="/login"><i class="bi bi-person-bounding-box"></i>Login</RouterLink>
+                    <RouterLink to="/login"
+                      ><i class="bi bi-person-bounding-box"></i
+                      >Login</RouterLink
+                    >
                   </li>
                 </div>
               </ul>
@@ -137,19 +178,17 @@ export default {
   },
   methods: {
     handleSignOut() {
-      localStorage.removeItem('token');
-      this.$store.dispatch('user', null);
-      alert('Successfully signed out');
-      this.$router.push('/');
-    }
+      localStorage.removeItem("access_token");
+      this.$store.dispatch("user", null);
+      alert("Successfully signed out");
+      this.$router.push("/");
+    },
   },
   computed: {
-    ...mapGetters(['user'])
+    ...mapGetters(["user"]),
   },
 };
-
 </script>
-
 
 <style scoped>
 .logged-user-menu {
@@ -251,7 +290,7 @@ nav a.router-link-exact-active {
     flex-direction: column;
   }
 
-  .top-bar-left {    
+  .top-bar-left {
     text-align: left;
     justify-content: center;
     align-content: center;

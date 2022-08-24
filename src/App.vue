@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavBar/>
+    <NavBar />
     <router-view />
     <SiteFooter />
   </div>
@@ -19,10 +19,10 @@ export default {
   async created() {
     const response = await fetch(apiURL + "apiuser", {
       headers: {
-        Authorization: "Bearer " + localStorage.getItem("token"),
+        Authorization: "Bearer " + localStorage.getItem("access_token"),
       },
     });
-    this.$store.dispatch('user', response.data);
+    this.$store.dispatch("user", response.data);
   },
 };
 </script>
