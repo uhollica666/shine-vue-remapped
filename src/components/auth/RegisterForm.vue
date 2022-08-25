@@ -1,34 +1,63 @@
 <template>
   <div class="login-bg py-5">
-    <form class="auth-form-register" @submit.prevent="handleSubmit">
+    <form class="auth-form-register" @submit.prevent="register">
       <div class="mb-3">
         <h3 class="auth-header mt-3 mb-4">Register</h3>
       </div>
 
       <div class="mb-3">
         <label class="form-label" for="firstName">Full Name</label>
-        <input type="text" id="firstName" class="form-control input-control" placeholder="Full Name" required
-          v-model="name" />
+        <input
+          type="text"
+          id="firstName"
+          class="form-control input-control"
+          placeholder="Full Name"
+          required
+          v-model="name"
+        />
       </div>
 
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input v-model="email" type="email" class="form-control input-control" id="exampleInputEmail1"
-          aria-describedby="emailHelp" required placeholder="email@example.com" />
+        <input
+          v-model="email"
+          type="email"
+          class="form-control input-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          required
+          placeholder="email@example.com"
+        />
       </div>
       <div class="mb-3">
         <label for="InputPassword" class="form-label">Password</label>
-        <input v-model="password" type="password" class="form-control input-control" id="InputPassword"
-          placeholder="********" required />
+        <input
+          v-model="password"
+          type="password"
+          class="form-control input-control"
+          id="InputPassword"
+          placeholder="********"
+          required
+        />
       </div>
       <div class="mb-3">
         <label for="InputPassword" class="form-label">Confirm Password</label>
-        <input v-model="password_confirmation" type="password" class="form-control input-control" id="InputPassword"
-          placeholder="********" required />
+        <input
+          v-model="password_confirmation"
+          type="password"
+          class="form-control input-control"
+          id="InputPassword"
+          placeholder="********"
+          required
+        />
       </div>
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-        <label class="form-check-label no-account-register" for="exampleCheck1" required>By Signing Up, I agree to
+        <label
+          class="form-check-label no-account-register"
+          for="exampleCheck1"
+          required
+          >By Signing Up, I agree to
           <RouterLink to="/terms">Terms & Conditions</RouterLink> of Shine.
         </label>
       </div>
@@ -70,29 +99,35 @@
 </template>
 
 <script>
-// import { axios } from "axios";
+import axios from "axios";
+// import { ref } from "vue";
 export default {
   data() {
     return {
       name: "",
       email: "",
       password: "",
-      password_confirmation: "",
     };
   },
   methods: {
-    async handleSubmit() {
-      const response = await fetch(
-        "https://shop.shinebhutan.com/api/v1/apiregister",
-        {
-          method: 'POST',
+    register: function () {
+      axios
+        .post(`apiregister`, {
           name: this.name,
           email: this.email,
           password: this.password,
-          password_confirmation: this.password_confirmation,
-        }
-      );
-      console.log(response);
+          register_by: "email",
+        })
+        .then((response) => {
+          if (response.status == 200) {
+            alert(`Hi ${this.name}, you have been succeffuly registered with ${this.email} and your given password`);
+          }
+        })
+        .catch((error) => {
+          if (error) {
+            alert(`Registration failed with error: ${error}`);
+          }
+        });
       this.$router.push("/login");
     },
   },
@@ -106,7 +141,8 @@ export default {
 }
 
 .login-bg {
-  background: url(https://images.unsplash.com/photo-1637552588842-6eb9ddef76e9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) no-repeat center center fixed;
+  background: url(https://images.unsplash.com/photo-1637552588842-6eb9ddef76e9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)
+    no-repeat center center fixed;
   /* background:linear-gradient(to bottom right,rgba(247, 148, 30,0.2) 0%,rgba(51, 51, 105,0.2) 100%); */
   background-size: cover;
   opacity: 0.9;

@@ -9,7 +9,7 @@
 <script>
 import NavBar from "@/components/common/NavBar";
 import SiteFooter from "@/components/common/Footer";
-const apiURL = "https://shop.shinebhutan.com/api/v1/";
+import axios from "axios";
 export default {
   name: "App",
   components: {
@@ -17,12 +17,19 @@ export default {
     SiteFooter,
   },
   async created() {
-    const response = await fetch(apiURL + "apiuser", {
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("access_token"),
-      },
-    });
-    this.$store.dispatch("user", response.data);
+    await axios
+      .post("apiuser", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      })
+      .then((response) => {
+        alert(response.data.name)
+        this.$store.dispatch("user", response.data.name);
+      })
+      .catch((error) => {
+        console.log(`There was an error: ${error}`);
+      });
   },
 };
 </script>
@@ -278,6 +285,7 @@ button.limit {
   border-radius: 5px;
   margin: 0;
 }
+
 .card-img:hover {
   backdrop-filter: blur(5px) !important;
 }
