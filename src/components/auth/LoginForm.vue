@@ -7,18 +7,34 @@
         <h6 class="my-3 py-3 text-center text-danger ger-500" v-if="errMsg">
           {{ errMsg }}
         </h6>
-        <h6 class="my-3 py-3 text-center text-success suc-ger-500" v-if="successMsg">
+        <h6
+          class="my-3 py-3 text-center text-success suc-ger-500"
+          v-if="successMsg"
+        >
           {{ successMsg }}
         </h6>
 
         <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="email" class="form-control input-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-          placeholder="email@example.com" v-model="email" required />
+        <input
+          type="email"
+          class="form-control input-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="email@example.com"
+          v-model="email"
+          required
+        />
       </div>
       <div class="mb-3">
         <label for="InputPassword" class="form-label">Password</label>
-        <input type="password" class="form-control input-control" id="InputPassword" placeholder="********"
-          v-model="password" required />
+        <input
+          type="password"
+          class="form-control input-control"
+          id="InputPassword"
+          placeholder="********"
+          v-model="password"
+          required
+        />
       </div>
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1" />
@@ -83,9 +99,8 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-
       alert("login successful");
-      this.$router.push("/");
+      setTimeout(() => this.$router.push("/"), 5000);
 
     },
   },
@@ -109,7 +124,8 @@ export default {
 }
 
 .login-bg {
-  background: url(https://images.unsplash.com/photo-1596516112161-e98045590f64?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80) no-repeat center center fixed;
+  background: url(https://images.unsplash.com/photo-1596516112161-e98045590f64?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80)
+    no-repeat center center fixed;
   /* background:linear-gradient(to bottom right,rgba(247, 148, 30,0.2) 0%,rgba(51, 51, 105,0.2) 100%); */
   background-size: cover;
   opacity: 0.9;

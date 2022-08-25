@@ -4,9 +4,10 @@
       <div class="mb-3">
         <h3 class="auth-header mt-3 mb-4">Register</h3>
       </div>
-
       <div class="mb-3">
-        <label class="form-label" for="firstName">Full Name</label>
+        <label class="form-label" for="firstName"
+          >Full Name <span class="text-danger">*</span></label
+        >
         <input
           type="text"
           id="firstName"
@@ -18,7 +19,9 @@
       </div>
 
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <label for="exampleInputEmail1" class="form-label"
+          >Email address <span class="text-danger">*</span></label
+        >
         <input
           v-model="email"
           type="email"
@@ -30,7 +33,9 @@
         />
       </div>
       <div class="mb-3">
-        <label for="InputPassword" class="form-label">Password</label>
+        <label for="InputPassword" class="form-label"
+          >Password <span class="text-danger">*</span></label
+        >
         <input
           v-model="password"
           type="password"
@@ -41,12 +46,14 @@
         />
       </div>
       <div class="mb-3">
-        <label for="InputPassword" class="form-label">Confirm Password</label>
+        <label for="InputPassword" class="form-label"
+          >Confirm Password <span class="text-danger">*</span></label
+        >
         <input
           v-model="password_confirmation"
           type="password"
           class="form-control input-control"
-          id="InputPassword"
+          id="InputConfirmPassword"
           placeholder="********"
           required
         />
@@ -100,7 +107,7 @@
 
 <script>
 import axios from "axios";
-// import { ref } from "vue";
+import { ref } from "vue";
 export default {
   data() {
     return {
@@ -110,25 +117,28 @@ export default {
     };
   },
   methods: {
-    register: function () {
-      axios
+    async register() {
+      const res = ref(null);
+      const registerNow = await axios
         .post(`apiregister`, {
           name: this.name,
           email: this.email,
           password: this.password,
           register_by: "email",
         })
-        .then((response) => {
-          if (response.status == 200) {
-            alert(`Hi ${this.name}, you have been succeffuly registered with ${this.email} and your given password`);
-          }
-        })
         .catch((error) => {
-          if (error) {
-            alert(`Registration failed with error: ${error}`);
-          }
+          console.log(error.message);
         });
-      this.$router.push("/login");
+
+      if (registerNow) {
+        res.value = await registerNow.data;
+        alert(
+          `Hi ${this.name}!. You have been successfully registered with ${this.email}!`
+        );
+        setTimeout(() => {
+          this.$router.push("/login"), 5000;
+        });
+      }
     },
   },
 };

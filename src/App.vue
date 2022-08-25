@@ -10,6 +10,7 @@
 import NavBar from "@/components/common/NavBar";
 import SiteFooter from "@/components/common/Footer";
 import axios from "axios";
+import { ref } from "vue";
 export default {
   name: "App",
   components: {
@@ -17,15 +18,16 @@ export default {
     SiteFooter,
   },
   async created() {
+    const userDetails = ref(null);
     await axios
       .post("apiuser", {
         headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
+          Authorization: 'Bearer' + ' ' + localStorage.getItem('token'),
+        }
       })
       .then((response) => {
-        alert(response.data.name)
         this.$store.dispatch("user", response.data.name);
+        userDetails.value = response.data.name;
       })
       .catch((error) => {
         console.log(`There was an error: ${error}`);
