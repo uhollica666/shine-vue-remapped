@@ -77,7 +77,7 @@
 </template>
 
 <script>
-// import { ref } from "vue";
+import { ref } from "vue";
 import axios from "axios";
 export default {
   name: "LoginForm",
@@ -90,18 +90,23 @@ export default {
   },
 
   methods: {
-    login: function () {
-      axios
+    async login() {
+      const resLogin = ref(null);
+      const loginNow = await axios
         .post(`apilogin?email=${this.email}&password=${this.password}`)
-        .then((response) => {
-          localStorage.setItem("token", response.data.access_token);
-        })
         .catch((error) => {
-          console.log(error);
+          console.log(error.message);
         });
-      alert("login successful");
-      setTimeout(() => this.$router.push("/"), 5000);
 
+      if (loginNow) {
+        resLogin.value = await loginNow.data;
+        alert("login successful. You will now be redirected to homepage.");
+
+        localStorage.setItem("token", resLogin.value.access_token);
+
+        setTimeout(() => this.$router.push("/"), 3000);
+        
+      }
     },
   },
 };

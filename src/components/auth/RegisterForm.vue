@@ -136,7 +136,7 @@ export default {
           `Hi ${this.name}!. You have been successfully registered with ${this.email}!`
         );
         setTimeout(() => {
-          this.$router.push("/login"), 5000;
+          this.$router.push("/login"), 3000;
         });
       }
     },
