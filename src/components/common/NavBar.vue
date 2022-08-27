@@ -26,7 +26,7 @@
                     </button>
                     <ul class="dropdown-menu px-0 mx-0" aria-labelledby="dropdownMenuButton">
                       <li class="px-1 mx-0 my-3">
-                        <a :href="process.env.VUE_BOOKING_URL +'register'" class="dropdown-item text-dark">
+                        <a :href="'https://booking.shinebhutan.com/' +'register'" class="dropdown-item text-dark">
                           <i class="bi bi-speedometer2"></i>As Tour Operator
                         </a>
                       </li>
@@ -49,7 +49,7 @@
                       </button>
                       <ul class="dropdown-menu px-0 mx-0" aria-labelledby="dropdownMenuButton">
                         <li class="px-1 mx-0 my-3">
-                          <a :href="process.env.VUE_BOOKING_URL +'login'" class="dropdown-item text-dark">
+                          <a :href="'https://booking.shinebhutan.com/' +'login'" class="dropdown-item text-dark">
                             <i class="bi bi-speedometer2"></i>Tourism Dashboard
                           </a>
                         </li>
@@ -73,29 +73,29 @@
                     </button>
                     <ul class="dropdown-menu px-0 mx-0" aria-labelledby="dropdownMenuButton">
                       <li class="px-1 mx-0">
-                        <a :href="process.env.VUE_SHOP_URL + 'dashboard'" class="dropdown-item text-dark">
+                        <a :href="'https://shop.shinebhutan.com/' + 'dashboard'" class="dropdown-item text-dark">
                           <i class="bi bi-person-square"></i>My Profile
                         </a>
                       </li>
                       <li class="px-1 mx-0">
-                        <a :href="process.env.VUE_BOOKING_URL + 'login'" class="dropdown-item text-dark">
+                        <a :href="'https://booking.shinebhutan.com/' + 'login'" class="dropdown-item text-dark">
                           <i class="bi bi-shield-lock"></i>Login to Tourism
                           Dashboard
                         </a>
                       </li>
                       <li class="px-1 mx-0">
-                        <a :href="process.env.VUE_SHOP_URL + '/users/login'" class="dropdown-item text-dark">
+                        <a :href="'https://shop.shinebhutan.com/' + '/users/login'" class="dropdown-item text-dark">
                           <i class="bi bi-toggles"></i>Login to Shop Dashboard
                         </a>
                       </li>
                       <li class="px-1 mx-0">
-                        <a :href="process.env.VUE_BOOKING_URL + 'register'" class="dropdown-item text-dark">
+                        <a :href="'https://booking.shinebhutan.com/' + 'register'" class="dropdown-item text-dark">
                           <i class="bi bi-clock-history"></i>Register your
                           Tourism Business
                         </a>
                       </li>
                       <li class="px-1 mx-0">
-                        <a :href="process.env.VUE_SHOP_URL + 'shops/create'" class="dropdown-item text-dark">
+                        <a :href="'https://shop.shinebhutan.com/' + 'shops/create'" class="dropdown-item text-dark">
                           <i class="bi bi-cart-check"></i>Register your Shop
                         </a>
                       </li>
