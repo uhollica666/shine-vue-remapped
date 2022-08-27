@@ -103,9 +103,9 @@ export default {
         alert("login successful. You will now be redirected to homepage.");
 
         localStorage.setItem("token", resLogin.value.access_token);
+        localStorage.setItem("userName", resLogin.value.userdetails.name);
 
-        setTimeout(() => this.$router.push("/"), 3000);
-        
+        setTimeout(() => this.$router.go("/"), 1000);
       }
     },
   },
