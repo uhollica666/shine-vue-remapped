@@ -1,10 +1,21 @@
 <template>
   <div>
-    <HomeCarousel :navigation="true" :pagination="true" :startAutoPlay="true" :timeOut="5000" class="carousel"
-      v-slot="{ currentSlide }">
+    <HomeCarousel
+      :navigation="true"
+      :pagination="true"
+      :startAutoPlay="true"
+      :timeOut="5000"
+      class="carousel"
+      v-slot="{ currentSlide }"
+    >
       <HomeCarouselSlide v-for="(slide, index) in CarouselSlides" :key="index">
         <div v-show="currentSlide === index + 1" class="slide-info">
-          <img loading="lazy" :src="`/assets/img/${slide}.jpg`" alt="" class="img-fluid" />
+          <img
+            loading="lazy"
+            :src="`/assets/img/${slide}.jpg`"
+            alt=""
+            class="img-fluid"
+          />
         </div>
       </HomeCarouselSlide>
       <div class="welcome-note text-center">
@@ -22,7 +33,9 @@
     <div class="container">
       <div class="row my-5">
         <div class="col-md-3 col-xl-3 col-lg-3 col-xs-12 col-sm-12">
-          <HomeSidebar />
+          <Suspense>
+            <HomeSideBar />
+          </Suspense>
         </div>
         <div class="col-md-9 col-xl-9 col-lg-9 col-xs-12 col-sm-12">
           <Suspense>
@@ -42,7 +55,7 @@
 <script>
 import HomeCarouselSlide from "@/components/HomeCarouselSlide";
 import HomeCarousel from "@/components/HomeCarousel";
-import HomeSidebar from "@/components/HomeSideBar";
+import HomeSideBar from "@/components/HomeSideBar";
 import HomeContent from "@/components/HomeContent";
 import HomeLoader from "@/components/common/HomeLoader";
 import NoticeSlider from "@/components/NoticeSlider.vue";
@@ -64,11 +77,11 @@ export default {
   components: {
     HomeCarouselSlide,
     HomeCarousel,
-    HomeSidebar,
+    HomeSideBar,
     HomeContent,
     HomeLoader,
     NoticeSlider,
-},
+  },
 };
 </script>
 

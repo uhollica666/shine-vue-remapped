@@ -84,7 +84,7 @@
                         </a>
                       </li>
                       <li class="px-1 mx-0">
-                        <a :href="'https://shop.shinebhutan.com/' + '/users/login'" class="dropdown-item text-dark">
+                        <a :href="'https://shop.shinebhutan.com/' + 'users/login'" class="dropdown-item text-dark">
                           <i class="bi bi-toggles"></i>Login to Shop Dashboard
                         </a>
                       </li>
@@ -144,7 +144,7 @@ export default {
       localStorage.removeItem("userName");
       this.$store.dispatch("user", null);
       alert("Successfully signed out");
-      setTimeout(() => this.$router.go("/login"), 1000);
+      setTimeout(() => this.$router.go("/login"), 1500);
     },
   },
   computed: {

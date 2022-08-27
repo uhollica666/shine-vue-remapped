@@ -52,7 +52,7 @@
       <div class="no-account-register mt-3 mb-3">
         Don't have an account? Register
         <RouterLink to="/register">Here</RouterLink>. <br />Forgot
-        <RouterLink to="/forgotPassword">Password?</RouterLink>
+        <a href="https://shop.shinebhutan.com/password/reset">Password?</a>
       </div>
 
       <hr class="my-4" />
@@ -98,14 +98,20 @@ export default {
           console.log(error.message);
         });
 
-      if (loginNow) {
+      if (loginNow.data.token_type) {
         resLogin.value = await loginNow.data;
         alert("login successful. You will now be redirected to homepage.");
-
         localStorage.setItem("token", resLogin.value.access_token);
         localStorage.setItem("userName", resLogin.value.userdetails.name);
-
-        setTimeout(() => this.$router.go("/"), 1000);
+        setTimeout(
+          () => (window.location.href = "https://shinebhutan.com"),
+          500
+        );
+      } else if (loginNow.data.message.toLowerCase().includes("unauthorized")) {
+        alert("Login Error: " + loginNow.data.message);
+        this.$router.push("/login");
+      } else {
+        alert("Something went wrong, Please try again.");
       }
     },
   },

@@ -5,6 +5,9 @@
         <div class="carousel-item active" data-bs-interval="2000">
           <a href="https://shine.grat.at"><img src="@/assets/img/sample1.jpeg" class="d-block w-100" alt="" /></a>
         </div>
+        <div class="carousel-item active" data-bs-interval="2000">
+          <a href="https://shine.grat.at"><img src="@/assets/img/sample1.jpeg" class="d-block w-100" alt="" /></a>
+        </div>
         <!-- <div class="carousel-item" data-bs-interval="2000">
           <img src="@/assets/img/sample2.png" class="d-block w-100" alt="..." />
         </div> -->

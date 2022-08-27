@@ -3,27 +3,47 @@
     <div class="accordion accordion-flush mobile-accordion">
       <div class="accordion-item">
         <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-            aria-expanded="false" aria-controls="collapseOne" v-if="isMobile">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseOne"
+            aria-expanded="false"
+            aria-controls="collapseOne"
+            v-if="isMobile"
+          >
             <i class="bi bi-sort-down"></i> Filter
           </button>
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-            aria-expanded="true" aria-controls="collapseOne" v-else>
+          <button
+            class="accordion-button"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseOne"
+            aria-expanded="true"
+            aria-controls="collapseOne"
+            v-else
+          >
             <i class="bi bi-sort-down"></i> Filter
           </button>
         </h2>
-        <div v-if="isMobile" id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div
+          v-if="isMobile"
+          id="collapseOne"
+          class="accordion-collapse collapse"
+          aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample"
+        >
           <div class="accordion-body">
             <div class="c">
               <div class="sidebar-filters">
-
                 <div class="block-2 my-3">
                   <h6>Agri Products</h6>
                   <ul class="home-block Agriculture-block">
-                    <li v-for="product in homeAgriproducts" :key="product">
-                      <RouterLink :to="'/category-agriproducts/' + product.name">{{
-                          product.name
-                      }}</RouterLink>
+                    <li v-for="product in latestCategory()" :key="product.id">
+                      <RouterLink
+                        :to="'/category-agriproducts/' + product.name"
+                        >{{ product.name }}</RouterLink
+                      >
                     </li>
                   </ul>
                 </div>
@@ -31,10 +51,14 @@
                 <div class="block-1 mb-3">
                   <h6>Handicraft Products</h6>
                   <ul class="home-block handicraft-block">
-                    <li v-for="handicraft in homeHandicrafts" :key="handicraft">
-                      <RouterLink :to="'/category-handicrafts/' + handicraft.name">{{
-                          handicraft.name
-                      }}</RouterLink>
+                    <li
+                      v-for="handicraft in latestCategoryHandi()"
+                      :key="handicraft.id"
+                    >
+                      <RouterLink
+                        :to="'/category-handicrafts/' + handicraft.name"
+                        >{{ handicraft.name }}</RouterLink
+                      >
                     </li>
                   </ul>
                 </div>
@@ -43,10 +67,13 @@
                   <h6>Browse Dzongkhags</h6>
                   <ul class="home-block Dzongkhag-block">
                     <li v-for="dzongkhag in dzongkhags" :key="dzongkhag">
-                      <RouterLink :to="{
-                        name: 'Dzongkhags',
-                        params: { location_id: dzongkhag },
-                      }">{{ dzongkhag }}</RouterLink>
+                      <RouterLink
+                        :to="{
+                          name: 'Dzongkhags',
+                          params: { location_id: dzongkhag },
+                        }"
+                        >{{ dzongkhag }}</RouterLink
+                      >
                     </li>
                   </ul>
                 </div>
@@ -54,18 +81,24 @@
             </div>
           </div>
         </div>
-        <div v-else id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div
+          v-else
+          id="collapseOne"
+          class="accordion-collapse collapse show"
+          aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample"
+        >
           <div class="accordion-body">
             <div class="c">
               <div class="sidebar-filters">
-
                 <div class="block-2 my-3">
                   <h6>Agri Products</h6>
                   <ul class="home-block Agriculture-block">
-                    <li v-for="product in homeAgriproducts" :key="product">
-                      <RouterLink :to="'/category-agriproducts/' + product.name">{{
-                          product.name
-                      }}</RouterLink>
+                    <li v-for="product in latestCategory()" :key="product">
+                      <RouterLink
+                        :to="'/category-agriproducts/' + product.name"
+                        >{{ product.name }}</RouterLink
+                      >
                     </li>
                   </ul>
                 </div>
@@ -73,10 +106,14 @@
                 <div class="block-1 mb-3">
                   <h6>Handicraft Products</h6>
                   <ul class="home-block handicraft-block">
-                    <li v-for="handicraft in homeHandicrafts" :key="handicraft">
-                      <RouterLink :to="'/category-handicrafts/' + handicraft.name">{{
-                          handicraft.name
-                      }}</RouterLink>
+                    <li
+                      v-for="handicraft in latestCategoryHandi()"
+                      :key="handicraft"
+                    >
+                      <RouterLink
+                        :to="'/category-handicrafts/' + handicraft.name"
+                        >{{ handicraft.name }}</RouterLink
+                      >
                     </li>
                   </ul>
                 </div>
@@ -85,10 +122,13 @@
                   <h6>Browse Dzongkhags</h6>
                   <ul class="home-block Dzongkhag-block">
                     <li v-for="dzongkhag in dzongkhags" :key="dzongkhag">
-                      <RouterLink :to="{
-                        name: 'Dzongkhags',
-                        params: { location_id: dzongkhag },
-                      }">{{ dzongkhag }}</RouterLink>
+                      <RouterLink
+                        :to="{
+                          name: 'Dzongkhags',
+                          params: { location_id: dzongkhag },
+                        }"
+                        >{{ dzongkhag }}</RouterLink
+                      >
                     </li>
                   </ul>
                 </div>
@@ -99,9 +139,7 @@
       </div>
     </div>
     <div class="sticky-top mt-5 accordion here-heading">
-      <h6 class="attraction-header">
-        Popular Attractions
-      </h6>
+      <h6 class="attraction-header">Popular Attractions</h6>
       <div class="c">
         <div class="sidebar-filters">
           <div class="block-1 mb-3">
@@ -109,7 +147,11 @@
               <img loading="lazy" src="@/assets/img/brokpa.jpg" alt="" />
             </div>
             <ul class="home-block pb-3">
-              <li v-for="attraction in popAttractions" :key="attraction.name" class="mt-1">
+              <li
+                v-for="attraction in popAttractions"
+                :key="attraction.name"
+                class="mt-1"
+              >
                 <RouterLink :to="'/article/' + attraction.slug">
                   {{ attraction.name }}
                 </RouterLink>
@@ -123,25 +165,6 @@
 </template>
 
 <script>
-
-const homeHandicrafts = [
-  { name: "Textile", link: "Textile-XDPg6" },
-  { name: "Cane & Bamboo", link: "Cane--Bamboo-sGe1X" },
-  { name: "Wood Crafts", link: "Wood-Crafts-oc1MB" },
-  { name: "Metal Crafts", link: "Metal-Crafts-htfQ2" },
-  { name: "General Souvenir", link: "General-Souvenir-y7ZYM" },
-];
-
-const homeAgriproducts = [
-  { name: "Fresh Vegetables", link: "Fresh-Vegetables-hKvOE" },
-  { name: "Food Grains", link: "Food-Grains-azYWe" },
-  { name: "Fresh Fruits", link: "Fresh-Fruits-KUZ7q" },
-  { name: "Proccessed Food", link: "Proccessed-Food-J8xL4" },
-  { name: "Dairy Products", link: "Dairy-Products-bH7lp" },
-  { name: "Mushrooms", link: "Mushrooms-CQgMe" },
-  { name: "Edible Wild Plants", link: "Edible-Wild-Plants-wj7Xn" },
-];
-
 const dzongkhags = [
   "Dagana",
   "Lhuentse",
@@ -160,10 +183,10 @@ const popAttractions = [
   { name: "Royal Manas National Park", slug: "royal-manas-national-park" },
   { name: "Lhamoizingkha Excursion", slug: "lhamoizingkha-excursion" },
 ];
-import { ref } from 'vue';
+import { ref } from "vue";
 export default {
   name: "HomeSideBar",
-  beforeMount() {    
+  beforeMount() {
     const isMobile = ref(null);
     if (window.innerWidth < 768) {
       isMobile.value = true;
@@ -173,14 +196,39 @@ export default {
   },
   data() {
     return {
-      homeHandicrafts,
-      homeAgriproducts,
       dzongkhags,
       popAttractions,
-      isMobile : this.isMobile,
+      isMobile: this.isMobile,
     };
   },
-  
+  async setup() {
+    const homeAgriproducts = ref(null);
+    const homeHandicrafts = ref(null);
+    const agri = await fetch(
+      "https://shop.shinebhutan.com/api/v1/get_frontend_categories?id=4"
+    );
+    const handi = await fetch(
+      "https://shop.shinebhutan.com/api/v1/get_frontend_categories?id=5"
+    );
+    homeAgriproducts.value = await agri.json();
+    homeHandicrafts.value = await handi.json();
+    return {
+      homeAgriproducts,
+      homeHandicrafts,
+    };
+  },
+  methods: {
+    latestCategory() {
+      return this.homeAgriproducts.sort((a, b) => {
+        return b.id - a.id;
+      });
+    },
+    latestCategoryHandi() {
+      return this.homeHandicrafts.sort((a, b) => {
+        return b.id - a.id;
+      });
+    },
+  },
 };
 </script>
 
@@ -351,7 +399,8 @@ input[type="range"]::-moz-range-thumb {
   .accordion {
     max-width: 100%;
   }
-  .mobile-accordion{
+
+  .mobile-accordion {
     margin-bottom: 3rem;
   }
 }
@@ -360,6 +409,5 @@ input[type="range"]::-moz-range-thumb {
   .here-heading {
     display: none;
   }
-  
 }
 </style>
