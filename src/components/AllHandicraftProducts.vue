@@ -30,7 +30,7 @@
                   <div class="product-row my-3">
                     <h6 class="card-text text-truncate">
                       <i class="bi bi-cash-coin mr-1"></i> Nu.
-                      {{ product.unit_price }} / PC
+                      {{ product.unit_price }} / {{product.unit}}
                     </h6>
                     <div class="duration-tours text-truncate">
                       <i class="bi bi-tag"></i>

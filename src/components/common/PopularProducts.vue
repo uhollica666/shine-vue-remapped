@@ -14,7 +14,7 @@
                 </h6>
                 <h6 class="card-text my-3">
                   <i class="bi bi-cash-coin mr-1"></i> Nu.
-                  {{ product.unit_price }} / KG
+                  {{ product.unit_price }} / {{product.unit}}
                 </h6>
                 <p class="my-3">
                   <i class="bi bi-tag"></i> Category:

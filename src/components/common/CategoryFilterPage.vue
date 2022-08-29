@@ -27,7 +27,7 @@
 
                     <h6 class="card-text my-3">
                       <i class="bi bi-cash-coin mr-1"></i> Nu.
-                      {{ accommodation.price }} /Night
+                      {{ accommodation.price }} / Night
                     </h6>
                     <div class="details">
                       <div class="location text-truncate">
@@ -82,11 +82,11 @@
                     </h6>
                     <h6 class="card-text my-2" v-if="space.sale_price !== null">
                       <i class="bi bi-cash-coin mr-1"></i>Nu.
-                      {{ space.sale_price }} /Night <s class="text-secondary">Nu. {{ space.price }}</s>
+                      {{ space.sale_price }} / Night <s class="text-secondary">Nu. {{ space.price }}</s>
                     </h6>
                     <h6 class="card-text my-2" v-else>
                       <i class="bi bi-cash-coin mr-1"></i>Nu.
-                      {{ space.price }} /Night
+                      {{ space.price }} / Night
                     </h6>
                     <div class="details">
                       <div class="location text-truncate" v-if="space.name">
@@ -141,7 +141,7 @@
                     </h6>
                     <h6 class="card-text my-3" v-if="tour.sale_price">
                       <i class="bi bi-cash-coin mr-1"></i> Nu.
-                      {{ tour.sale_price }} /Trip <s class="text-secondary">
+                      {{ tour.sale_price }} / Trip <s class="text-secondary">
                         <span class="spacer">ha</span>Nu. {{ tour.price }}
                       </s>
                     </h6>
@@ -150,7 +150,7 @@
                     </h6>
                     <h6 class="card-text my-3" v-else>
                       <i class="bi bi-cash-coin mr-1"></i> Nu.
-                      {{ tour.price }} /Trip
+                      {{ tour.price }} / Trip
                     </h6>
                     <div class="text-turncate mb-3" v-if="tour.date_form_to">
                       <i class="bi bi-clock-history"></i>Duration: {{ tour.date_form_to }}

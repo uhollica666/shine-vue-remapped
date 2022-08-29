@@ -3,17 +3,13 @@
     <div v-for="product in products" :key="product.id">
       <div class="row product-card" v-if="product.slug === $route.params.slug">
         <div class="col-md-6 d-flex">
-          <img
-            :src="siteURL + 'public/' + product.file_name"
-            :alt="product.name"
-            class="img-fluid img-prod"
-            loading="lazy"
-          />
+          <img :src="siteURL + 'public/' + product.file_name" :alt="product.name" class="img-fluid img-prod"
+            loading="lazy" />
         </div>
         <div class="col-md-6 py-5">
           <section class="row">
             <div class="col-md-12 prod-descrip">
-              <h3 class="text-capitalize">{{ product.name }}</h3>
+              <h3 class="text-capitalize">{{  product.name  }}</h3>
             </div>
             <div class="col-md-6" v-if="!product.rating">
               <i class="bi bi-star-fill text-warning prod-descrip"></i> Product
@@ -21,10 +17,10 @@
             </div>
             <div class="col-md-6" v-else>
               <i class="bi bi-star-fill text-warning prod-descrip"></i> Product
-              Rating: {{ product.rating }}
+              Rating: {{  product.rating  }}
             </div>
             <div class="col-md-6">
-              <i class="bi bi-tag"></i> {{ product.cat_name }}
+              <i class="bi bi-tag"></i> {{  product.cat_name  }}
             </div>
           </section>
           <div class="hr my-4"></div>
@@ -32,14 +28,11 @@
             <div class="col-md-12 prod-descrip">
               <p><b>Price:</b></p>
             </div>
-            <div
-              class="col-md-12 prod-descrip"
-              v-if="product.parent_name === 'Handicrats'"
-            >
-              <h4>Nu. {{ product.unit_price }}.00 <span>per Piece</span></h4>
+            <div class="col-md-12 prod-descrip" v-if="product.parent_name === 'Handicrats'">
+              <h4>Nu. {{  product.unit_price  }} <span> per {{ product.unit }}</span></h4>
             </div>
             <div class="col-md-12 prod-descrip" v-else>
-              <h4>Nu. {{ product.unit_price }}.00 <span>/ KG</span></h4>
+              <h4>Nu. {{  product.unit_price  }} <span>/ {{ product.unit }}</span></h4>
             </div>
           </section>
           <div class="hr my-4"></div>
@@ -48,7 +41,7 @@
               <p><b>Description:</b></p>
             </div>
             <div class="col-md-12 descrip prod-descrip">
-              <p>{{ product.meta_description }}</p>
+              <p>{{  product.meta_description  }}</p>
             </div>
           </section>
           <div class="hr my-4"></div>
@@ -59,10 +52,8 @@
               </button>
             </a>
             <p class="py-3 notice-change">
-              <em style="font-size: 12px !important"
-                >Note: you will be redirected to a more secured server to
-                proceed futher with booking and payments</em
-              >
+              <em style="font-size: 12px !important">Note: you will be redirected to a more secured server to
+                proceed futher with booking and payments</em>
             </p>
           </section>
         </div>

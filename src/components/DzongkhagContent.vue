@@ -269,7 +269,7 @@
                       <div class="d-flex shop-detail">
                         <h6 class="card-text my-3 me-4">
                           <i class="bi bi-cash-coin mr-1"></i> Nu.
-                          {{ product.unit_price }} / kg
+                          {{ product.unit_price }} / {{product.unit}}
                         </h6>
                         <i class="bi bi-shop"></i>
                         {{ product.shop_name }}
@@ -307,7 +307,7 @@
                       </h6>
                       <h6 class="card-text my-3">
                         <i class="bi bi-cash-coin mr-1"></i> Nu.
-                        {{ product.unit_price }} / pc
+                        {{ product.unit_price }} / {{product.unit}}
                       </h6>
                     </div>
                   </div>

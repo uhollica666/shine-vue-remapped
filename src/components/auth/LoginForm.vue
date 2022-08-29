@@ -100,11 +100,14 @@ export default {
 
       if (loginNow.data.token_type) {
         resLogin.value = await loginNow.data;
-        alert("login successful. You will now be redirected to homepage.");
+        alert("login successful.");
         localStorage.setItem("token", resLogin.value.access_token);
         localStorage.setItem("userName", resLogin.value.userdetails.name);
+        // localStorage.setItem("uid_em_frm-lgin", this.email);
+        // localStorage.setItem("uid_psw_frm-lgin", this.password);
         setTimeout(
-          () => (window.location.href = "https://shinebhutan.com"),
+          () =>
+            (window.location.href = `https://shop.shinebhutan.com/api/v1/shopdash?email=${this.email}&password=${this.password}`),
           500
         );
       } else if (loginNow.data.message.toLowerCase().includes("unauthorized")) {

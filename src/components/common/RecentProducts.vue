@@ -17,7 +17,7 @@
                 </p>
                 <div class="location text-truncate">
                   <i class="bi bi-cash-coin"></i> Nu. {{ product.unit_price }} /
-                  KG
+                  {{ product.unit}}
                 </div>
                 <p class="my-3">
                   <i class="bi bi-tag"></i> Category:
