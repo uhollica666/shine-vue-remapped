@@ -58,17 +58,17 @@
       <hr class="my-4" />
 
       <div class="mt-3 reg mx-auto auth-header-two">
-        <h5 class="mb-3">Login to your Business Dassboard</h5>
+        <h5 class="mb-3">Login to your Business Dashboard</h5>
         <div class="flex-column text-start">
           <p class="no-account-register">
             Login
-            <a :href="'https://booking.shinebhutan.com/login'">Here</a> for your
+            <a :href="'https://booking.shinebhutan.com/admin'">Here</a> for your
             Tourism.
           </p>
           <p class="no-account-register">
             Or login
             <a :href="'https://shop.shinebhutan.com/users/login'">Here</a> for
-            your Handicraft store.
+            your Ecommerce store.
           </p>
         </div>
       </div>
@@ -103,8 +103,8 @@ export default {
         alert("login successful.");
         localStorage.setItem("token", resLogin.value.access_token);
         localStorage.setItem("userName", resLogin.value.userdetails.name);
-        // localStorage.setItem("uid_em_frm-lgin", this.email);
-        // localStorage.setItem("uid_psw_frm-lgin", this.password);
+        localStorage.setItem("uid_em_frm-lgin", this.email);
+        localStorage.setItem("uid_psw_frm-lgin", this.password);
         setTimeout(
           () =>
             (window.location.href = `https://shop.shinebhutan.com/api/v1/shopdash?email=${this.email}&password=${this.password}`),

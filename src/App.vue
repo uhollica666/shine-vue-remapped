@@ -1,6 +1,8 @@
 <template>
   <div>
-    <NavBar />
+    <Suspense>
+      <NavBar />
+    </Suspense>
     <router-view />
     <SiteFooter />
   </div>

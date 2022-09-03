@@ -9,7 +9,15 @@
         class="col-md-2 col-lg-2 col-xl-2 col-sm-4 col-xs-6 cat-cards mt-2">
         <div class="card mt-2">
           <div class="card-body">
-            <a :href="siteURL + '/tour?location_id=' + dzongkhag.id" class="category-details text-center">
+            <a :href="siteURL + '/tour?location_id=' + dzongkhag.id" class="category-details text-center" v-if="$route.name === 'Tours'">
+            <img loading="lazy" :src="apiURL + dzongkhag.file_path" alt="" class="card-img-dzo" />
+              <div class="card-details">
+                <h6 class="card-title text-truncate">
+                  {{ dzongkhag.name }}
+                </h6>
+              </div>
+            </a>
+            <a :href="siteURL + '/space?location_id=' + dzongkhag.id" class="category-details text-center" v-else>
             <img loading="lazy" :src="apiURL + dzongkhag.file_path" alt="" class="card-img-dzo" />
               <div class="card-details">
                 <h6 class="card-title text-truncate">

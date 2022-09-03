@@ -40,8 +40,8 @@
         <p class="text-center">Explore the stories and weekly blog updates</p>
       </div>
       <div class="row flex-row flex-nowrap overflow-auto mb-5">
-        <div class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 mt-3 mx-auto" v-for="story in getDzongkhagBlogPost"
-          :key="story.id">
+        <template v-for="story in getDzongkhagBlogPost">
+          <div class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 mt-3" v-if="story" :key="story.id">
           <div class="card mt-3 mb-3">
             <div class="card-body">
               <img loading="lazy" :src="apiURL + story.file_path" alt="" class="card-img-blog img-fluid"
@@ -63,7 +63,8 @@
               </RouterLink>
             </div>
           </div>
-        </div>
+          </div>
+        </template>
       </div>
     </div>
   </div>
@@ -76,7 +77,7 @@ export default {
   name: "BlogPost",
   async setup() {
     const route = useRoute();
-    const routeId = route.params.id;
+    const routeId = route.params.location_id.toLowerCase();
     const stories = ref(null);
     const apiURL = "https://booking.shinebhutan.com/uploads/";
     const siteURL = "https://booking.shinebhutan.com";
@@ -97,7 +98,9 @@ export default {
       return this.stories.sort((a, b) => (a.id < b.id ? 1 : -1));
     },
     sortDzongkhagBlogPost() {
-      return this.stories.filter((story) => story.title.toLowerCase().includes(this.routeId));
+      return this.stories.filter((a) =>
+        a.title.toLowerCase().includes(this.routeId)
+      );
     },
   },
   computed: {
@@ -105,6 +108,8 @@ export default {
       return this.sortBlogPost();
     },
     getDzongkhagBlogPost() {
+      console.log(this.stories);
+      console.log(this.routeId);
       return this.sortDzongkhagBlogPost();
     },
   },
@@ -122,6 +127,7 @@ i.bi {
   object-fit: cover;
   border-radius: 5px;
 }
+
 @media screen and (max-width: 768px) {
   .blog-slider {
     display: none;
