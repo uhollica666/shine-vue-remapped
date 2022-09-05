@@ -2,7 +2,7 @@
   <div class="login-bg py-5">
     <form class="auth-form" @submit.prevent="login">
       <div class="mb-3">
-        <h3 class="auth-header mt-3 mb-3">Login</h3>
+        <h3 class="auth-header mt-3 mb-3">Ecommerce Vendor Login</h3>
         <label for="exampleInputEmail1" class="form-label">Email address</label>
         <input
           type="email"
@@ -39,27 +39,9 @@
         </button> -->
       </div>
       <div class="no-account-register mt-3 mb-3">
-        Don't have an account? Register
-        <RouterLink to="/register">Here</RouterLink>. <br />Forgot
+        Not A Vendor? Go to User Login
+        <RouterLink to="/login">Here</RouterLink>. <br />Forgot
         <a :href="shopURL + 'password/reset'">Password?</a>
-      </div>
-
-      <hr class="my-4" />
-
-      <div class="mt-3 reg mx-auto auth-header-two">
-        <h5 class="mb-3">Login to your Business Dashboard</h5>
-        <div class="flex-column text-start">
-          <p class="no-account-register">
-            Login
-            <a :href="'https://booking.shinebhutan.com/admin'">Here</a> for your
-            Tourism / Hotel Dashboard.
-          </p>
-          <p class="no-account-register">
-            Or login
-            <a :href="shopURL + 'users/login'">Here</a> for your Ecommerce /
-            Handicraft Store.
-          </p>
-        </div>
       </div>
     </form>
     <iframe
@@ -77,7 +59,7 @@ import { ref } from "vue";
 import axios from "axios";
 const shopURL = "https://shop.shinebhutan.com/";
 export default {
-  name: "LoginForm",
+  name: "VendorLogin",
 
   data() {
     return {
@@ -104,7 +86,9 @@ export default {
         localStorage.setItem("uid_em_frm-lgin", this.email);
         localStorage.setItem("uid_psw_frm-lgin", this.password);
         setTimeout(() => {
-          document.getElementById('timeout').src = `https://booking.shinebhutab.com/api/shopdash?email=${this.email}&password=${this.password}`;
+          document.getElementById(
+            "timeout"
+          ).src = `https://booking.shinebhutab.com/api/shopdash?email=${this.email}&password=${this.password}`;
           setTimeout(() => {
             window.location.href = `${shopURL}api/v1/shopdash?email=${this.email}&password=${this.password}`;
           }, 600);
@@ -139,7 +123,7 @@ export default {
 }
 
 .login-bg {
-  background: url(https://images.unsplash.com/photo-1596516112161-e98045590f64?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80)
+  background: url(https://images.pexels.com/photos/8056760/pexels-photo-8056760.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
     no-repeat center center fixed;
   /* background:linear-gradient(to bottom right,rgba(247, 148, 30,0.2) 0%,rgba(51, 51, 105,0.2) 100%); */
   background-size: cover;

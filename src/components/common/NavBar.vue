@@ -7,10 +7,14 @@
             <div class="contact contact_space">
               <ul class="top-bar top-bar-left">
                 <li>
-                  <a href="mailto:info@shinebhutan.com"><i class="bi bi-send-check"></i>info@shinebhutan.com</a>
+                  <a href="mailto:info@shinebhutan.com"
+                    ><i class="bi bi-send-check"></i>info@shinebhutan.com</a
+                  >
                 </li>
                 <li>
-                  <a href="callto:+97517388924"><i class="bi bi-phone"></i>(+975) 16909020 | 17388924</a>
+                  <a href="callto:+97517388924"
+                    ><i class="bi bi-phone"></i>(+975) 16909020 | 17388924</a
+                  >
                 </li>
               </ul>
             </div>
@@ -20,52 +24,124 @@
               <ul class="top-bar top-bar-right" style="padding-top: 5px">
                 <div v-if="user" class="d-flex">
                   <div class="dropdown logged-user-menu mx-3">
-                    <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton"
-                      data-bs-toggle="dropdown" aria-expanded="false">
+                    <button
+                      class="btn dropdown-toggle text-white"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
                       <i class="bi dropdown-icon bi-person"></i>Hi, {{ user }}
                     </button>
-                    <ul class="dropdown-menu px-0 mx-0" aria-labelledby="dropdownMenuButton">
+                    <ul
+                      class="dropdown-menu px-0 mx-0"
+                      aria-labelledby="dropdownMenuButton"
+                    >
                       <li class="px-1 mx-0">
-                        <div class="dropdown-item text-dark profile-link" @click="authDashboard()">
+                        <div
+                          class="dropdown-item text-dark profile-link"
+                          @click="authDashboard()"
+                        >
                           <i class="bi bi-person-square"></i>My Profile
                         </div>
                       </li>
 
-                      <li class="px-1 mx-0" v-show="user === 'main-Admin'">
-                        <a href="javascript:void(0)" class="dropdown-item text-dark" @click="loginInBooking()">
-                          <i class="bi bi-shield-lock"></i>Tourism Admin
-                        </a>
-                      </li>
-                      <li class="px-1 mx-0" v-show="user === 'main-Admin'">
-                        <a :href="'https://shop.shinebhutan.com/admin'" class="dropdown-item text-dark">
-                          <i class="bi bi-toggles"></i>Ecommerce Admin
-                        </a>
-                      </li>
+                      <div v-show="user === 'main-Admin'">
+                        <li class="px-1 mx-0">
+                          <a
+                            href="javascript:void(0)"
+                            class="dropdown-item text-dark"
+                            @click="loginInBooking()"
+                          >
+                            <i class="bi bi-shield-lock"></i>Booking Admin
+                          </a>
+                        </li>
+                        <li class="px-1 mx-0">
+                          <a
+                            :href="'https://shop.shinebhutan.com/admin'"
+                            class="dropdown-item text-dark"
+                          >
+                            <i class="bi bi-toggles"></i>Ecommerce Admin
+                          </a>
+                        </li>
+                      </div>
 
-                      <li class="px-1 mx-0" v-show="user === 'Shine Admin'">
-                        <a href="javascript:void(0)" class="dropdown-item text-dark" @click="loginInBooking()">
-                          <i class="bi bi-shield-lock"></i>Tourism Admin
-                        </a>
-                      </li>
-                      <li class="px-1 mx-0" v-show="user === 'Shine Admin'">
-                        <a :href="'https://shop.shinebhutan.com/admin'" class="dropdown-item text-dark">
-                          <i class="bi bi-toggles"></i>Ecommerce Admin
-                        </a>
-                      </li>
+                      <div v-show="user === 'Shine Admin'">
+                        <li class="px-1 mx-0">
+                          <a
+                            href="javascript:void(0)"
+                            class="dropdown-item text-dark"
+                            @click="loginInBooking()"
+                          >
+                            <i class="bi bi-shield-lock"></i>Booking Admin
+                          </a>
+                        </li>
+                        <li class="px-1 mx-0">
+                          <a
+                            :href="'https://shop.shinebhutan.com/admin'"
+                            class="dropdown-item text-dark"
+                          >
+                            <i class="bi bi-toggles"></i>Ecommerce Admin
+                          </a>
+                        </li>
+                      </div>
+
+                      <!-- Vendor Conditional Menu -->
+                      <div
+                        v-show="user !== 'Shine Admin' && user !== 'main-Admin'"
+                      >
+                        <li class="px-1 mx-0">
+                          <a
+                            class="dropdown-item text-secondary"
+                            href="javascript:void(0)"
+                          >
+                            Vendors Area<i
+                              class="bi bi-chevron-double-down ms-2"
+                            ></i>
+                          </a>
+                        </li>
+                        <li class="px-1 ms-3">
+                          <a
+                            href="javascript:void(0)"
+                            class="dropdown-item text-dark"
+                            @click="loginInBooking()"
+                          >
+                            <i class="bi bi-house-door"></i>Tourism Dashboard
+                          </a>
+                        </li>
+                        <li class="px-1 ms-3">
+                          <a
+                            href="javascript:void(0)"
+                            class="dropdown-item text-dark"
+                            @click="gotoShopDashboard()"
+                          >
+                            <i class="bi bi-shop-window"></i>Ecommerce Dashboard
+                          </a>
+                        </li>
+                      </div>
 
                       <li>
                         <hr class="dropdown-divider" />
                       </li>
                       <li class="px-1 mx-0">
-                        <a href="javascript:void(0)" @click="handleSignOut" class="dropdown-item text-dark">
+                        <a
+                          href="javascript:void(0)"
+                          @click="handleSignOut"
+                          class="dropdown-item text-dark"
+                        >
                           <i class="bi bi-box-arrow-right"></i>Logout
                         </a>
                       </li>
                     </ul>
                   </div>
                   <div class="cart d-flex">
-                    <a :href="`https://shop.shinebhutan.com/cart`" style="padding-top: 8px" data-bs-toggle="tooltip"
-                      data-bs-placement="bottom" title="Go to Cart">
+                    <a
+                      :href="`https://shop.shinebhutan.com/cart`"
+                      style="padding-top: 8px"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="bottom"
+                      title="Go to Cart"
+                    >
                       <div class="d-flex">
                         <i class="bi bi-basket"></i>
                         <!-- <div v-for="item in items" :key="item"> -->
@@ -77,8 +153,14 @@
                       </div>
                     </a>
                     <span class="mx-2"></span>
-                    <a :href="`https://shop.shinebhutan.com/wishlists`" style="padding-top: 8px"
-                      data-bs-toggle="tooltip" data-bs-placement="bottom" title="Go to Wishlist">
+                    <a
+                      :href="`https://shop.shinebhutan.com/wishlists`"
+                      style="padding-top: 8px"
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="bottom"
+                      title="Go to Wishlist"
+                      v-if="user !== 'Shine Admin' && user !== 'main-Admin'"
+                    >
                       <div class="d-flex">
                         <i class="bi bi-heart"></i>
                         <!-- <div v-for="wishlist in wishlists" :key="wishlist"> -->
@@ -104,13 +186,47 @@
                     <span class="me-2"></span> -->
                   </div>
                 </div>
+
                 <div v-else class="d-flex">
                   <li>
-                    <RouterLink to="/register"><i class="bi bi-lock"></i>Register</RouterLink>
+                    <RouterLink to="/register"
+                      ><i class="bi bi-lock"></i>Register</RouterLink
+                    >
                   </li>
-                  <li>
-                    <RouterLink to="/login"><i class="bi bi-person-bounding-box"></i>Login</RouterLink>
-                  </li>
+                  <div class="dropdown">
+                    <button
+                      class="btn dropdown-toggle text-white"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-mdb-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      Login
+                    </button>
+                    <ul
+                      class="dropdown-menu px-0 mx-0"
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      <li>
+                        <RouterLink to="/login" class="dropdown-item text-dark"
+                          ><i class="bi bi-person-bounding-box"></i
+                          >User Login</RouterLink
+                        >
+                      </li>
+                      <li>
+                        <RouterLink to="/vendor-login" class="dropdown-item text-dark"
+                          ><i class="bi bi-person-bounding-box"></i
+                          >Tourism Vendor Login</RouterLink
+                        >
+                      </li>
+                      <li>
+                        <RouterLink to="/ecom-vendor-login" class="dropdown-item text-dark"
+                          ><i class="bi bi-person-bounding-box"></i
+                          >Ecommerce Vendor Login</RouterLink
+                        >
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </ul>
             </div>
@@ -144,36 +260,33 @@ export default {
   components: {
     StickyNav,
   },
-  async setup() {
-    // const items = ref(null);
-    // const wishlists = ref(null);
-
-    // await axios
-    //   .post(`${apiV2}cart-summary`, {
-    //     Headers: {
-    //       Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //     },
-    //   })
-    //   .then((response) => {
-    //     console.log(response.json());
-    //     items.value = response.json();
-    //   })
-    //   .catch((error) => {
-    //     console.log(error.message);
-    //   });
-
-    // const wishListItems = await axios.get(`${apiV2}wishlists`, {
-    //   Headers: {
-    //     Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //   },
-    // });
-    // wishlists.value = await wishListItems.json();
-
-    // return {
-    //   items,
-    //   wishlists,
-    // };
-  },
+  // async setup() {
+  // const items = ref(null);
+  // const wishlists = ref(null);
+  // await axios
+  //   .post(`${apiV2}cart-summary`, {
+  //     Headers: {
+  //       Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //     },
+  //   })
+  //   .then((response) => {
+  //     console.log(response.json());
+  //     items.value = response.json();
+  //   })
+  //   .catch((error) => {
+  //     console.log(error.message);
+  //   });
+  // const wishListItems = await axios.get(`${apiV2}wishlists`, {
+  //   Headers: {
+  //     Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //   },
+  // });
+  // wishlists.value = await wishListItems.json();
+  // return {
+  //   items,
+  //   wishlists,
+  // };
+  // },
   data() {
     return {
       user,
@@ -186,8 +299,11 @@ export default {
   methods: {
     handleSignOut() {
       alert("Logged Out Successfully");
-      setTimeout((document.getElementById("timeout").src = this.siteURL), 300);
-      setTimeout((window.location.href = "https://shinebhutan.com"), 500);
+      setTimeout(
+        () => (document.getElementById("timeout").src = this.siteURL),
+        300
+      );
+      setTimeout(() => (window.location.href = "https://shinebhutan.com"), 800);
       localStorage.removeItem("token");
       localStorage.removeItem("userName");
       localStorage.removeItem("uid_em_frm-lgin");
@@ -205,10 +321,17 @@ export default {
     },
     loginInBooking() {
       setTimeout(
-        (window.location.href = `https://booking.shinebhutan.com/api/shopdash?email=${email}&password=${password}`),
+        () =>
+          (window.location.href = `https://booking.shinebhutan.com/api/shopdash?email=${email}&password=${password}`),
         300
       );
-      // setTimeout((window.location.href = `${booking}/admin`), 500);
+    },
+    gotoShopDashboard() {
+      setTimeout(
+        () =>
+          (window.location.href = `${shop}/api/v1/shopdash?email=${email}&password=${password}`),
+        300
+      );
     },
   },
   computed: {

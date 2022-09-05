@@ -73,6 +73,7 @@ export default {
 
 i.bi {
   margin-right: 0.5rem;
+  color: #f9741e;
 }
 
 .btn-container {
