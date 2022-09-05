@@ -7,14 +7,10 @@
             <div class="contact contact_space">
               <ul class="top-bar top-bar-left">
                 <li>
-                  <a href="mailto:info@shinebhutan.com"
-                    ><i class="bi bi-send-check"></i>info@shinebhutan.com</a
-                  >
+                  <a href="mailto:info@shinebhutan.com"><i class="bi bi-send-check"></i>info@shinebhutan.com</a>
                 </li>
                 <li>
-                  <a href="callto:+97517388924"
-                    ><i class="bi bi-phone"></i>(+975) 16909020 | 17388924</a
-                  >
+                  <a href="callto:+97517388924"><i class="bi bi-phone"></i>(+975) 16909020 | 17388924</a>
                 </li>
               </ul>
             </div>
@@ -23,10 +19,7 @@
             <div class="contact contact_space">
               <ul class="top-bar top-bar-right" style="padding-top: 5px">
                 <div v-if="user" class="d-flex">
-                  <a
-                    :href="`https://shop.shinebhutan.com/cart`"
-                    style="padding-top: 8px"
-                  >
+                  <a :href="`https://shop.shinebhutan.com/cart`" style="padding-top: 8px">
                     <div class="cart d-flex">
                       <i class="bi bi-basket"></i>
                       <!-- <template v-for="item in items"> -->
@@ -38,58 +31,35 @@
                     </div>
                   </a>
                   <div class="dropdown logged-user-menu mx-5">
-                    <button
-                      class="btn dropdown-toggle text-white"
-                      type="button"
-                      id="dropdownMenuButton"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
+                    <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton"
+                      data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="bi dropdown-icon bi-person"></i>Hi, {{ user }}
                     </button>
-                    <ul
-                      class="dropdown-menu px-0 mx-0"
-                      aria-labelledby="dropdownMenuButton"
-                    >
+                    <ul class="dropdown-menu px-0 mx-0" aria-labelledby="dropdownMenuButton">
                       <li class="px-1 mx-0">
-                        <div
-                          class="dropdown-item text-dark profile-link"
-                          @click="authDashboard()"
-                        >
+                        <div class="dropdown-item text-dark profile-link" @click="authDashboard()">
                           <i class="bi bi-person-square"></i>My Profile
                         </div>
                       </li>
 
                       <li class="px-1 mx-0" v-show="user === 'main-Admin'">
-                        <a
-                          :href="'https://booking.shinebhutan.com/' + 'admin'"
-                          class="dropdown-item text-dark"
-                        >
+                        <a :href="'https://booking.shinebhutan.com/' + 'admin'" class="dropdown-item text-dark">
                           <i class="bi bi-shield-lock"></i>Tourism Admin
                         </a>
                       </li>
                       <li class="px-1 mx-0" v-show="user === 'main-Admin'">
-                        <a
-                          :href="'https://shop.shinebhutan.com/admin'"
-                          class="dropdown-item text-dark"
-                        >
+                        <a :href="'https://shop.shinebhutan.com/admin'" class="dropdown-item text-dark">
                           <i class="bi bi-toggles"></i>Ecommerce Admin
                         </a>
                       </li>
 
                       <li class="px-1 mx-0" v-show="user === 'Shine Admin'">
-                        <a
-                          :href="'https://booking.shinebhutan.com/' + 'admin'"
-                          class="dropdown-item text-dark"
-                        >
+                        <a :href="'https://booking.shinebhutan.com/' + 'admin'" class="dropdown-item text-dark">
                           <i class="bi bi-shield-lock"></i>Tourism Admin
                         </a>
                       </li>
                       <li class="px-1 mx-0" v-show="user === 'Shine Admin'">
-                        <a
-                          :href="'https://shop.shinebhutan.com/admin'"
-                          class="dropdown-item text-dark"
-                        >
+                        <a :href="'https://shop.shinebhutan.com/admin'" class="dropdown-item text-dark">
                           <i class="bi bi-toggles"></i>Ecommerce Admin
                         </a>
                       </li>
@@ -98,11 +68,7 @@
                         <hr class="dropdown-divider" />
                       </li>
                       <li class="px-1 mx-0">
-                        <a
-                          href="javascript:void(0)"
-                          @click="handleSignOut"
-                          class="dropdown-item text-dark"
-                        >
+                        <a href="javascript:void(0)" @click="handleSignOut" class="dropdown-item text-dark">
                           <i class="bi bi-box-arrow-right"></i>Logout
                         </a>
                       </li>
@@ -111,15 +77,10 @@
                 </div>
                 <div v-else class="d-flex">
                   <li>
-                    <RouterLink to="/register"
-                      ><i class="bi bi-lock"></i>Register</RouterLink
-                    >
+                    <RouterLink to="/register"><i class="bi bi-lock"></i>Register</RouterLink>
                   </li>
                   <li>
-                    <RouterLink to="/login"
-                      ><i class="bi bi-person-bounding-box"></i
-                      >Login</RouterLink
-                    >
+                    <RouterLink to="/login"><i class="bi bi-person-bounding-box"></i>Login</RouterLink>
                   </li>
                 </div>
               </ul>
@@ -129,13 +90,7 @@
       </div>
     </div>
     <div class="clear-fix"></div>
-    <iframe
-      id="timeout"
-      src="#"
-      width="0"
-      height="0"
-      style="display: none"
-    ></iframe>
+    <iframe id="timeout" src="#" width="0" height="0" style="display: none"></iframe>
     <StickyNav />
   </div>
 </template>

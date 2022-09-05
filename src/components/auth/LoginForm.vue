@@ -52,7 +52,7 @@
       <div class="no-account-register mt-3 mb-3">
         Don't have an account? Register
         <RouterLink to="/register">Here</RouterLink>. <br />Forgot
-        <a href="https://shop.shinebhutan.com/password/reset">Password?</a>
+        <a :href="shopURL + 'password/reset'">Password?</a>
       </div>
 
       <hr class="my-4" />
@@ -67,7 +67,7 @@
           </p>
           <p class="no-account-register">
             Or login
-            <a :href="'https://shop.shinebhutan.com/users/login'">Here</a> for
+            <a :href="shopURL+'users/login'">Here</a> for
             your Ecommerce store.
           </p>
         </div>
@@ -79,6 +79,7 @@
 <script>
 import { ref } from "vue";
 import axios from "axios";
+const shopURL = "https://shop.shinebhutan.com/";
 export default {
   name: "LoginForm",
 
@@ -86,6 +87,7 @@ export default {
     return {
       email: "",
       password: "",
+      shopURL,
     };
   },
 
@@ -107,7 +109,7 @@ export default {
         localStorage.setItem("uid_psw_frm-lgin", this.password);
         setTimeout(
           () =>
-            (window.location.href = `https://shop.shinebhutan.com/api/v1/shopdash?email=${this.email}&password=${this.password}`),
+            (window.location.href = `${shopURL}api/v1/shopdash?email=${this.email}&password=${this.password}`),
           500
         );
       } else if (loginNow.data.message.toLowerCase().includes("unauthorized")) {
