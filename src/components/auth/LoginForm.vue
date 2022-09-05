@@ -2,39 +2,15 @@
   <div class="login-bg py-5">
     <form class="auth-form" @submit.prevent="login">
       <div class="mb-3">
-        <h3 class="auth-header mt-3 mb-3">Login</h3>
-
-        <h6 class="my-3 py-3 text-center text-danger ger-500" v-if="errMsg">
-          {{ errMsg }}
-        </h6>
-        <h6
-          class="my-3 py-3 text-center text-success suc-ger-500"
-          v-if="successMsg"
-        >
-          {{ successMsg }}
-        </h6>
-
+        <h3 class="auth-header mt-3 mb-3">Login</h3>        
         <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input
-          type="email"
-          class="form-control input-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          placeholder="email@example.com"
-          v-model="email"
-          required
-        />
+        <input type="email" class="form-control input-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          placeholder="email@example.com" v-model="email" required />
       </div>
       <div class="mb-3">
         <label for="InputPassword" class="form-label">Password</label>
-        <input
-          type="password"
-          class="form-control input-control"
-          id="InputPassword"
-          placeholder="********"
-          v-model="password"
-          required
-        />
+        <input type="password" class="form-control input-control" id="InputPassword" placeholder="********"
+          v-model="password" required />
       </div>
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1" />
@@ -63,16 +39,17 @@
           <p class="no-account-register">
             Login
             <a :href="'https://booking.shinebhutan.com/admin'">Here</a> for your
-            Tourism.
+            Tourism / Hotel Dashboard.
           </p>
           <p class="no-account-register">
             Or login
-            <a :href="shopURL+'users/login'">Here</a> for
-            your Ecommerce store.
+            <a :href="shopURL + 'users/login'">Here</a> for
+            your Ecommerce / Handicraft Store.
           </p>
         </div>
       </div>
     </form>
+    <iframe id="timeout" src="#" width="0" height="0" style="display: none"></iframe>
   </div>
 </template>
 
@@ -107,11 +84,11 @@ export default {
         localStorage.setItem("userName", resLogin.value.userdetails.name);
         localStorage.setItem("uid_em_frm-lgin", this.email);
         localStorage.setItem("uid_psw_frm-lgin", this.password);
-        setTimeout(
-          () =>
-            (window.location.href = `${shopURL}api/v1/shopdash?email=${this.email}&password=${this.password}`),
-          500
-        );
+
+        setTimeout((document.getElementById("timeout").src = `${shopURL}api/v1/shopdash?email=${this.email}&password=${this.password}`), 300);
+        
+        setTimeout((window.location.href = `${shopURL}/profile`), 1000);
+        
       } else if (loginNow.data.message.toLowerCase().includes("unauthorized")) {
         alert("Login Error: " + loginNow.data.message);
         this.$router.push("/login");
@@ -140,8 +117,7 @@ export default {
 }
 
 .login-bg {
-  background: url(https://images.unsplash.com/photo-1596516112161-e98045590f64?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80)
-    no-repeat center center fixed;
+  background: url(https://images.unsplash.com/photo-1596516112161-e98045590f64?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80) no-repeat center center fixed;
   /* background:linear-gradient(to bottom right,rgba(247, 148, 30,0.2) 0%,rgba(51, 51, 105,0.2) 100%); */
   background-size: cover;
   opacity: 0.9;

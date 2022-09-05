@@ -2,7 +2,7 @@
   <div>
     <div class="accommodation-element mt-5">
       <h4 class="text-capitalize">
-        explore our top featured {{  $route.name  }}
+        explore our top featured {{ $route.name }}
       </h4>
       <p class="mt-3">Discover the freshness of Bhutan</p>
     </div>
@@ -16,19 +16,19 @@
                 <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
                 <div class="card-details py-4">
                   <h5 class="card-title text-truncate">
-                    {{  product.name  }}
+                    {{ product.name }}
                   </h5>
                   <p class="text-small text-grey text-truncate my-2">
-                    {{  product.meta_description  }}
+                    {{ product.meta_description }}
                   </p>
                   <div class="product-row my-3">
                     <h6 class="card-text text-truncate">
                       <i class="bi bi-cash-coin mr-1"></i> Nu.
-                      {{  product.unit_price  }} / {{ product.unit }}
+                      {{ product.unit_price }} / {{ product.unit }}
                     </h6>
                     <div class="duration-tours text-truncate">
                       <i class="bi bi-bookmark-star"></i>
-                      {{  product.cat_name  }}
+                      {{ product.cat_name }}
                     </div>
                   </div>
                   <div class="my-3 d-flex">
@@ -38,7 +38,7 @@
                     </div>
                     <div class="duration-tours text-truncate me-3" v-else>
                       <i class="bi bi-geo"></i>
-                      {{  product.shop_address  }}
+                      {{ product.shop_address }}
                     </div>
                     <div class="duration-tours text-truncate" v-if="!product.shop_name">
                       <i class="bi bi-shop"></i>
@@ -46,7 +46,7 @@
                     </div>
                     <div class="duration-tours text-truncate" v-else>
                       <i class="bi bi-shop"></i>
-                      {{  product.shop_name  }}
+                      {{ product.shop_name }}
                     </div>
                   </div>
                   <div class="preview-buttons d-flex item-center">

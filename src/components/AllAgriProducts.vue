@@ -6,20 +6,12 @@
     </div>
     <div class="row mb-3">
       <template v-for="product in AgriProducts">
-        <div
-          v-if="product.cat_name === $route.params.name"
-          :key="product.id"
-          class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 my-3"
-        >
+        <div v-if="product.cat_name === $route.params.name" :key="product.id"
+          class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 my-3">
           <div class="card mt-2">
             <a :href="ecomURL + 'product/' + product.slug">
               <div class="card-body">
-                <img
-                  loading="lazy"
-                  :src="ecomURL + 'public/' + product.file_name"
-                  alt=""
-                  class="card-img img-fluid"
-                />
+                <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
                 <div class="card-details my-3">
                   <h5 class="card-title text-truncate">
                     {{ product.name }}
@@ -38,10 +30,7 @@
                     </div>
                   </div>
                   <div class="my-2 d-flex">
-                    <div
-                      class="duration-tours text-truncate me-3"
-                      v-if="!product.shop_address"
-                    >
+                    <div class="duration-tours text-truncate me-3" v-if="!product.shop_address">
                       <i class="bi bi-geo"></i>
                       (Thimphu)
                     </div>
@@ -49,10 +38,7 @@
                       <i class="bi bi-geo"></i>
                       {{ product.shop_address }}
                     </div>
-                    <div
-                      class="duration-tours text-truncate"
-                      v-if="!product.shop_name"
-                    >
+                    <div class="duration-tours text-truncate" v-if="!product.shop_name">
                       <i class="bi bi-shop"></i>
                       Shine
                     </div>

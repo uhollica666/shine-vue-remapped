@@ -5,66 +5,29 @@
         <h3 class="auth-header mt-3 mb-4">Register</h3>
       </div>
       <div class="mb-3">
-        <label class="form-label" for="firstName"
-          >Full Name <span class="text-danger">*</span></label
-        >
-        <input
-          type="text"
-          id="firstName"
-          class="form-control input-control"
-          placeholder="Full Name"
-          required
-          v-model="name"
-        />
+        <label class="form-label" for="firstName">Full Name <span class="text-danger">*</span></label>
+        <input type="text" id="firstName" class="form-control input-control" placeholder="Full Name" required
+          v-model="name" />
       </div>
 
       <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label"
-          >Email address <span class="text-danger">*</span></label
-        >
-        <input
-          v-model="email"
-          type="email"
-          class="form-control input-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          required
-          placeholder="email@example.com"
-        />
+        <label for="exampleInputEmail1" class="form-label">Email address <span class="text-danger">*</span></label>
+        <input v-model="email" type="email" class="form-control input-control" id="exampleInputEmail1"
+          aria-describedby="emailHelp" required placeholder="email@example.com" />
       </div>
       <div class="mb-3">
-        <label for="InputPassword" class="form-label"
-          >Password <span class="text-danger">*</span></label
-        >
-        <input
-          v-model="password"
-          type="password"
-          class="form-control input-control"
-          id="InputPassword"
-          placeholder="********"
-          required
-        />
+        <label for="InputPassword" class="form-label">Password <span class="text-danger">*</span></label>
+        <input v-model="password" type="password" class="form-control input-control" id="InputPassword"
+          placeholder="********" required />
       </div>
       <div class="mb-3">
-        <label for="InputPassword" class="form-label"
-          >Confirm Password <span class="text-danger">*</span></label
-        >
-        <input
-          v-model="password_confirmation"
-          type="password"
-          class="form-control input-control"
-          id="InputConfirmPassword"
-          placeholder="********"
-          required
-        />
+        <label for="InputPassword" class="form-label">Confirm Password <span class="text-danger">*</span></label>
+        <input v-model="password_confirmation" type="password" class="form-control input-control"
+          id="InputConfirmPassword" placeholder="********" required />
       </div>
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-        <label
-          class="form-check-label no-account-register"
-          for="exampleCheck1"
-          required
-          >By Signing Up, I agree to
+        <label class="form-check-label no-account-register" for="exampleCheck1" required>By Signing Up, I agree to
           <RouterLink to="/terms">Terms & Conditions</RouterLink> of Shine.
         </label>
       </div>
@@ -86,18 +49,18 @@
 
       <div class="mt-3 reg mx-auto auth-header-two">
         <h5 class="mb-3">
-          Own a Handicraft or a Tourism Business? Sell With Us
+          Own a Business? Sell With Us
         </h5>
         <div class="flex-md-column flex-sm-row flex-xs-row text-start">
           <p class="no-account-register">
             Click
-            <a :href="'https://booking.shinebhutan.com/register'">Here</a> to
-            register for your Tourism.
+            <a :href="'https://booking.shinebhutan.com/page/vendor-register'">Here</a> to
+            register your Tourism / Hotel / Homestay Business.
           </p>
           <p class="no-account-register">
-            And click
+            Or click
             <a :href="'https://shop.shinebhutan.com/' + 'shops/create'">Here</a>
-            to register for your Handicraft store.
+            to register your Ecommerce / Handicraft Store.
           </p>
         </div>
       </div>
@@ -151,8 +114,7 @@ export default {
 }
 
 .login-bg {
-  background: url(https://images.unsplash.com/photo-1637552588842-6eb9ddef76e9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)
-    no-repeat center center fixed;
+  background: url(https://images.unsplash.com/photo-1637552588842-6eb9ddef76e9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) no-repeat center center fixed;
   /* background:linear-gradient(to bottom right,rgba(247, 148, 30,0.2) 0%,rgba(51, 51, 105,0.2) 100%); */
   background-size: cover;
   opacity: 0.9;

@@ -19,18 +19,7 @@
             <div class="contact contact_space">
               <ul class="top-bar top-bar-right" style="padding-top: 5px">
                 <div v-if="user" class="d-flex">
-                  <a :href="`https://shop.shinebhutan.com/cart`" style="padding-top: 8px">
-                    <div class="cart d-flex">
-                      <i class="bi bi-basket"></i>
-                      <!-- <template v-for="item in items"> -->
-                      <!-- <div v-if="item" :key="item" class="cart-items">
-                        {{ item }}
-                      </div> -->
-                      <div class="cart-items">0</div>
-                      <!-- </template> -->
-                    </div>
-                  </a>
-                  <div class="dropdown logged-user-menu mx-5">
+                  <div class="dropdown logged-user-menu mx-3">
                     <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton"
                       data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="bi dropdown-icon bi-person"></i>Hi, {{ user }}
@@ -43,7 +32,7 @@
                       </li>
 
                       <li class="px-1 mx-0" v-show="user === 'main-Admin'">
-                        <a :href="'https://booking.shinebhutan.com/' + 'admin'" class="dropdown-item text-dark">
+                        <a href="javascript:void(0)" class="dropdown-item text-dark" @click="loginInBooking()">
                           <i class="bi bi-shield-lock"></i>Tourism Admin
                         </a>
                       </li>
@@ -54,7 +43,7 @@
                       </li>
 
                       <li class="px-1 mx-0" v-show="user === 'Shine Admin'">
-                        <a :href="'https://booking.shinebhutan.com/' + 'admin'" class="dropdown-item text-dark">
+                        <a href="javascript:void(0)" class="dropdown-item text-dark" @click="loginInBooking()">
                           <i class="bi bi-shield-lock"></i>Tourism Admin
                         </a>
                       </li>
@@ -74,6 +63,46 @@
                       </li>
                     </ul>
                   </div>
+                  <div class="cart d-flex">
+                    <a :href="`https://shop.shinebhutan.com/cart`" style="padding-top: 8px" data-bs-toggle="tooltip"
+                      data-bs-placement="bottom" title="Go to Cart">
+                      <div class="d-flex">
+                        <i class="bi bi-basket"></i>
+                        <!-- <div v-for="item in items" :key="item"> -->
+                        <!-- <div v-if="item" class="cart-items"> -->
+                        <!-- {{ item.cart_products }} -->
+                        <!-- </div> -->
+                        <div class="cart-items cart-items-present"></div>
+                        <!-- </div> -->
+                      </div>
+                    </a>
+                    <span class="mx-2"></span>
+                    <a :href="`https://shop.shinebhutan.com/wishlists`" style="padding-top: 8px"
+                      data-bs-toggle="tooltip" data-bs-placement="bottom" title="Go to Wishlist">
+                      <div class="d-flex">
+                        <i class="bi bi-heart"></i>
+                        <!-- <div v-for="wishlist in wishlists" :key="wishlist"> -->
+                        <!-- <div v-if="wishlist" class="cart-items"> -->
+                        <!-- {{ wishlist.data }} -->
+                        <!-- </div> -->
+                        <div class="cart-items cart-items-present"></div>
+                        <!-- </div> -->
+                      </div>
+                    </a>
+                    <span class="mx-2"></span>
+                    <!-- <a :href="`https://shop.shinebhutan.com/compare`" style="padding-top: 8px">
+                      <div class="d-flex">
+                        <i class="bi bi-arrow-repeat"></i>
+                        <template v-for="item in items">
+                        <div v-if="item" :key="item" class="cart-items">
+                          {{ item }}
+                        </div>
+                        <div class="cart-items">0</div>
+                        </template>
+                      </div>
+                    </a>
+                    <span class="me-2"></span> -->
+                  </div>
                 </div>
                 <div v-else class="d-flex">
                   <li>
@@ -90,7 +119,8 @@
       </div>
     </div>
     <div class="clear-fix"></div>
-    <iframe id="timeout" src="#" width="0" height="0" style="display: none"></iframe>
+    <iframe id="timeout" src="#" width="0" height="0" style="display: none">
+    </iframe>
     <StickyNav />
   </div>
 </template>
@@ -98,8 +128,11 @@
 <script>
 import StickyNav from "@/components/common/StickyNav";
 import { mapGetters } from "vuex";
+// import axios from "axios";
 import { ref } from "vue";
+// const apiV2 = "https://shop.shinebhutan.com/api/v2/";
 const shop = "https://shop.shinebhutan.com";
+const booking = "https://booking.shinebhutan.com";
 const user = localStorage.getItem("userName");
 const email = localStorage.getItem("uid_em_frm-lgin");
 const password = localStorage.getItem("uid_psw_frm-lgin");
@@ -112,11 +145,34 @@ export default {
     StickyNav,
   },
   async setup() {
-    const items = ref(null);
-    const itemsCount = await fetch(
-      "https://shop.shinebhutan.com/api/v1/cartitems"
-    );
-    items.value = itemsCount.json();
+    // const items = ref(null);
+    // const wishlists = ref(null);
+
+    // await axios
+    //   .post(`${apiV2}cart-summary`, {
+    //     Headers: {
+    //       Authorization: `Bearer ${localStorage.getItem("token")}`,
+    //     },
+    //   })
+    //   .then((response) => {
+    //     console.log(response.json());
+    //     items.value = response.json();
+    //   })
+    //   .catch((error) => {
+    //     console.log(error.message);
+    //   });
+
+    // const wishListItems = await axios.get(`${apiV2}wishlists`, {
+    //   Headers: {
+    //     Authorization: `Bearer ${localStorage.getItem("token")}`,
+    //   },
+    // });
+    // wishlists.value = await wishListItems.json();
+
+    // return {
+    //   items,
+    //   wishlists,
+    // };
   },
   data() {
     return {
@@ -124,6 +180,7 @@ export default {
       shop,
       adminMenu,
       siteURL,
+      booking,
     };
   },
   methods: {
@@ -142,9 +199,16 @@ export default {
         if (user === "main-Admin" || user === "Shine Admin") {
           window.location.href = `${shop}/admin/profile`;
         } else {
-          window.location.href = `${shop}/dashboard`;
+          window.location.href = `${shop}/profile`;
         }
       }, 300);
+    },
+    loginInBooking() {
+      setTimeout(
+        (window.location.href = `https://booking.shinebhutan.com/api/shopdash?email=${email}&password=${password}`),
+        300
+      );
+      // setTimeout((window.location.href = `${booking}/admin`), 500);
     },
   },
   computed: {
@@ -154,14 +218,20 @@ export default {
 </script>
 
 <style scoped>
-.bi-basket {
-  color: #f7941e;
+.cart-items-present {
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  height: 5px;
+  width: 5px;
+  background: red;
+  border-radius: 20px;
 }
 
-.cart-items {
-  border-radius: 50rem;
-  color: #f9741e;
-  font-weight: 600;
+.bi-basket,
+.bi-heart,
+.bi-arrow-repeat {
+  color: #f7941e;
 }
 
 .profile-link {
