@@ -41,8 +41,8 @@
       <div class="no-account-register mt-3 mb-3">
         Forgot
         <a :href="shopURL + 'password/reset'">Password?</a>
-        <br/>
-        <br/>
+        <br />
+        <br />
         Not Ecommerce Vendor? Go to
         <RouterLink to="/login">User Login</RouterLink> Or
         <RouterLink to="/vendor-login">Tourism Vendor Login</RouterLink>.
@@ -87,6 +87,7 @@ export default {
         alert("login successful.");
         localStorage.setItem("token", resLogin.value.access_token);
         localStorage.setItem("userName", resLogin.value.userdetails.name);
+        localStorage.setItem("userType", resLogin.value.userdetails.user_type);
         localStorage.setItem("uid_em_frm-lgin", this.email);
         localStorage.setItem("uid_psw_frm-lgin", this.password);
         setTimeout(() => {

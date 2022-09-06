@@ -58,8 +58,8 @@
 </template>
 
 <script>
+// import axios from "axios";
 import axios from "axios";
-import { ref } from "vue";
 const bookingURL = "https://booking.shinebhutan.com/";
 export default {
   name: "BookingVendorLogin",
@@ -75,30 +75,36 @@ export default {
 
   methods: {
     async bookingLogin() {
-      const res = ref(null);
       await axios
         .get(
           `${bookingURL}api/shopdash?email=${this.email}&password=${this.password}`
         )
         .then((response) => {
-          console.log(response);
-          res.value = response.json();
-          if (res.message == "login successful") {
-            localStorage.setItem("userName", res.userdetails.name);
+          if (response.data.message == "login successful") {
+            localStorage.setItem("userName", response.data.userdetails.name);
             alert("Login successful");
             setTimeout(
               () =>
-                (window.location.href = ` https://booking.shinebhutan.com/admin`),
+                (document.getElementById(
+                  "booking-frame"
+                ).src = `${bookingURL}api/shopdash?email=${this.email}&password=${this.password}`),
+              200
+            );
+            setTimeout(
+              () =>
+                (window.location.href = ` https://booking.shinebhutan.com/user/dashboard`),
               1000
             );
           } else {
-            alert("Login failed because: " + res.message);
+            alert("Login failed because: " + response.message);
             this.$router.push("/vendor-login");
           }
         })
         .catch((error) => {
           console.log(error);
         });
+      localStorage.setItem("uid_em_frm-lgin", this.email);
+      localStorage.setItem("uid_psw_frm-lgin", this.password);
     },
   },
 };

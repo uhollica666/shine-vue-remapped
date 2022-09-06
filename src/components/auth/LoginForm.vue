@@ -52,7 +52,8 @@
           </p>
           <p class="no-account-register">
             Or
-            <RouterLink to="/ecom-vendor-login">Login Here</RouterLink> for your Ecommerce / Handicraft Store.
+            <RouterLink to="/ecom-vendor-login">Login Here</RouterLink> for your
+            Ecommerce / Handicraft Store.
           </p>
         </div>
       </div>
@@ -96,6 +97,7 @@ export default {
         alert("login successful.");
         localStorage.setItem("token", resLogin.value.access_token);
         localStorage.setItem("userName", resLogin.value.userdetails.name);
+        localStorage.setItem("userType", resLogin.value.userdetails.user_type);
         localStorage.setItem("uid_em_frm-lgin", this.email);
         localStorage.setItem("uid_psw_frm-lgin", this.password);
         setTimeout(() => {

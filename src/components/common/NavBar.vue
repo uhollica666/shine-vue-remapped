@@ -7,14 +7,10 @@
             <div class="contact contact_space">
               <ul class="top-bar top-bar-left">
                 <li>
-                  <a href="mailto:info@shinebhutan.com"
-                    ><i class="bi bi-send-check"></i>info@shinebhutan.com</a
-                  >
+                  <a href="mailto:info@shinebhutan.com"><i class="bi bi-send-check"></i>info@shinebhutan.com</a>
                 </li>
                 <li>
-                  <a href="callto:+97517388924"
-                    ><i class="bi bi-phone"></i>(+975) 16909020 | 17388924</a
-                  >
+                  <a href="callto:+97517388924"><i class="bi bi-phone"></i>(+975) 16909020 | 17388924</a>
                 </li>
               </ul>
             </div>
@@ -24,177 +20,105 @@
               <ul class="top-bar top-bar-right" style="padding-top: 5px">
                 <div v-if="user" class="d-flex">
                   <div class="dropdown logged-user-menu mx-3">
-                    <button
-                      class="btn dropdown-toggle text-white"
-                      type="button"
-                      id="dropdownMenuButton"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
+                    <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton"
+                      data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="bi dropdown-icon bi-person"></i>Hi, {{ user }}
                     </button>
-                    <ul
-                      class="dropdown-menu px-0 mx-0"
-                      aria-labelledby="dropdownMenuButton"
-                    >
+                    <ul class="dropdown-menu px-0 mx-0" aria-labelledby="dropdownMenuButton">
+                      <!-- Greeting Menu -->
                       <li class="px-1 mx-0">
-                        <div
-                          class="dropdown-item text-dark profile-link"
-                          @click="authDashboard()"
-                          v-if="auth_token"
-                        >
-                          "> <i class="bi bi-person-square"></i>My Profile
+                        <div class="dropdown-item text-dark profile-link" @click="authDashboard()"
+                          v-if="userType === 'admin'">
+                          <i class="bi bi-person-square"></i>Admin Profile
                         </div>
-                        <div
-                          class="dropdown-item text-dark profile-link"
-                          @click="bookingProfile()"
-                          v-else
-                        >
-                          <i class="bi bi-person-square"></i>My Dashboard
+                        <div class="dropdown-item text-dark profile-link" @click="authDashboard()"
+                          v-else-if="userType === 'customer'">
+                          <i class="bi bi-person-square"></i>My User Profile
+                        </div>
+                        <div class="dropdown-item text-dark profile-link" @click="authDashboard()"
+                          v-else-if="userType === 'seller'">
+                          <i class="bi bi-person-square"></i>Ecommerce Vendor
+                          Profile
+                        </div>
+                        <div class="dropdown-item text-dark profile-link" @click="bookingProfile()" v-else>
+                          <i class="bi bi-person-square"></i>Vendor Profile
                         </div>
                       </li>
+                      <!-- Greeting End -->
 
-                      <div v-show="user === 'main-Admin'">
+                      <!-- Admin Menu Start -->
+                      <div v-show="userType === 'admin'">
                         <li class="px-1 mx-0">
-                          <a
-                            href="javascript:void(0)"
-                            class="dropdown-item text-dark"
-                            @click="loginInBooking()"
-                          >
-                            <i class="bi bi-shield-lock"></i>Booking Admin
+                          <a href="javascript:void(0)" class="dropdown-item text-dark" @click="loginInBooking()">
+                            <i class="bi bi-shield-lock"></i>Go to Booking Admin
                           </a>
                         </li>
                         <li class="px-1 mx-0">
-                          <a
-                            :href="'https://shop.shinebhutan.com/admin'"
-                            class="dropdown-item text-dark"
-                          >
-                            <i class="bi bi-toggles"></i>Ecommerce Admin
+                          <a :href="'https://shop.shinebhutan.com/admin'" class="dropdown-item text-dark">
+                            <i class="bi bi-toggles"></i>Go to Ecommerce Admin
+                          </a>
+                        </li>
+                      </div>
+                      <!-- Admin Menu End -->
+
+                      <!-- Vendor Menu -->
+                      <div v-show="
+                        (userType === 'seller' && auth_token) ||
+                        (!auth_token && !userType)
+                      ">
+                        <li class="px-1 mx-0">
+                          <a class="dropdown-item text-secondary" href="javascript:void(0)">
+                            Vendors Area<i class="bi bi-chevron-double-down ms-2 text-secondary"></i>
+                          </a>
+                        </li>
+                        <li class="px-1 ms-3" v-if="!auth_token && !userType">
+                          <a href="javascript:void(0)" class="dropdown-item text-dark" @click="gotoBookingDashboard()">
+                            <i class="bi bi-house-door"></i>Go To Vendor
+                            Dashboard
+                          </a>
+                        </li>
+                        <li class="px-1 ms-3" v-if="userType === 'seller'">
+                          <a href="javascript:void(0)" class="dropdown-item text-dark" @click="gotoShopDashboard()">
+                            <i class="bi bi-shop-window"></i>Go To Ecommerce
+                            Dashboard
                           </a>
                         </li>
                       </div>
 
-                      <div v-show="user === 'Shine Admin'">
-                        <li class="px-1 mx-0">
-                          <a
-                            href="javascript:void(0)"
-                            class="dropdown-item text-dark"
-                            @click="loginInBooking()"
-                          >
-                            <i class="bi bi-shield-lock"></i>Booking Admin
-                          </a>
-                        </li>
-                        <li class="px-1 mx-0">
-                          <a
-                            :href="'https://shop.shinebhutan.com/admin'"
-                            class="dropdown-item text-dark"
-                          >
-                            <i class="bi bi-toggles"></i>Ecommerce Admin
-                          </a>
-                        </li>
-                      </div>
-
-                      <!-- Vendor Conditional Menu -->
-                      <div
-                        v-show="user !== 'Shine Admin' && user !== 'main-Admin'"
-                      >
-                        <li class="px-1 mx-0">
-                          <a
-                            class="dropdown-item text-secondary"
-                            href="javascript:void(0)"
-                          >
-                            Vendors Area<i
-                              class="bi bi-chevron-double-down ms-2"
-                            ></i>
-                          </a>
-                        </li>
-                        <li class="px-1 ms-3">
-                          <a
-                            href="javascript:void(0)"
-                            class="dropdown-item text-dark"
-                            @click="loginInBooking()"
-                          >
-                            <i class="bi bi-house-door"></i>Tourism Dashboard
-                          </a>
-                        </li>
-                        <li class="px-1 ms-3">
-                          <a
-                            href="javascript:void(0)"
-                            class="dropdown-item text-dark"
-                            @click="gotoShopDashboard()"
-                          >
-                            <i class="bi bi-shop-window"></i>Ecommerce Dashboard
-                          </a>
-                        </li>
-                      </div>
-
+                      <!-- Logout  -->
                       <li>
                         <hr class="dropdown-divider" />
                       </li>
                       <li class="px-1 mx-0">
-                        <a
-                          href="javascript:void(0)"
-                          @click="handleSignOut"
-                          class="dropdown-item text-dark"
-                        >
+                        <a href="javascript:void(0)" @click="handleSignOut" class="dropdown-item text-dark">
                           <i class="bi bi-box-arrow-right"></i>Logout
                         </a>
                       </li>
                     </ul>
                   </div>
-                  <div class="cart d-flex" v-if="auth_token">
-                    <a
-                      :href="`https://shop.shinebhutan.com/cart`"
-                      style="padding-top: 8px"
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="bottom"
-                      title="Go to Cart"
-                    >
+
+                  <!-- Show Cart and Wishlists Icons for Ecommerce Users -->
+                  <div class="cart d-flex" v-if="userType === 'customer'">
+                    <a :href="`https://shop.shinebhutan.com/cart`" style="padding-top: 8px" data-bs-toggle="tooltip"
+                      data-bs-placement="bottom" title="Go to Cart">
                       <div class="d-flex">
                         <i class="bi bi-basket"></i>
-                        <!-- <div v-for="item in items" :key="item"> -->
-                        <!-- <div v-if="item" class="cart-items"> -->
-                        <!-- {{ item.cart_products }} -->
-                        <!-- </div> -->
                         <div class="cart-items cart-items-present"></div>
-                        <!-- </div> -->
                       </div>
                     </a>
                     <span class="mx-2"></span>
-                    <a
-                      :href="`https://shop.shinebhutan.com/wishlists`"
-                      style="padding-top: 8px"
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="bottom"
-                      title="Go to Wishlist"
-                      v-if="user !== 'Shine Admin' && user !== 'main-Admin'"
-                    >
+                    <a :href="`https://shop.shinebhutan.com/wishlists`" style="padding-top: 8px"
+                      data-bs-toggle="tooltip" data-bs-placement="bottom" title="Go to Wishlist">
                       <div class="d-flex">
                         <i class="bi bi-heart"></i>
-                        <!-- <div v-for="wishlist in wishlists" :key="wishlist"> -->
-                        <!-- <div v-if="wishlist" class="cart-items"> -->
-                        <!-- {{ wishlist.data }} -->
-                        <!-- </div> -->
                         <div class="cart-items cart-items-present"></div>
-                        <!-- </div> -->
                       </div>
                     </a>
                     <span class="mx-2"></span>
-                    <!-- <a :href="`https://shop.shinebhutan.com/compare`" style="padding-top: 8px">
-                      <div class="d-flex">
-                        <i class="bi bi-arrow-repeat"></i>
-                        <template v-for="item in items">
-                        <div v-if="item" :key="item" class="cart-items">
-                          {{ item }}
-                        </div>
-                        <div class="cart-items">0</div>
-                        </template>
-                      </div>
-                    </a>
-                    <span class="me-2"></span> -->
                   </div>
                 </div>
 
+                <!-- Logged Out Menu -->
                 <div v-else class="d-flex">
                   <RouterLink to="/register">
                     <button class="btn text-white" type="button">
@@ -202,65 +126,47 @@
                     </button>
                   </RouterLink>
                   <div class="dropdown">
-                    <button
-                      class="btn dropdown-toggle text-white"
-                      type="button"
-                      id="dropdownMenuButton"
-                      data-mdb-toggle="dropdown"
-                      aria-expanded="false"
-                    >
+                    <button class="btn dropdown-toggle text-white" type="button" id="dropdownMenuButton"
+                      data-mdb-toggle="dropdown" aria-expanded="false">
                       <i class="bi bi-person-bounding-box"></i>Login
                     </button>
-                    <ul
-                      class="dropdown-menu px-0 mx-0"
-                      aria-labelledby="dropdownMenuButton"
-                    >
+                    <ul class="dropdown-menu px-0 mx-0" aria-labelledby="dropdownMenuButton">
                       <li>
                         <div class="dropdown-item text-secondary">
-                          Login<i class="bi bi-chevron-compact-down"></i>
+                          Login<i class="bi bi-chevron-compact-down text-secondary"></i>
                         </div>
                       </li>
                       <li class="px-1 ms-3">
-                        <RouterLink to="/login" class="dropdown-item text-dark"
-                          ><i class="bi bi-person-bounding-box"></i> Login
-                          Here</RouterLink
-                        >
+                        <RouterLink to="/login" class="dropdown-item text-dark"><i
+                            class="bi bi-person-bounding-box"></i> User
+                          Login</RouterLink>
                       </li>
                       <li>
                         <div class="dropdown-item text-secondary">
                           Vendor Zone
-                          <i class="bi bi-chevron-compact-down"></i>
+                          <i class="bi bi-chevron-compact-down text-secondary"></i>
                         </div>
                       </li>
                       <li class="px-1 ms-3">
-                        <RouterLink
-                          to="/vendor-login"
-                          class="dropdown-item text-dark"
-                          ><i class="bi bi-person-video2"></i>Tourism Vendor
-                          Login</RouterLink
-                        >
+                        <RouterLink to="/vendor-login" class="dropdown-item text-dark"><i
+                            class="bi bi-person-video2"></i>Tourism Vendor
+                          Login</RouterLink>
                       </li>
                       <li class="px-1 ms-3">
-                        <RouterLink
-                          to="/ecom-vendor-login"
-                          class="dropdown-item text-dark"
-                          ><i class="bi bi-cart4"></i>Ecommerce Vendor
-                          Login</RouterLink
-                        >
+                        <RouterLink to="/ecom-vendor-login" class="dropdown-item text-dark"><i
+                            class="bi bi-cart4"></i>Ecommerce Vendor
+                          Login</RouterLink>
                       </li>
                       <li>
                         <div class="dropdown-item text-secondary">
-                          Admins Area
-                          <i class="bi bi-chevron-compact-down"></i>
+                          Admin Area
+                          <i class="bi bi-chevron-compact-down text-secondary"></i>
                         </div>
                       </li>
                       <li class="px-1 ms-3">
-                        <RouterLink
-                          to="/admin-login"
-                          class="dropdown-item text-dark"
-                          ><i class="bi bi-person-video2"></i>Login to Admin
-                          Area</RouterLink
-                        >
+                        <RouterLink to="/admin-login" class="dropdown-item text-dark"><i
+                            class="bi bi-person-video2"></i>Login to Admin
+                          Area</RouterLink>
                       </li>
                     </ul>
                   </div>
@@ -287,6 +193,7 @@ import { ref } from "vue";
 const shop = "https://shop.shinebhutan.com";
 const booking = "https://booking.shinebhutan.com";
 const user = localStorage.getItem("userName");
+const userType = localStorage.getItem("userType");
 const email = localStorage.getItem("uid_em_frm-lgin");
 const password = localStorage.getItem("uid_psw_frm-lgin");
 const siteURL = `https://shop.shinebhutan.com/api/v1/shoplogout?email=${email}&password=${password}`;
@@ -335,11 +242,12 @@ export default {
   data() {
     return {
       user,
+      userType,
       shop,
       adminMenu,
       siteURL,
       booking,
-      bookURL
+      bookURL,
     };
   },
   methods: {
@@ -347,14 +255,13 @@ export default {
       alert("Logged Out Successfully");
       setTimeout(
         () => (document.getElementById("timeout").src = this.siteURL),
-        setTimeout(() =>
-          window.location.href = this.bookURL
-        ,300),
+        setTimeout(() => (window.location.href = this.bookURL), 300),
         300
       );
       setTimeout(() => (window.location.href = "https://shinebhutan.com"), 800);
       localStorage.removeItem("token");
       localStorage.removeItem("userName");
+      localStorage.removeItem("userType");
       localStorage.removeItem("uid_em_frm-lgin");
       localStorage.removeItem("uid_psw_frm-lgin");
       this.$store.dispatch("user", null);
@@ -372,7 +279,7 @@ export default {
     loginInBooking() {
       setTimeout(
         () =>
-          (window.location.href = `${booking}/api/shopdash?email=${email}&password=${password}`),
+          (window.location.href = `${booking}/admin`),
         300
       );
     },
@@ -385,6 +292,12 @@ export default {
     },
     bookingProfile() {
       setTimeout(() => (window.location.href = `${booking}/user/profile`), 300);
+    },
+    gotoBookingDashboard() {
+      setTimeout(
+        () => (window.location.href = `${booking}/user/dashboard`),
+        300
+      );
     },
   },
   computed: {
