@@ -4,11 +4,6 @@
             <div class="mb-3">
                 <h3 class="auth-header mt-3 mb-3">Tourism Vendor Login</h3>
             </div>
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Business Name *</label>
-                <input type="text" class="form-control input-control" id="exampleInputUserName"
-                    aria-describedby="emailHelp" placeholder="Your Registered Business Name" v-model="userName" required />
-            </div>
             <div class="my-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
                 <input type="email" class="form-control input-control" id="exampleInputEmail1"
@@ -44,6 +39,8 @@
 </template>
 
 <script>
+import axios from "axios";
+import { ref } from "vue";
 const bookingURL = "https://booking.shinebhutan.com/";
 export default {
     name: "BookingVendorLogin",
@@ -58,20 +55,32 @@ export default {
     },
 
     methods: {
-        bookingLogin() {
-            localStorage.setItem("uid_em_frm-lgin", this.email);
-            localStorage.setItem("uid_psw_frm-lgin", this.password);
-            localStorage.setItem("userName", this.userName);
-            document.getElementById(
-                "booking-frame"
-            ).src = `${bookingURL}api/shopdash?email=${this.email}&password=${this.password}`;
-            setTimeout(
-                () =>
-                    (window.location.href = `${bookingURL}api/shopdash?email=${this.email}&password=${this.password}`),
-                setTimeout(() => alert("login Successful"), 3000),
-                3500
-            );
-        },
+        async bookingLogin() {
+            const res = ref(null);
+            await axios
+                .get(
+                    `${bookingURL}/api/shopdash?email=${this.email}&password=${this.password}`
+                )
+                .then((response) => {
+                    console.log(response);
+                    res.value = response.json();
+                    if (res.message == "login successful") {
+                        localStorage.setItem("userName", res.userdetails.name);
+                        alert('Login successful');
+                        setTimeout(
+                            () =>
+                                (window.location.href = ` https://booking.shinebhutan.com/admin`),
+                            1000
+                        );
+                    } else {
+                        alert("Login failed because: " + res.message);
+                        this.$router.push("/vendor-login");
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
     },
 };
 </script>

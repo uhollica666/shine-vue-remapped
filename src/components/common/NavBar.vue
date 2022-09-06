@@ -290,6 +290,7 @@ const user = localStorage.getItem("userName");
 const email = localStorage.getItem("uid_em_frm-lgin");
 const password = localStorage.getItem("uid_psw_frm-lgin");
 const siteURL = `https://shop.shinebhutan.com/api/v1/shoplogout?email=${email}&password=${password}`;
+const bookURL = `https://booking.shinebhutan.com/api/booklogout?email=${email}&password=${password}`;
 
 let adminMenu = ref(null);
 export default {
@@ -338,6 +339,7 @@ export default {
       adminMenu,
       siteURL,
       booking,
+      bookURL
     };
   },
   methods: {
@@ -345,6 +347,9 @@ export default {
       alert("Logged Out Successfully");
       setTimeout(
         () => (document.getElementById("timeout").src = this.siteURL),
+        setTimeout(() =>
+          window.location.href = this.bookURL
+        ,300),
         300
       );
       setTimeout(() => (window.location.href = "https://shinebhutan.com"), 800);
