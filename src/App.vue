@@ -22,6 +22,10 @@ export default {
   async created() {
     const userName = localStorage.getItem("userName");
     this.$store.dispatch("user", userName);
+    // const token = localStorage.getItem("token");
+    // if (token) {
+    //   this.$storeTwo.dispatch("token", token);
+    // }
   },
 };
 </script>

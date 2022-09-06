@@ -1,18 +1,17 @@
 <template>
-        <div>
-            <LoginForm />
-        </div>
+  <div>
+    <LoginForm />
+  </div>
 </template>
 
 <script>
 import LoginForm from "@/components/auth/LoginForm";
 export default {
-    name: "LoginPage",
-    components: {
-        LoginForm,
-    },
-}
+  name: "LoginPage",
+  components: {
+    LoginForm,
+  },
+};
 </script>
 
-<style>
-</style>
+<style></style>

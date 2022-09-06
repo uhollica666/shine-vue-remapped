@@ -36,9 +36,19 @@ const routes = [
     component: () => import("../views/LoginPage"),
   },
   {
-    path: "/vendor-login",
+    path: "/admin-login",
+    name: "AdminLoginPage",
+    component: () => import("../views/AdminLoginPage"),
+  },
+  {
+    path: "/ecom-vendor-login",
     name: "VendorLoginPage",
     component: () => import("../views/VendorLoginPage"),
+  },
+  {
+    path: "/vendor-login",
+    name: "BookingVendorLoginPage",
+    component: () => import("../views/BookingVendorLoginPage"),
   },
   {
     path: "/register",
@@ -210,8 +220,8 @@ router.beforeEach(async (to, from, next) => {
       };
   };
   document.title = `${process.env.VUE_APP_TITLE} | ${to.name}`;
-  next()
+  next();
   window.scrollTo(0, 0);
 });
 
-export default router
+export default router;

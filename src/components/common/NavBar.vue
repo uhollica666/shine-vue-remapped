@@ -41,8 +41,16 @@
                         <div
                           class="dropdown-item text-dark profile-link"
                           @click="authDashboard()"
+                          v-if="auth_token"
                         >
-                          <i class="bi bi-person-square"></i>My Profile
+                          "> <i class="bi bi-person-square"></i>My Profile
+                        </div>
+                        <div
+                          class="dropdown-item text-dark profile-link"
+                          @click="bookingProfile()"
+                          v-else
+                        >
+                          <i class="bi bi-person-square"></i>My Dashboard
                         </div>
                       </li>
 
@@ -134,7 +142,7 @@
                       </li>
                     </ul>
                   </div>
-                  <div class="cart d-flex">
+                  <div class="cart d-flex" v-if="auth_token">
                     <a
                       :href="`https://shop.shinebhutan.com/cart`"
                       style="padding-top: 8px"
@@ -188,11 +196,11 @@
                 </div>
 
                 <div v-else class="d-flex">
-                  <li>
-                    <RouterLink to="/register"
-                      ><i class="bi bi-lock"></i>Register</RouterLink
-                    >
-                  </li>
+                  <RouterLink to="/register">
+                    <button class="btn text-white" type="button">
+                      <i class="bi bi-lock"></i>Register
+                    </button>
+                  </RouterLink>
                   <div class="dropdown">
                     <button
                       class="btn dropdown-toggle text-white"
@@ -201,28 +209,57 @@
                       data-mdb-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Login
+                      <i class="bi bi-person-bounding-box"></i>Login
                     </button>
                     <ul
                       class="dropdown-menu px-0 mx-0"
                       aria-labelledby="dropdownMenuButton"
                     >
                       <li>
+                        <div class="dropdown-item text-secondary">
+                          Login<i class="bi bi-chevron-compact-down"></i>
+                        </div>
+                      </li>
+                      <li class="px-1 ms-3">
                         <RouterLink to="/login" class="dropdown-item text-dark"
-                          ><i class="bi bi-person-bounding-box"></i
-                          >User Login</RouterLink
+                          ><i class="bi bi-person-bounding-box"></i> Login
+                          Here</RouterLink
                         >
                       </li>
                       <li>
-                        <RouterLink to="/vendor-login" class="dropdown-item text-dark"
-                          ><i class="bi bi-person-bounding-box"></i
-                          >Tourism Vendor Login</RouterLink
+                        <div class="dropdown-item text-secondary">
+                          Vendor Zone
+                          <i class="bi bi-chevron-compact-down"></i>
+                        </div>
+                      </li>
+                      <li class="px-1 ms-3">
+                        <RouterLink
+                          to="/vendor-login"
+                          class="dropdown-item text-dark"
+                          ><i class="bi bi-person-video2"></i>Tourism Vendor
+                          Login</RouterLink
+                        >
+                      </li>
+                      <li class="px-1 ms-3">
+                        <RouterLink
+                          to="/ecom-vendor-login"
+                          class="dropdown-item text-dark"
+                          ><i class="bi bi-cart4"></i>Ecommerce Vendor
+                          Login</RouterLink
                         >
                       </li>
                       <li>
-                        <RouterLink to="/ecom-vendor-login" class="dropdown-item text-dark"
-                          ><i class="bi bi-person-bounding-box"></i
-                          >Ecommerce Vendor Login</RouterLink
+                        <div class="dropdown-item text-secondary">
+                          Admins Area
+                          <i class="bi bi-chevron-compact-down"></i>
+                        </div>
+                      </li>
+                      <li class="px-1 ms-3">
+                        <RouterLink
+                          to="/admin-login"
+                          class="dropdown-item text-dark"
+                          ><i class="bi bi-person-video2"></i>Login to Admin
+                          Area</RouterLink
                         >
                       </li>
                     </ul>
@@ -259,6 +296,13 @@ export default {
   name: "NavBar",
   components: {
     StickyNav,
+  },
+  setup() {
+    const auth_token = localStorage.getItem("token");
+
+    return {
+      auth_token,
+    };
   },
   // async setup() {
   // const items = ref(null);
@@ -309,6 +353,7 @@ export default {
       localStorage.removeItem("uid_em_frm-lgin");
       localStorage.removeItem("uid_psw_frm-lgin");
       this.$store.dispatch("user", null);
+      // this.$storeTwo.dispatch("token", null);
     },
     authDashboard() {
       setTimeout(() => {
@@ -322,7 +367,7 @@ export default {
     loginInBooking() {
       setTimeout(
         () =>
-          (window.location.href = `https://booking.shinebhutan.com/api/shopdash?email=${email}&password=${password}`),
+          (window.location.href = `${booking}/api/shopdash?email=${email}&password=${password}`),
         300
       );
     },
@@ -333,14 +378,22 @@ export default {
         300
       );
     },
+    bookingProfile() {
+      setTimeout(() => (window.location.href = `${booking}/user/profile`), 300);
+    },
   },
   computed: {
     ...mapGetters(["user"]),
+    // ...mapGetters(["token"]),
   },
 };
 </script>
 
 <style scoped>
+.dropdown-menu {
+  z-index: 9999;
+}
+
 .cart-items-present {
   align-content: center;
   justify-content: center;

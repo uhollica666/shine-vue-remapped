@@ -2,7 +2,7 @@
   <div class="login-bg py-5">
     <form class="auth-form-register" @submit.prevent="register">
       <div class="mb-3">
-        <h3 class="auth-header mt-3 mb-4">Register</h3>
+        <h3 class="auth-header mt-3 mb-4">User Registration</h3>
       </div>
       <div class="mb-3">
         <label class="form-label" for="firstName"
@@ -64,29 +64,24 @@
           class="form-check-label no-account-register"
           for="exampleCheck1"
           required
-          >By Signing Up, I agree to
+          >By Registering, I agree to
           <RouterLink to="/terms">Terms & Conditions</RouterLink> of Shine.
         </label>
       </div>
-      <div class="d-flex flex-row flexi-btn">
-        <button class="btn submit-btn">
-          <i class="bi bi-lock"></i>Register
-        </button>
-        <!-- <button class="btn ggle-btn">
-          <i class="bi bi-google"></i>Continue With Google
-        </button> -->
-      </div>
-
       <div class="no-account-register my-3">
-        Already have an account? Login
-        <RouterLink to="/login">Here</RouterLink>.
+        Already Registered?
+        <RouterLink to="/login">Login Here</RouterLink>.
       </div>
-
+      <div class="d-flex flex-row flexi-btn my-3">
+        <button class="btn text-light submit-btn">
+          <i class="bi bi-lock text-light"></i>Register
+        </button>
+      </div>
       <hr class="my-4" />
 
-      <div class="mt-3 reg mx-auto auth-header-two">
-        <h5 class="mb-3 mx-auto">Own a Business? Sell With Us</h5>
-        <div class="flex-md-column flex-sm-row flex-xs-row text-start">
+      <div class="mt-3 reg mx-auto auth-header-two text-center p-3">
+        <h3 class="mb-3 mx-auto">Own a Business? Sell With Us</h3>
+        <div class="flex-md-column flex-sm-row flex-xs-row text-center">
           <p class="no-account-register">
             <a :href="'https://booking.shinebhutan.com/page/vendor-register'"
               >Click Here</a
@@ -214,12 +209,6 @@ export default {
   color: #fff;
   border-radius: 10rem;
   width: 45%;
-}
-
-.submit-btn:hover {
-  background: #f0dfca;
-  color: #f7941e;
-  border: 1px solid #f7941e;
 }
 
 .ggle-btn:hover {

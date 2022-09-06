@@ -32,16 +32,20 @@
 
       <div class="d-flex flexi-btn">
         <button class="btn submit-btn">
-          <i class="bi bi-lock"></i>Sign In
+          <i class="bi bi-lock text-light"></i>Sign In
         </button>
         <!-- <button class="btn ggle-btn">
           <i class="bi bi-google"></i>Sign In With Google
         </button> -->
       </div>
       <div class="no-account-register mt-3 mb-3">
-        Not A Vendor? Go to User Login
-        <RouterLink to="/login">Here</RouterLink>. <br />Forgot
+        Forgot
         <a :href="shopURL + 'password/reset'">Password?</a>
+        <br/>
+        <br/>
+        Not Ecommerce Vendor? Go to
+        <RouterLink to="/login">User Login</RouterLink> Or
+        <RouterLink to="/vendor-login">Tourism Vendor Login</RouterLink>.
       </div>
     </form>
     <iframe
