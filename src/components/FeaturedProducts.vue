@@ -7,13 +7,21 @@
       <p class="mt-3">Discover the freshness of Bhutan</p>
     </div>
     <div class="row">
-      <template v-for="product in sortProductsLatest()">
-        <div v-if="product.parent_name === 'Agri Products'" :key="product.id"
-          class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12">
+      <template v-for="(product, index) in visibleProducts">
+        <div
+          v-if="product.parent_name === 'Agri Products'"
+          :key="index"
+          class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12"
+        >
           <div class="card mt-5">
             <a :href="ecomURL + 'product/' + product.slug">
               <div class="card-body">
-                <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
+                <img
+                  loading="lazy"
+                  :src="ecomURL + 'public/' + product.file_name"
+                  alt=""
+                  class="card-img img-fluid"
+                />
                 <div class="card-details py-4">
                   <h5 class="card-title text-truncate">
                     {{ product.name }}
@@ -32,7 +40,10 @@
                     </div>
                   </div>
                   <div class="my-3 d-flex">
-                    <div class="duration-tours text-truncate me-3" v-if="!product.shop_address">
+                    <div
+                      class="duration-tours text-truncate me-3"
+                      v-if="!product.shop_address"
+                    >
                       <i class="bi bi-geo"></i>
                       (Thimphu)
                     </div>
@@ -40,7 +51,10 @@
                       <i class="bi bi-geo"></i>
                       {{ product.shop_address }}
                     </div>
-                    <div class="duration-tours text-truncate" v-if="!product.shop_name">
+                    <div
+                      class="duration-tours text-truncate"
+                      v-if="!product.shop_name"
+                    >
                       <i class="bi bi-shop"></i>
                       Shine
                     </div>
@@ -49,36 +63,50 @@
                       {{ product.shop_name }}
                     </div>
                   </div>
-                  <div class="preview-buttons d-flex item-center">
+                  <!-- <div class="preview-buttons d-flex item-center">
                     <button class="btn btn-preview my-2">
                       <i class="bi bi-eye mr-1"></i>
                       Preview
                     </button>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </a>
           </div>
         </div>
       </template>
+      <div class="row">
+        <button
+          id="loadmore-btn-agriproducts"
+          class="btn my-5 mx-auto col-md-3 btn-success"
+          @click="addMore"
+        >
+          Load More...
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { ref } from "vue";
+import axios from "axios";
+import { remove } from "@vue/shared";
 export default {
   name: "FeaturedProducts",
   props: ["products"],
-
   async setup() {
     const products = ref(null);
     const ecomURL = "https://shop.shinebhutan.com/";
     const catSubtitle = "Eastern Bhutan Destinations Now Open";
-    const product = await fetch(
-      "https://shop.shinebhutan.com/api/v1/get_frontend_products"
-    );
-    products.value = await product.json();
+
+    await axios
+      .get("https://shop.shinebhutan.com/api/v1/get_frontend_products")
+      .then((response) => {
+        products.value = response.data;
+      });
+
+    // products.value = await product.json();
 
     return {
       /* eslint-disable */
@@ -87,11 +115,34 @@ export default {
       ecomURL,
     };
   },
+  data() {
+    return {
+      productsVisible: 25,
+      loadMore: 20,
+    };
+  },
   methods: {
     sortProductsLatest() {
       return this.products.sort((a, b) => {
         return b.id - a.id;
       });
+    },
+    addMore() {
+      if (this.productsVisible > this.products.length) return;
+      this.productsVisible = this.productsVisible + this.loadMore;
+      if ((this.productsVisible = this.products.length)) {
+        document.getElementById("loadmore-btn-agriproducts").innerHTML =
+          "End of Products List";
+        document.getElementById("loadmore-btn-agriproducts").classList = remove
+          ? "btn my-5 mx-auto col-md-3 btn-disabled"
+          : "btn my-5 mx-auto col-md-3 btn-success";
+      }
+    },
+  },
+
+  computed: {
+    visibleProducts() {
+      return this.sortProductsLatest().slice(0, this.productsVisible);
     },
   },
 };

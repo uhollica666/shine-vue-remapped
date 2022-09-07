@@ -80,12 +80,12 @@
                       {{ product.cat_name }}
                     </div>
                   </div>
-                  <div class="preview-buttons d-flex item-center">
+                  <!-- <div class="preview-buttons d-flex item-center">
                     <button class="btn btn-preview mx-auto my-2">
                       <i class="bi bi-eye mr-1"></i>
                       View Details
                     </button>
-                  </div>
+                  </div> -->
                 </div>
               </a>
             </div>

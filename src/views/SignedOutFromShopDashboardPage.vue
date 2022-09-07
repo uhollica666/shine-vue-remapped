@@ -13,8 +13,8 @@
 <script>
 const shop = "https://shop.shinebhutan.com";
 const user = localStorage.getItem("userName");
-const email = localStorage.getItem("uid_em_frm-lgin");
-const password = localStorage.getItem("uid_psw_frm-lgin");
+const email = localStorage.getItem("StorageBucket-S3-UserId");
+const password = localStorage.getItem("SessionDataStorageBucket-S3-token");
 const siteURL = `https://shop.shinebhutan.com/api/v1/shoplogout?email=${email}&password=${password}`;
 export default {
   name: "SignedOutFromShopDashboardPage",
@@ -27,12 +27,12 @@ export default {
   },
   mounted() {
     alert("Logged Out Successfully"),
-    document.getElementById("timeouttwo").src = this.siteURL
+      (document.getElementById("timeouttwo").src = this.siteURL);
     setTimeout((window.location.href = "https://shinebhutan.com"), 500);
     localStorage.removeItem("token");
     localStorage.removeItem("userName");
-    localStorage.removeItem("uid_em_frm-lgin");
-    localStorage.removeItem("uid_psw_frm-lgin");
+    localStorage.removeItem("StorageBucket-S3-UserId");
+    localStorage.removeItem("SessionDataStorageBucket-S3-token");
     this.$store.dispatch("user", null);
   },
 };

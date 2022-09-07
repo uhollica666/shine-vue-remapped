@@ -2,7 +2,7 @@
     <div class="container my-5">
         <h4 class="my-5 mx-auto text-center">🔄️ Fetching Contents... Please Wait</h4>
         <div class="row mb-5">
-            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
+            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6 my-3">
                 <div class="card">
                     <div class="card-img"></div>
                     <div class="d-flex card-details">                        
@@ -15,7 +15,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
+            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6 my-3">
                 <div class="card">
                     <div class="card-img"></div>
                     <div class="d-flex card-details">                        
@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
+            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6 my-3">
                 <div class="card">
                     <div class="card-img"></div>
                     <div class="d-flex card-details">                        

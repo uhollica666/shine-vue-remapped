@@ -47,13 +47,20 @@
         <RouterLink to="/ecom-vendor-login">Ecommerce Vendor Login</RouterLink>.
       </div>
     </form>
+    <!-- <div class="row">
+      <bytton class="btn btn-primary my-5 col-md-3 mx-auto" @click="randomify">
+        Random Number
+      </bytton>
+    </div> -->
     <iframe
       id="booking-frame"
       src="#"
       width="0"
       height="0"
       style="display: none"
-    ></iframe>
+    >
+      ></iframe
+    >
   </div>
 </template>
 
@@ -75,6 +82,10 @@ export default {
 
   methods: {
     async bookingLogin() {
+      const tokenRandOne = Math.random().toString(32).slice(2);
+      const tokenRandTwo = Math.random().toString(22).slice(2);
+      const tokenRandThree = Math.random().toString(24).slice(2);
+      const tokenRandFour = Math.random().toString(36).slice(2);
       await axios
         .get(
           `${bookingURL}api/shopdash?email=${this.email}&password=${this.password}`
@@ -83,28 +94,37 @@ export default {
           if (response.data.message == "login successful") {
             localStorage.setItem("userName", response.data.userdetails.name);
             alert("Login successful");
+            document.getElementById(
+              "booking-frame"
+            ).src = `${bookingURL}api/shopdash?email=${this.email}&password=${this.password}`;
             setTimeout(
-              () =>
-                (document.getElementById(
-                  "booking-frame"
-                ).src = `${bookingURL}api/shopdash?email=${this.email}&password=${this.password}`),
-              200
-            );
-            setTimeout(
-              () =>
-                (window.location.href = ` https://booking.shinebhutan.com/user/dashboard`),
-              1000
+              () => (window.location.href = ` ${bookingURL}user/dashboard`),
+              1200
             );
           } else {
-            alert("Login failed because: " + response.message);
+            alert("Login failed because: " + response.data.message);
             this.$router.push("/vendor-login");
           }
         })
         .catch((error) => {
           console.log(error);
         });
-      localStorage.setItem("uid_em_frm-lgin", this.email);
-      localStorage.setItem("uid_psw_frm-lgin", this.password);
+      localStorage.setItem("StorageBucket-S3-UserId", this.email);
+      localStorage.setItem(
+        "SessionDataStorageBucket-S3-token",
+        tokenRandOne +
+          tokenRandTwo +
+          tokenRandFour +
+          tokenRandThree +
+          "¬" +
+          this.password +
+          "¬" +
+          tokenRandTwo +
+          tokenRandOne +
+          tokenRandTwo +
+          tokenRandFour +
+          tokenRandOne
+      );
     },
   },
 };

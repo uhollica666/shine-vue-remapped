@@ -28,7 +28,7 @@
                       <!-- Greeting Menu -->
                       <li class="px-1 mx-0">
                         <div class="dropdown-item text-dark profile-link" @click="authDashboard()"
-                          v-if="userType === 'admin'">
+                          v-if="userType === 'admin' || userType === 'staff'">
                           <i class="bi bi-person-square"></i>Admin Profile
                         </div>
                         <div class="dropdown-item text-dark profile-link" @click="authDashboard()"
@@ -47,7 +47,7 @@
                       <!-- Greeting End -->
 
                       <!-- Admin Menu Start -->
-                      <div v-show="userType === 'admin'">
+                      <div v-show="userType === 'admin' || userType === 'staff'">
                         <li class="px-1 mx-0">
                           <a href="javascript:void(0)" class="dropdown-item text-dark" @click="loginInBooking()">
                             <i class="bi bi-shield-lock"></i>Go to Booking Admin
@@ -180,6 +180,7 @@
     <div class="clear-fix"></div>
     <iframe id="timeout" src="#" width="0" height="0" style="display: none">
     </iframe>
+    <iframe id="book-logout" src="#" width="0" height="0" style="display: none"></iframe>
     <StickyNav />
   </div>
 </template>
@@ -192,12 +193,12 @@ import { ref } from "vue";
 // const apiV2 = "https://shop.shinebhutan.com/api/v2/";
 const shop = "https://shop.shinebhutan.com";
 const booking = "https://booking.shinebhutan.com";
+const password = localStorage.getItem("SessionDataStorageBucket-S3-token");
 const user = localStorage.getItem("userName");
 const userType = localStorage.getItem("userType");
-const email = localStorage.getItem("uid_em_frm-lgin");
-const password = localStorage.getItem("uid_psw_frm-lgin");
-const siteURL = `https://shop.shinebhutan.com/api/v1/shoplogout?email=${email}&password=${password}`;
-const bookURL = `https://booking.shinebhutan.com/api/booklogout?email=${email}&password=${password}`;
+const email = localStorage.getItem("StorageBucket-S3-UserId");
+const siteURL = `https://shop.shinebhutan.com/api/v1/shoplogout?email=${email}&password=`;
+const bookURL = `https://booking.shinebhutan.com/api/booklogout?email=${email}&password=`;
 
 let adminMenu = ref(null);
 export default {
@@ -212,35 +213,10 @@ export default {
       auth_token,
     };
   },
-  // async setup() {
-  // const items = ref(null);
-  // const wishlists = ref(null);
-  // await axios
-  //   .post(`${apiV2}cart-summary`, {
-  //     Headers: {
-  //       Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //     },
-  //   })
-  //   .then((response) => {
-  //     console.log(response.json());
-  //     items.value = response.json();
-  //   })
-  //   .catch((error) => {
-  //     console.log(error.message);
-  //   });
-  // const wishListItems = await axios.get(`${apiV2}wishlists`, {
-  //   Headers: {
-  //     Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //   },
-  // });
-  // wishlists.value = await wishListItems.json();
-  // return {
-  //   items,
-  //   wishlists,
-  // };
-  // },
+
   data() {
     return {
+      password,
       user,
       userType,
       shop,
@@ -252,20 +228,23 @@ export default {
   },
   methods: {
     handleSignOut() {
+      const newPass = password.split("¬")[1];
       alert("Logged Out Successfully");
       setTimeout(
-        () => (document.getElementById("timeout").src = this.siteURL),
-        setTimeout(() => (window.location.href = this.bookURL), 300),
+        () => (document.getElementById("timeout").src = siteURL + newPass),
+        300
+      );
+      setTimeout(
+        () => (document.getElementById("book-logout").src = bookURL + newPass),
         300
       );
       setTimeout(() => (window.location.href = "https://shinebhutan.com"), 800);
       localStorage.removeItem("token");
       localStorage.removeItem("userName");
       localStorage.removeItem("userType");
-      localStorage.removeItem("uid_em_frm-lgin");
-      localStorage.removeItem("uid_psw_frm-lgin");
+      localStorage.removeItem("StorageBucket-S3-UserId");
+      localStorage.removeItem("SessionDataStorageBucket-S3-token");
       this.$store.dispatch("user", null);
-      // this.$storeTwo.dispatch("token", null);
     },
     authDashboard() {
       setTimeout(() => {
@@ -277,16 +256,24 @@ export default {
       }, 300);
     },
     loginInBooking() {
+      const newPass = password.split("¬")[1];
       setTimeout(
         () =>
-          (window.location.href = `${booking}/admin`),
-        300
+        (document.getElementById(
+          "timeout"
+        ).src = `${booking}/api/shopdash?email=${email}&password=${newPass}`),
+        200
+      );
+      setTimeout(
+        () => (window.location.href = ` https://booking.shinebhutan.com/admin`),
+        1000
       );
     },
     gotoShopDashboard() {
+      const newPass = password.split("¬")[1];
       setTimeout(
         () =>
-          (window.location.href = `${shop}/api/v1/shopdash?email=${email}&password=${password}`),
+          (window.location.href = `${shop}/api/v1/shopdash?email=${email}&password=${newPass}`),
         300
       );
     },
@@ -302,7 +289,6 @@ export default {
   },
   computed: {
     ...mapGetters(["user"]),
-    // ...mapGetters(["token"]),
   },
 };
 </script>

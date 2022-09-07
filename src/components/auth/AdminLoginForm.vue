@@ -68,6 +68,10 @@ export default {
 
   methods: {
     async login() {
+      const tokenRandOne = Math.random().toString(32).slice(2);
+      const tokenRandTwo = Math.random().toString(22).slice(2);
+      const tokenRandThree = Math.random().toString(24).slice(2);
+      const tokenRandFour = Math.random().toString(36).slice(2);
       const resLogin = ref(null);
       const loginNow = await axios
         .post(`apilogin?email=${this.email}&password=${this.password}`)
@@ -81,21 +85,33 @@ export default {
         localStorage.setItem("token", resLogin.value.access_token);
         localStorage.setItem("userName", resLogin.value.userdetails.name);
         localStorage.setItem("userType", resLogin.value.userdetails.user_type);
-        localStorage.setItem("uid_em_frm-lgin", this.email);
-        localStorage.setItem("uid_psw_frm-lgin", this.password);
+        localStorage.setItem("StorageBucket-S3-UserId", this.email);
+        localStorage.setItem(
+          "SessionDataStorageBucket-S3-token",
+          tokenRandOne +
+            tokenRandTwo +
+            tokenRandFour +
+            tokenRandThree +
+            "¬" +
+            this.password +
+            "¬" +
+            tokenRandTwo +
+            tokenRandOne +
+            tokenRandTwo +
+            tokenRandFour +
+            tokenRandOne
+        );
         setTimeout(() => {
           document.getElementById(
             "timeout"
           ).src = `https://booking.shinebhutab.com/api/shopdash?email=${this.email}&password=${this.password}`;
-          setTimeout(() => {
-            window.location.href = `${shopURL}api/v1/shopdash?email=${this.email}&password=${this.password}`;
-          }, 800);
         }, 300);
-
-        // setTimeout((window.location.href = `${shopURL}profile`), 10000);
+        setTimeout(() => {
+          window.location.href = `${shopURL}api/v1/shopdash?email=${this.email}&password=${this.password}`;
+        }, 1200);
       } else if (loginNow.data.message.toLowerCase().includes("unauthorized")) {
         alert("Login Error: " + loginNow.data.message);
-        this.$router.push("/login");
+        this.$router.push("/admin-login");
       } else {
         alert("Something went wrong, Please try again.");
       }
