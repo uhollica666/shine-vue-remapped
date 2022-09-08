@@ -35,7 +35,7 @@
             <RouterLink to="/terms"><i class="bi bi-chevron-compact-right"></i>Help Desk</RouterLink>
           </div>
           <div class="footer-link">
-            <a href="@/assets/files/"><i class="bi bi-chevron-compact-right"></i>Site Map</a>
+            <RouterLink to="/sitemap.xml"><i class="bi bi-chevron-compact-right"></i>Site Map</RouterLink>
           </div>
         </div>
         <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3 footer-note">
