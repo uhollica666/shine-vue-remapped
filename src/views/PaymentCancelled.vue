@@ -25,6 +25,7 @@ export default {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "access-control-allow-origin": "https://shinebhutan.com",
           },
           body: JSON.stringify,
         }

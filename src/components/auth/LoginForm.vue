@@ -121,9 +121,9 @@ export default {
         setTimeout(() => {
           document.getElementById(
             "timeout"
-          ).src = `https://booking.shinebhutan.com/api/shopdash?email=${this.email}&password=${this.password}`;
+          ).src = `https://shop.shinebhutan.com/api/v1/shopdash?email=${this.email}&password=${this.password}`;
           setTimeout(() => {
-            window.location.href = `${shopURL}api/v1/shopdash?email=${this.email}&password=${this.password}`;
+            window.location.href = `https://shinebhutan.com`;
           }, 600);
         }, 600);
 

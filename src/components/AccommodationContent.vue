@@ -5,16 +5,29 @@
       <p>Best places to stay in Bhutan</p>
     </div>
     <div class="row mb-3">
-      <div v-for="accommodation in latestAccommodations()" :key="accommodation.id"
-        class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12 card-mobile mt-3">
+      <div
+        v-for="accommodation in latestAccommodations()"
+        :key="accommodation.id"
+        class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-12 card-mobile mt-3"
+      >
         <div class="card mt-3">
-          <a :href="siteURL + '/space/' + accommodation.slug"
-            class="accommodation-details">
+          <a
+            :href="siteURL + '/space/' + accommodation.slug"
+            class="accommodation-details"
+          >
             <div class="card-body">
-              <img loading="lazy" :src="apiURL + accommodation.file_path" alt="" class="card-img img-fluid" />
+              <img
+                loading="lazy"
+                :src="apiURL + accommodation.file_path"
+                alt=""
+                class="card-img img-fluid"
+              />
 
               <div class="card-details py-3">
-                <h5 class="card-title text-truncate" v-if="!accommodation.title">
+                <h5
+                  class="card-title text-truncate"
+                  v-if="!accommodation.title"
+                >
                   -Name Not Available-
                 </h5>
                 <h5 class="card-title text-truncate" v-else>

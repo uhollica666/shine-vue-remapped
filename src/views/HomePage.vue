@@ -7,6 +7,7 @@
       :timeOut="5000"
       class="carousel"
       v-slot="{ currentSlide }"
+      v-once
     >
       <HomeCarouselSlide v-for="(slide, index) in CarouselSlides" :key="index">
         <div v-show="currentSlide === index + 1" class="slide-info">
@@ -26,7 +27,7 @@
 
     <div class="container">
       <div class="row my-3">
-        <NoticeSlider />
+        <NoticeSlider v-once/>
       </div>
     </div>
 

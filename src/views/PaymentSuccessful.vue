@@ -19,7 +19,8 @@ export default {
             this.$http.post('https://shop.shinebhutan.com/public/payment_response.php', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'access-control-allow-origin': 'https://shinebhutan.com',
                 },
                 body: JSON.stringify,
             });

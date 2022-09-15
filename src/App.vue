@@ -4,7 +4,7 @@
       <NavBar />
     </Suspense>
     <router-view />
-    <SiteFooter />
+    <SiteFooter v-once />
   </div>
 </template>
 
