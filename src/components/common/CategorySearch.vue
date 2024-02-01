@@ -31,11 +31,11 @@
                     </div>
                   </div>
                   <div class="preview-buttons d-flex item-center">
-                    
-                      <button class="btn btn-preview mx-auto my-2">
-                        <i class="bi bi-eye mr-1"></i>
-                        View Details
-                      </button>
+
+                    <button class="btn btn-preview mx-auto my-2">
+                      <i class="bi bi-eye mr-1"></i>
+                      View Details
+                    </button>
                   </div>
                 </div>
               </a>
@@ -66,11 +66,11 @@
                     </div>
                   </div>
                   <div class="preview-buttons d-flex item-center">
-                    
-                      <button class="btn btn-preview mx-auto my-2">
-                        <i class="bi bi-eye mr-1"></i>
-                        View Details
-                      </button>
+
+                    <button class="btn btn-preview mx-auto my-2">
+                      <i class="bi bi-eye mr-1"></i>
+                      View Details
+                    </button>
                   </div>
                 </div>
               </a>
@@ -88,9 +88,9 @@ export default {
   name: "CategorySearch",
   async setup() {
     const AgriProducts = ref(null);
-    const ecomURL = "https://shop.shinebhutan.com/";
+    const ecomURL = "https://shop.shinenbuy.com/";
     const ecom_products = await fetch(
-      "https://shop.shinebhutan.com/api/v1/get_frontend_products"
+      "https://shop.shinenbuy.com/api/v1/get_frontend_products"
     );
     AgriProducts.value = await ecom_products.json();
 

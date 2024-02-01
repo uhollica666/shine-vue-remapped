@@ -7,7 +7,7 @@
         <div class="card mt-3 mb-3">
           <div class="card-body">
             <a :href="ecomURL + 'product/' + product.slug" class="category-details">
-            <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img-blog" />
+              <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img-blog" />
               <div class="card-details">
                 <h6 class="card-title text-truncate">
                   {{ product.name }}
@@ -36,9 +36,9 @@ export default {
   async setup() {
     const products = ref(null);
     const catSubtitle = "Eastern Bhutan Destinations Now Open";
-    const ecomURL = "https://shop.shinebhutan.com/";
+    const ecomURL = "https://shop.shinenbuy.com/";
     const product = await fetch(
-      "https://shop.shinebhutan.com/api/v1/get_frontend_products"
+      "https://shop.shinenbuy.com/api/v1/get_frontend_products"
     );
     products.value = await product.json();
 

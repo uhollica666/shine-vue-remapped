@@ -17,7 +17,8 @@
               </div>
               <div class="content-filter">
                 <div class="dzo-list" v-for="article in articles" :key="article.id">
-                  <RouterLink :to="{ name: 'SingleArticle', params: { slug: article.slug } }" :class="{ active: isActive }">
+                  <RouterLink :to="{ name: 'SingleArticle', params: { slug: article.slug } }"
+                    :class="{ active: isActive }">
                     <ul class="lists-dzo">
                       <li v-if="article.title" class="text-capitalize">
                         {{ article.title }}
@@ -47,9 +48,9 @@ export default {
 
   async setup() {
     const articles = ref(null);
-    const siteURL = "https://booking.shinebhutan.com/";
+    const siteURL = "https://booking.shinenbuy.com/";
     const bc_articles = await fetch(
-      "https://booking.shinebhutan.com/api/articles"
+      "https://booking.shinenbuy.com/api/articles"
     );
     articles.value = await bc_articles.json();
 

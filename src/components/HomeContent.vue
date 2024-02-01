@@ -8,8 +8,7 @@
             <template v-for="product in computedProducts">
               <div class="cardo col-md-6 mt-2 home-img" v-if="product.parent_name === 'Agri Products'" :key="product.id">
                 <a :href="ecomURL + 'product/' + product.slug">
-                  <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt=""
-                    class="card-img2 img-fluid" />
+                  <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img2 img-fluid" />
                 </a>
               </div>
             </template>
@@ -31,8 +30,7 @@
             <template v-for="product in computedHandicrafts">
               <div class="cardo col-md-6 mt-2 home-img" v-if="product.parent_name === 'Handicrats'" :key="product.id">
                 <a :href="ecomURL + 'product/' + product.slug">
-                  <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt=""
-                    class="card-img2 img-fluid" />
+                  <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img2 img-fluid" />
                 </a>
               </div>
             </template>
@@ -138,8 +136,7 @@
             <template v-for="product in computedProductsTwo">
               <div class="cardo col-md-6 mt-2 home-img" v-if="product.parent_name === 'Agri Products'" :key="product.id">
                 <a :href="ecomURL + 'product/' + product.slug">
-                  <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt=""
-                    class="card-img2 img-fluid" />
+                  <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img2 img-fluid" />
                 </a>
               </div>
             </template>
@@ -161,8 +158,7 @@
             <template v-for="product in computedHandicraftsTwo">
               <div class="cardo col-md-6 mt-2 home-img" v-if="product.parent_name === 'Handicrats'" :key="product.id">
                 <a :href="ecomURL + 'product/' + product.slug">
-                  <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt=""
-                    class="card-img2 img-fluid" />
+                  <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img2 img-fluid" />
                 </a>
               </div>
             </template>
@@ -188,20 +184,20 @@ export default {
     const homeHotels = ref(null);
     const homeAccommodations = ref(null);
     const products = ref(null);
-    const apiURL = "https://booking.shinebhutan.com/uploads/";
-    const siteURL = "https://booking.shinebhutan.com/";
-    const ecomURL = "https://shop.shinebhutan.com/";
+    const apiURL = "https://booking.shinenbuy.com/uploads/";
+    const siteURL = "https://booking.shinenbuy.com/";
+    const ecomURL = "https://shop.shinenbuy.com/";
     const bc_homeTours = await fetch(
-      "https://booking.shinebhutan.com/api/bc_tours"
+      "https://booking.shinenbuy.com/api/bc_tours"
     );
     const bc_homeAccommodations = await fetch(
-      "https://booking.shinebhutan.com/api/bc_spaces"
+      "https://booking.shinenbuy.com/api/bc_spaces"
     );
     const bc_homeHotels = await fetch(
-      "https://booking.shinebhutan.com/api/bc_hotels"
+      "https://booking.shinenbuy.com/api/bc_hotels"
     );
     const bc_products = await fetch(
-      "https://shop.shinebhutan.com/api/v1/get_frontend_products"
+      "https://shop.shinenbuy.com/api/v1/get_frontend_products"
     );
 
     homeTours.value = await bc_homeTours.json();
@@ -400,10 +396,12 @@ export default {
   .home-img {
     max-width: 50%;
   }
-  .home-objects{
+
+  .home-objects {
     max-width: 45% !important;
   }
-  .home-linear-heading{
+
+  .home-linear-heading {
     max-width: 100%;
   }
 }

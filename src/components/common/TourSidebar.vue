@@ -47,9 +47,9 @@ export default {
 
   async setup() {
     const tours = ref(null);
-    const siteURL = "https://booking.shinebhutan.com/";
+    const siteURL = "https://booking.shinenbuy.com/";
     const bc_tours = await fetch(
-      "https://booking.shinebhutan.com/api/bc_tours"
+      "https://booking.shinenbuy.com/api/bc_tours"
     );
     tours.value = await bc_tours.json();
 

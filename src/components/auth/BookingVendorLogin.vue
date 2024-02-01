@@ -6,26 +6,13 @@
       </div>
       <div class="my-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input
-          type="email"
-          class="form-control input-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          placeholder="email@example.com"
-          v-model="email"
-          required
-        />
+        <input type="email" class="form-control input-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          placeholder="email@example.com" v-model="email" required />
       </div>
       <div class="my-3">
         <label for="InputPassword" class="form-label">Password</label>
-        <input
-          type="password"
-          class="form-control input-control"
-          id="InputPassword"
-          placeholder="********"
-          v-model="password"
-          required
-        />
+        <input type="password" class="form-control input-control" id="InputPassword" placeholder="********"
+          v-model="password" required />
       </div>
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1" />
@@ -39,7 +26,7 @@
       </div>
       <div class="no-account-register mt-3 mb-3">
         Forgot
-        <a href="https://booking.shinebhutan.com/password/reset">Password?</a>
+        <a href="https://booking.shinenbuy.com/password/reset">Password?</a>
         <br />
         <br />
         Not A Tourism Vendor? Go to
@@ -52,22 +39,15 @@
         Random Number
       </bytton>
     </div> -->
-    <iframe
-      id="booking-frame"
-      src="#"
-      width="0"
-      height="0"
-      style="display: none"
-    >
-      ></iframe
-    >
+    <iframe id="booking-frame" src="#" width="0" height="0" style="display: none">
+      ></iframe>
   </div>
 </template>
 
 <script>
 // import axios from "axios";
 import axios from "axios";
-const bookingURL = "https://booking.shinebhutan.com/";
+const bookingURL = "https://booking.shinenbuy.com/";
 export default {
   name: "BookingVendorLogin",
 
@@ -147,8 +127,7 @@ export default {
 }
 
 .login-bg {
-  background: url(https://images.pexels.com/photos/6540809/pexels-photo-6540809.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
-    no-repeat center center fixed;
+  background: url(https://images.pexels.com/photos/6540809/pexels-photo-6540809.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1) no-repeat center center fixed;
   /* background:linear-gradient(to bottom right,rgba(247, 148, 30,0.2) 0%,rgba(51, 51, 105,0.2) 100%); */
   background-size: cover;
   opacity: 0.9;

@@ -7,8 +7,7 @@
             <div class="card">
               <a :href=" bookingURL + '/hotel/' + accommodation.slug" class="accommodation-details">
                 <div class="card-body">
-                  <img loading="lazy" :src="siteURL + accommodation.file_path" alt=""
-                    class="card-img-hotel img-fluid" />
+                  <img loading="lazy" :src="siteURL + accommodation.file_path" alt="" class="card-img-hotel img-fluid" />
 
                   <div class="card-details text-capitalize">
                     <h5 class="card-title text-truncate my-3" v-if="!accommodation.title">
@@ -53,13 +52,13 @@
   </div>
 
   <div class="container my-5" v-else-if="
-    $route.params.slug === 'vhs-village-home-stay' ||
-    $route.params.slug === 'guest-house' ||
-    $route.params.slug === 'eco-lodge'
-  ">
+      $route.params.slug === 'vhs-village-home-stay' ||
+      $route.params.slug === 'guest-house' ||
+      $route.params.slug === 'eco-lodge'
+    ">
     <div class="row my-4 ">
-      <div class="hahahaha text-capitalize+">These are all the Available Accommodations under <span
-          class="text-danger">{{ $route.params.slug }}</span> </div>
+      <div class="hahahaha text-capitalize+">These are all the Available Accommodations under <span class="text-danger">{{
+                $route.params.slug }}</span> </div>
       <template v-for="space in spaceFiltered">
         <div class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 my-3" v-if="space" :key="space.id">
           <div class="card mt-2">
@@ -182,7 +181,7 @@
   </div>
 </template>
 
-      <script>
+<script>
 import { ref } from "vue";
 import { useRoute } from "vue-router";
 export default {
@@ -194,11 +193,11 @@ export default {
     const tourFiltered = ref(null);
     const route = useRoute();
     const routeId = route.params.slug;
-    const siteURL = "https://booking.shinebhutan.com/uploads/";
+    const siteURL = "https://booking.shinenbuy.com/uploads/";
 
     if (routeId === 'hotels') {
       const filterCar = await fetch(
-        "https://booking.shinebhutan.com/api/bc_hotels"
+        "https://booking.shinenbuy.com/api/bc_hotels"
       );
       hotelFitered.value = await filterCar.json();
     }
@@ -207,17 +206,17 @@ export default {
       routeId === 'guest-house' ||
       routeId === 'eco-lodge') {
       const spaceCategory = await fetch(
-        `https://booking.shinebhutan.com/api/space_types?name=${routeId}`
+        `https://booking.shinenbuy.com/api/space_types?name=${routeId}`
       );
       spaceFiltered.value = await spaceCategory.json();
     } else {
       const tourCategory = await fetch(
-        `https://booking.shinebhutan.com/api/tour_types?name=${routeId}`
+        `https://booking.shinenbuy.com/api/tour_types?name=${routeId}`
       );
       tourFiltered.value = await tourCategory.json();
     }
 
-    const bookingURL = "https://booking.shinebhutan.com";
+    const bookingURL = "https://booking.shinenbuy.com";
 
     return {
       hotelFitered,

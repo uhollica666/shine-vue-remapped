@@ -2,7 +2,7 @@
     <div class="row">
         <div class="accommodation-element mt-5">
             <h4 class="text-capitalize" v-if="$route.params.slug === 'All'">All Agri Products</h4>
-            <h4 class="text-capitalize" v-else>agri products from {{  $route.params.slug  }}</h4>
+            <h4 class="text-capitalize" v-else>agri products from {{ $route.params.slug }}</h4>
             <div class="d-flex pd-cnt ">
                 <p class="mt-3">Discover the Freshness of Bhutan</p>
                 <p class="mt-3">Overall Products: ({{ agriProductCount() }})</p>
@@ -19,19 +19,19 @@
                                     class="card-img img-fluid" />
                                 <div class="card-details my-3">
                                     <h5 class="card-title text-truncate">
-                                        {{  product.name  }}
+                                        {{ product.name }}
                                     </h5>
                                     <p class="text-small text-grey my-2 text-truncate">
-                                        {{  product.meta_description  }}
+                                        {{ product.meta_description }}
                                     </p>
                                     <div class="product-row my-2">
                                         <h6 class="card-text text-truncate">
                                             <i class="bi bi-cash-coin mr-1"></i> Nu.
-                                            {{  product.unit_price  }}/{{product.unit}}
+                                            {{ product.unit_price }}/{{product.unit}}
                                         </h6>
                                         <div class="duration-tours text-truncate">
                                             <i class="bi bi-tag"></i>
-                                            {{  product.cat_name  }}
+                                            {{ product.cat_name }}
                                         </div>
                                     </div>
                                     <div class="my-2 d-flex">
@@ -41,7 +41,7 @@
                                         </div>
                                         <div class="duration-tours text-truncate  me-3" v-else>
                                             <i class="bi bi-geo"></i>
-                                            {{  product.shop_address  }}
+                                            {{ product.shop_address }}
                                         </div>
                                         <div class="duration-tours text-truncate" v-if="!product.shop_name">
                                             <i class="bi bi-shop"></i>
@@ -49,7 +49,7 @@
                                         </div>
                                         <div class="duration-tours text-truncate" v-else>
                                             <i class="bi bi-shop"></i>
-                                            {{  product.shop_name  }}
+                                            {{ product.shop_name }}
                                         </div>
                                     </div>
                                     <div class="preview-buttons d-flex item-center">
@@ -72,19 +72,19 @@
                                     class="card-img img-fluid" />
                                 <div class="card-details my-3">
                                     <h5 class="card-title text-truncate">
-                                        {{  product.name  }}
+                                        {{ product.name }}
                                     </h5>
                                     <p class="text-small text-grey my-2 text-truncate">
-                                        {{  product.meta_description  }}
+                                        {{ product.meta_description }}
                                     </p>
                                     <div class="product-row my-2">
                                         <h6 class="card-text text-truncate">
                                             <i class="bi bi-cash-coin mr-1"></i> Nu.
-                                            {{  product.unit_price  }} / {{product.unit}}
+                                            {{ product.unit_price }} / {{product.unit}}
                                         </h6>
                                         <div class="duration-tours text-truncate">
                                             <i class="bi bi-tag"></i>
-                                            {{  product.cat_name  }}
+                                            {{ product.cat_name }}
                                         </div>
                                     </div>
                                     <div class="my-2 d-flex">
@@ -94,7 +94,7 @@
                                         </div>
                                         <div class="duration-tours text-truncate  me-3" v-else>
                                             <i class="bi bi-geo"></i>
-                                            {{  product.shop_address  }}
+                                            {{ product.shop_address }}
                                         </div>
                                         <div class="duration-tours text-truncate" v-if="!product.shop_name">
                                             <i class="bi bi-shop"></i>
@@ -102,7 +102,7 @@
                                         </div>
                                         <div class="duration-tours text-truncate" v-else>
                                             <i class="bi bi-shop"></i>
-                                            {{  product.shop_name  }}
+                                            {{ product.shop_name }}
                                         </div>
                                     </div>
                                     <!-- <div class="preview-buttons d-flex item-center">
@@ -121,15 +121,15 @@
     </div>
 </template>
 
-      <script>
+<script>
 import { ref } from "vue";
 export default {
     name: "AgriProductsDzo",
 
     async setup() {
         const agriProducts = ref(null);
-        const siteURL = "https://shop.shinebhutan.com/";
-        const products = await fetch('https://shop.shinebhutan.com/api/v1/get_frontend_products');
+        const siteURL = "https://shop.shinenbuy.com/";
+        const products = await fetch('https://shop.shinenbuy.com/api/v1/get_frontend_products');
         agriProducts.value = await products.json();
 
         return {

@@ -9,7 +9,7 @@
         <div class="col-md-6 py-5">
           <section class="row">
             <div class="col-md-12 prod-descrip">
-              <h3 class="text-capitalize">{{  product.name  }}</h3>
+              <h3 class="text-capitalize">{{ product.name }}</h3>
             </div>
             <div class="col-md-6" v-if="!product.rating">
               <i class="bi bi-star-fill text-warning prod-descrip"></i> Product
@@ -17,10 +17,10 @@
             </div>
             <div class="col-md-6" v-else>
               <i class="bi bi-star-fill text-warning prod-descrip"></i> Product
-              Rating: {{  product.rating  }}
+              Rating: {{ product.rating }}
             </div>
             <div class="col-md-6">
-              <i class="bi bi-tag"></i> {{  product.cat_name  }}
+              <i class="bi bi-tag"></i> {{ product.cat_name }}
             </div>
           </section>
           <div class="hr my-4"></div>
@@ -29,10 +29,10 @@
               <p><b>Price:</b></p>
             </div>
             <div class="col-md-12 prod-descrip" v-if="product.parent_name === 'Handicrats'">
-              <h4>Nu. {{  product.unit_price  }} <span> per {{ product.unit }}</span></h4>
+              <h4>Nu. {{ product.unit_price }} <span> per {{ product.unit }}</span></h4>
             </div>
             <div class="col-md-12 prod-descrip" v-else>
-              <h4>Nu. {{  product.unit_price  }} <span>/ {{ product.unit }}</span></h4>
+              <h4>Nu. {{ product.unit_price }} <span>/ {{ product.unit }}</span></h4>
             </div>
           </section>
           <div class="hr my-4"></div>
@@ -41,7 +41,7 @@
               <p><b>Description:</b></p>
             </div>
             <div class="col-md-12 descrip prod-descrip">
-              <p>{{  product.meta_description  }}</p>
+              <p>{{ product.meta_description }}</p>
             </div>
           </section>
           <div class="hr my-4"></div>
@@ -69,9 +69,9 @@ export default {
 
   async setup() {
     const products = ref(null);
-    const siteURL = "https://shop.shinebhutan.com/";
+    const siteURL = "https://shop.shinenbuy.com/";
     const ecom_products = await fetch(
-      "https://shop.shinebhutan.com/api/v1/get_frontend_products"
+      "https://shop.shinenbuy.com/api/v1/get_frontend_products"
     );
     products.value = await ecom_products.json();
 

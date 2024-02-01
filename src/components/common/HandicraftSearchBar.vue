@@ -51,7 +51,7 @@ export default {
     name: "HandicraftSearchBar",
     async setup() {
         const categories = ref(null);
-        const fetchCategory = await fetch('https://shop.shinebhutan.com/api/v1/get_frontend_categories?id=5');
+        const fetchCategory = await fetch('https://shop.shinenbuy.com/api/v1/get_frontend_categories?id=5');
         categories.value = await fetchCategory.json();
         return {
             categories,

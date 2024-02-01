@@ -3,10 +3,7 @@
     <div class="row">
       <div class="col-md-6"><i class="bi bi-tag"></i> Property Type:</div>
       <div class="col-md-6">
-        <div
-          v-for="accommodation in accommodations.SpaceType"
-          :key="accommodation"
-        >
+        <div v-for="accommodation in accommodations.SpaceType" :key="accommodation">
           <div v-if="accommodation" class="text-left">
             <b>{{ accommodation }}</b> ✅
           </div>
@@ -26,9 +23,9 @@ export default {
     const route = useRoute();
     const routeId = route.params.id;
     const accommodations = ref(null);
-    const siteURL = "https://booking.shinebhutan.com/";
+    const siteURL = "https://booking.shinenbuy.com/";
     const bc_hotels = await fetch(
-      `https://booking.shinebhutan.com/api/space_terms?id=${routeId}`
+      `https://booking.shinenbuy.com/api/space_terms?id=${routeId}`
     );
     accommodations.value = await bc_hotels.json();
     return {

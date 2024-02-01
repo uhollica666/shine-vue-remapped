@@ -26,8 +26,8 @@
           id="InputConfirmPassword" placeholder="********" required />
       </div>
       <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-        <label class="form-check-label no-account-register" for="exampleCheck1" required>By Registering, I agree to
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" required v-model="agreeTerm" />
+        <label class="form-check-label no-account-register" for="exampleCheck1">By Registering, I agree to
           <RouterLink to="/terms">Terms & Conditions</RouterLink> of Shine.
         </label>
       </div>
@@ -46,12 +46,12 @@
         <h3 class="mb-3 mx-auto">Own a Business? Sell With Us</h3>
         <div class="flex-md-column flex-sm-row flex-xs-row text-center">
           <p class="no-account-register">
-            <a :href="'https://booking.shinebhutan.com/page/vendor-register'">Click Here</a>
+            <a :href="'https://booking.shinenbuy.com/page/vendor-register'">Click Here</a>
             to register your Tourism / Hotel / Homestay Business.
           </p>
           <p class="no-account-register">
             Or
-            <a :href="'https://shop.shinebhutan.com/' + 'shops/create'">Click Here</a>
+            <a :href="'https://shop.shinenbuy.com/' + 'shops/create'">Click Here</a>
             to register your Ecommerce / Handicraft Store.
           </p>
         </div>
@@ -70,31 +70,36 @@ export default {
       email: "",
       password: "",
       password_confirmation: "",
+      agreeTerm: "",
     };
   },
   methods: {
     async register() {
       if (this.password === this.password_confirmation) {
-        const res = ref(null);
-        const registerNow = await axios
-          .post(`apiregister`, {
-            name: this.name,
-            email: this.email,
-            password: this.password,
-            register_by: "email",
-          })
-          .catch((error) => {
-            console.log(error.message);
-          });
+        if (this.agreeTerm === null) {
+          alert('You need to agree to our Terms & Conditions')
+        } else {
+          const res = ref(null);
+          const registerNow = await axios
+            .post(`apiregister`, {
+              name: this.name,
+              email: this.email,
+              password: this.password,
+              register_by: "email",
+            })
+            .catch((error) => {
+              console.log(error.message);
+            });
 
-        if (registerNow) {
-          res.value = await registerNow.data;
-          alert(
-            `Hi ${this.name}!. You have been successfully registered with ${this.email}!`
-          );
-          setTimeout(() => {
-            this.$router.push("/login"), 3000;
-          });
+          if (registerNow) {
+            res.value = await registerNow.data;
+            alert(
+              `Hi ${this.name}!. You have been successfully registered with ${this.email}!`
+            );
+            setTimeout(() => {
+              this.$router.push("/login"), 3000;
+            });
+          }
         }
       } else {
         alert('Your Password does not match. Please make sure you enter your password correctly.')

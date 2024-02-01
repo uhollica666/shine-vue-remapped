@@ -4,8 +4,8 @@
       <div class="article-card" v-if="article.slug === $route.params.slug" :key="article.id">
         <div class="row my-3">
           <div class="col-md-12 d-flex">
-            <img :src="siteURL + 'uploads/' + article.file_path" :alt="article.title"
-              class="img-fluid img-prop col-md-12" loading="lazy" />
+            <img :src="siteURL + 'uploads/' + article.file_path" :alt="article.title" class="img-fluid img-prop col-md-12"
+              loading="lazy" />
           </div>
         </div>
         <div class="hr my-4"></div>
@@ -52,9 +52,9 @@ export default {
   },
   async setup() {
     const articles = ref(null);
-    const siteURL = "https://booking.shinebhutan.com/";
+    const siteURL = "https://booking.shinenbuy.com/";
     const bc_articles = await fetch(
-      "https://booking.shinebhutan.com/api/articles"
+      "https://booking.shinenbuy.com/api/articles"
     );
     articles.value = await bc_articles.json();
     return {

@@ -3,15 +3,11 @@
     <div class="row">
       <div class="col-md-3 col-lg-3 col-xl-3 col-sm-12 col-xs-12">
         <Suspense>
-          <SidebarFilter
-          :filterItems="filterItems"
-          :filteredAccommodation="filteredAccommodation"
-          :starRating="starRating"
-        />
+          <SidebarFilter :filterItems="filterItems" :filteredAccommodation="filteredAccommodation"
+            :starRating="starRating" />
         </Suspense>
       </div>
-      <div
-        class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-xs-12 infinite-scroll">
+      <div class="col-md-9 col-lg-9 col-xl-9 col-sm-12 col-xs-12 infinite-scroll">
         <PageBanner />
 
         <Suspense>
@@ -110,8 +106,8 @@ export default {
   // async setup() {
   //     const accommodations = ref(null);
   //     const hotels = ref(null);
-  //     const bc_accommodations = await fetch('https://booking.shinebhutan.com/api/bc_spaces');
-  //     const bc_hotels = await fetch('https://booking.shinebhutan.com/api/bc_hotels');
+  //     const bc_accommodations = await fetch('https://booking.shinenbuy.com/api/bc_spaces');
+  //     const bc_hotels = await fetch('https://booking.shinenbuy.com/api/bc_hotels');
   //     accommodations.value = await bc_accommodations.json();
   //     hotels.value = await bc_hotels.json();
 

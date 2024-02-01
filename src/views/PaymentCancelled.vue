@@ -20,12 +20,12 @@ export default {
   methods: {
     async postResponse() {
       this.$http.post(
-        "https://shop.shinebhutan.com/public/payment_response.php",
+        "https://shop.shinenbuy.com/public/payment_response.php",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "access-control-allow-origin": "https://shinebhutan.com",
+            "access-control-allow-origin": "https://shinenbuy.com",
           },
           body: JSON.stringify,
         }
@@ -42,9 +42,11 @@ export default {
 .special {
   color: #333369;
 }
+
 .special u {
   font-size: 1.5rem;
 }
+
 .home-btn {
   background-color: #f7941e;
   color: #fff;
@@ -54,9 +56,9 @@ export default {
   cursor: pointer;
   margin: 0 auto;
 }
+
 .cont {
   background: #fff;
   border-radius: 10px;
   padding: 2rem;
-}
-</style>
+}</style>

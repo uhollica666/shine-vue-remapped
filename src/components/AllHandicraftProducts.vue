@@ -6,20 +6,12 @@
     </div>
     <div class="row mb-3">
       <template v-for="product in HandicraftProducts">
-        <div
-          v-if="product.cat_name === $route.params.name"
-          :key="product.id"
-          class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 my-3"
-        >
+        <div v-if="product.cat_name === $route.params.name" :key="product.id"
+          class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 my-3">
           <div class="card mt-2">
             <a :href="ecomURL + 'product/' + product.slug">
               <div class="card-body">
-                <img
-                  loading="lazy"
-                  :src="ecomURL + 'public/' + product.file_name"
-                  alt=""
-                  class="card-img img-fluid"
-                />
+                <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
                 <div class="card-details py-4">
                   <h5 class="card-title text-truncate">
                     {{ product.name }}
@@ -38,10 +30,7 @@
                     </div>
                   </div>
                   <div class="my-3 d-flex">
-                    <div
-                      class="duration-tours text-truncate me-3"
-                      v-if="!product.shop_address"
-                    >
+                    <div class="duration-tours text-truncate me-3" v-if="!product.shop_address">
                       <i class="bi bi-geo"></i>
                       (Thimphu)
                     </div>
@@ -49,10 +38,7 @@
                       <i class="bi bi-geo"></i>
                       {{ product.shop_address }}
                     </div>
-                    <div
-                      class="duration-tours text-truncate"
-                      v-if="!product.shop_name"
-                    >
+                    <div class="duration-tours text-truncate" v-if="!product.shop_name">
                       <i class="bi bi-shop"></i>
                       Shine
                     </div>
@@ -83,9 +69,9 @@ export default {
   name: "AllHandicraftProducts",
   async setup() {
     const HandicraftProducts = ref(null);
-    const ecomURL = "https://shop.shinebhutan.com/";
+    const ecomURL = "https://shop.shinenbuy.com/";
     const ecom_products = await fetch(
-      "https://shop.shinebhutan.com/api/v1/get_frontend_products"
+      "https://shop.shinenbuy.com/api/v1/get_frontend_products"
     );
     HandicraftProducts.value = await ecom_products.json();
 

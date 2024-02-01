@@ -3,15 +3,16 @@
     <div class="accordion-item">
       <h2 class="accordion-header">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-            aria-expanded="false" aria-controls="collapseOne" v-if="isMobile">
-            <i class="bi bi-sort-down"></i> Filter
-          </button>
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-            aria-expanded="true" aria-controls="collapseOne" v-else>
-            <i class="bi bi-sort-down"></i> Filter
-          </button>
+          aria-expanded="false" aria-controls="collapseOne" v-if="isMobile">
+          <i class="bi bi-sort-down"></i> Filter
+        </button>
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          aria-expanded="true" aria-controls="collapseOne" v-else>
+          <i class="bi bi-sort-down"></i> Filter
+        </button>
       </h2>
-      <div v-if="isMobile" id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div v-if="isMobile" id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample">
         <div class="accordion-body">
           <div class="c">
             <div class="sidebar-filters">
@@ -103,8 +104,7 @@
                 <div class="form-check my-2" v-for="price in toursPrice" :key="price">
                   <RouterLink :to="'/searchtours/' + price">
                     <input class="form-check-input" type="radio" name="flexRadioDefault" />
-                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
-                      v-if="price === 'All'">
+                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1" v-if="price === 'All'">
                       {{ price }} Tours
                     </label>
                     <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
@@ -121,7 +121,8 @@
           </div>
         </div>
       </div>
-      <div v-else id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div v-else id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample">
         <div class="accordion-body">
           <div class="c">
             <div class="sidebar-filters">
@@ -213,8 +214,7 @@
                 <div class="form-check my-2" v-for="price in toursPrice" :key="price">
                   <RouterLink :to="'/searchtours/' + price">
                     <input class="form-check-input" type="radio" name="flexRadioDefault" />
-                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
-                      v-if="price === 'All'">
+                    <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1" v-if="price === 'All'">
                       {{ price }} Tours
                     </label>
                     <label class="form-check-label dzongkhag-filter-each" for="flexRadioDefault1"
@@ -276,8 +276,8 @@ export default {
   async setup() {
     const agriCategory = ref(null)
     const productCategories = ref(null)
-    const agri = await fetch('https://shop.shinebhutan.com/api/v1/get_frontend_categories?id=4');
-    const handi = await fetch('https://shop.shinebhutan.com/api/v1/get_frontend_categories?id=5');
+    const agri = await fetch('https://shop.shinenbuy.com/api/v1/get_frontend_categories?id=4');
+    const handi = await fetch('https://shop.shinenbuy.com/api/v1/get_frontend_categories?id=5');
     agriCategory.value = await agri.json();
     productCategories.value = await handi.json();
     return {

@@ -48,8 +48,7 @@
               v-if="$route.name === 'AccommodationDzongkhags' && $route.params.slug === accommodation.name"
               :key="accommodation.id">
               <div class="card mt-3">
-                <a :href="siteURL + '/space/' + accommodation.slug"
-                  class="accommodation-details">
+                <a :href="siteURL + '/space/' + accommodation.slug" class="accommodation-details">
                   <div class="card-body">
                     <img loading="lazy" :src="apiURL + accommodation.file_path" alt="" class="card-img img-fluid" />
                     <div class="card-details">
@@ -93,8 +92,8 @@
         </h5>
         <div class="row">
           <template v-for="hotel in hotels">
-            <div class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 mt-3"
-              v-if="hotel.name === $route.params.location_id" :key="hotel.id">
+            <div class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 mt-3" v-if="hotel.name === $route.params.location_id"
+              :key="hotel.id">
               <div class="card mt-3">
                 <a :href="siteURL + '/hotel/' + hotel.slug" class="accommodation-details">
                   <div class="card-body">
@@ -333,23 +332,23 @@ export default {
     const dzongkhagDetails = ref(null);
     const hotels = ref(null);
     const agriProducts = ref(null);
-    const apiURL = "https://booking.shinebhutan.com/uploads/";
-    const siteURL = "https://booking.shinebhutan.com";
-    const ecomURL = "https://shop.shinebhutan.com/";
+    const apiURL = "https://booking.shinenbuy.com/uploads/";
+    const siteURL = "https://booking.shinenbuy.com";
+    const ecomURL = "https://shop.shinenbuy.com/";
     const bc_tours = await fetch(
-      "https://booking.shinebhutan.com/api/bc_tours"
+      "https://booking.shinenbuy.com/api/bc_tours"
     );
     const bc_accommodations = await fetch(
-      "https://booking.shinebhutan.com/api/bc_spaces"
+      "https://booking.shinenbuy.com/api/bc_spaces"
     );
     const bc_dzongkhagDetails = await fetch(
-      "https://booking.shinebhutan.com/api/bc_locations"
+      "https://booking.shinenbuy.com/api/bc_locations"
     );
     const bc_hotels = await fetch(
-      "https://booking.shinebhutan.com/api/bc_hotels"
+      "https://booking.shinenbuy.com/api/bc_hotels"
     );
     const ecom_products = await fetch(
-      "https://shop.shinebhutan.com/api/v1/get_frontend_products"
+      "https://shop.shinenbuy.com/api/v1/get_frontend_products"
     );
     tours.value = await bc_tours.json();
     accommodations.value = await bc_accommodations.json();

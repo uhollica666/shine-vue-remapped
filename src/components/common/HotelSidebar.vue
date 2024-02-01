@@ -52,9 +52,9 @@ export default {
 
   async setup() {
     const accommodations = ref(null);
-    const siteURL = "https://booking.shinebhutan.com/";
+    const siteURL = "https://booking.shinenbuy.com/";
     const bc_spaces = await fetch(
-      "https://booking.shinebhutan.com/api/bc_hotels"
+      "https://booking.shinenbuy.com/api/bc_hotels"
     );
     accommodations.value = await bc_spaces.json();
 

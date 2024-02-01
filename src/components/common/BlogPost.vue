@@ -42,27 +42,27 @@
       <div class="row flex-row flex-nowrap overflow-auto mb-5">
         <template v-for="story in getDzongkhagBlogPost">
           <div class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 mt-3" v-if="story" :key="story.id">
-          <div class="card mt-3 mb-3">
-            <div class="card-body">
-              <img loading="lazy" :src="apiURL + story.file_path" alt="" class="card-img-blog img-fluid"
-                :data-src="apiURL + story.file_path" />
-              <RouterLink :to="'/article/' + story.slug" class="category-details">
-                <div class="card-details">
-                  <h6 class="card-title text-truncate">
-                    {{ story.title }}
-                  </h6>
-                  <p class="post-details text-truncate">{{ story.content }}</p>
-                  <div class="location text-truncate">
-                    <i class="bi bi-tag"></i> Category: {{ story.name }}
+            <div class="card mt-3 mb-3">
+              <div class="card-body">
+                <img loading="lazy" :src="apiURL + story.file_path" alt="" class="card-img-blog img-fluid"
+                  :data-src="apiURL + story.file_path" />
+                <RouterLink :to="'/article/' + story.slug" class="category-details">
+                  <div class="card-details">
+                    <h6 class="card-title text-truncate">
+                      {{ story.title }}
+                    </h6>
+                    <p class="post-details text-truncate">{{ story.content }}</p>
+                    <div class="location text-truncate">
+                      <i class="bi bi-tag"></i> Category: {{ story.name }}
+                    </div>
+                    <p class="my-3">
+                      <i class="bi bi-calendar"></i> Posted on
+                      {{ story.created_at }}
+                    </p>
                   </div>
-                  <p class="my-3">
-                    <i class="bi bi-calendar"></i> Posted on
-                    {{ story.created_at }}
-                  </p>
-                </div>
-              </RouterLink>
+                </RouterLink>
+              </div>
             </div>
-          </div>
           </div>
         </template>
       </div>
@@ -79,10 +79,10 @@ export default {
     const route = useRoute();
     const routeId = route.params.location_id.toLowerCase();
     const stories = ref(null);
-    const apiURL = "https://booking.shinebhutan.com/uploads/";
-    const siteURL = "https://booking.shinebhutan.com";
+    const apiURL = "https://booking.shinenbuy.com/uploads/";
+    const siteURL = "https://booking.shinenbuy.com";
     const bc_stories = await fetch(
-      "https://booking.shinebhutan.com/api/articles"
+      "https://booking.shinenbuy.com/api/articles"
     );
     stories.value = await bc_stories.json();
 

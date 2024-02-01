@@ -16,7 +16,8 @@
                             <div class="heading">
                                 <h6 class="mb-3">Explore Other Categories</h6>
                             </div>
-                            <div v-if="$route.params.slug === 'vhs-village-home-stay' || $route.params.slug === 'eco-lodge' || $route.params.slug === 'guest-house' || $route.params.slug === 'hotels'">
+                            <div
+                                v-if="$route.params.slug === 'vhs-village-home-stay' || $route.params.slug === 'eco-lodge' || $route.params.slug === 'guest-house' || $route.params.slug === 'hotels'">
                                 <div class="dzo-list" v-for="category in categories" :key="category">
                                     <RouterLink :to="{ name: 'CategoryFilter', params: { slug: category.slug } }"
                                         :class="{ active: isActive }">
@@ -64,7 +65,7 @@ export default {
     async setup() {
         const tourCat = ref(null);
         const cat = await fetch(
-            'https://booking.shinebhutan.com/api/bc_tour_category'
+            'https://booking.shinenbuy.com/api/bc_tour_category'
         );
         tourCat.value = await cat.json();
         return {

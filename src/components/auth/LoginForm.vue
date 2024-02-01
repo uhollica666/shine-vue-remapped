@@ -4,26 +4,13 @@
       <div class="mb-3">
         <h3 class="auth-header mt-3 mb-3">User Login</h3>
         <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input
-          type="email"
-          class="form-control input-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          placeholder="email@example.com"
-          v-model="email"
-          required
-        />
+        <input type="email" class="form-control input-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+          placeholder="email@example.com" v-model="email" required />
       </div>
       <div class="mb-3">
         <label for="InputPassword" class="form-label">Password</label>
-        <input
-          type="password"
-          class="form-control input-control"
-          id="InputPassword"
-          placeholder="********"
-          v-model="password"
-          required
-        />
+        <input type="password" class="form-control input-control" id="InputPassword" placeholder="********"
+          v-model="password" required />
       </div>
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1" />
@@ -58,20 +45,14 @@
         </div>
       </div>
     </form>
-    <iframe
-      id="timeout"
-      src="#"
-      width="0"
-      height="0"
-      style="display: none"
-    ></iframe>
+    <iframe id="timeout" src="#" width="0" height="0" style="display: none"></iframe>
   </div>
 </template>
 
 <script>
 import { ref } from "vue";
 import axios from "axios";
-const shopURL = "https://shop.shinebhutan.com/";
+const shopURL = "https://shop.shinenbuy.com/";
 export default {
   name: "LoginForm",
 
@@ -121,9 +102,9 @@ export default {
         setTimeout(() => {
           document.getElementById(
             "timeout"
-          ).src = `https://shop.shinebhutan.com/api/v1/shopdash?email=${this.email}&password=${this.password}`;
+          ).src = `https://shop.shinenbuy.com/api/v1/shopdash?email=${this.email}&password=${this.password}`;
           setTimeout(() => {
-            window.location.href = `https://shinebhutan.com`;
+            window.location.href = `https://shinenbuy.com`;
           }, 600);
         }, 600);
 
@@ -156,8 +137,7 @@ export default {
 }
 
 .login-bg {
-  background: url(https://images.unsplash.com/photo-1596516112161-e98045590f64?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80)
-    no-repeat center center fixed;
+  background: url(https://images.unsplash.com/photo-1596516112161-e98045590f64?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80) no-repeat center center fixed;
   /* background:linear-gradient(to bottom right,rgba(247, 148, 30,0.2) 0%,rgba(51, 51, 105,0.2) 100%); */
   background-size: cover;
   opacity: 0.9;

@@ -9,8 +9,9 @@
         class="col-md-2 col-lg-2 col-xl-2 col-sm-4 col-xs-6 cat-cards mt-2">
         <div class="card mt-2">
           <div class="card-body">
-            <a :href="siteURL + '/tour?location_id=' + dzongkhag.id" class="category-details text-center" v-if="$route.name === 'Tours'">
-            <img loading="lazy" :src="apiURL + dzongkhag.file_path" alt="" class="card-img-dzo" />
+            <a :href="siteURL + '/tour?location_id=' + dzongkhag.id" class="category-details text-center"
+              v-if="$route.name === 'Tours'">
+              <img loading="lazy" :src="apiURL + dzongkhag.file_path" alt="" class="card-img-dzo" />
               <div class="card-details">
                 <h6 class="card-title text-truncate">
                   {{ dzongkhag.name }}
@@ -18,7 +19,7 @@
               </div>
             </a>
             <a :href="siteURL + '/space?location_id=' + dzongkhag.id" class="category-details text-center" v-else>
-            <img loading="lazy" :src="apiURL + dzongkhag.file_path" alt="" class="card-img-dzo" />
+              <img loading="lazy" :src="apiURL + dzongkhag.file_path" alt="" class="card-img-dzo" />
               <div class="card-details">
                 <h6 class="card-title text-truncate">
                   {{ dzongkhag.name }}
@@ -40,10 +41,10 @@ export default {
   async setup() {
     const dzongkhags = ref(null);
     const catSubtitle = "Eastern Bhutan Destinations Now Open";
-    const apiURL = "https://booking.shinebhutan.com/uploads/";
-    const siteURL = "https://booking.shinebhutan.com";
+    const apiURL = "https://booking.shinenbuy.com/uploads/";
+    const siteURL = "https://booking.shinenbuy.com";
     const locations = await fetch(
-      "https://booking.shinebhutan.com/api/bc_locations"
+      "https://booking.shinenbuy.com/api/bc_locations"
     );
     dzongkhags.value = await locations.json();
 
@@ -64,10 +65,11 @@ export default {
   object-fit: cover;
   border-radius: 5px;
 }
+
 @media screen and (max-width: 768px) {
-   .cat-cards {
+  .cat-cards {
     width: 50%;
   }
-  
+
 }
 </style>

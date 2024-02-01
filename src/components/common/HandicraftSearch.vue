@@ -7,20 +7,12 @@
     </div>
     <div class="row mb-3">
       <template v-for="product in filterProducts">
-        <div
-          v-if="product.cat_name === $route.params.category"
-          :key="product.id"
-          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3"
-        >
+        <div v-if="product.cat_name === $route.params.category" :key="product.id"
+          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3">
           <div class="card mt-2">
             <div class="card-body">
               <a :href="ecomURL + 'product/' + product.slug">
-                <img
-                  loading="lazy"
-                  :src="ecomURL + 'public/' + product.file_name"
-                  alt=""
-                  class="card-img img-fluid"
-                />
+                <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ product.name }}
@@ -49,20 +41,12 @@
             </div>
           </div>
         </div>
-        <div
-          v-if="$route.params.category === 'All'"
-          :key="product.id"
-          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3"
-        >
+        <div v-if="$route.params.category === 'All'" :key="product.id"
+          class="col-md-3 col-lg-3 col-xl-3 col-sm-6 col-xs-6 my-3">
           <div class="card mt-2">
             <div class="card-body">
               <a :href="ecomURL + 'product/' + product.slug">
-                <img
-                  loading="lazy"
-                  :src="ecomURL + 'public/' + product.file_name"
-                  alt=""
-                  class="card-img img-fluid"
-                />
+                <img loading="lazy" :src="ecomURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ product.name }}
@@ -102,9 +86,9 @@ export default {
   name: "HandicraftSearch",
   async setup() {
     const Handicrafts = ref(null);
-    const ecomURL = "https://shop.shinebhutan.com/";
+    const ecomURL = "https://shop.shinenbuy.com/";
     const ecom_products = await fetch(
-      "https://shop.shinebhutan.com/api/v1/get_frontend_products"
+      "https://shop.shinenbuy.com/api/v1/get_frontend_products"
     );
     Handicrafts.value = await ecom_products.json();
 

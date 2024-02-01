@@ -14,20 +14,12 @@
     </div>
     <div class="row mb-3">
       <template v-for="product in filteredHandiProds()">
-        <div
-          v-if="$route.params.slug === 'All'"
-          :key="product.id"
-          class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 my-3"
-        >
+        <div v-if="$route.params.slug === 'All'" :key="product.id"
+          class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 my-3">
           <div class="card mt-2">
             <a :href="siteURL + 'product/' + product.slug">
               <div class="card-body">
-                <img
-                  loading="lazy"
-                  :src="siteURL + 'public/' + product.file_name"
-                  alt=""
-                  class="card-img img-fluid"
-                />
+                <img loading="lazy" :src="siteURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
                 <div class="card-details my-3">
                   <h5 class="card-title text-truncate">
                     {{ product.name }}
@@ -46,10 +38,7 @@
                     </div>
                   </div>
                   <div class="my-2 d-flex">
-                    <div
-                      class="duration-tours text-truncate me-3"
-                      v-if="!product.shop_address"
-                    >
+                    <div class="duration-tours text-truncate me-3" v-if="!product.shop_address">
                       <i class="bi bi-geo"></i>
                       (Thimphu)
                     </div>
@@ -57,10 +46,7 @@
                       <i class="bi bi-geo"></i>
                       {{ product.shop_address }}
                     </div>
-                    <div
-                      class="duration-tours text-truncate"
-                      v-if="!product.shop_name"
-                    >
+                    <div class="duration-tours text-truncate" v-if="!product.shop_name">
                       <i class="bi bi-shop"></i>
                       Shine
                     </div>
@@ -80,20 +66,12 @@
             </a>
           </div>
         </div>
-        <div
-          v-if="product.shop_address === $route.params.slug"
-          :key="product.id"
-          class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 my-3"
-        >
+        <div v-if="product.shop_address === $route.params.slug" :key="product.id"
+          class="col-md-4 col-lg-4 col-xl-4 col-sm-6 col-xs-6 my-3">
           <div class="card mt-2">
             <a :href="siteURL + 'product/' + product.slug">
               <div class="card-body">
-                <img
-                  loading="lazy"
-                  :src="siteURL + 'public/' + product.file_name"
-                  alt=""
-                  class="card-img img-fluid"
-                />
+                <img loading="lazy" :src="siteURL + 'public/' + product.file_name" alt="" class="card-img img-fluid" />
                 <div class="card-details my-3">
                   <h5 class="card-title text-truncate">
                     {{ product.name }}
@@ -112,10 +90,7 @@
                     </div>
                   </div>
                   <div class="my-2 d-flex">
-                    <div
-                      class="duration-tours text-truncate me-3"
-                      v-if="!product.shop_address"
-                    >
+                    <div class="duration-tours text-truncate me-3" v-if="!product.shop_address">
                       <i class="bi bi-geo"></i>
                       (Thimphu)
                     </div>
@@ -123,10 +98,7 @@
                       <i class="bi bi-geo"></i>
                       {{ product.shop_address }}
                     </div>
-                    <div
-                      class="duration-tours text-truncate"
-                      v-if="!product.shop_name"
-                    >
+                    <div class="duration-tours text-truncate" v-if="!product.shop_name">
                       <i class="bi bi-shop"></i>
                       Shine
                     </div>
@@ -158,9 +130,9 @@ export default {
 
   async setup() {
     const handiProducts = ref(null);
-    const siteURL = "https://shop.shinebhutan.com/";
+    const siteURL = "https://shop.shinenbuy.com/";
     const products = await fetch(
-      "https://shop.shinebhutan.com/api/v1/get_frontend_products"
+      "https://shop.shinenbuy.com/api/v1/get_frontend_products"
     );
     handiProducts.value = await products.json();
 

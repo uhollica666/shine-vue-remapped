@@ -2,23 +2,13 @@
   <div class="accordion my-5 accordion-flush sticky-top app-sticky-top">
     <div class="accordion-item">
       <h2 class="accordion-header">
-        <button
-          class="accordion-button"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#collapseOne"
-          aria-expanded="false"
-          aria-controls="collapseOne"
-        >
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          aria-expanded="false" aria-controls="collapseOne">
           <i class="bi bi-sort-down"></i>Filters
         </button>
       </h2>
-      <div
-        id="collapseOne"
-        class="accordion-collapse collapse show"
-        aria-labelledby="headingOne"
-        data-bs-parent="#accordionExample"
-      >
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample">
         <div class="accordion-body">
           <div class="c">
             <div class="sidebar-filters">
@@ -26,15 +16,8 @@
                 <h6 class="mb-3">Explore Accommodations</h6>
               </div>
               <div class="content-filter">
-                <div
-                  class="dzo-list"
-                  v-for="space in accommodations"
-                  :key="space.id"
-                >
-                  <RouterLink
-                    :to="{ name: 'SingleProperty', params: { id: space.id } }"
-                    :class="{ active: isActive }"
-                  >
+                <div class="dzo-list" v-for="space in accommodations" :key="space.id">
+                  <RouterLink :to="{ name: 'SingleProperty', params: { id: space.id } }" :class="{ active: isActive }">
                     <ul class="lists-dzo">
                       <li>{{ space.title }}</li>
                     </ul>
@@ -61,9 +44,9 @@ export default {
 
   async setup() {
     const accommodations = ref(null);
-    const siteURL = "https://booking.shinebhutan.com/";
+    const siteURL = "https://booking.shinenbuy.com/";
     const bc_spaces = await fetch(
-      "https://booking.shinebhutan.com/api/bc_spaces"
+      "https://booking.shinenbuy.com/api/bc_spaces"
     );
     accommodations.value = await bc_spaces.json();
 
@@ -85,14 +68,17 @@ export default {
   max-height: 40vh;
   overflow: auto;
 }
+
 a.router-link-exact-active ul li {
   color: #f7941e !important;
   font-weight: 600;
 }
+
 .home-button {
   color: #f7941e;
   text-decoration: none;
 }
+
 .app-sticky-top {
   top: 2rem;
 }
@@ -133,10 +119,12 @@ a.router-link-exact-active ul li {
 .accordion-header {
   border-radius: 10px;
 }
+
 .lists-dzo {
   text-decoration: none;
   margin: 0.5rem 0;
 }
+
 .lists-dzo li {
   color: #2c3e50;
 }

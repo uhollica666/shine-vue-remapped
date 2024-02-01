@@ -3,8 +3,7 @@
     <div v-for="tour in tours" :key="tour.id">
       <div class="property-card px-5">
         <section class="row">
-          <img :src="siteURL + 'uploads/' + tour.file_path" :alt="tour.title" class="img-fluid img-prop"
-            loading="lazy" />
+          <img :src="siteURL + 'uploads/' + tour.file_path" :alt="tour.title" class="img-fluid img-prop" loading="lazy" />
         </section>
         <section class="row mt-3">
           <div class="col-md-12 my-2 prod-descrip">
@@ -96,12 +95,12 @@
           <div class="row">
             <div v-if="tour.lang_id">
               <iframe class="map-yuu" :src="
-                'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1172.6441476127227!2d' +
-                tour.lang_id +
-                '!3d' +
-                tour.long_id +
-                '!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbt!4v1656893200352!5m2!1sen!2sbt'
-              " width="1080" height="600" style="border: 0" allowfullscreen="yes" loading="lazy"
+                              'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1172.6441476127227!2d' +
+                              tour.lang_id +
+                              '!3d' +
+                              tour.long_id +
+                              '!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbt!4v1656893200352!5m2!1sen!2sbt'
+                            " width="1080" height="600" style="border: 0" allowfullscreen="yes" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div v-else>
@@ -138,9 +137,9 @@ export default {
     const route = useRoute();
     const routeId = route.params.id;
     const tours = ref(null);
-    const siteURL = "https://booking.shinebhutan.com/";
+    const siteURL = "https://booking.shinenbuy.com/";
     const bc_tours = await fetch(
-      `https://booking.shinebhutan.com/api/single_tour?id=${routeId}`
+      `https://booking.shinenbuy.com/api/single_tour?id=${routeId}`
     );
 
     tours.value = await bc_tours.json();

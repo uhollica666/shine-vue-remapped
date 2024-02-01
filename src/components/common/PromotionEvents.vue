@@ -6,7 +6,7 @@
         <div class="card mt-3">
           <div class="card-body">
             <a :href=" siteURL + 'news/' + prompEvent.slug" class="category-details">
-            <img loading="lazy" :src="apiURL + prompEvent.file_path" alt="" class="card-img img-fluid" />
+              <img loading="lazy" :src="apiURL + prompEvent.file_path" alt="" class="card-img img-fluid" />
               <div class="card-details">
                 <h6 class="card-title text-truncate">
                   {{ prompEvent.title }}
@@ -37,10 +37,10 @@ export default {
   // },
   async setup() {
     const prompEvents = ref(null);
-    const apiURL = "https://booking.shinebhutan.com/uploads/";
-    const siteURL = "https://booking.shinebhutan.com/";
+    const apiURL = "https://booking.shinenbuy.com/uploads/";
+    const siteURL = "https://booking.shinenbuy.com/";
     const bc_prompEvents = await fetch(
-      "https://booking.shinebhutan.com/api/articles"
+      "https://booking.shinenbuy.com/api/articles"
     );
     prompEvents.value = await bc_prompEvents.json();
     return {

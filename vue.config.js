@@ -190,7 +190,7 @@ const paths = [
 const { defineConfig } = require("@vue/cli-service");
 module.exports = defineConfig({
   configureWebpack: {
-    plugins: [new SitemapPlugin({ base: "https://shinebhutan.com", paths })],
+    plugins: [new SitemapPlugin({ base: "https://shinenbuy.com", paths })],
   },
   transpileDependencies: true,
 });

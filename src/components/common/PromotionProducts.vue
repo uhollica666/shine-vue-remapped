@@ -7,8 +7,8 @@
           <div class="card mt-3">
             <div class="card-body">
               <a :href=" siteURL + 'product/' + prompProduct.slug" class="category-details">
-              <img loading="lazy" :src="ecomURL + 'public/' + prompProduct.file_name" alt=""
-                class="card-img img-fluid" />
+                <img loading="lazy" :src="ecomURL + 'public/' + prompProduct.file_name" alt=""
+                  class="card-img img-fluid" />
                 <div class="card-details">
                   <h6 class="card-title text-truncate">
                     {{ prompProduct.name }}
@@ -33,11 +33,11 @@ export default {
   name: "PromotionProducts",
   async setup() {
     const prompProducts = ref(null);
-    const apiURL = "https://booking.shinebhutan.com/uploads/";
-    const siteURL = "https://booking.shinebhutan.com/";
-    const ecomURL = "https://shop.shinebhutan.com/";
+    const apiURL = "https://booking.shinenbuy.com/uploads/";
+    const siteURL = "https://booking.shinenbuy.com/";
+    const ecomURL = "https://shop.shinenbuy.com/";
     const bc_prompProducts = await fetch(
-      "https://shop.shinebhutan.com/api/v1/get_frontend_products"
+      "https://shop.shinenbuy.com/api/v1/get_frontend_products"
     );
     prompProducts.value = await bc_prompProducts.json();
     return {
