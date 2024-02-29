@@ -42,7 +42,7 @@
 <script>
 import { ref } from "vue";
 import axios from "axios";
-const shopURL = "https://shop.shinenbuy.com/";
+const shopURL = "https://shop.shinebhutan.com/";
 export default {
   name: "VendorLogin",
 
@@ -77,17 +77,17 @@ export default {
         localStorage.setItem(
           "SessionDataStorageBucket-S3-token",
           tokenRandOne +
-            tokenRandTwo +
-            tokenRandFour +
-            tokenRandThree +
-            "¬" +
-            this.password +
-            "¬" +
-            tokenRandTwo +
-            tokenRandOne +
-            tokenRandTwo +
-            tokenRandFour +
-            tokenRandOne
+          tokenRandTwo +
+          tokenRandFour +
+          tokenRandThree +
+          "¬" +
+          this.password +
+          "¬" +
+          tokenRandTwo +
+          tokenRandOne +
+          tokenRandTwo +
+          tokenRandFour +
+          tokenRandOne
         );
         setTimeout(() => {
           document.getElementById(

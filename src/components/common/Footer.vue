@@ -9,7 +9,7 @@
             Sustainable Hospitality Industry Inclusive of Native
             Entrepreneurs<br />
             <strong>Contact</strong>: (+975) 1690 9020 | 17388924<br />
-            <strong>Email</strong>: info@shinenbuy.com<br />
+            <strong>Email</strong>: info@shinebhutan.com<br />
             <strong>Located:</strong> Above Memorial Chorten<br />
             Chorten Lam, Thimphu 11001 Bhutan
           </p>

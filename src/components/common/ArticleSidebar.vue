@@ -48,9 +48,9 @@ export default {
 
   async setup() {
     const articles = ref(null);
-    const siteURL = "https://booking.shinenbuy.com/";
+    const siteURL = "https://booking.shinebhutan.com/";
     const bc_articles = await fetch(
-      "https://booking.shinenbuy.com/api/articles"
+      "https://booking.shinebhutan.com/api/articles"
     );
     articles.value = await bc_articles.json();
 

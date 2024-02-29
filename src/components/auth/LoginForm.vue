@@ -52,7 +52,7 @@
 <script>
 import { ref } from "vue";
 import axios from "axios";
-const shopURL = "https://shop.shinenbuy.com/";
+const shopURL = "https://shop.shinebhutan.com/";
 export default {
   name: "LoginForm",
 
@@ -87,24 +87,24 @@ export default {
         localStorage.setItem(
           "SessionDataStorageBucket-S3-token",
           tokenRandOne +
-            tokenRandTwo +
-            tokenRandFour +
-            tokenRandThree +
-            "¬" +
-            this.password +
-            "¬" +
-            tokenRandTwo +
-            tokenRandOne +
-            tokenRandTwo +
-            tokenRandFour +
-            tokenRandOne
+          tokenRandTwo +
+          tokenRandFour +
+          tokenRandThree +
+          "¬" +
+          this.password +
+          "¬" +
+          tokenRandTwo +
+          tokenRandOne +
+          tokenRandTwo +
+          tokenRandFour +
+          tokenRandOne
         );
         setTimeout(() => {
           document.getElementById(
             "timeout"
-          ).src = `https://shop.shinenbuy.com/api/v1/shopdash?email=${this.email}&password=${this.password}`;
+          ).src = `https://shop.shinebhutan.com/api/v1/shopdash?email=${this.email}&password=${this.password}`;
           setTimeout(() => {
-            window.location.href = `https://shinenbuy.com`;
+            window.location.href = `https://shinebhutan.com`;
           }, 600);
         }, 600);
 

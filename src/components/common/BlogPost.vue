@@ -79,10 +79,10 @@ export default {
     const route = useRoute();
     const routeId = route.params.location_id.toLowerCase();
     const stories = ref(null);
-    const apiURL = "https://booking.shinenbuy.com/uploads/";
-    const siteURL = "https://booking.shinenbuy.com";
+    const apiURL = "https://booking.shinebhutan.com/uploads/";
+    const siteURL = "https://booking.shinebhutan.com";
     const bc_stories = await fetch(
-      "https://booking.shinenbuy.com/api/articles"
+      "https://booking.shinebhutan.com/api/articles"
     );
     stories.value = await bc_stories.json();
 

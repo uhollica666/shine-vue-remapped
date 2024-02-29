@@ -36,9 +36,9 @@ export default {
   async setup() {
     const products = ref(null);
     const catSubtitle = "Eastern Bhutan Destinations Now Open";
-    const ecomURL = "https://shop.shinenbuy.com/";
+    const ecomURL = "https://shop.shinebhutan.com/";
     const product = await fetch(
-      "https://shop.shinenbuy.com/api/v1/get_frontend_products"
+      "https://shop.shinebhutan.com/api/v1/get_frontend_products"
     );
     products.value = await product.json();
 

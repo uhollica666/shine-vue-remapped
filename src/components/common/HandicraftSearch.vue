@@ -86,9 +86,9 @@ export default {
   name: "HandicraftSearch",
   async setup() {
     const Handicrafts = ref(null);
-    const ecomURL = "https://shop.shinenbuy.com/";
+    const ecomURL = "https://shop.shinebhutan.com/";
     const ecom_products = await fetch(
-      "https://shop.shinenbuy.com/api/v1/get_frontend_products"
+      "https://shop.shinebhutan.com/api/v1/get_frontend_products"
     );
     Handicrafts.value = await ecom_products.json();
 

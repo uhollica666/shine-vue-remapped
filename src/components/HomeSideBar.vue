@@ -40,9 +40,9 @@
                   <ul class="home-block Dzongkhag-block">
                     <li v-for="dzongkhag in dzongkhags" :key="dzongkhag">
                       <RouterLink :to="{
-                                                name: 'Dzongkhags',
-                                                params: { location_id: dzongkhag },
-                                              }">{{ dzongkhag }}</RouterLink>
+                                                                      name: 'Dzongkhags',
+                                                                      params: { location_id: dzongkhag },
+                                                                    }">{{ dzongkhag }}</RouterLink>
                     </li>
                   </ul>
                 </div>
@@ -78,9 +78,9 @@
                   <ul class="home-block Dzongkhag-block">
                     <li v-for="dzongkhag in dzongkhags" :key="dzongkhag">
                       <RouterLink :to="{
-                                                name: 'Dzongkhags',
-                                                params: { location_id: dzongkhag },
-                                              }">{{ dzongkhag }}</RouterLink>
+                                                                      name: 'Dzongkhags',
+                                                                      params: { location_id: dzongkhag },
+                                                                    }">{{ dzongkhag }}</RouterLink>
                     </li>
                   </ul>
                 </div>
@@ -153,10 +153,10 @@ export default {
     const homeAgriproducts = ref(null);
     const homeHandicrafts = ref(null);
     const agri = await fetch(
-      "https://shop.shinenbuy.com/api/v1/get_frontend_categories?id=4"
+      "https://shop.shinebhutan.com/api/v1/get_frontend_categories?id=4"
     );
     const handi = await fetch(
-      "https://shop.shinenbuy.com/api/v1/get_frontend_categories?id=5"
+      "https://shop.shinebhutan.com/api/v1/get_frontend_categories?id=5"
     );
     homeAgriproducts.value = await agri.json();
     homeHandicrafts.value = await handi.json();

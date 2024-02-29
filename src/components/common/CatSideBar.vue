@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import {ref} from 'vue';
+import { ref } from 'vue';
 const categories = [
     { name: "VHS (Village Home Stay)", slug: "vhs-village-home-stay" },
     { name: "Eco Lodge", slug: "eco-lodge" },
@@ -65,7 +65,7 @@ export default {
     async setup() {
         const tourCat = ref(null);
         const cat = await fetch(
-            'https://booking.shinenbuy.com/api/bc_tour_category'
+            'https://booking.shinebhutan.com/api/bc_tour_category'
         );
         tourCat.value = await cat.json();
         return {

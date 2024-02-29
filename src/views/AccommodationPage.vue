@@ -106,8 +106,8 @@ export default {
   // async setup() {
   //     const accommodations = ref(null);
   //     const hotels = ref(null);
-  //     const bc_accommodations = await fetch('https://booking.shinenbuy.com/api/bc_spaces');
-  //     const bc_hotels = await fetch('https://booking.shinenbuy.com/api/bc_hotels');
+  //     const bc_accommodations = await fetch('https://booking.shinebhutan.com/api/bc_spaces');
+  //     const bc_hotels = await fetch('https://booking.shinebhutan.com/api/bc_hotels');
   //     accommodations.value = await bc_accommodations.json();
   //     hotels.value = await bc_hotels.json();
 

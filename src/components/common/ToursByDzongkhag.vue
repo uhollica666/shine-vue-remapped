@@ -30,10 +30,10 @@ export default {
   async setup() {
     const dzongkhags = ref(null);
     const catSubtitle = "Eastern Bhutan Destinations Now Open";
-    const apiURL = "https://booking.shinenbuy.com/uploads/";
-    const siteURL = "https://booking.shinenbuy.com/";
+    const apiURL = "https://booking.shinebhutan.com/uploads/";
+    const siteURL = "https://booking.shinebhutan.com/";
     const bc_locations = await fetch(
-      "https://booking.shinenbuy.com/api/bc_locations"
+      "https://booking.shinebhutan.com/api/bc_locations"
     );
     dzongkhags.value = await bc_locations.json();
 

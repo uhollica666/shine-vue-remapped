@@ -128,8 +128,8 @@ export default {
 
     async setup() {
         const agriProducts = ref(null);
-        const siteURL = "https://shop.shinenbuy.com/";
-        const products = await fetch('https://shop.shinenbuy.com/api/v1/get_frontend_products');
+        const siteURL = "https://shop.shinebhutan.com/";
+        const products = await fetch('https://shop.shinebhutan.com/api/v1/get_frontend_products');
         agriProducts.value = await products.json();
 
         return {

@@ -276,8 +276,8 @@ export default {
   async setup() {
     const agriCategory = ref(null)
     const productCategories = ref(null)
-    const agri = await fetch('https://shop.shinenbuy.com/api/v1/get_frontend_categories?id=4');
-    const handi = await fetch('https://shop.shinenbuy.com/api/v1/get_frontend_categories?id=5');
+    const agri = await fetch('https://shop.shinebhutan.com/api/v1/get_frontend_categories?id=4');
+    const handi = await fetch('https://shop.shinebhutan.com/api/v1/get_frontend_categories?id=5');
     agriCategory.value = await agri.json();
     productCategories.value = await handi.json();
     return {

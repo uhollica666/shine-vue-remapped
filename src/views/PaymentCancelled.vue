@@ -20,12 +20,12 @@ export default {
   methods: {
     async postResponse() {
       this.$http.post(
-        "https://shop.shinenbuy.com/public/payment_response.php",
+        "https://shop.shinebhutan.com/public/payment_response.php",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "access-control-allow-origin": "https://shinenbuy.com",
+            "access-control-allow-origin": "https://shinebhutan.com",
           },
           body: JSON.stringify,
         }
@@ -61,4 +61,5 @@ export default {
   background: #fff;
   border-radius: 10px;
   padding: 2rem;
-}</style>
+}
+</style>

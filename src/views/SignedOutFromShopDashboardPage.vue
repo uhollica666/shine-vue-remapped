@@ -5,11 +5,11 @@
 </template>
 
 <script>
-const shop = "https://shop.shinenbuy.com";
+const shop = "https://shop.shinebhutan.com";
 const user = localStorage.getItem("userName");
 const email = localStorage.getItem("StorageBucket-S3-UserId");
 const password = localStorage.getItem("SessionDataStorageBucket-S3-token");
-const siteURL = `https://shop.shinenbuy.com/api/v1/shoplogout?email=${email}&password=${password}`;
+const siteURL = `https://shop.shinebhutan.com/api/v1/shoplogout?email=${email}&password=${password}`;
 export default {
   name: "SignedOutFromShopDashboardPage",
   data() {
@@ -22,7 +22,7 @@ export default {
   mounted() {
     alert("Logged Out Successfully"),
       (document.getElementById("timeouttwo").src = this.siteURL);
-    setTimeout((window.location.href = "https://shinenbuy.com"), 500);
+    setTimeout((window.location.href = "https://shinebhutan.com"), 500);
     localStorage.removeItem("token");
     localStorage.removeItem("userName");
     localStorage.removeItem("StorageBucket-S3-UserId");

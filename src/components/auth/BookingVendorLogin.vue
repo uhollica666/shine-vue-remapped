@@ -26,7 +26,7 @@
       </div>
       <div class="no-account-register mt-3 mb-3">
         Forgot
-        <a href="https://booking.shinenbuy.com/password/reset">Password?</a>
+        <a href="https://booking.shinebhutan.com/password/reset">Password?</a>
         <br />
         <br />
         Not A Tourism Vendor? Go to
@@ -47,7 +47,7 @@
 <script>
 // import axios from "axios";
 import axios from "axios";
-const bookingURL = "https://booking.shinenbuy.com/";
+const bookingURL = "https://booking.shinebhutan.com/";
 export default {
   name: "BookingVendorLogin",
 
@@ -93,17 +93,17 @@ export default {
       localStorage.setItem(
         "SessionDataStorageBucket-S3-token",
         tokenRandOne +
-          tokenRandTwo +
-          tokenRandFour +
-          tokenRandThree +
-          "¬" +
-          this.password +
-          "¬" +
-          tokenRandTwo +
-          tokenRandOne +
-          tokenRandTwo +
-          tokenRandFour +
-          tokenRandOne
+        tokenRandTwo +
+        tokenRandFour +
+        tokenRandThree +
+        "¬" +
+        this.password +
+        "¬" +
+        tokenRandTwo +
+        tokenRandOne +
+        tokenRandTwo +
+        tokenRandFour +
+        tokenRandOne
       );
     },
   },

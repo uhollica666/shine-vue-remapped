@@ -38,10 +38,10 @@ export default {
 
   async setup() {
     const prompTours = ref(null);
-    const apiURL = "https://booking.shinenbuy.com/uploads/";
-    const siteURL = "https://booking.shinenbuy.com";
+    const apiURL = "https://booking.shinebhutan.com/uploads/";
+    const siteURL = "https://booking.shinebhutan.com";
     const bc_prompTours = await fetch(
-      "https://booking.shinenbuy.com/api/bc_tours"
+      "https://booking.shinebhutan.com/api/bc_tours"
     );
     prompTours.value = await bc_prompTours.json();
     return {

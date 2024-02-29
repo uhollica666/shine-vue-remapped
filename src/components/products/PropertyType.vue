@@ -23,9 +23,9 @@ export default {
     const route = useRoute();
     const routeId = route.params.id;
     const accommodations = ref(null);
-    const siteURL = "https://booking.shinenbuy.com/";
+    const siteURL = "https://booking.shinebhutan.com/";
     const bc_hotels = await fetch(
-      `https://booking.shinenbuy.com/api/space_terms?id=${routeId}`
+      `https://booking.shinebhutan.com/api/space_terms?id=${routeId}`
     );
     accommodations.value = await bc_hotels.json();
     return {

@@ -33,11 +33,11 @@ export default {
   name: "PromotionProducts",
   async setup() {
     const prompProducts = ref(null);
-    const apiURL = "https://booking.shinenbuy.com/uploads/";
-    const siteURL = "https://booking.shinenbuy.com/";
-    const ecomURL = "https://shop.shinenbuy.com/";
+    const apiURL = "https://booking.shinebhutan.com/uploads/";
+    const siteURL = "https://booking.shinebhutan.com/";
+    const ecomURL = "https://shop.shinebhutan.com/";
     const bc_prompProducts = await fetch(
-      "https://shop.shinenbuy.com/api/v1/get_frontend_products"
+      "https://shop.shinebhutan.com/api/v1/get_frontend_products"
     );
     prompProducts.value = await bc_prompProducts.json();
     return {

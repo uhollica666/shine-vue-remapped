@@ -2,23 +2,13 @@
 	<div class="accordion mt-5 mb-5 accordion-flush sticky-top app-sticky-top">
 		<div class="accordion-item">
 			<h2 class="accordion-header">
-				<button
-					class="accordion-button"
-					type="button"
-					data-bs-toggle="collapse"
-					data-bs-target="#collapseOne"
-					aria-expanded="false"
-					aria-controls="collapseOne"
-				>
+				<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+					aria-expanded="false" aria-controls="collapseOne">
 					<i class="bi bi-sort-down"></i> Browse Other Categories
 				</button>
 			</h2>
-			<div
-				id="collapseOne"
-				class="accordion-collapse collapse show"
-				aria-labelledby="headingOne"
-				data-bs-parent="#accordionExample"
-			>
+			<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+				data-bs-parent="#accordionExample">
 				<div class="accordion-body">
 					<div class="c">
 						<div class="sidebar-filters">
@@ -26,11 +16,8 @@
 								<h6>Handicrafts</h6>
 								<ul class="home-block handicraft-block">
 									<li v-for="handicraft in latestCategoryHandi()" :key="handicraft">
-										<RouterLink
-											:to="'/category-handicrafts/' + handicraft.name"
-											:class="{ active: isActive }"
-											>{{ handicraft.name }}</RouterLink
-										>
+										<RouterLink :to="'/category-handicrafts/' + handicraft.name"
+											:class="{ active: isActive }">{{ handicraft.name }}</RouterLink>
 									</li>
 								</ul>
 							</div>
@@ -39,11 +26,8 @@
 								<h6>Agriculture</h6>
 								<ul class="home-block Agriculture-block">
 									<li v-for="product in latestCategory()" :key="product">
-										<RouterLink
-											:to="'/category-agriproducts/' + product.name"
-											:class="{ active: isActive }"
-											>{{ product.name }}</RouterLink
-										>
+										<RouterLink :to="'/category-agriproducts/' + product.name"
+											:class="{ active: isActive }">{{ product.name }}</RouterLink>
 									</li>
 								</ul>
 							</div>
@@ -68,10 +52,10 @@ export default {
 		const homeAgriproducts = ref(null);
 		const homeHandicrafts = ref(null);
 		const agri = await fetch(
-			"https://shop.shinenbuy.com/api/v1/get_frontend_categories?id=4"
+			"https://shop.shinebhutan.com/api/v1/get_frontend_categories?id=4"
 		);
 		const handi = await fetch(
-			"https://shop.shinenbuy.com/api/v1/get_frontend_categories?id=5"
+			"https://shop.shinebhutan.com/api/v1/get_frontend_categories?id=5"
 		);
 		homeAgriproducts.value = await agri.json();
 		homeHandicrafts.value = await handi.json();
@@ -205,16 +189,16 @@ input[type="number"]::-webkit-inner-spin-button {
 	height: 8px;
 	border-radius: 2rem;
 	background: #ddd;
-  position: relative;
+	position: relative;
 }
 
 .progress-slider {
-  height: 8px;
-  left: 25%;
-  right: 25%;
-  position: absolute;
-  border-radius: 2rem;
-  background: #f7941e;
+	height: 8px;
+	left: 25%;
+	right: 25%;
+	position: absolute;
+	border-radius: 2rem;
+	background: #f7941e;
 }
 
 .range-input {

@@ -54,9 +54,9 @@ export default {
   async setup() {
     const accommodations = ref(null);
     const catSubtitle = "Eastern Bhutan Destinations Now Open";
-    const apiURL = "https://booking.shinenbuy.com/uploads/";
-    const siteURL = "https://booking.shinenbuy.com";
-    const spaces = await fetch("https://booking.shinenbuy.com/api/bc_spaces");
+    const apiURL = "https://booking.shinebhutan.com/uploads/";
+    const siteURL = "https://booking.shinebhutan.com";
+    const spaces = await fetch("https://booking.shinebhutan.com/api/bc_spaces");
     accommodations.value = await spaces.json();
 
     return {

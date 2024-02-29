@@ -52,10 +52,10 @@
   </div>
 
   <div class="container my-5" v-else-if="
-      $route.params.slug === 'vhs-village-home-stay' ||
-      $route.params.slug === 'guest-house' ||
-      $route.params.slug === 'eco-lodge'
-    ">
+        $route.params.slug === 'vhs-village-home-stay' ||
+        $route.params.slug === 'guest-house' ||
+        $route.params.slug === 'eco-lodge'
+      ">
     <div class="row my-4 ">
       <div class="hahahaha text-capitalize+">These are all the Available Accommodations under <span class="text-danger">{{
                 $route.params.slug }}</span> </div>
@@ -193,11 +193,11 @@ export default {
     const tourFiltered = ref(null);
     const route = useRoute();
     const routeId = route.params.slug;
-    const siteURL = "https://booking.shinenbuy.com/uploads/";
+    const siteURL = "https://booking.shinebhutan.com/uploads/";
 
     if (routeId === 'hotels') {
       const filterCar = await fetch(
-        "https://booking.shinenbuy.com/api/bc_hotels"
+        "https://booking.shinebhutan.com/api/bc_hotels"
       );
       hotelFitered.value = await filterCar.json();
     }
@@ -206,17 +206,17 @@ export default {
       routeId === 'guest-house' ||
       routeId === 'eco-lodge') {
       const spaceCategory = await fetch(
-        `https://booking.shinenbuy.com/api/space_types?name=${routeId}`
+        `https://booking.shinebhutan.com/api/space_types?name=${routeId}`
       );
       spaceFiltered.value = await spaceCategory.json();
     } else {
       const tourCategory = await fetch(
-        `https://booking.shinenbuy.com/api/tour_types?name=${routeId}`
+        `https://booking.shinebhutan.com/api/tour_types?name=${routeId}`
       );
       tourFiltered.value = await tourCategory.json();
     }
 
-    const bookingURL = "https://booking.shinenbuy.com";
+    const bookingURL = "https://booking.shinebhutan.com";
 
     return {
       hotelFitered,

@@ -445,13 +445,13 @@ export default {
   async setup() {
     const Accommodations = ref(null);
     const Hotels = ref(null);
-    const ecomURL = "https://booking.shinenbuy.com/uploads/";
-    const siteURL = "https://booking.shinenbuy.com/";
+    const ecomURL = "https://booking.shinebhutan.com/uploads/";
+    const siteURL = "https://booking.shinebhutan.com/";
     const ecom_products = await fetch(
-      "https://booking.shinenbuy.com/api/bc_spaces"
+      "https://booking.shinebhutan.com/api/bc_spaces"
     );
     const hotels_products = await fetch(
-      "https://booking.shinenbuy.com/api/bc_hotels"
+      "https://booking.shinebhutan.com/api/bc_hotels"
     );
     Accommodations.value = await ecom_products.json();
     Hotels.value = await hotels_products.json();

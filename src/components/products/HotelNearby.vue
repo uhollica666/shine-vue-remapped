@@ -39,9 +39,9 @@ export default {
     const route = useRoute();
     const routeId = route.params.id;
     const hotelsDetails = ref(null);
-    const siteURL = "https://booking.shinenbuy.com/";
+    const siteURL = "https://booking.shinebhutan.com/";
     const bc_hotels = await fetch(
-      `https://booking.shinenbuy.com/api/single_hotel_details?id=${routeId}`
+      `https://booking.shinebhutan.com/api/single_hotel_details?id=${routeId}`
     );
     hotelsDetails.value = await bc_hotels.json();
     return {

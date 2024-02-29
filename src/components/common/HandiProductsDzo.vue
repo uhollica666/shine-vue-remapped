@@ -130,9 +130,9 @@ export default {
 
   async setup() {
     const handiProducts = ref(null);
-    const siteURL = "https://shop.shinenbuy.com/";
+    const siteURL = "https://shop.shinebhutan.com/";
     const products = await fetch(
-      "https://shop.shinenbuy.com/api/v1/get_frontend_products"
+      "https://shop.shinebhutan.com/api/v1/get_frontend_products"
     );
     handiProducts.value = await products.json();
 

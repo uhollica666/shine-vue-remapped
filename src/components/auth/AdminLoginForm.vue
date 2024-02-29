@@ -35,7 +35,7 @@
 <script>
 import { ref } from "vue";
 import axios from "axios";
-const shopURL = "https://shop.shinenbuy.com/";
+const shopURL = "https://shop.shinebhutan.com/";
 export default {
   name: "AdminLoginForm",
 

@@ -71,10 +71,10 @@ export default {
   async setup() {
     const categoryTours = ref(null);
     const catSubtitle = "Eastern Bhutan Destinations Now Open";
-    const apiURL = "https://booking.shinenbuy.com/uploads/";
-    const siteURL = "https://booking.shinenbuy.com/";
+    const apiURL = "https://booking.shinebhutan.com/uploads/";
+    const siteURL = "https://booking.shinebhutan.com/";
     const category = await fetch(
-      "https://booking.shinenbuy.com/api/bc_tour_category"
+      "https://booking.shinebhutan.com/api/bc_tour_category"
     );
     categoryTours.value = await category.json();
 

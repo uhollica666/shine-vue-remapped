@@ -79,11 +79,11 @@ export default {
   props: ["products"],
   async setup() {
     const products = ref(null);
-    const ecomURL = "https://shop.shinenbuy.com/";
+    const ecomURL = "https://shop.shinebhutan.com/";
     const catSubtitle = "Eastern Bhutan Destinations Now Open";
 
     await axios
-      .get("https://shop.shinenbuy.com/api/v1/get_frontend_products")
+      .get("https://shop.shinebhutan.com/api/v1/get_frontend_products")
       .then((response) => {
         products.value = response.data;
       });

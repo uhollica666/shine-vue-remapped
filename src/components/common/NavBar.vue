@@ -7,7 +7,7 @@
             <div class="contact contact_space">
               <ul class="top-bar top-bar-left">
                 <li>
-                  <a href="mailto:info@shinenbuy.com"><i class="bi bi-send-check"></i>info@shinenbuy.com</a>
+                  <a href="mailto:info@shinebhutan.com"><i class="bi bi-send-check"></i>info@shinebhutan.com</a>
                 </li>
                 <li>
                   <a href="callto:+97517388924"><i class="bi bi-phone"></i>(+975) 1690 9020 | 17388924</a>
@@ -54,7 +54,7 @@
                           </a>
                         </li>
                         <li class="px-1 mx-0">
-                          <a :href="'https://shop.shinenbuy.com/admin'" class="dropdown-item text-dark">
+                          <a :href="'https://shop.shinebhutan.com/admin'" class="dropdown-item text-dark">
                             <i class="bi bi-toggles"></i>Go to Ecommerce Admin
                           </a>
                         </li>
@@ -63,9 +63,9 @@
 
                       <!-- Vendor Menu -->
                       <div v-show="
-                                                (userType === 'seller' && auth_token) ||
-                                                (!auth_token && !userType)
-                                              ">
+                                                                      (userType === 'seller' && auth_token) ||
+                                                                      (!auth_token && !userType)
+                                                                    ">
                         <li class="px-1 mx-0">
                           <a class="dropdown-item text-secondary" href="javascript:void(0)">
                             Vendors Area<i class="bi bi-chevron-double-down ms-2 text-secondary"></i>
@@ -99,7 +99,7 @@
 
                   <!-- Show Cart and Wishlists Icons for Ecommerce Users -->
                   <div class="cart d-flex" v-if="userType === 'customer'">
-                    <a :href="`https://shop.shinenbuy.com/cart`" style="padding-top: 8px" data-bs-toggle="tooltip"
+                    <a :href="`https://shop.shinebhutan.com/cart`" style="padding-top: 8px" data-bs-toggle="tooltip"
                       data-bs-placement="bottom" title="Go to Cart">
                       <div class="d-flex">
                         <i class="bi bi-basket"></i>
@@ -107,7 +107,7 @@
                       </div>
                     </a>
                     <span class="mx-2"></span>
-                    <a :href="`https://shop.shinenbuy.com/wishlists`" style="padding-top: 8px" data-bs-toggle="tooltip"
+                    <a :href="`https://shop.shinebhutan.com/wishlists`" style="padding-top: 8px" data-bs-toggle="tooltip"
                       data-bs-placement="bottom" title="Go to Wishlist">
                       <div class="d-flex">
                         <i class="bi bi-heart"></i>
@@ -190,15 +190,15 @@ import StickyNav from "@/components/common/StickyNav";
 import { mapGetters } from "vuex";
 // import axios from "axios";
 import { ref } from "vue";
-// const apiV2 = "https://shop.shinenbuy.com/api/v2/";
-const shop = "https://shop.shinenbuy.com";
-const booking = "https://booking.shinenbuy.com";
+// const apiV2 = "https://shop.shinebhutan.com/api/v2/";
+const shop = "https://shop.shinebhutan.com";
+const booking = "https://booking.shinebhutan.com";
 const password = localStorage.getItem("SessionDataStorageBucket-S3-token");
 const user = localStorage.getItem("userName");
 const userType = localStorage.getItem("userType");
 const email = localStorage.getItem("StorageBucket-S3-UserId");
-const siteURL = `https://shop.shinenbuy.com/api/v1/shoplogout?email=${email}&password=`;
-const bookURL = `https://booking.shinenbuy.com/api/booklogout?email=${email}&password=`;
+const siteURL = `https://shop.shinebhutan.com/api/v1/shoplogout?email=${email}&password=`;
+const bookURL = `https://booking.shinebhutan.com/api/booklogout?email=${email}&password=`;
 
 let adminMenu = ref(null);
 export default {
@@ -238,7 +238,7 @@ export default {
         () => (document.getElementById("book-logout").src = bookURL + newPass),
         300
       );
-      setTimeout(() => (window.location.href = "https://shinenbuy.com"), 800);
+      setTimeout(() => (window.location.href = "https://shinebhutan.com"), 800);
       localStorage.removeItem("token");
       localStorage.removeItem("userName");
       localStorage.removeItem("userType");
@@ -259,13 +259,13 @@ export default {
       const newPass = password.split("¬")[1];
       setTimeout(
         () =>
-          (document.getElementById(
-            "timeout"
-          ).src = `${booking}/api/shopdash?email=${email}&password=${newPass}`),
+        (document.getElementById(
+          "timeout"
+        ).src = `${booking}/api/shopdash?email=${email}&password=${newPass}`),
         200
       );
       setTimeout(
-        () => (window.location.href = ` https://booking.shinenbuy.com/admin`),
+        () => (window.location.href = ` https://booking.shinebhutan.com/admin`),
         1000
       );
     },

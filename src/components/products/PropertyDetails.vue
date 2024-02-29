@@ -130,9 +130,9 @@ export default {
     const route = useRoute();
     const routeId = route.params.id;
     const properties = ref(null);
-    const siteURL = "https://booking.shinenbuy.com/";
+    const siteURL = "https://booking.shinebhutan.com/";
     const bc_accommodations = await fetch(
-      `https://booking.shinenbuy.com/api/single_space?id=${routeId}`
+      `https://booking.shinebhutan.com/api/single_space?id=${routeId}`
     );
 
     properties.value = await bc_accommodations.json();

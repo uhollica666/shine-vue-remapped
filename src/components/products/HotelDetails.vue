@@ -154,9 +154,9 @@ export default {
     const route = useRoute();
     const routeId = route.params.id;
     const hotels = ref(null);
-    const siteURL = "https://booking.shinenbuy.com/";
+    const siteURL = "https://booking.shinebhutan.com/";
     const bc_hotels = await fetch(
-      `https://booking.shinenbuy.com/api/single_hotel?id=${routeId}`
+      `https://booking.shinebhutan.com/api/single_hotel?id=${routeId}`
     );
     hotels.value = await bc_hotels.json();
     return {

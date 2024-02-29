@@ -332,23 +332,23 @@ export default {
     const dzongkhagDetails = ref(null);
     const hotels = ref(null);
     const agriProducts = ref(null);
-    const apiURL = "https://booking.shinenbuy.com/uploads/";
-    const siteURL = "https://booking.shinenbuy.com";
-    const ecomURL = "https://shop.shinenbuy.com/";
+    const apiURL = "https://booking.shinebhutan.com/uploads/";
+    const siteURL = "https://booking.shinebhutan.com";
+    const ecomURL = "https://shop.shinebhutan.com/";
     const bc_tours = await fetch(
-      "https://booking.shinenbuy.com/api/bc_tours"
+      "https://booking.shinebhutan.com/api/bc_tours"
     );
     const bc_accommodations = await fetch(
-      "https://booking.shinenbuy.com/api/bc_spaces"
+      "https://booking.shinebhutan.com/api/bc_spaces"
     );
     const bc_dzongkhagDetails = await fetch(
-      "https://booking.shinenbuy.com/api/bc_locations"
+      "https://booking.shinebhutan.com/api/bc_locations"
     );
     const bc_hotels = await fetch(
-      "https://booking.shinenbuy.com/api/bc_hotels"
+      "https://booking.shinebhutan.com/api/bc_hotels"
     );
     const ecom_products = await fetch(
-      "https://shop.shinenbuy.com/api/v1/get_frontend_products"
+      "https://shop.shinebhutan.com/api/v1/get_frontend_products"
     );
     tours.value = await bc_tours.json();
     accommodations.value = await bc_accommodations.json();

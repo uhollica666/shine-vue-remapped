@@ -46,12 +46,12 @@
         <h3 class="mb-3 mx-auto">Own a Business? Sell With Us</h3>
         <div class="flex-md-column flex-sm-row flex-xs-row text-center">
           <p class="no-account-register">
-            <a :href="'https://booking.shinenbuy.com/page/vendor-register'">Click Here</a>
+            <a :href="'https://booking.shinebhutan.com/page/vendor-register'">Click Here</a>
             to register your Tourism / Hotel / Homestay Business.
           </p>
           <p class="no-account-register">
             Or
-            <a :href="'https://shop.shinenbuy.com/' + 'shops/create'">Click Here</a>
+            <a :href="'https://shop.shinebhutan.com/' + 'shops/create'">Click Here</a>
             to register your Ecommerce / Handicraft Store.
           </p>
         </div>
